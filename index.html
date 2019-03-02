@@ -6,139 +6,31 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	</head>
-	<body>
-		<br/>
-		<div class="container" id="main">
-			<div class="row">
-				
-				<div class="col-md-4" style="margin-bottom:10px;">
-					<div class="card">
-						
-						<div class="card-body">
-							<img src="https://lh3.googleusercontent.com/fYql4a-C436663QVIAgaK9yL0zAWNqPHisGjs5KJXDqfxCHafTH6KvG4XQkQpr4TlyhHeLACASHuoQ=s747-no" class="img-thumbnail" alt="...">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-8" style="margin-bottom:10px;">
-					<div class="card">
-						<div class="card-body">
-							<div style="text-align: left"><h3 > Sabri Sangjaya 
+		<script>
+			var isMobile = {
+		Android: function() {
+		return navigator.userAgent.match(/Android/i);
+		},
+		BlackBerry: function() {
+		return navigator.userAgent.match(/BlackBerry/i);
+		},
+		iOS: function() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+		},
+		Opera: function() {
+		return navigator.userAgent.match(/Opera Mini/i);
+		},
+		Windows: function() {
+		return navigator.userAgent.match(/IEMobile/i);
+		},
+		any: function() {
+		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+		}
+		};
 
-								<a style="float:right;margin:0 5px;" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank">
-									<span class="fab fa-youtube"></span></a>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a style="float:right;margin:0 5px;" href="https://www.github.com/sabrisangjaya" target="_blank">
-									<span class="fab fa-github"></span></a>
-									</h3>
-							
-							</div>
-							<hr/>
-							<p>Jadi begini ini adalah project WebCV saya menggunakan github page, Github tidak support php dan serverside scripting lainnya padahal ingin melakukan cUrl ke youtube dan github, ya sudah pakai javascript saja. youtubenya sudah bisa githubnya belum, sabar ya  </p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12" style="margin-bottom:10px;">
-					<div class="card">
-						<div class="card-body">
-							<h3>Portfolio</h3>
-							<hr>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro veniam, asperiores accusantium reprehenderit et repellat iure tenetur quam sit debitis, assumenda, dolores fugiat rem ullam delectus ipsam quae perferendis quo.</p>
-							<div class="row">
-								<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
-								
-								
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-body">
-									<h4>Skills</h4>
-									<hr>
-									<h6>Web Design</h6>
-									<div class="progress">
-										<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-									</div><br/>
-									<h6>Graphic Design</h6>
-									<div class="progress">
-										<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-									</div><br/>
-									<h6>Programming</h6>
-									<div class="progress">
-										<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-									</div><br/>
-									<h6>Creativity</h6>
-									<div class="progress">
-										<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-									</div><br/>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-body">
-									<h3>Experience</h3>
-									<hr>
-									<div class="list-group">
-										<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mb-1">Student Department Association</h5>
-												<small>2017-2019</small>
-											</div>
-											<p class="mb-1">
-											As Chief Division Product and Service in Workshop Elektro (Division of Education and Reasoning)  Student Department Association of Electro
-											</p>
-											<small>Sebagai Ketua Divisi Produk dan Jasa Workshop Elektro Bidang Penalaran dan Keilmuan Himpunan Mahasiswa Jurusan Teknik Elektro</small>
-										</a>
-										<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mb-1">LTDC 2017-2018</h5>
-												<small class="text-muted">2017-2018</small>
-											</div>
-											<p class="mb-1">Line Tracer Design and Contest (LTDC) is a prestigious annual event from Workshop Elektro. I participated as a front-end maker and back-end timer application of match</p>
-											<small class="text-muted">Line Tracer Design and Contest(LTDC) adalah Event tahunan bergengsi dari workshop elektro. saya berperan sebagai pembuat front-end dan back-end aplikasi timer pertandingan</small>
-										</a>
-										<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mb-1">ICOVET 2018</h5>
-												<small class="text-muted">2018</small>
-											</div>
-											<p class="mb-1">International Conference on Vocational Education and Training (ICOVET) is annual event from Faculty of Engineering Universitas Negeri Malang. I participated as a Graphic Designer</p>
-											<small class="text-muted">ICOVET adalah event tahunan dari Fakultas Teknik Universitas Negeri Malang. Saya berperan sebagai Desainer Grafis</small>
-										</a>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			<br/>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12" style="margin-bottom:10px;">
-					<div class="card">
-						<div class="card-body">
-							<h3>Youtube</h3>
-							<hr>
-							<p>Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
-							<div class="row" id="kontenyutub">
-								<script>
+		    if( isMobile.any() ) alert('sebagian konten tidak didukung dalam versi mobile. silahkan kunjungi pada versi desktop');
+		</script>
+		<script>
 									function getMatches(string, regex, index) {
 								index || (index = 1); // default to the first capturing group
 								var matches = [];
@@ -148,7 +40,6 @@
 								}
 								return matches;
 								}
-
 								$(document).ready(function(e) {
 								///var myUrl = 'https://www.youtube.com/watch?v=DjThet20w348';
 								var myUrl = 'https://www.youtube.com/playlist?list=PLHT0P9eTagkvTK4If-Y_4snG2F-9CY78H';
@@ -171,34 +62,34 @@
 								//while(match[i]!=)
 								for(var i=0;i<match.length;i++){
 									//$("#kontenyutub").append("<div class='col-md-4' style='margin-bottom:10px;'><div class='card'><div class='card-body'>");
-											//document.write("<br/>"+(i+1)+". "+" <a href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+match[i]+"</a>");
-											var link=match2[i].replace(/\\/g, '');
-											link=link.replace(/\?v=/g, '');
-											//document.write('{"videoId":"'+link+'","thumbnail":{"thumbnails":\[{"url":"'+"(.*?)"+'\?sqp=');
-											//link='{"videoId":"'+link+'","thumbnail":{"thumbnails":[{"url":"';
-											regexlink2=new RegExp('{"videoId":"'+link+'","thumbnail":{"thumbnails":\\[{"url":"(.*?)\\?sqp=');
-											var hasil=x.responseText.match(regexlink2)[1];
-											//document.write(hasil);
-											//document.write("<img src="+hasil+" class='img-thumbnail' alt='...'>");
-											var time=match[i].match(/([0-9]*)\s*([A-Za-z]*)\s*ago/g);
-											var duration=match[i].match(/([0-9]*)\s*minutes/g);
-											var viewer=match[i].match(/([0-9]*)\s*views/g);
-											var judul=match[i].substring(0, match[i].indexOf('by'));
-											//document.write(time+"/"+duration+"/"+viewer);
+													//document.write("<br/>"+(i+1)+". "+" <a href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+match[i]+"</a>");
+													var link=match2[i].replace(/\\/g, '');
+													link=link.replace(/\?v=/g, '');
+													//document.write('{"videoId":"'+link+'","thumbnail":{"thumbnails":\[{"url":"'+"(.*?)"+'\?sqp=');
+													//link='{"videoId":"'+link+'","thumbnail":{"thumbnails":[{"url":"';
+													regexlink2=new RegExp('{"videoId":"'+link+'","thumbnail":{"thumbnails":\\[{"url":"(.*?)\\?sqp=');
+													var hasil=x.responseText.match(regexlink2)[1];
+													//document.write(hasil);
+													//document.write("<img src="+hasil+" class='img-thumbnail' alt='...'>");
+													var time=match[i].match(/([0-9]*)\s*([A-Za-z]*)\s*ago/g);
+													var duration=match[i].match(/([0-9]*)\s*minutes/g);
+													var viewer=match[i].match(/([0-9]*)\s*views/g);
+													var judul=match[i].substring(0, match[i].indexOf('by'));
+													//document.write(time+"/"+duration+"/"+viewer);
 									//document.write("</div></div></div>");
 									var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-											konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
-											konten+="<div class='card-body'>";
-													konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
-													konten+="<span class='badge badge-primary'>"+time+"</span> ";
-													konten+="<span class='badge badge-info'>"+duration+"</span> ";
-													konten+="<span class='badge badge-success'>"+viewer+"</span> ";
-													//konten+=time+"/"+duration+"/"+viewer;
-											konten+="</div>";
-											konten+="<div class='card-footer'>";
-													konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-													konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-											konten+="</div>";
+													konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
+													konten+="<div class='card-body'>";
+																	konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+																	konten+="<span class='badge badge-primary'>"+time+"</span> ";
+																	konten+="<span class='badge badge-info'>"+duration+"</span> ";
+																	konten+="<span class='badge badge-success'>"+viewer+"</span> ";
+																	//konten+=time+"/"+duration+"/"+viewer;
+													konten+="</div>";
+													konten+="<div class='card-footer'>";
+																	konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+																	konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+													konten+="</div>";
 									konten+="</div></div>";
 									$("#kontenyutub").append(konten);
 								}
@@ -209,15 +100,146 @@
 								};
 								x.send();
 								});
-								</script>
+		</script>
+	</head>
+	<body>
+		<br/>
+		<div class="container" id="main">
+			<div class="row">
+				
+				<div class="col-md-4" style="margin-bottom:10px;">
+					<div class="card">
+						
+						<div class="card-body">
+							<img src="https://lh3.googleusercontent.com/fYql4a-C436663QVIAgaK9yL0zAWNqPHisGjs5KJXDqfxCHafTH6KvG4XQkQpr4TlyhHeLACASHuoQ=s747-no" class="img-thumbnail" alt="...">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8" style="margin-bottom:10px;">
+					<div class="card">
+						<div class="card-body">
+							<div style="text-align: left"><h3 > Sabri Sangjaya
+								<a style="float:right;margin:0 5px;" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank">
+									<span class="fab fa-youtube"></span></a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a style="float:right;margin:0 5px;" href="https://www.github.com/sabrisangjaya" target="_blank">
+										<span class="fab fa-github"></span></a>
+										</h3>
+										
+									</div>
+									<hr/>
+									<p>Jadi begini ini adalah project WebCV saya menggunakan github page, Github tidak support php dan serverside scripting lainnya padahal ingin melakukan cUrl ke youtube dan github, ya sudah pakai javascript saja. youtubenya sudah bisa githubnya belum, sabar ya  </p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" style="margin-bottom:10px;">
+							<div class="card">
+								<div class="card-body">
+									<h3>Portfolio</h3>
+									<hr>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro veniam, asperiores accusantium reprehenderit et repellat iure tenetur quam sit debitis, assumenda, dolores fugiat rem ullam delectus ipsam quae perferendis quo.</p>
+									<div class="row">
+										<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
+										<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
+										<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
+										<div class="col-md-3"><img src="https://via.placeholder.com/400x400.png?text=hohoho" class="img-thumbnail" alt="..."></div>
+										
+										
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card">
+										<div class="card-body">
+											<h4>Skills</h4>
+											<hr>
+											<h6>Web Design</h6>
+											<div class="progress">
+												<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+											</div><br/>
+											<h6>Graphic Design</h6>
+											<div class="progress">
+												<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+											</div><br/>
+											<h6>Programming</h6>
+											<div class="progress">
+												<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+											</div><br/>
+											<h6>Creativity</h6>
+											<div class="progress">
+												<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+											</div><br/>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card">
+										<div class="card-body">
+											<h3>Experience</h3>
+											<hr>
+											<div class="list-group">
+												<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+													<div class="d-flex w-100 justify-content-between">
+														<h5 class="mb-1">Student Department Association</h5>
+														<small>2017-2019</small>
+													</div>
+													<p class="mb-1">
+														As Chief Division Product and Service in Workshop Elektro (Division of Education and Reasoning)  Student Department Association of Electro
+													</p>
+													<small>Sebagai Ketua Divisi Produk dan Jasa Workshop Elektro Bidang Penalaran dan Keilmuan Himpunan Mahasiswa Jurusan Teknik Elektro</small>
+												</a>
+												<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+													<div class="d-flex w-100 justify-content-between">
+														<h5 class="mb-1">LTDC 2017-2018</h5>
+														<small class="text-muted">2017-2018</small>
+													</div>
+													<p class="mb-1">Line Tracer Design and Contest (LTDC) is a prestigious annual event from Workshop Elektro. I participated as a front-end maker and back-end timer application of match</p>
+													<small class="text-muted">Line Tracer Design and Contest(LTDC) adalah Event tahunan bergengsi dari workshop elektro. saya berperan sebagai pembuat front-end dan back-end aplikasi timer pertandingan</small>
+												</a>
+												<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+													<div class="d-flex w-100 justify-content-between">
+														<h5 class="mb-1">ICOVET 2018</h5>
+														<small class="text-muted">2018</small>
+													</div>
+													<p class="mb-1">International Conference on Vocational Education and Training (ICOVET) is annual event from Faculty of Engineering Universitas Negeri Malang. I participated as a Graphic Designer</p>
+													<small class="text-muted">ICOVET adalah event tahunan dari Fakultas Teknik Universitas Negeri Malang. Saya berperan sebagai Desainer Grafis</small>
+												</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
 							</div>
 							
 						</div>
 					</div>
+					<br/>
 				</div>
-			</div>
-			
-			
-		</div>
-	</body>
-</html>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12" style="margin-bottom:10px;">
+							<div class="card">
+								<div class="card-body">
+									<h3>Youtube</h3>
+									<hr>
+									<p>Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
+									<div class="row" id="kontenyutub">
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</body>
+		</html>
