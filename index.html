@@ -148,6 +148,8 @@
 								}
 								return matches;
 								}
+
+								$(function () {
 								///var myUrl = 'https://www.youtube.com/watch?v=DjThet20w348';
 								var myUrl = 'https://www.youtube.com/playlist?list=PLHT0P9eTagkvTK4If-Y_4snG2F-9CY78H';
 								var x = new XMLHttpRequest();
@@ -186,15 +188,15 @@
 									var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
 											konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
 											konten+="<div class='card-body'>";
-													konten+="<h6 class='card-title'><a href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+													konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
 													konten+="<span class='badge badge-primary'>"+time+"</span> ";
 													konten+="<span class='badge badge-info'>"+duration+"</span> ";
 													konten+="<span class='badge badge-success'>"+viewer+"</span> ";
 													//konten+=time+"/"+duration+"/"+viewer;
 											konten+="</div>";
 											konten+="<div class='card-footer'>";
-													konten+="<a class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-													konten+="<a class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+													konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+													konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
 											konten+="</div>";
 									konten+="</div></div>";
 									$("#kontenyutub").append(konten);
@@ -205,6 +207,7 @@
 								//document.write("<br/>Keywords : "+x.responseText.match(new RegExp('","keywords":\\['+"(.*?)"+'\\],"channelId":"'))[1]);
 								};
 								x.send();
+								});
 								</script>
 							</div>
 							
