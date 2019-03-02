@@ -227,15 +227,16 @@
 					<div class="row">
 						<div class="col-md-12" style="margin-bottom:10px;">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body" id="konten">
 									<h3>Youtube</h3>
 									<hr>
-									<p id="konten">Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
+									<p>Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
 									<div class="row" id="kontenyutub">
 										<script>
 											if( isMobile.any() ){
 												var kontenmobile="";
-												kontenmobile+="<br/><span class='badge badge-danger'>Konten tidak tersedia dalam versi mobile</span> ";
+												kontenmobile+="<br/><span class='badge badge-danger'>Konten tidak tersedia dalam versi mobile. Berikut versi sematkan video default youtube</span> ";
+												kontenmobile+="<br/><br/><iframe width='560' height='315' src='https://www.youtube.com/embed/DjThet20w34' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 												$("#konten").append(kontenmobile);
 											}
 
