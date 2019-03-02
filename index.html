@@ -230,8 +230,16 @@
 								<div class="card-body">
 									<h3>Youtube</h3>
 									<hr>
-									<p>Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
+									<p id="konten">Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
 									<div class="row" id="kontenyutub">
+										<script>
+											if( isMobile.any() ){
+												var kontenmobile="";
+												kontenmobile+="<br/><span class='badge badge-danger'>Konten tidak tersedia dalam versi mobile</span> ";
+												$("#konten").append(kontenmobile);
+											}
+
+										</script>
 									</div>
 									
 								</div>
