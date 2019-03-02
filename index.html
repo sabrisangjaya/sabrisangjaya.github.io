@@ -156,6 +156,7 @@
 								x.open('GET', 'https://cors-anywhere.herokuapp.com/'+myUrl);
 								// I put "XMLHttpRequest" here, but you can use anything you want.
 								x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+								x.setRequestHeader("Content-Type", "text/xml");
 								x.onload = function() {
 								console.log(x.responseText);
 								//document.write("<br/>Youtube : "+x.responseText.match(new RegExp('"title":{"runs":\\[{"text":"'+"(.*?)"+'","navigationEndpoint":{'))[1]);
