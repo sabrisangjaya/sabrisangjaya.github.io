@@ -273,17 +273,19 @@
 									console.log(xgit.responseText);
 									var elslink=getMatches(xgit.responseText, /href="([a-zA-Z0-9/.-]*)/g, 1);
 									var kontengit="";
+									var kontenlink="";
 									kontengit+="<div class='list-group'>";
 										for (var i = 0; i < elslink.length; i++) {
+										kontenlink+=elslink[i]+"<br/>";
+										if(!elslink[i].endsWith("/network")){
 
-										if(!elslink[i].endsWith("/network")||elslink[i]!="https"||!elslink[i]!="/manifest.json"){
-											alert(elslink[i]);
 										elslink[i]="https://github.com"+elslink[i];
 										kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
 										}
 										}
 									kontengit+="</div>";
 									$("#kontengit").append(kontengit);
+									$("#kontengit").append(kontenlink);
 									
 									//document.write(x.responseText);
 									};
