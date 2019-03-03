@@ -269,20 +269,38 @@
 									// I put "XMLHttpRequest" here, but you can use anything you want.
 									xgit.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 									xgit.setRequestHeader("Content-Type", "text/xml");
-									xgit.onreadystatechange = function() {
+									xgit.onload = function() {
 									console.log(xgit.responseText);
 									var elslink=getMatches(xgit.responseText, /href="([a-zA-Z0-9/.-]*)/g, 1);
 									var kontengit="";
 									var kontenlink="";
 									kontengit+="<div class='list-group'>";
 										for (var i = 0; i < elslink.length; i++) {
-										kontenlink+=elslink[i]+"<br/>hahahahaha<br/>";
-										if(!elslink[i].endsWith("/network")){
-
+										
+										if((!elslink[i].endsWith("/network"))){
 										elslink[i]="https://github.com"+elslink[i];
-										kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
+										
+										}
+										if(elslink[i]=="https://github.comhttps"
+											||elslink[i]=="/marketplace"
+											||elslink[i].endsWith("https")
+											||elslink[i]=="https://github.com/manifest.json"
+											||elslink[i]=="https://github.com/marketplace"
+											||elslink[i]=="https://github.com/explore"
+											||elslink[i]=="https://github.com/login"
+											){
+											elslink.splice(i, 1);
 										}
 										}
+										if( isMobile.any() ){
+										elslink.splice(0, 15);
+										}
+										for (var i = 0; i < elslink.length; i++) {
+											kontenlink+=elslink[i]+"/["+i+"]<br/>";
+											kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
+										}
+
+										
 									kontengit+="</div>";
 									$("#kontengit").append(kontengit);
 									$("#kontengit").append(kontenlink);
