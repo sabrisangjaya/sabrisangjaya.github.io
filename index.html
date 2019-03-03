@@ -275,7 +275,7 @@
 									var kontengit="";
 									kontengit+="<div class='list-group'>";
 										for (var i = 0; i < elslink.length; i++) {
-										if(!elslink[i].endsWith("/network")){
+										if(!elslink[i].endsWith("/network")||!elslink[i]=="https"||!elslink[i]=="/manifest.json"){
 										elslink[i]="https://github.com"+elslink[i];
 										kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
 										}
