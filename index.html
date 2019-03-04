@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 		<title>Sabri Sangjaya</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
@@ -29,7 +28,6 @@
 		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
 		}
 		};
-		
 		</script>
 		<script>
 		function getMatches(string, regex, index) {
@@ -42,104 +40,76 @@
 		return matches;
 		}
 		$(document).ready(function(e) {
-		///var myUrl = 'https://www.youtube.com/watch?v=DjThet20w348';
 		var myUrl = 'https://www.youtube.com/playlist?list=PLxXTdjyXA1UesEZGwjh02OPWFBkrvoiB3';
 		var x = new XMLHttpRequest();
 		x.open('GET', 'https://cors-anywhere.herokuapp.com/'+myUrl);
-		// I put "XMLHttpRequest" here, but you can use anything you want.
 		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		x.setRequestHeader("Content-Type", "text/xml");
 		x.onload = function() {
 		console.log(x.responseText);
 		if( isMobile.any() ){
-			var konten="";
-			var regexidlink = new RegExp('"playlistVideoRenderer":{"videoId":"([a-zA-Z0-9-_]*)","thumbnail',"gi");
-			var regexjudul = new RegExp('"title":{"runs":\\[{"text":"(.*?)"}\\]},"index":{"runs":\\[{"text":"([0-9]*)"',"gi");
-			var match=getMatches(x.responseText, regexidlink, 1);
-			var match2=getMatches(x.responseText, regexjudul, 1);
-			var link=[];
-			var gambar=[]
-			for(var i=0;i<match.length;i++){
-				link[i]="https://youtube.com/watch?v="+match[i];
-				gambar[i]="https://i.ytimg.com/vi/"+match[i]+"/mqdefault.jpg"
-				konten+="<a href='"+link[i]+"' target='_blank'>";
-				konten+="<img src='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
-				konten+=match2[i]+"<br/>";
-
-				var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-				konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
-				konten+="<div class='card-body'>";
-						konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
-						//konten+=time+"/"+duration+"/"+viewer;
-				konten+="</div>";
-				konten+="<div class='card-footer'>";
-						konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
-						konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-				konten+="</div>";
+		var konten="";
+		var regexidlink = new RegExp('"playlistVideoRenderer":{"videoId":"([a-zA-Z0-9-_]*)","thumbnail',"gi");
+		var regexjudul = new RegExp('"title":{"runs":\\[{"text":"(.*?)"}\\]},"index":{"runs":\\[{"text":"([0-9]*)"',"gi");
+		var match=getMatches(x.responseText, regexidlink, 1);
+		var match2=getMatches(x.responseText, regexjudul, 1);
+		var link=[];
+		var gambar=[]
+		for(var i=0;i<match.length;i++){
+		link[i]="https://youtube.com/watch?v="+match[i];
+		gambar[i]="https://i.ytimg.com/vi/"+match[i]+"/mqdefault.jpg"
+		konten+="<a href='"+link[i]+"' target='_blank'>";
+		konten+="<img src='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
+		konten+=match2[i]+"<br/>";
+		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
+			konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
+			konten+="<div class='card-body'>";
+				konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
+			konten+="</div>";
+			konten+="<div class='card-footer'>";
+				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
+				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+			konten+="</div>";
 		konten+="</div></div>";
-
 		$("#kontenyutub").append(konten);
-			}
-
-
+		}
 		}else{
-			//document.write("<br/>Youtube : "+x.responseText.match(new RegExp('"title":{"runs":\\[{"text":"'+"(.*?)"+'","navigationEndpoint":{'))[1]);
-		//document.write("<br/>Link https://youtube.com/watch?v="+x.responseText.match(new RegExp('"videoDetails":{"videoId":"'+"(.*?)"+'","title"'))[1]);
-		//document.write("<br/>Judul : "+x.responseText.match(new RegExp('"}},"simpleText":"'+"(.*?)"+'"},"index":{"simpleText":"'))[1]);
 		var regexjudul= new RegExp('"title":{"accessibility":{"accessibilityData":{"label":"'+"(.*?)"+'"}},"simpleText":"',"gi");
 		var regexlink= new RegExp('"commandMetadata":{"webCommandMetadata":{"url":"\/watch'+"(.*?)"+'\\u002',"gi");
-		//var match= x.responseText.match(regexjudul);
 		var match=getMatches(x.responseText, regexjudul, 1);
 		var match2=getMatches(x.responseText, regexlink, 1);
-		//var i=0;
-		//while(match[i]!=)
 		for(var i=0;i<match.length;i++){
-		//$("#kontenyutub").append("<div class='col-md-4' style='margin-bottom:10px;'><div class='card'><div class='card-body'>");
-				//document.write("<br/>"+(i+1)+". "+" <a href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+match[i]+"</a>");
-				var link=match2[i].replace(/\\/g, '');
-				link=link.replace(/\?v=/g, '');
-				//document.write('{"videoId":"'+link+'","thumbnail":{"thumbnails":\[{"url":"'+"(.*?)"+'\?sqp=');
-				//link='{"videoId":"'+link+'","thumbnail":{"thumbnails":[{"url":"';
-				regexlink2=new RegExp('{"videoId":"'+link+'","thumbnail":{"thumbnails":\\[{"url":"(.*?)\\?sqp=');
-				var hasil=x.responseText.match(regexlink2)[1];
-				//document.write(hasil);
-				//document.write("<img src="+hasil+" class='img-thumbnail' alt='...'>");
-				var time=match[i].match(/([0-9]*)\s*([A-Za-z]*)\s*ago/g);
-				var duration=match[i].match(/([0-9]*)\s*minutes/g);
-				var viewer=match[i].match(/([0-9]*)\s*views/g);
-				var judul=match[i].substring(0, match[i].indexOf('by'));
-				//document.write(time+"/"+duration+"/"+viewer);
-		//document.write("</div></div></div>");
+		var link=match2[i].replace(/\\/g, '');
+		link=link.replace(/\?v=/g, '');
+		regexlink2=new RegExp('{"videoId":"'+link+'","thumbnail":{"thumbnails":\\[{"url":"(.*?)\\?sqp=');
+		var hasil=x.responseText.match(regexlink2)[1];
+		var time=match[i].match(/([0-9]*)\s*([A-Za-z]*)\s*ago/g);
+		var duration=match[i].match(/([0-9]*)\s*minutes/g);
+		var viewer=match[i].match(/([0-9]*)\s*views/g);
+		var judul=match[i].substring(0, match[i].indexOf('by'));
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-				konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
-				konten+="<div class='card-body'>";
-						konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
-						konten+="<span class='badge badge-primary'>"+time+"</span> ";
-						konten+="<span class='badge badge-info'>"+duration+"</span> ";
-						konten+="<span class='badge badge-success'>"+viewer+"</span> ";
-						//konten+=time+"/"+duration+"/"+viewer;
-				konten+="</div>";
-				konten+="<div class='card-footer'>";
-						konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-						konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-				konten+="</div>";
+			konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
+			konten+="<div class='card-body'>";
+				konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+				konten+="<span class='badge badge-primary'>"+time+"</span> ";
+				konten+="<span class='badge badge-info'>"+duration+"</span> ";
+				konten+="<span class='badge badge-success'>"+viewer+"</span> ";
+			konten+="</div>";
+			konten+="<div class='card-footer'>";
+				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+			konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
 		}
 		}
-		
-		
-		//var a=
-		//document.write("<br/>ss"+match2[0].match(/\?v=(.*?)\\/,''));
-		//document.write("<br/>Durasi : "+x.responseText.match(new RegExp('"lengthSeconds":"'+"(.*?)"+'","keywords":'))[1]);
-		//document.write("<br/>Keywords : "+x.responseText.match(new RegExp('","keywords":\\['+"(.*?)"+'\\],"channelId":"'))[1]);
 		};
 		x.send();
 		});
 		</script>
 		<script>
 		function getMatches(string, regex, index) {
-		index || (index = 1); // default to the first capturing group
+		index || (index = 1);
 		var matches = [];
 		var match;
 		while (match = regex.exec(string)) {
@@ -148,11 +118,9 @@
 		return matches;
 		}
 		$(document).ready(function(e) {
-		///var myUrl = 'https://www.youtube.com/watch?v=DjThet20w348';
 		var myUrl = 'https://github.com/sabrisangjaya?tab=repositories';
 		var xgit = new XMLHttpRequest();
 		xgit.open('GET', 'https://cors-anywhere.herokuapp.com/'+myUrl);
-		// I put "XMLHttpRequest" here, but you can use anything you want.
 		xgit.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		xgit.setRequestHeader("Content-Type", "text/xml");
 		xgit.onload = function() {
@@ -161,32 +129,30 @@
 		var kontengit="";
 		var kontenlink="";
 		kontengit+="<div class='list-group'>";
-				for (var i = 0; i < elslink.length; i++) {
-				if((!elslink[i].endsWith("/network"))){
-				elslink[i]="https://github.com"+elslink[i];
-				}
-				if(elslink[i]=="https://github.comhttps"
-				||elslink[i]=="/marketplace"
-				||elslink[i].endsWith("https")
-				||elslink[i]=="https://github.com/manifest.json"
-				||elslink[i]=="https://github.com/marketplace"
-				||elslink[i]=="https://github.com/explore"
-				||elslink[i]=="https://github.com/login"
-				){
-				elslink.splice(i, 1);
-				}
-				}
-				if( isMobile.any() ){
-				elslink.splice(0, 15);
-				}
-				for (var i = 0; i < elslink.length; i++) {
-				kontenlink+=elslink[i]+"/["+i+"]<br/>";
-				kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
-				}
+			for (var i = 0; i < elslink.length; i++) {
+			if((!elslink[i].endsWith("/network"))){
+			elslink[i]="https://github.com"+elslink[i];
+			}
+			if(elslink[i]=="https://github.comhttps"
+			||elslink[i]=="/marketplace"
+			||elslink[i].endsWith("https")
+			||elslink[i]=="https://github.com/manifest.json"
+			||elslink[i]=="https://github.com/marketplace"
+			||elslink[i]=="https://github.com/explore"
+			||elslink[i]=="https://github.com/login"
+			){
+			elslink.splice(i, 1);
+			}
+			}
+			if( isMobile.any() ){
+			elslink.splice(0, 15);
+			}
+			for (var i = 0; i < elslink.length; i++) {
+			kontenlink+=elslink[i]+"/["+i+"]<br/>";
+			kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
+			}
 		kontengit+="</div>";
 		$("#kontengit").append(kontengit);
-		//$("#kontengit").append(kontenlink);
-		//document.write(x.responseText);
 		};
 		xgit.send();
 		});
@@ -314,7 +280,6 @@
 									<hr>
 									<p>Youtube dikenal sebagai medium untuk menuangkan ide-ide mainstream, kegelisahan sosial, dan perspektif sarkas. Saya membuat channel sebagai rasa perlawanan akan konten-konten pada umumnya. diharapkan dapat mempengaruhi kreator-kreator lainnya</p>
 									<div class="row" id="kontenyutub">
-										
 									</div>
 								</div>
 							</div>
