@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>coba2</title>
+  </head>
+  <body>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <video id="video" autoplay></video>
+  <script type="text/javascript">
+    var constraints = {
+  audio: false,
+  video: { width: 640, height: 480 }
+  };
+  function hasUserMedia() {
+  
+  //check if the browser supports the WebRTC
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia||navigator.mediaDevices.getUserMedia);
+  }
+  
+  if (hasUserMedia()) {
+  
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia||navigator.mediaDevices.getUserMedia;
+  
+  //enabling video and audio channels
+  navigator.getUserMedia(constraints, function (stream) {
+  var video = document.getElementById('video');
+    video.srcObject = stream;
+  
+  }, function (err) {});
+  } else {
+  alert("WebRTC is not supported");
+  }
+  
+  
+  </script>
+</body>
+</html>
