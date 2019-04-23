@@ -231,7 +231,7 @@ function loadExternalImage(uri, throbberUri) {
 		<button  class="btn btn-primary" onclick="renderFunc()" >Download CV</button>
 		<script>
 		function renderFunc() {
-                        html2canvas(document.querySelector("body")).then(function(
+                        html2canvas(document.querySelector("body"),{useCORS: true}).then(function(
                             canvas){
                                 
                                 console.log(canvas);
