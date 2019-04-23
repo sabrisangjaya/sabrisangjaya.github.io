@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="js/html2canvas.min.js"></script>
 		<script>
 		var isMobile = {
 		Android: function() {
@@ -30,6 +31,65 @@
 		};
 		</script>
 		<script>
+			// Load a cross-origin image (using CORS).
+// This continually updates an `img` element's `src` until an image's
+// data URI has changed.
+
+function loadExternalImage(uri, throbberUri) {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var img = document.createElement('img');
+
+    var throbberDataURI;
+    var throbber = document.createElement('img');
+    throbber.crossOrigin = '';
+    throbber.src = throbberUri;
+    throbber.onload = function() {
+        canvas.width = throbber.width;
+        canvas.height = throbber.height;
+        ctx.drawImage(throbber, 0, 0);
+        throbberDataURI = canvas.toDataURL().substr(-64);
+        _load(uri);
+    };
+
+    this._load = function(uri) {
+        img.crossOrigin = '';
+
+        var loaded;
+
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+
+            // If we're still showing the loading throbber,
+            // then real image ain't yet loaded.
+            loaded = canvas.toDataURL().substr(-64) !== throbberDataURI;
+        };
+
+        var refreshInterval = setInterval(function() {
+            if (loaded === false) {
+                console.log(refreshInterval, 'loading...');
+                return src();
+            } else if (loaded === true) {
+                console.log(refreshInterval, 'loaded!');
+                clearInterval(refreshInterval);
+            }
+        }, 2800);
+
+        function src() {
+            img.src = uri;
+        }
+
+        src();
+    };
+
+    return img;
+}
+
+
+
 		function getMatches(string, regex, index) {
 		index || (index = 1); // default to the first capturing group
 		var matches = [];
@@ -55,23 +115,29 @@
 		var match2=getMatches(x.responseText, regexjudul, 1);
 		var link=[];
 		var gambar=[]
+		//var imgg=[]
 		for(var i=0;i<match.length;i++){
 		link[i]="https://youtube.com/watch?v="+match[i];
 		gambar[i]="https://i.ytimg.com/vi/"+match[i]+"/mqdefault.jpg"
+		//imgg[i] = document.createElement("IMG");
+		//imgg[i].src=gambar[i];
+		//imgg[i].crossOrigin = "Anonymous";
+
 		konten+="<a href='"+link[i]+"' target='_blank'>";
 		konten+="<img src='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
 		konten+=match2[i]+"<br/>";
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-			konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
-			konten+="<div class='card-body'>";
-				konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
-			konten+="</div>";
-			konten+="<div class='card-footer'>";
-				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
-				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-			konten+="</div>";
+				//konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
+				konten+="<div class='card-body'>";
+						konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
+				konten+="</div>";
+				konten+="<div class='card-footer'>";
+						konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
+						konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+				konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
+		//$("#kontenyutub").append(imgg[i]);
 		}
 		}else{
 		var regexjudul= new RegExp('"title":{"accessibility":{"accessibilityData":{"label":"'+"(.*?)"+'"}},"simpleText":"',"gi");
@@ -88,19 +154,22 @@
 		var viewer=match[i].match(/([0-9]*)\s*views/g);
 		var judul=match[i].substring(0, match[i].indexOf('by'));
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-			konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
-			konten+="<div class='card-body'>";
-				konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
-				konten+="<span class='badge badge-primary'>"+time+"</span> ";
-				konten+="<span class='badge badge-info'>"+duration+"</span> ";
-				konten+="<span class='badge badge-success'>"+viewer+"</span> ";
-			konten+="</div>";
-			konten+="<div class='card-footer'>";
-				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-			konten+="</div>";
+				//konten+="<div id='gambar"+i+"'></div>"
+				//konten+="<img src="+hasil+" class='card-img-top' alt='...' crossorigin='anonymous'>";
+				konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
+				konten+="<div class='card-body'>";
+						konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+						konten+="<span class='badge badge-primary'>"+time+"</span> ";
+						konten+="<span class='badge badge-info'>"+duration+"</span> ";
+						konten+="<span class='badge badge-success'>"+viewer+"</span> ";
+				konten+="</div>";
+				konten+="<div class='card-footer'>";
+						konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+						konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+				konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
+		//$("#gambar"+i).append(loadExternalImage(hasil,'https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'));
 		}
 		}
 		};
@@ -129,28 +198,28 @@
 		var kontengit="";
 		var kontenlink="";
 		kontengit+="<div class='list-group'>";
-			for (var i = 0; i < elslink.length; i++) {
-			if((!elslink[i].endsWith("/network"))){
-			elslink[i]="https://github.com"+elslink[i];
-			}
-			if(elslink[i]=="https://github.comhttps"
-			||elslink[i]=="/marketplace"
-			||elslink[i].endsWith("https")
-			||elslink[i]=="https://github.com/manifest.json"
-			||elslink[i]=="https://github.com/marketplace"
-			||elslink[i]=="https://github.com/explore"
-			||elslink[i]=="https://github.com/login"
-			){
-			elslink.splice(i, 1);
-			}
-			}
-			if( isMobile.any() ){
-			elslink.splice(0, 15);
-			}
-			for (var i = 0; i < elslink.length; i++) {
-			kontenlink+=elslink[i]+"/["+i+"]<br/>";
-			kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
-			}
+				for (var i = 0; i < elslink.length; i++) {
+				if((!elslink[i].endsWith("/network"))){
+				elslink[i]="https://github.com"+elslink[i];
+				}
+				if(elslink[i]=="https://github.comhttps"
+				||elslink[i]=="/marketplace"
+				||elslink[i].endsWith("https")
+				||elslink[i]=="https://github.com/manifest.json"
+				||elslink[i]=="https://github.com/marketplace"
+				||elslink[i]=="https://github.com/explore"
+				||elslink[i]=="https://github.com/login"
+				){
+				elslink.splice(i, 1);
+				}
+				}
+				if( isMobile.any() ){
+				elslink.splice(0, 15);
+				}
+				for (var i = 0; i < elslink.length; i++) {
+				kontenlink+=elslink[i]+"/["+i+"]<br/>";
+				kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
+				}
 		kontengit+="</div>";
 		$("#kontengit").append(kontengit);
 		};
@@ -159,13 +228,50 @@
 		</script>
 	</head>
 	<body>
-		<br/>
+		<button  class="btn btn-primary" onclick="renderFunc()" >Download CV</button>
+		<script>
+		function renderFunc() {
+                        html2canvas(document.querySelector("body")).then(function(
+                            canvas){
+                                
+                                console.log(canvas);
+                                saveAs(canvas.toDataURL(), 'file-name.png');
+                               
+                            }
+                        )
+                    };
+
+		function saveAs(uri, filename) {
+		var link = document.createElement('a');
+		
+		if (typeof link.download === 'string') {
+		
+		link.href = uri;
+		link.download = filename;
+		
+		//Firefox requires the link to be in the body
+		document.body.appendChild(link);
+		
+		//simulate click
+		link.click();
+		
+		//remove the link when done
+		document.body.removeChild(link);
+		
+		} else {
+		
+		window.open(uri);
+		
+		}
+		}
+		</script>
+		<br/><br/><br/>
 		<div class="container" id="main">
 			<div class="row">
 				<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
 					<div class="card">
 						<div class="card-body">
-							<img src="https://lh3.googleusercontent.com/fYql4a-C436663QVIAgaK9yL0zAWNqPHisGjs5KJXDqfxCHafTH6KvG4XQkQpr4TlyhHeLACASHuoQ=s747-no" class="img-thumbnail" alt="...">
+							<img src="img/profil.jpg" class="img-thumbnail" alt="...">
 						</div>
 					</div>
 				</div>
