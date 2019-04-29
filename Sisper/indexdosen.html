@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Sistem Informasi Perkuliahan</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<style>
+		i.menu {
+		display: inline-block;
+		border-radius: 50%;
+		box-shadow: 0px 0px 2px white;
+		padding: 0.5em;
+		}
+		.navbar-nav {
+		display: inline-block;
+		}
+		.navbar-nav>li {
+		display: inline-block;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ubah Status Perkuliahan</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="exampleFormControlSelect2">Status Perkuliahan</label>
+							<select class="form-control" id="exampleFormControlSelect2">
+								<option>-</option>
+								<option>Mulai Perkuliahan</option>
+								<option>Diliburkan</option>
+								<option>Ditunda</option>
+								<option>Diganti</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1">Keterangan</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Image and text -->
+		<nav class="navbar navbar-dark navbar-expand-md bg-primary justify-content-center">
+			<a class="navbar-brand" href="#">
+				<i class="fa fa-school"></i>
+				Sistem informasi perkuliahan
+			</a>
+		</nav>
+		<nav class="navbar fixed-bottom navbar-dark navbar-expand-md bg-primary justify-content-center">
+			<ul class="navbar-nav mx-auto text-center">
+				<li class="nav-item menuu">
+					<a class="nav-link" href="izin.html"><i class="fa fa-envelope fa-lg menu"></i></a>
+				</li>
+				<li class="nav-item active menuu">
+					<a class="nav-link" href="index.html"><i class="fa fa-home fa-lg menu"></i></a>
+				</li>
+				<li class="nav-item menuu">
+					<a class="nav-link" href="notifikasi.html"><i class="fa fa-th-list fa-lg menu"></i></a>
+				</li>
+			</ul>
+		</nav>
+		<br/>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 mx-auto">
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header bg-primary text-white">
+									<h5><b><i class="fa fa-clock"></i> Jadwal</b></h5>
+								</div>
+								<div class="card-body">
+									<b>Analisis Desain Sistem | B-09NB</b>
+									<hr/>
+									<div class="d-flex justify-content-between">
+										<h1 style="display: inline;" id="demo">01 : 00 </h1>
+										<div>
+											<a href="#"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-chalkboard-teacher fa-2x bg-danger text-white" style="border-radius:10px;padding: 0.5em;margin:0px 5px;"></i></a>
+											<i class="fa fa-th-list  fa-2x bg-primary text-white" style="border-radius:10px;padding: 0.5em;margin:0px 5px;"></i>
+										</div>
+									</div>
+								</div>
+								<div class="card-footer bg-default text-success">
+									<i class="fa fa-check-circle "></i> Sedang berlangsung
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-md-6 mx-auto">
+					<div class="card ">
+						<div class="card-header bg-default">
+							<h4><i class="fa fa-bookmark"></i> Daftar Kuliah Hari Ini</h4>
+						</div>
+						<div class="card-body ">
+							Selasa, 23 April 2019<br/><br/>
+							<div class="card">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Rekayasa Perangkat Lunak</strong><br/>
+											<span class="badge badge-secondary badge-pill">H5.401</span>
+											<span class="badge badge-secondary badge-pill">S1 Teknik Informatika 2016 B</span>
+										</div>
+										<span class="badge badge-danger badge-pill">Selesai</span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Analisa Desain SisteM</strong><br/>
+											<span class="badge badge-secondary badge-pill">H5.401</span>
+											<span class="badge badge-secondary badge-pill">S1 Teknik Informatika 2016 B</span>
+										</div>
+										<span class="badge badge-success badge-pill">- 01 : 27</span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Technopreneurship</strong><br/>
+											<span class="badge badge-secondary badge-pill">H5.401</span>
+											<span class="badge badge-secondary badge-pill">S1 Teknik Informatika 2016 B</span>
+										</div>
+										<span class="badge badge-warning badge-pill">Libur</span>
+									</li>
+									
+								</ul>
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/><br/><br/><br/><br/><br/><br/><br/>
+		<script>
+		// Set the date we're counting down to
+		var countDownDate = new Date("April 30, 2019 14:35:25").getTime();
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+		// Get todays date and time
+		var now = new Date().getTime();
+		// Find the distance between now and the count down date
+		var distance = countDownDate - now;
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Display the result in the element with id="demo"
+		document.getElementById("demo").innerHTML = hours + "h "
+		+ minutes + "m " + seconds + "s left";
+		// If the count down is finished, write some text
+		if (distance < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "EXPIRED";
+		}
+		}, 1000);
+		</script>
+		
+	</body>
+</html>
