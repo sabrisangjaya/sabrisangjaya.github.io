@@ -68,13 +68,13 @@
 		<nav class="navbar fixed-bottom navbar-dark navbar-expand-md bg-primary justify-content-center">
 			<ul class="navbar-nav mx-auto text-center">
 				<li class="nav-item menuu">
-					<a class="nav-link" href="izin.html"><i class="fa fa-envelope fa-lg menu"></i></a>
+					<a class="nav-link" href="listizin.html"><i class="fa fa-envelope fa-lg menu"></i></a>
 				</li>
 				<li class="nav-item active menuu">
-					<a class="nav-link" href="index.html"><i class="fa fa-home fa-lg menu"></i></a>
+					<a class="nav-link" href="indexdosen.html"><i class="fa fa-home fa-lg menu"></i></a>
 				</li>
 				<li class="nav-item menuu">
-					<a class="nav-link" href="notifikasi.html"><i class="fa fa-th-list fa-lg menu"></i></a>
+					<a class="nav-link" href="absensi.html"><i class="fa fa-th-list fa-lg menu"></i></a>
 				</li>
 			</ul>
 		</nav>
@@ -94,9 +94,17 @@
 									<hr/>
 									<div class="d-flex justify-content-between">
 										<h1 style="display: inline;" id="demo">01 : 00 </h1>
-										<div>
+										<div class="d-flex justify-content-between">
+											<div class="text-center border border-danger" style="padding:5px;border-radius: 5px;">
 											<a href="#"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-chalkboard-teacher fa-2x bg-danger text-white" style="border-radius:10px;padding: 0.5em;margin:0px 5px;"></i></a>
+											<br/>Ubah Status
+											</div> 
+											<div style="margin: 0 6px;">
+											</div>
+											<div class="text-center border border-primary" style="padding:5px;border-radius: 5px;" >
 											<i class="fa fa-th-list  fa-2x bg-primary text-white" style="border-radius:10px;padding: 0.5em;margin:0px 5px;"></i>
+											<br/>Presensi
+											</div>
 										</div>
 									</div>
 								</div>
@@ -158,7 +166,7 @@
 		<br/><br/><br/><br/><br/><br/><br/><br/>
 		<script>
 		// Set the date we're counting down to
-		var countDownDate = new Date("April 30, 2019 14:35:25").getTime();
+		var countDownDate = new Date("May 1, 2019 14:35:25").getTime();
 		// Update the count down every 1 second
 		var x = setInterval(function() {
 		// Get todays date and time
