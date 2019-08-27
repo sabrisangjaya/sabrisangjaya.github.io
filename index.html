@@ -112,17 +112,17 @@
 		//imgg[i].src=gambar[i];
 		//imgg[i].crossOrigin = "Anonymous";
 		konten+="<a href='"+link[i]+"' target='_blank'>";
-		konten+="<img src='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
+		konten+="<img data-image='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
 		konten+=match2[i]+"<br/>";
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-							//konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
-							konten+="<div class='card-body'>";
-												konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
-							konten+="</div>";
-							konten+="<div class='card-footer'>";
-												konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
-												konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-							konten+="</div>";
+									//konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
+									konten+="<div class='card-body'>";
+																konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
+									konten+="</div>";
+									konten+="<div class='card-footer'>";
+																konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
+																konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+									konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
 		//$("#kontenyutub").append(imgg[i]);
@@ -142,21 +142,27 @@
 		var viewer=match[i].match(/([0-9]*)\s*views/g);
 		var judul=match[i].substring(0, match[i].indexOf('by'));
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-							//konten+="<div id='gambar"+i+"'></div>"
-							//konten+="<img src="+hasil+" class='card-img-top' alt='...' crossorigin='anonymous'>";
-							konten+="<img src="+hasil+" class='card-img-top' alt='...'>";
-							konten+="<div class='card-body'>";
-												konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
-												konten+="<span class='badge badge-primary'>"+time+"</span> ";
-												konten+="<span class='badge badge-info'>"+duration+"</span> ";
-												konten+="<span class='badge badge-success'>"+viewer+"</span> ";
-							konten+="</div>";
-							konten+="<div class='card-footer'>";
-												konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-												konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-							konten+="</div>";
+									//konten+="<div id='gambar"+i+"'></div>"
+									//konten+="<img src="+hasil+" class='card-img-top' alt='...' crossorigin='anonymous'>";
+									konten+="<img data-image="+hasil+" class='card-img-top' alt='...'>";
+									konten+="<div class='card-body'>";
+																konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+																konten+="<span class='badge badge-primary'>"+time+"</span> ";
+																konten+="<span class='badge badge-info'>"+duration+"</span> ";
+																konten+="<span class='badge badge-success'>"+viewer+"</span> ";
+									konten+="</div>";
+									konten+="<div class='card-footer'>";
+																konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+																konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+									konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
+		$("[data-image]").each( function( index, element ){
+		convertImgToBase64($( this ).data('image'), function(base64Img){
+		$(element).attr('src', base64Img);
+		console.log(base64Img);
+		});
+		});
 		//$("#gambar"+i).append(loadExternalImage(hasil,'https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'));
 		}
 		}
@@ -185,7 +191,7 @@
 		var elslink=getMatches(xgit.responseText, /href="([a-zA-Z0-9/.-]*)/g, 1);
 		var kontengit="";
 		var kontenlink="";
-		kontengit+="<div class='list-group'>";
+		
 							for (var i = 0; i < elslink.length; i++) {
 							if((!elslink[i].endsWith("/network"))){
 							elslink[i]="https://github.com"+elslink[i];
@@ -207,9 +213,9 @@
 							}
 							for (var i = 0; i < elslink.length; i++) {
 							kontenlink+=elslink[i]+"/["+i+"]<br/>";
-							kontengit+="<a href='"+elslink[i]+"' target='_blank' class='list-group-item list-group-item-action'>"+elslink[i]+"</a><br/>";
+							kontengit+="<a href='"+elslink[i]+"' target='_blank' class='badge badge-secondary'>"+elslink[i]+"</a><br/>";
 							}
-		kontengit+="</div>";
+		
 		$("#kontengit").append(kontengit);
 		};
 		xgit.send();
@@ -258,12 +264,35 @@
 	<body>
 		<button  class="btn btn-primary" onclick="renderFunc()" style="position:fixed;top:10px;right:10px;z-index: 99999">Download CV</button>
 		<script>
+		function convertImgToBase64(url, callback, outputFormat){
+	var canvas = document.createElement('CANVAS');
+	var ctx = canvas.getContext('2d');
+	var img = new Image;
+	img.crossOrigin = 'Anonymous';
+	var url='https://cors-anywhere.herokuapp.com/'+url;
+	img.onload = function(){
+		canvas.height = img.height;
+		canvas.width = img.width;
+	  	ctx.drawImage(img,0,0);
+	  	var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+	  	callback.call(this, dataURL);
+        // Clean up
+	  	canvas = null; 
+	};
+	img.src = url;
+}
+
+
+
 		function renderFunc() {
+		
+		
+		
 		html2canvas(document.querySelector("body"),{useCORS: true}).then(function(
 		canvas){
 		
 		console.log(canvas);
-		saveAs(canvas.toDataURL(), 'file-name.png');
+		saveAs(canvas.toDataURL(), 'CV-sabrisangjaya.github.io.png');
 		
 		}
 		)
@@ -349,7 +378,7 @@
 								function callme(){
 								var len = $(".progress-bar").length;
 								var random = Math.floor( Math.random() * len );
-								var ran=Math.floor(Math.random() * 10)+100 ;
+								var ran=Math.floor(Math.random() * 10)+80 ;
 								$(".progress-bar").eq(random).animate({
 								width: ran+"%"
 								}, 1000);
@@ -360,19 +389,19 @@
 								<hr>
 								<h6>Web Design</h6>
 								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 								</div><br/>
 								<h6>Graphic Design</h6>
 								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 								</div><br/>
 								<h6>Programming</h6>
 								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 								</div><br/>
 								<h6>Creativity</h6>
 								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 								</div><br/>
 							</div>
 						</div>
@@ -422,10 +451,10 @@
 							<hr>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro veniam, asperiores accusantium reprehenderit et repellat iure tenetur quam sit debitis, assumenda, dolores fugiat rem ullam delectus ipsam quae perferendis quo.</p>
 							<div class="row">
-								<div class="col-md-3 col-sm-6"><img src="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img src="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img src="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img src="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
+								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
+								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
+								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
+								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
 							</div>
 						</div>
 					</div>
@@ -451,18 +480,19 @@
 					<div class="card">
 						
 						<div class="card-body">
-							<a class="btn btn-link" data-toggle="collapse" href="#kontengit" role="button" aria-expanded="false" aria-controls="kontengit" onclick="$('#collapsed-chevron').toggleClass('fa-rotate-180')">
-								
-								<h3>Github Project <i class="fa fa-chevron-down" id="collapsed-chevron"></i></h3 >
-							</a>
+							<h3>Github Project </h3 >
 							<hr/>
-							Some of programming archieve<br/>
-							<div id="kontengit" class="collapse"></div>
+							Some of programming archieve
+							<br/>
+							<div id="kontengit"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br/><br/><br/><br/>
-			</body>
-		</html>
+		<script>
+			
+		</script>
+	</body>
+</html>
