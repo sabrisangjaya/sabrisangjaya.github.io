@@ -210,7 +210,27 @@
 							elslink.splice(i, 1);
 							}
 							}
+
 							if( isMobile.any() ){
+							var elslink=getMatches(xgit.responseText, /href="([a-zA-Z0-9/.-]*)" /g, 1);
+							var elsname=getMatches(xgit.responseText,/"text-bold">\s*([0-9A-Za-z/.-]*)\s*<\/span>/g, 1);
+							for (var i = 0; i < elslink.length; i++) {
+							console.log(elsname[i],elslink[i]);
+							if((!elslink[i].endsWith("/network"))){
+							elslink[i]="https://github.com"+elslink[i];
+							}
+							if(elslink[i]=="https://github.comhttps"
+							||elslink[i]=="/marketplace"
+							||elslink[i].endsWith("https")
+							||elslink[i].endsWith("network/members")
+							||elslink[i]=="https://github.com/manifest.json"
+							||elslink[i]=="https://github.com/marketplace"
+							||elslink[i]=="https://github.com/explore"
+							||elslink[i]=="https://github.com/login"
+							){
+							elslink.splice(i, 1);
+							}
+							}
 							elslink.splice(0, 15);
 							}
 							for (var i = 0; i < elslink.length; i++) {
@@ -512,7 +532,7 @@
 					</button>
 				</div>
 				<div class="modal-body" id="yt-player">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/FAqce83fm-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FAqce83fm-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
