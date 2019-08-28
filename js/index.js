@@ -268,15 +268,4 @@ document.body.removeChild(link);
 window.open(uri);
 }
 }
-$(function(){
-callme();
-});
-function callme(){
-var len = $(".progress-bar").length;
-var random = Math.floor( Math.random() * len );
-var ran=Math.floor(Math.random() * 10)+80 ;
-$(".progress-bar").eq(random).animate({
-width: ran+"%"
-}, 1000);
-setTimeout(callme, 100);
-}
+
