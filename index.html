@@ -115,14 +115,14 @@
 		konten+="<img data-image='"+gambar[i]+"' alt='"+link[i]+"'/>"+"</a><br/>";
 		konten+=match2[i]+"<br/>";
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-										//konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
-										konten+="<div class='card-body'>";
-																		konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
-										konten+="</div>";
-										konten+="<div class='card-footer'>";
-																		konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
-																		konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-										konten+="</div>";
+											//konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
+											konten+="<div class='card-body'>";
+																				konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
+											konten+="</div>";
+											konten+="<div class='card-footer'>";
+																				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
+																				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+											konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
 		//$("#kontenyutub").append(imgg[i]);
@@ -142,19 +142,19 @@
 		var viewer=match[i].match(/([0-9]*)\s*views/g);
 		var judul=match[i].substring(0, match[i].indexOf('by'));
 		var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
-										//konten+="<div id='gambar"+i+"'></div>"
-										//konten+="<img src="+hasil+" class='card-img-top' alt='...' crossorigin='anonymous'>";
-										konten+="<img data-image="+hasil+" class='card-img-top' alt='...'>";
-										konten+="<div class='card-body'>";
-																		konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
-																		konten+="<span class='badge badge-primary'>"+time+"</span> ";
-																		konten+="<span class='badge badge-info'>"+duration+"</span> ";
-																		konten+="<span class='badge badge-success'>"+viewer+"</span> ";
-										konten+="</div>";
-										konten+="<div class='card-footer'>";
-																		konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
-																		konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
-										konten+="</div>";
+											//konten+="<div id='gambar"+i+"'></div>"
+											//konten+="<img src="+hasil+" class='card-img-top' alt='...' crossorigin='anonymous'>";
+											konten+="<img data-image="+hasil+" class='card-img-top' alt='...'>";
+											konten+="<div class='card-body'>";
+																				konten+="<h6 class='card-title'><a target='_blank' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>"+judul+"</a></h6>";
+																				konten+="<span class='badge badge-primary'>"+time+"</span> ";
+																				konten+="<span class='badge badge-info'>"+duration+"</span> ";
+																				konten+="<span class='badge badge-success'>"+viewer+"</span> ";
+											konten+="</div>";
+											konten+="<div class='card-footer'>";
+																				konten+="<a target='_blank' class='btn btn-primary btn-sm' href='https://youtube.com/watch"+match2[i].replace(/\\/g, '')+"'>Watch</a> ";
+																				konten+="<a target='_blank' class='btn btn-danger btn-sm' href='https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA'>Subscribe</a>";
+											konten+="</div>";
 		konten+="</div></div>";
 		$("#kontenyutub").append(konten);
 		$("[data-image]").each( function( index, element ){
@@ -273,18 +273,15 @@
 	</head>
 	<body>
 		<button  class="btn btn-primary no-print" onclick="renderFunc()" style="position:fixed;bottom:10px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download JPG</button>
-		 <button id="print-btn" class="btn btn-primary no-print" style="position:fixed;bottom:50px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download PDF</button>
+		<button id="print-btn" class="btn btn-primary no-print" style="position:fixed;bottom:50px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download PDF</button>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-
 		<script>
 			$('#print-btn').click(() => {
-    var pdf = new jsPDF('p','mm', [297, 210]);
-    pdf.addHTML(document.body,function() {
-        pdf.save('cv-sabrisangjaya.pdf');
-    });
-})
-
-
+		var pdf = new jsPDF('p','mm', [297, 210]);
+		pdf.addHTML(document.body,function() {
+		pdf.save('cv-sabrisangjaya.pdf');
+		});
+		})
 		function convertImgToBase64(url, callback, outputFormat){
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
@@ -340,202 +337,226 @@
 		}
 		</script>
 		<br/><br/><br/>
-
-<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
-  <a class="navbar-brand" href="#">
-    <img src="img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-    Sabri Sangjaya
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav" style="text-align:right">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Blog</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+		<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
+			<a class="navbar-brand" href="#">
+				<img src="img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+				Sabri Sangjaya
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav" style="text-align:right">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
+				<img src="img/profil.jpg" class="img-thumbnail" alt="...">
+			</div>
+			<div class="col-md-8 col-sm-12" style="margin-bottom:10px;">
+				<div class="card">
+					<div class="card-body">
+						<div style="text-align: left">
+							<h3>Sabri Sangjaya</h3>
+						</div>
+						<hr/>
+						<p>person who doesnt choose a special majority between graphic design and computer science. Currently interested in machine learning and his friend. here is my website build by github pages. github pages it means no server side scripting like PHP. use some javascript and mix of other external service like CORS to retrieve data. still in developing process</p>
+						<hr/>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fab fa-youtube"></i></a>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fab fa-github"></span></a>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fab fa-linkedin"></span></a>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="container" id="main">
-			<div class="row">
-				<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
-					<img src="img/profil.jpg" class="img-thumbnail" alt="...">
-				</div>
-				<div class="col-md-8 col-sm-12" style="margin-bottom:10px;">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card-columns">
 					<div class="card">
 						<div class="card-body">
-							<div style="text-align: left">
-								<h3>Sabri Sangjaya</h3>
-							</div>
-							<hr/>
-							<p>person who doesnt choose a special majority between graphic design and computer science. Currently interested in machine learning and his friend. here is my website build by github pages. github pages it means no server side scripting like PHP. use some javascript and mix of other external service like CORS to retrieve data. still in developing process</p>
-							<hr/>
-							<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fab fa-youtube"></i></a>
-							<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fab fa-github"></span></a>
-							<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fab fa-linkedin"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card-columns">
-						<div class="card">
-							<div class="card-body">
-								<h4>Education</h4>
-								<hr>
-								<ul class="timeline">
-									<li>
-										<a target="_blank" href="https://www.um.ac.id">State University of Malang</a>
-										<a href="#" class="float-right">2016 - Current</a>
-										<p>Informatic Engineering</p>
-									</li>
-									<li>
-										<a href="#">Vocational High School 4 Malang</a>
-										<a href="#" class="float-right">2013 - 2016</a>
-										<p>Multimedia Major</p>
-									</li>
-									<li>
-										<a href="#">Junior High School 20 Malang</a>
-										<a href="#" class="float-right">2010 - 2013</a>
-										<p>SMP Negeri 20 Malang</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-body">
-								<script>
-									$(function(){
-								callme();
-								});
-								function callme(){
-								var len = $(".progress-bar").length;
-								var random = Math.floor( Math.random() * len );
-								var ran=Math.floor(Math.random() * 10)+80 ;
-								$(".progress-bar").eq(random).animate({
-								width: ran+"%"
-								}, 1000);
-								setTimeout(callme, 100);
-								}
-								</script>
-								<h4>Skills</h4>
-								<hr>
-								<h6>Web Design</h6>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-								</div><br/>
-								<h6>Graphic Design</h6>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-								</div><br/>
-								<h6>Programming</h6>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-								</div><br/>
-								<h6>Creativity</h6>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-								</div><br/>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-body">
-								<h3>Experience</h3>
-								<hr>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-										<div class="d-flex w-100 justify-content-between">
-											<h5 class="mb-1">Student Department Association</h5>
-											<small>2017-2019</small>
-										</div>
-										<p class="mb-1">
-											As Chief Division Product and Service in Workshop Elektro (Division of Education and Reasoning)  Student Department Association of Electro
-										</p>
-										<small>Sebagai Ketua Divisi Produk dan Jasa Workshop Elektro Bidang Penalaran dan Keilmuan Himpunan Mahasiswa Jurusan Teknik Elektro</small>
-									</a>
-									<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-										<div class="d-flex w-100 justify-content-between">
-											<h5 class="mb-1">LTDC 2017-2018</h5>
-											<small class="text-muted">2017-2018</small>
-										</div>
-										<p class="mb-1">Line Tracer Design and Contest (LTDC) is a prestigious annual event from Workshop Elektro. I participated as a front-end maker and back-end timer application of match</p>
-										<small class="text-muted">Line Tracer Design and Contest(LTDC) adalah Event tahunan bergengsi dari workshop elektro. saya berperan sebagai pembuat front-end dan back-end aplikasi timer pertandingan</small>
-									</a>
-									<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-										<div class="d-flex w-100 justify-content-between">
-											<h5 class="mb-1">ICOVET 2018</h5>
-											<small class="text-muted">2018</small>
-										</div>
-										<p class="mb-1">International Conference on Vocational Education and Training (ICOVET) is annual event from Faculty of Engineering Universitas Negeri Malang. I participated as a Graphic Designer</p>
-										<small class="text-muted">ICOVET adalah event tahunan dari Fakultas Teknik Universitas Negeri Malang. Saya berperan sebagai Desainer Grafis</small>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
-					<div class="card">
-						<div class="card-body">
-							<h3>Portfolio</h3>
+							<h4>Education</h4>
 							<hr>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro veniam, asperiores accusantium reprehenderit et repellat iure tenetur quam sit debitis, assumenda, dolores fugiat rem ullam delectus ipsam quae perferendis quo.</p>
-							<div class="row">
-								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
-								<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
+							<ul class="timeline">
+								<li>
+									<a target="_blank" href="https://www.um.ac.id">State University of Malang</a>
+									<a href="#" class="float-right">2016 - Current</a>
+									<p>Informatic Engineering</p>
+								</li>
+								<li>
+									<a href="#">Vocational High School 4 Malang</a>
+									<a href="#" class="float-right">2013 - 2016</a>
+									<p>Multimedia Major</p>
+								</li>
+								<li>
+									<a href="#">Junior High School 20 Malang</a>
+									<a href="#" class="float-right">2010 - 2013</a>
+									<p>SMP Negeri 20 Malang</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<script>
+								$(function(){
+							callme();
+							});
+							function callme(){
+							var len = $(".progress-bar").length;
+							var random = Math.floor( Math.random() * len );
+							var ran=Math.floor(Math.random() * 10)+80 ;
+							$(".progress-bar").eq(random).animate({
+							width: ran+"%"
+							}, 1000);
+							setTimeout(callme, 100);
+							}
+							</script>
+							<h4>Skills</h4>
+							<hr>
+							<h6>Web Design</h6>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+							</div><br/>
+							<h6>Graphic Design</h6>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+							</div><br/>
+							<h6>Programming</h6>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+							</div><br/>
+							<h6>Creativity</h6>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+							</div><br/>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h3>Experience</h3>
+							<hr>
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">Student Department Association</h5>
+										<small>2017-2019</small>
+									</div>
+									<p class="mb-1">
+										As Chief Division Product and Service in Workshop Elektro (Division of Education and Reasoning)  Student Department Association of Electro
+									</p>
+									<small>Sebagai Ketua Divisi Produk dan Jasa Workshop Elektro Bidang Penalaran dan Keilmuan Himpunan Mahasiswa Jurusan Teknik Elektro</small>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">LTDC 2017-2018</h5>
+										<small class="text-muted">2017-2018</small>
+									</div>
+									<p class="mb-1">Line Tracer Design and Contest (LTDC) is a prestigious annual event from Workshop Elektro. I participated as a front-end maker and back-end timer application of match</p>
+									<small class="text-muted">Line Tracer Design and Contest(LTDC) adalah Event tahunan bergengsi dari workshop elektro. saya berperan sebagai pembuat front-end dan back-end aplikasi timer pertandingan</small>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">ICOVET 2018</h5>
+										<small class="text-muted">2018</small>
+									</div>
+									<p class="mb-1">International Conference on Vocational Education and Training (ICOVET) is annual event from Faculty of Engineering Universitas Negeri Malang. I participated as a Graphic Designer</p>
+									<small class="text-muted">ICOVET adalah event tahunan dari Fakultas Teknik Universitas Negeri Malang. Saya berperan sebagai Desainer Grafis</small>
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			
-			<br/>
 		</div>
-		<div class="container" data-html2canvas-ignore="true">
-			<div class="row">
-				<div class="col-md-12" style="margin-bottom:10px;">
-					<div class="card">
-						<div class="card-body" id="konten">
-							<h3>Youtube</h3>
-							<hr>
-							<p>Some of educatioanl review, project and tutorial</p>
-							<div class="row" id="kontenyutub">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="card">
-						
-						<div class="card-body">
-							<h3>Github Project </h3 >
-							<hr/>
-							Some of programming archieve
-							<br/>
-							<div id="kontengit"></div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
+				<div class="card">
+					<div class="card-body">
+						<h3>Portfolio</h3>
+						<hr>
+						<p>Here are some portfolio</p>
+						<div class="row">
+							<div class="col-md-3 col-sm-6"><a href="#" data-toggle="modal" data-target="#exampleModal"><img src="img/12.jpg" class="img-thumbnail" alt="..."></a></div>
+							<div class="col-md-3 col-sm-6"><img src="img/13.png" class="img-thumbnail" alt="..."></div>
+							<div class="col-md-3 col-sm-6"><img src="img/angkotmalang.png" class="img-thumbnail" alt="..."></div>
+							<div class="col-md-3 col-sm-6"><img data-image="https://via.placeholder.com/400x400.png?text=coming soon" class="img-thumbnail" alt="..."></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br/><br/><br/><br/>
-		<script>
-			
-		</script>
-	</body>
+		
+		<br/>
+	</div>
+	
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="yt-player">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/FAqce83fm-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+   $('#exampleModal').on('hidden.bs.modal', function () {
+    $("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
+});
+	</script>
+	<div class="container" data-html2canvas-ignore="true">
+		<div class="row">
+			<div class="col-md-12" style="margin-bottom:10px;">
+				<div class="card">
+					<div class="card-body" id="konten">
+						<h3>Youtube</h3>
+						<hr>
+						<p>Some of educatioanl review, project and tutorial</p>
+						<div class="row" id="kontenyutub">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="card">
+					
+					<div class="card-body">
+						<h3>Github Project </h3 >
+						<hr/>
+						Some of programming archieve
+						<br/>
+						<div id="kontengit"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/><br/><br/><br/>
+	<script>
+		
+	</script>
+</body>
 </html>
