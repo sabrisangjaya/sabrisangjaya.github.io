@@ -83,7 +83,7 @@ console.log(x.responseText);
 if( isMobile.any() ){
 var konten="";
 var regexidlink = new RegExp('"playlistVideoRenderer":{"videoId":"([a-zA-Z0-9-_]*)","thumbnail',"gi");
-var regexjudul = new RegExp('"title":{"runs":\\[{"text":"(.*?)"}\\]},"index":{"runs":\\[{"text":"([0-9]*)"',"gi");
+var regexjudul = new RegExp('\\{"isPreloaded":true\\}\\},"title":\\{"runs":\\[\\{"text":"([ a-zA-Z0-9-_\\[\\]]*)',"gi");
 var match=getMatches(x.responseText, regexidlink, 1);
 var match2=getMatches(x.responseText, regexjudul, 1);
 var link=[];
@@ -91,7 +91,7 @@ var gambar=[]
 //var imgg=[]
 for(var i=0;i<match.length;i++){
 link[i]="https://youtube.com/watch?v="+match[i];
-gambar[i]="https://i.ytimg.com/vi/"+match[i]+"/mqdefault.jpg"
+gambar[i]="https://i.ytimg.com/vi/"+match[i]+"/hq720.jpg"
 //imgg[i] = document.createElement("IMG");
 //imgg[i].src=gambar[i];
 //imgg[i].crossOrigin = "Anonymous";
@@ -101,7 +101,7 @@ konten+=match2[i]+"<br/>";
 var konten="<div class='col-md-3' style='margin-bottom:10px;'><div class='card'>";
 //konten+="<img src="+gambar[i]+" class='card-img-top' alt='...'>";
 konten+="<div class='card-body'>";
-konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]+"</a></h6>";
+konten+="<h6 class='card-title'><a target='_blank' href='"+link[i]+"'>"+match2[i]=="undefined"?"Youtube":match2[i]+"</a></h6>";
 konten+="</div>";
 konten+="<div class='card-footer'>";
 konten+="<a target='_blank' class='btn btn-primary btn-sm' href='"+link[i]+"'>Watch</a> ";
