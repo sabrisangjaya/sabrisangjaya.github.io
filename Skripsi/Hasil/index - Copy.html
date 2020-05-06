@@ -1,359 +1,360 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Skripsi">
-<meta name="keywords" content="Rapidminer, Python, Machine Learning, Scikit" />
-<meta name="author" content="Sabri Sangjaya">
-<title>Grafik Percobaan KNN</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/popper.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/chart.js"></script>
-<script src="js/data.js"></script>
-<link rel="stylesheet" href="css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="datatable/datatables.min.css"/>
-<script type="text/javascript" src="datatable/datatables.min.js"></script>
-</head>
-<body>
-<br/><br/>
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="card">
-<div class="card-body">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Skripsi">
+        <meta name="keywords" content="Rapidminer, Python, Machine Learning, Scikit" />
+        <meta name="author" content="Sabri Sangjaya">
+        <title>Grafik Hasil Percobaan KNN</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/popper.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/chart.js"></script>
+        <script src="js/data.js"></script>
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="datatable/datatables.min.css"/>
+        <script type="text/javascript" src="datatable/datatables.min.js"></script>
+    </head>
+    <body>
+        <br/><br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Grafik dan Tabel Hasil Performa Satu Skenario</h4>
+                            <hr/>
+                            <p>Berikut adalah grafik dan tabel untuk hasil performa satu skenario</p>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="jenisknn">Jenis KNN</label>
+                                    <select class="form-control" id="jenisknn" name="jenisknn">
+                                        <option value="1">KNN</option>
+                                        <option value="2">Weighted Distance KNN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenissampling">Sampling</label>
+                                    <select class="form-control" id="jenissampling" name="jenissampling">
+                                        <option value="1">Tanpa Resampling</option>
+                                        <option value="2">SMOTE</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenisnormalisasi">Normalisasi</label>
+                                    <select class="form-control" id="jenisnormalisasi" name="jenisnormalisasi">
+                                        <option value="1">Tanpa Normalisasi</option>
+                                        <option value="2">MinMax Normalization</option>
+                                        <option value="3">Standard Scaler</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenisjarak">Jarak</label>
+                                    <select class="form-control" id="jenisjarak" name="jenisjarak">
+                                        <option value="1">Euclidean</option>
+                                        <option value="2">Manhattan</option>
+                                        <option value="3">Minkowski</option>
+                                        <option value="4">Chebyshev</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button onclick="displayTabel()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
+                            <button onclick="clearDataTable()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan</button>
+                            
+                            <br/><br/>
+                            <canvas id="charthasil"></canvas>
+                            <br/><br/>
+                            <div id="hasilpencarian">
+                            </div>
+                            <script>
+                            var ctx = document.getElementById('charthasil').getContext('2d');
+                            var chart = new Chart(ctx, {
+                            // The type of chart we want to create
+                            type: 'line',
+                            // The data for our dataset
+                            data: {
+                            labels: [],
+                            datasets: [
+                            {
+                            label: 'F-Measure',
+                            borderColor: 'rgb(255, 99, 50)',
+                            backgroundColor: 'rgb(255, 99, 50)',
+                            fill: false,
+                            data: []
+                            },
+                            {
+                            label: 'Akurasi',
+                            borderColor: 'rgb(50, 99, 255)',
+                            backgroundColor:'rgb(50, 99, 255)',
+                            fill: false,
+                            data: []
+                            }]
+                            },
+                            // Configuration options go here
+                            options: {
+                            title: {
+                            display: true,
+                            text: 'Performa Klasifikasi'
+                            },
+                            scales: {
+                            yAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Nilai'
+                            },
+                            ticks: {
+                            max: 1,
+                            min: 0,
+                            stepSize: 0.05
+                            }
+                            }],
+                            xAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Nilai K'
+                            }
+                            }]
+                            }
+                            }
+                            });
+                            </script>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Grafik Perbandingan Skenario</h4>
+                            <hr/>
+                            <p>Berikut adalah grafik untuk melakukan perbandingan skenario. warna grafik akan mengikuti panduan <a href="https://personal.sron.nl/~pault/#sec:qualitative" target="_blank">QUALITATIVE COLOUR SCHEMES</a> yang memiliki urutan <span style="background-color: #EE7733">&nbsp;orange </span>
+          <span style="background-color: #0077BB">&nbsp;blue </span>
+          <span style="background-color: #33BBEE">&nbsp;cyan </span>
+          <span style="background-color: #EE3377">&nbsp;magenta </span>
+          <span style="background-color: #CC3311">&nbsp;red </span>
+          <span style="background-color: #009988">&nbsp;teal </span>
+          <span style="background-color: #BBBBBB">&nbsp;grey&nbsp;</span></p>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="jenisknn2">Jenis KNN</label>
+                                    <select class="form-control" id="jenisknn2" name="jenisknn2">
+                                        <option value="1">KNN</option>
+                                        <option value="2">Weighted Distance KNN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenissampling2">Sampling</label>
+                                    <select class="form-control" id="jenissampling2" name="jenissampling2">
+                                        <option value="1">Tanpa Resampling</option>
+                                        <option value="2">SMOTE</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenisnormalisasi2">Normalisasi</label>
+                                    <select class="form-control" id="jenisnormalisasi2" name="jenisnormalisasi2">
+                                        <option value="1">Tanpa Normalisasi</option>
+                                        <option value="2">MinMax Normalization</option>
+                                        <option value="3">Standard Scaler</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenisjarak2">Jarak</label>
+                                    <select class="form-control" id="jenisjarak2" name="jenisjarak2">
+                                        <option value="1">Euclidean</option>
+                                        <option value="2">Manhattan</option>
+                                        <option value="3">Minkowski</option>
+                                        <option value="4">Chebyshev</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="jenisperforma">Performa</label>
+                                    <select class="form-control" id="jenisperforma" name="jenisperforma">
+                                        <option value="1">Akurasi</option>
+                                        <option value="2">F1-Score</option>
+                                        <option value="3">Presisi</option>
+                                        <option value="4">Recall</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <button onclick="checkData()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
+                            <button onclick="clearData()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan Semua</button>
+                            <br/><br/>
+                            <canvas id="charthasil2"></canvas>
+                            <br/><br/>
+                            <div id="hasilpencarian2">
+                            </div>
+                            <script>
+                            var ctx2 = document.getElementById('charthasil2').getContext('2d');
+                            var chart2 = new Chart(ctx2, {
+                            // The type of chart we want to create
+                            type: 'line',
+                            // The data for our dataset
+                            data: {
+                            datasets: []
+                            },
+                            // Configuration options go here
+                            options: {
+                            title: {
+                            display: true,
+                            text: 'Performa Klasifikasi'
+                            },
+                            scales: {
+                            yAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Nilai'
+                            },
+                            ticks: {
+                            max: 1,
+                            min: 0,
+                            stepSize: 0.05
+                            }
+                            }],
+                            xAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Nilai K'
+                            }
+                            }]
+                            }
+                            }
+                            });
+                            console.log(chart2);
+                            var currentIndex=0;
+                            var currentItem=[];
+                            var colorList=["#EE7733","#0077BB","#33BBEE","#EE3377","#CC3311","#009988","#BBBBBB"];
+                          
 
-<div class="form-row">
-<div class="form-group col-md-3">
-<label for="jenisknn">Jenis KNN</label>
-<select class="form-control" id="jenisknn" name="jenisknn">
-<option value="1">KNN</option>
-<option value="2">Weighted Distance KNN</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenissampling">Sampling</label>
-<select class="form-control" id="jenissampling" name="jenissampling">
-<option value="1">Tanpa Resampling</option>
-<option value="2">SMOTE</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenisnormalisasi">Normalisasi</label>
-<select class="form-control" id="jenisnormalisasi" name="jenisnormalisasi">
-<option value="1">Tanpa Normalisasi</option>
-<option value="2">MinMax Normalization</option>
-<option value="3">Standard Scaler</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenisjarak">Jarak</label>
-<select class="form-control" id="jenisjarak" name="jenisjarak">
-<option value="1">Euclidean</option>
-<option value="2">Manhattan</option>
-<option value="3">Minkowski</option>
-<option value="4">Chebyshev</option>
-</select>
-</div>
-</div>
-<button onclick="displayTabel()" class="btn btn-primary">Submit</button>
-<br/><br/>
-<canvas id="charthasil"></canvas>
-<br/><br/>
-<div id="hasilpencarian">
+                            function clearData(){
+                                console.log("terpanggil",currentIndex);
+                                for (var i = 0; i < currentIndex; i++) {
+                                    chart2.data.datasets.pop();
+                                }
+                                currentIndex=0;
+                                currentItem=[];
+                                chart2.update();
+                            }
+                            function clearDataTable(){
+                                chart.data.datasets[0].data=[];
+                                chart.data.datasets[1].data=[];
+                                hasil="";
+                                $('#hasilpencarian').html(hasil);
+                                chart.update();
+                            }
 
-</div>
-<script>
+                            function checkData(jarak=$('#jenisjarak2').val(),
+                            normalisasi=$('#jenisnormalisasi2').val(),
+                            performa=$('#jenisperforma').val(),
+                            sampling=$('#jenissampling2').val(),
+                            knn=$('#jenisknn2').val()
+                            ){
+                            if(knn==="1"){ var jenisknn="KNN"; }
+                            else if(knn==="2"){ var jenisknn="WDKNN";}
+                            if(sampling==="1"){var jenissampling="asli";}
+                            else if(sampling==="2"){var jenissampling="smote";}
+                            
+                            if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
+                            else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
+                            else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
+                            
+                            if(jarak==="1"){var jenisjarak="euclidean";}
+                            else if(jarak==="2"){var jenisjarak="manhattan";}
+                            else if(jarak==="3"){var jenisjarak="minkowski";}
+                            else if(jarak==="4"){var jenisjarak="chebyshev";}
+                            if(performa==="1"){var jenisperforma="Akurasi";}
+                            else if(performa==="2"){var jenisperforma="F1 Score";}
+                            else if(performa==="3"){var jenisperforma="Presisi";}
+                            else if(performa==="4"){var jenisperforma="Recall";}
+                            dataToCheck=jenisknn+jenisjarak+jenissampling+jenisnormalisasi+jenisperforma;
+                            if(currentItem.indexOf(dataToCheck) > -1){
+                            alert("sudah ada");
+                            }
+                            else{
+                            addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma);
+                            }
+                            }
 
-var ctx = document.getElementById('charthasil').getContext('2d');
-
-var chart = new Chart(ctx, {
-
-// The type of chart we want to create
-type: 'line',
-// The data for our dataset
-data: {
-labels: [],
-datasets: [
-{
-label: 'F-Measure',
-borderColor: 'rgb(255, 99, 50)',
-backgroundColor: 'rgb(255, 99, 50)',
-fill: false,
-data: []
-},
-{
-label: 'Akurasi',
-borderColor: 'rgb(50, 99, 255)',
-backgroundColor:'rgb(50, 99, 255)',
-fill: false,
-data: []
-}]
-},
-// Configuration options go here
-options: {
-title: {
-display: true,
-text: 'Performa Klasifikasi'
-},
-scales: {
-yAxes: [{
-scaleLabel: {
-display: true,
-labelString: 'Nilai'
-},
-ticks: {
-max: 1,
-min: 0,
-stepSize: 0.05
-}
-}],
-xAxes: [{
-scaleLabel: {
-display: true,
-labelString: 'Nilai K'
-}
-}]
-}
-}
-});
-
-</script>
-</div>
-</div>
-<br/>
-<br/>
-<div class="card">
-<div class="card-body">
-
-<div class="form-row">
-<div class="form-group col-md-3">
-<label for="jenisknn2">Jenis KNN</label>
-<select class="form-control" id="jenisknn2" name="jenisknn2">
-<option value="1">KNN</option>
-<option value="2">Weighted Distance KNN</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenissampling2">Sampling</label>
-<select class="form-control" id="jenissampling2" name="jenissampling2">
-<option value="1">Tanpa Resampling</option>
-<option value="2">SMOTE</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenisnormalisasi2">Normalisasi</label>
-<select class="form-control" id="jenisnormalisasi2" name="jenisnormalisasi2">
-<option value="1">Tanpa Normalisasi</option>
-<option value="2">MinMax Normalization</option>
-<option value="3">Standard Scaler</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenisjarak2">Jarak</label>
-<select class="form-control" id="jenisjarak2" name="jenisjarak2">
-<option value="1">Euclidean</option>
-<option value="2">Manhattan</option>
-<option value="3">Minkowski</option>
-<option value="4">Chebyshev</option>
-</select>
-</div>
-<div class="form-group col-md-3">
-<label for="jenisperforma">Performa</label>
-<select class="form-control" id="jenisperforma" name="jenisperforma">
-<option value="1">Akurasi</option>
-<option value="2">F1-Score</option>
-<option value="3">Presisi</option>
-<option value="4">Recall</option>
-</select>
-</div>
-</div>
-<button onclick="checkData()" class="btn btn-primary">Tampilkan</button>
-<br/><br/>
-<canvas id="charthasil2"></canvas>
-<br/><br/>
-<div id="hasilpencarian2">
-
-</div>
-<script>
-
-
-var ctx2 = document.getElementById('charthasil2').getContext('2d');
-
-var chart2 = new Chart(ctx2, {
-
-// The type of chart we want to create
-type: 'line',
-// The data for our dataset
-data: {
-datasets: []
-},
-// Configuration options go here
-options: {
-title: {
-display: true,
-text: 'Performa Klasifikasi'
-},
-scales: {
-yAxes: [{
-scaleLabel: {
-display: true,
-labelString: 'Nilai'
-},
-ticks: {
-max: 1,
-min: 0,
-stepSize: 0.05
-}
-}],
-xAxes: [{
-scaleLabel: {
-display: true,
-labelString: 'Nilai K'
-}
-}]
-}
-}
-});
-console.log(chart2);
-
-
-var currentIndex=0;
-var currentItem=[];
-function checkData(jarak=$('#jenisjarak2').val(),
-    normalisasi=$('#jenisnormalisasi2').val(),
-    performa=$('#jenisperforma').val(),
-    sampling=$('#jenissampling2').val(),
-    knn=$('#jenisknn2').val()
-    ){
-    if(knn==="1"){ var jenisknn="KNN"; }
-    else if(knn==="2"){ var jenisknn="WDKNN";}
-
-    if(sampling==="1"){var jenissampling="asli";}
-    else if(sampling==="2"){var jenissampling="smote";}
-    
-    if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
-    else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
-    else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
-    
-    if(jarak==="1"){var jenisjarak="euclidean";}
-    else if(jarak==="2"){var jenisjarak="manhattan";}
-    else if(jarak==="3"){var jenisjarak="minkowski";}
-    else if(jarak==="4"){var jenisjarak="chebyshev";}
-
-    if(performa==="1"){var jenisperforma="Akurasi";}
-    else if(performa==="2"){var jenisperforma="F1 Score";}
-    else if(performa==="3"){var jenisperforma="Presisi";}
-    else if(performa==="4"){var jenisperforma="Recall";}
-
-    dataToCheck=jenisknn+jenisjarak+jenissampling+jenisnormalisasi+jenisperforma;
-
-    if(currentItem.indexOf(dataToCheck) > -1){
-        alert("sudah ada");
-    }
-    else{
-        addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma);
-    }
-
-}
-
-
-function addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma){
-    var correct = [];
-    for(var i=0;i<Object.keys(datahasil).length;i++){
-        if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
-            correct.push(datahasil[i]);
-        }
-    }
-    data=[];
-    labelisi=[];
-    for(i in correct){
-        data.push(correct[i][jenisperforma]);
-        labelisi.push(correct[i]["Nilai K"]);
-    }
-    chart2.data.datasets[currentIndex]={data:data,label: jenisperforma,
-        borderColor: 'rgb(50, 99, 255)',
-        backgroundColor:'rgb(50, 99, 255)',
-        fill: false};
-    chart2.data.labels = labelisi;
-    currentIndex+=1;
-    var dataToAppend=jenisknn+jenisjarak+jenissampling+jenisnormalisasi+jenisperforma;
-    currentItem.push(dataToAppend);
-    chart2.update();
-}
-
-
-
-
-
-
-function displayTabel(jarak=$('#jenisjarak2').val(),
-    normalisasi=$('#jenisnormalisasi2').val(),
-    sampling=$('#jenissampling2').val(),
-    knn=$('#jenisknn2').val()
-    ){
-    labelsisi=[];
-    dataakurasi=[];
-    datafmeasure=[];
-    if(knn==="1"){ var jenisknn="KNN"; }
-    else if(knn==="2"){ var jenisknn="WDKNN";}
-
-    if(sampling==="1"){var jenissampling="asli";}
-    else if(sampling==="2"){var jenissampling="smote";}
-    
-    if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
-    else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
-    else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
-    
-    if(jarak==="1"){var jenisjarak="euclidean";}
-    else if(jarak==="2"){var jenisjarak="manhattan";}
-    else if(jarak==="3"){var jenisjarak="minkowski";}
-    else if(jarak==="4"){var jenisjarak="chebyshev";}
-
-    var correct = [];
-    for(var i=0;i<Object.keys(datahasil).length;i++){
-    if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
-    correct.push(datahasil[i]);
-    }
-    }
-    console.log(correct);
-
-    var hasil='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelhasil">';
-    hasil+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
-
-    for(i in correct){
-    hasil+='<tr>';
-    labelsisi.push(correct[i]["Nilai K"]);
-    dataakurasi.push(correct[i]["Akurasi"]);
-    datafmeasure.push(correct[i]["F1 Score"]);
-    
-    for(j in correct[i]){
-    hasil+='<td>'+correct[i][j]+'</td>';
-    }
-    hasil+='</tr>';
-    }
-    hasil+='</table>';
-    $('#hasilpencarian').html(hasil);
-    $('#tabelhasil').DataTable();
-    chart.data.datasets[0].data=datafmeasure;
-    chart.data.datasets[1].data=dataakurasi;
-    chart.data.labels=labelsisi;
-    chart.update();
-
-
-}
-</script>
-
-<script>
-
-</script>
-</div>
-</div>
-<br/>
-</div>
-</div>
-</div>
-</body>
+                            function addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma){
+                            var correct = [];
+                            for(var i=0;i<Object.keys(datahasil).length;i++){
+                            if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
+                            correct.push(datahasil[i]);
+                            }
+                            }
+                            data=[];
+                            labelisi=[];
+                            for(i in correct){
+                            data.push(correct[i][jenisperforma]);
+                            labelisi.push(correct[i]["Nilai K"]);
+                            }
+                            var dataToAppend=jenisknn+" "+jenisjarak+" "+jenissampling+" "+jenisnormalisasi+" "+jenisperforma;
+                            chart2.data.datasets[currentIndex]={data:data,label: dataToAppend,
+                            borderColor: colorList[currentIndex%7],
+                            backgroundColor:colorList[currentIndex%7],
+                            fill: false};
+                            chart2.data.labels = labelisi;
+                            currentIndex+=1;
+                            
+                            currentItem.push(dataToAppend);
+                            chart2.update();
+                            }
+                            function displayTabel(jarak=$('#jenisjarak').val(),
+                            normalisasi=$('#jenisnormalisasi').val(),
+                            sampling=$('#jenissampling').val(),
+                            knn=$('#jenisknn').val()
+                            ){
+                            labelsisi=[];
+                            dataakurasi=[];
+                            datafmeasure=[];
+                            if(knn==="1"){ var jenisknn="KNN"; }
+                            else if(knn==="2"){ var jenisknn="WDKNN";}
+                            if(sampling==="1"){var jenissampling="asli";}
+                            else if(sampling==="2"){var jenissampling="smote";}
+                            
+                            if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
+                            else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
+                            else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
+                            
+                            if(jarak==="1"){var jenisjarak="euclidean";}
+                            else if(jarak==="2"){var jenisjarak="manhattan";}
+                            else if(jarak==="3"){var jenisjarak="minkowski";}
+                            else if(jarak==="4"){var jenisjarak="chebyshev";}
+                            var correct = [];
+                            for(var i=0;i<Object.keys(datahasil).length;i++){
+                            if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
+                            correct.push(datahasil[i]);
+                            }
+                            }
+                            console.log(correct);
+                            var hasil='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelhasil">';
+                                hasil+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
+                                for(i in correct){
+                                hasil+='<tr>';
+                                    labelsisi.push(correct[i]["Nilai K"]);
+                                    dataakurasi.push(correct[i]["Akurasi"]);
+                                    datafmeasure.push(correct[i]["F1 Score"]);
+                                    
+                                    for(j in correct[i]){
+                                    hasil+='<td>'+correct[i][j]+'</td>';
+                                    }
+                                hasil+='</tr>';
+                                }
+                            hasil+='</table>';
+                            $('#hasilpencarian').html(hasil);
+                            $('#tabelhasil').DataTable();
+                            chart.data.datasets[0].data=datafmeasure;
+                            chart.data.datasets[1].data=dataakurasi;
+                            chart.data.labels=labelsisi;
+                            chart.update();
+                            }
+                            </script>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
