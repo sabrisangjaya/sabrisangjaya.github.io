@@ -290,8 +290,8 @@
                                     <select class="form-control" id="jenisnormalisasi" name="jenisnormalisasi">
                                         <option value="1">Tanpa Normalisasi</option>
                                         <option value="2">MinMax Normalization</option>
-                                        <option value="3">Standard Scaler</option>
-                                        <option value="4">MaxAbs Scaler</option>
+                                        <option value="4">Standard Scaler</option>
+                                        <option value="3">MaxAbs Scaler</option>
                                         <option value="5">Robust Scaler</option>
                                         <option value="6">Normalizer</option>
                                         <option value="7">Quantile Transformer Uniform</option>
@@ -405,8 +405,8 @@
                                 <select class="form-control" id="jenisnormalisasi2" name="jenisnormalisasi2">
                                     <option value="1">Tanpa Normalisasi</option>
                                     <option value="2">MinMax Normalization</option>
-                                    <option value="3">Standard Scaler</option>
-                                    <option value="4">MaxAbs Scaler</option>
+                                    <option value="4">Standard Scaler</option>
+                                    <option value="3">MaxAbs Scaler</option>
                                         <option value="5">Robust Scaler</option>
                                         <option value="6">Normalizer</option>
                                         <option value="7">Quantile Transformer Uniform</option>
@@ -520,12 +520,13 @@
                                 var akhirloop=1584;
                             }
                             else if(normalisasi==="3"){
-                                var jenisnormalisasi="StandardScaler";
+                                var jenisnormalisasi="MaxAbsScaler";
+                                
                                 var awalloop=1584;
                                 var akhirloop=2376;
                             }
                             else if(normalisasi==="4"){
-                                var jenisnormalisasi="MaxAbsScaler";
+                                var jenisnormalisasi="StandardScaler";
                                 var awalloop=2376;
                                 var akhirloop=3168;
                             }
@@ -570,11 +571,12 @@
                                 var akhirloop=8712;
                             }
                             else if(normalisasi==="3"){
-                                var jenisnormalisasi="StandardScaler";
+                                var jenisnormalisasi="MaxAbsScaler";
+                                
                                 var awalloop=8712; var akhirloop=9504;
                             }
                             else if(normalisasi==="4"){
-                                var jenisnormalisasi="MaxAbsScaler";
+                                var jenisnormalisasi="StandardScaler";
                                 var awalloop=9504; var akhirloop=10296;
                             }
                             else if(normalisasi==="5"){
@@ -671,12 +673,13 @@
                                 var akhirloop=1584;
                             }
                             else if(normalisasi==="3"){
-                                var jenisnormalisasi="StandardScaler";
+                                var jenisnormalisasi="MaxAbsScaler";
                                 var awalloop=1584;
                                 var akhirloop=2376;
                             }
                             else if(normalisasi==="4"){
-                                var jenisnormalisasi="MaxAbsScaler";
+                                
+                                var jenisnormalisasi="StandardScaler";
                                 var awalloop=2376;
                                 var akhirloop=3168;
                             }
@@ -721,11 +724,12 @@
                                 var akhirloop=8712;
                             }
                             else if(normalisasi==="3"){
-                                var jenisnormalisasi="StandardScaler";
+                                var jenisnormalisasi="MaxAbsScaler";
+                                
                                 var awalloop=8712; var akhirloop=9504;
                             }
                             else if(normalisasi==="4"){
-                                var jenisnormalisasi="MaxAbsScaler";
+                                var jenisnormalisasi="StandardScaler";
                                 var awalloop=9504; var akhirloop=10296;
                             }
                             else if(normalisasi==="5"){
