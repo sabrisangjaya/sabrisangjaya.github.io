@@ -25,16 +25,40 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                            <h4>Hasil Penelitian</h4>
+                            <hr/>
+                            <h5>Link Penting</h5>
+                            <ul>
+                                <li><a href="https://drive.google.com/drive/folders/1LNPSLn9FgTY8KsncQFCERkr57xn3pOFo?usp=sharing" target="_blank">Link Drive Sabri Sangjaya</a><br/></li>
+                            <li><a href="https://drive.google.com/open?id=1C4HpTgIDTZ52bpwpWHVQlsKjE93vZfsD" target="_blank">Link Drive Umum</a></li>
+                            </ul>
+
+                            <h5>Daftar isi</h5>
+                            <p>
+                                <ol>
+                                    <li>Simulasi KNN</li>
+                                    <li>Grafik dan Tabel Hasil Satu Skenario</li>
+                                    <li>Grafik Perbandingan Hasil Skenario</li>
+                                    <li>Tabel Hasil Seluruh Skenario</li>
+                                </ol>
+                            </p>
+
+
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div class="card">
+                        <div class="card-body">
                             <h4>Simulasi K-Nearest Neighbor</h4>
                             <hr/>
-                            <p>Objek dapat digeser untuk merubah posisi dan melakukan perhitungan ulang</p>
+                            <p>Berikut ilustrasi algoritma K-Nearest Neighbor pada 2 dimensi. Objek berbentuk segitiga akan diklasifikasikan ke dalam kelas A yang berbentuk kotak berwarna orange atau kelas B berbentuk lingkaran berwarna biru. Semua objek data dapat digeser untuk merubah posisi dan melakukan perhitungan ulang. Setelah melakukan perhitungan warna dari objek segitiga akan mengikuti warna kelas hasil klasifikasi</p>
                             <div class="row">
                                 <div class="col-md-8"><canvas id="chartKNN"></canvas></div>
                                 <div class="col-md-4" >
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="nilaik"><b>1. Tentukan Nilai K</b></label>
-                                            <input type="number" class="form-control" min="1" step="1" max="6" name="nilaik" id="nilaik" onchange="updateValue()">
+                                            <input type="number" class="form-control" min="1" step="1" max="6" name="nilaik" value="3" id="nilaik" onchange="updateValue()">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="jenisjarak3"><b>Jarak</b></label>
@@ -45,8 +69,10 @@
                                                 <option value="chebyshev">Chebyshev</option>
                                             </select>
                                         </div>
+
                                     </div>
                                     <p id="sortDistance"></p>
+                                    <button class="btn btn-primary btn-sm" onclick="updateValue()">Klasifikasi</button>
                                 </div>
                             </div>
                             
@@ -109,7 +135,7 @@
                             }],
                             xAxes: [{
                             ticks: {
-                            max: 25,
+                            max: 30,
                             min: 0,
                             stepSize: 1
                             }
@@ -153,7 +179,7 @@
                             function calculateDis(a,b,c){
                             //chart3.data.datasets[0].data[0].x;
                             if(c=="euclidean"){
-                            var distance = Math.sqrt(Math.pow(Math.abs(a.x-b.x),2)) + Math.sqrt(Math.pow(Math.abs(a.y-b.y),2));
+                            var distance = Math.sqrt(Math.pow(Math.abs(a.x-b.x),2)+Math.pow(Math.abs(a.y-b.y),2));
                             }
                             else if(c=="manhattan"){
                             var distance = Math.abs(a.x-b.x,2) + Math.abs(a.y-b.y,2);
@@ -223,7 +249,7 @@
                         <div class="card-body">
                             <h4>Grafik dan Tabel Hasil Performa Satu Skenario</h4>
                             <hr/>
-                            <p>Berikut adalah grafik dan tabel untuk hasil performa satu skenario</p>
+                            <p>Berikut adalah form untuk menampilkan hasil performa percobaan skenario dalam bentuk grafik dan tabel. Performa yang ditampilkan pada grafik adalah akurasi dan f1-score sedangkan yang ditampilkan pada tabel adalah semua performa</p>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="jenisknn">Jenis KNN</label>
@@ -245,6 +271,12 @@
                                         <option value="1">Tanpa Normalisasi</option>
                                         <option value="2">MinMax Normalization</option>
                                         <option value="3">Standard Scaler</option>
+                                        <option value="4">MaxAbs Scaler</option>
+                                        <option value="5">Robust Scaler</option>
+                                        <option value="6">Normalizer</option>
+                                        <option value="7">Quantile Transformer Uniform</option>
+                                        <option value="8">Quantile Transformer Normal</option>
+                                        <option value="9">Power Transformer yeo-johnson</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
@@ -325,7 +357,7 @@
                         <div class="card-body">
                             <h4>Grafik Perbandingan Skenario</h4>
                             <hr/>
-                            <p>Berikut adalah grafik untuk melakukan perbandingan skenario. warna grafik akan mengikuti panduan <a href="https://personal.sron.nl/~pault/data/colourschemes.pdf" target="_blank">QUALITATIVE COLOUR SCHEMES</a> yang memiliki urutan <span style="background-color: #EE7733">&nbsp;orange </span>
+                            <p>Berikut adalah form untuk menampilkan beberapa hasil performa percobaan skenario dalam bentuk grafik. Form ini bertujuan untuk melakukan perbandingan skenario. Performa yang ditampilkan sesuai inputan form. warna grafik akan mengikuti panduan <a href="https://personal.sron.nl/~pault/data/colourschemes.pdf" target="_blank">QUALITATIVE COLOUR SCHEMES</a> yang memiliki urutan <span style="background-color: #EE7733">&nbsp;orange </span>
                             <span style="background-color: #0077BB">&nbsp;blue </span>
                             <span style="background-color: #33BBEE">&nbsp;cyan </span>
                             <span style="background-color: #EE3377">&nbsp;magenta </span>
@@ -354,6 +386,12 @@
                                     <option value="1">Tanpa Normalisasi</option>
                                     <option value="2">MinMax Normalization</option>
                                     <option value="3">Standard Scaler</option>
+                                    <option value="4">MaxAbs Scaler</option>
+                                        <option value="5">Robust Scaler</option>
+                                        <option value="6">Normalizer</option>
+                                        <option value="7">Quantile Transformer Uniform</option>
+                                        <option value="8">Quantile Transformer Normal</option>
+                                        <option value="9">Power Transformer yeo-johnson</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
@@ -440,20 +478,113 @@
                         $('#hasilpencarian').html(hasil);
                         chart.update();
                         }
+
                         function checkData(jarak=$('#jenisjarak2').val(),
                         normalisasi=$('#jenisnormalisasi2').val(),
                         performa=$('#jenisperforma').val(),
                         sampling=$('#jenissampling2').val(),
                         knn=$('#jenisknn2').val()
                         ){
-                        if(knn==="1"){ var jenisknn="KNN"; }
-                        else if(knn==="2"){ var jenisknn="WDKNN";}
+                        if(knn==="1"){ 
+                            var jenisknn="KNN"; 
+                            var awalloop=0;
+                            var akhirloop=7128;
+                            if(normalisasi==="1"){
+                                var jenisnormalisasi="Data Asli";
+                                var awalloop=0;
+                                var akhirloop=792;
+                            }
+                            else if(normalisasi==="2"){
+                                var jenisnormalisasi="MinMaxScaler";
+                                var awalloop=792;
+                                var akhirloop=1584;
+                            }
+                            else if(normalisasi==="3"){
+                                var jenisnormalisasi="StandardScaler";
+                                var awalloop=1584;
+                                var akhirloop=2376;
+                            }
+                            else if(normalisasi==="4"){
+                                var jenisnormalisasi="MaxAbsScaler";
+                                var awalloop=2376;
+                                var akhirloop=3168;
+                            }
+                            else if(normalisasi==="5"){
+                                var jenisnormalisasi="RobustScaler";
+                                var awalloop=3168;
+                                var akhirloop=3960;
+                            }
+                            else if(normalisasi==="6"){
+                                var jenisnormalisasi="Normalizer";
+                                var awalloop=3960;
+                                var akhirloop=4752;
+                            }
+                            else if(normalisasi==="7"){
+                                var jenisnormalisasi="QuantileTransformer uniform";
+                                var awalloop=4752;
+                                var akhirloop=5544;
+                            }
+                            else if(normalisasi==="8"){
+                                var jenisnormalisasi="QuantileTransformer normal";
+                                var awalloop=5544;
+                                var akhirloop=6336;
+                            }
+                            else if(normalisasi==="9"){
+                                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                                var awalloop=6336;
+                                var akhirloop=7128;
+                            }
+                        }
+                        else if(knn==="2"){
+                            var jenisknn="WDKNN";
+                            var awalloop=7128;
+                            var akhirloop=14256;
+                            if(normalisasi==="1"){
+                                var jenisnormalisasi="Data Asli";
+                                var awalloop=7128;
+                                var akhirloop=7920;
+                            }
+                            else if(normalisasi==="2"){
+                                var jenisnormalisasi="MinMaxScaler";
+                                var awalloop=7920;
+                                var akhirloop=8712;
+                            }
+                            else if(normalisasi==="3"){
+                                var jenisnormalisasi="StandardScaler";
+                                var awalloop=8712; var akhirloop=9504;
+                            }
+                            else if(normalisasi==="4"){
+                                var jenisnormalisasi="MaxAbsScaler";
+                                var awalloop=9504; var akhirloop=10296;
+                            }
+                            else if(normalisasi==="5"){
+                                var jenisnormalisasi="RobustScaler";
+                                var awalloop=10296; var akhirloop=11088;
+                            }
+                            else if(normalisasi==="6"){
+                                var jenisnormalisasi="Normalizer";
+                                var awalloop=11088; var akhirloop=11880;
+                            }
+                            else if(normalisasi==="7"){
+                                var jenisnormalisasi="QuantileTransformer uniform";
+                                var awalloop=11880; var akhirloop=12672;
+                            }
+                            else if(normalisasi==="8"){
+                                var jenisnormalisasi="QuantileTransformer normal";
+                                var awalloop=12672; var akhirloop=13464;
+                            }
+                            else if(normalisasi==="9"){
+                                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                                var awalloop=13464; var akhirloop=14256;
+                            }
+                        }
+
+
+
                         if(sampling==="1"){var jenissampling="asli";}
                         else if(sampling==="2"){var jenissampling="smote";}
                         
-                        if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
-                        else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
-                        else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
+                       
                         
                         if(jarak==="1"){var jenisjarak="euclidean";}
                         else if(jarak==="2"){var jenisjarak="manhattan";}
@@ -468,12 +599,13 @@
                         alert("sudah ada");
                         }
                         else{
-                        addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma);
+                        addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma,awalloop,akhirloop);
                         }
                         }
-                        function addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma){
+
+                        function addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma,awalloop,akhirloop){
                         var correct = [];
-                        for(var i=0;i<Object.keys(datahasil).length;i++){
+                        for(var i=awalloop;i<akhirloop;i++){
                         if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
                         correct.push(datahasil[i]);
                         }
@@ -495,6 +627,7 @@
                         currentItem.push(dataToAppend);
                         chart2.update();
                         }
+
                         function displayTabel(jarak=$('#jenisjarak').val(),
                         normalisasi=$('#jenisnormalisasi').val(),
                         sampling=$('#jenissampling').val(),
@@ -503,21 +636,109 @@
                         labelsisi=[];
                         dataakurasi=[];
                         datafmeasure=[];
-                        if(knn==="1"){ var jenisknn="KNN"; }
-                        else if(knn==="2"){ var jenisknn="WDKNN";}
+                        if(knn==="1"){ 
+                            var jenisknn="KNN"; 
+                            var awalloop=0;
+                            var akhirloop=7128;
+                            if(normalisasi==="1"){
+                                var jenisnormalisasi="Data Asli";
+                                var awalloop=0;
+                                var akhirloop=792;
+                            }
+                            else if(normalisasi==="2"){
+                                var jenisnormalisasi="MinMaxScaler";
+                                var awalloop=792;
+                                var akhirloop=1584;
+                            }
+                            else if(normalisasi==="3"){
+                                var jenisnormalisasi="StandardScaler";
+                                var awalloop=1584;
+                                var akhirloop=2376;
+                            }
+                            else if(normalisasi==="4"){
+                                var jenisnormalisasi="MaxAbsScaler";
+                                var awalloop=2376;
+                                var akhirloop=3168;
+                            }
+                            else if(normalisasi==="5"){
+                                var jenisnormalisasi="RobustScaler";
+                                var awalloop=3168;
+                                var akhirloop=3960;
+                            }
+                            else if(normalisasi==="6"){
+                                var jenisnormalisasi="Normalizer";
+                                var awalloop=3960;
+                                var akhirloop=4752;
+                            }
+                            else if(normalisasi==="7"){
+                                var jenisnormalisasi="QuantileTransformer uniform";
+                                var awalloop=4752;
+                                var akhirloop=5544;
+                            }
+                            else if(normalisasi==="8"){
+                                var jenisnormalisasi="QuantileTransformer normal";
+                                var awalloop=5544;
+                                var akhirloop=6336;
+                            }
+                            else if(normalisasi==="9"){
+                                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                                var awalloop=6336;
+                                var akhirloop=7128;
+                            }
+                        }
+                        else if(knn==="2"){
+                            var jenisknn="WDKNN";
+                            var awalloop=7128;
+                            var akhirloop=14256;
+                            if(normalisasi==="1"){
+                                var jenisnormalisasi="Data Asli";
+                                var awalloop=7128;
+                                var akhirloop=7920;
+                            }
+                            else if(normalisasi==="2"){
+                                var jenisnormalisasi="MinMaxScaler";
+                                var awalloop=7920;
+                                var akhirloop=8712;
+                            }
+                            else if(normalisasi==="3"){
+                                var jenisnormalisasi="StandardScaler";
+                                var awalloop=8712; var akhirloop=9504;
+                            }
+                            else if(normalisasi==="4"){
+                                var jenisnormalisasi="MaxAbsScaler";
+                                var awalloop=9504; var akhirloop=10296;
+                            }
+                            else if(normalisasi==="5"){
+                                var jenisnormalisasi="RobustScaler";
+                                var awalloop=10296; var akhirloop=11088;
+                            }
+                            else if(normalisasi==="6"){
+                                var jenisnormalisasi="Normalizer";
+                                var awalloop=11088; var akhirloop=11880;
+                            }
+                            else if(normalisasi==="7"){
+                                var jenisnormalisasi="QuantileTransformer uniform";
+                                var awalloop=11880; var akhirloop=12672;
+                            }
+                            else if(normalisasi==="8"){
+                                var jenisnormalisasi="QuantileTransformer normal";
+                                var awalloop=12672; var akhirloop=13464;
+                            }
+                            else if(normalisasi==="9"){
+                                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                                var awalloop=13464; var akhirloop=14256;
+                            }
+                        }
                         if(sampling==="1"){var jenissampling="asli";}
                         else if(sampling==="2"){var jenissampling="smote";}
                         
-                        if(normalisasi==="1"){var jenisnormalisasi="Data Asli";}
-                        else if(normalisasi==="2"){var jenisnormalisasi="MinMaxScaler";}
-                        else if(normalisasi==="3"){var jenisnormalisasi="StandardScaler";}
-                        
+                       
                         if(jarak==="1"){var jenisjarak="euclidean";}
                         else if(jarak==="2"){var jenisjarak="manhattan";}
                         else if(jarak==="3"){var jenisjarak="minkowski";}
                         else if(jarak==="4"){var jenisjarak="chebyshev";}
                         var correct = [];
-                        for(var i=0;i<Object.keys(datahasil).length;i++){
+                        for(var i=awalloop;i<akhirloop;i++){
                         if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
                         correct.push(datahasil[i]);
                         }
@@ -548,6 +769,31 @@
                     </div>
                 </div>
                 <br/><br/>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Tabel Hasil Seluruh Percobaan</h4>
+                        <hr/>
+                        <p>Berikut hasil dari seluruh percobaan dalam bentuk tabel</p>
+                        <div id="resultall"></div>
+                        <script>
+                            $(document).ready(function() {
+                                var hasilall='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelall">';
+                            hasilall+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
+                            for(i in datahasil){
+                            hasilall+='<tr>';
+                                for(j in datahasil[i]){
+                                hasilall+='<td>'+datahasil[i][j]+'</td>';
+                                }
+                            hasilall+='</tr>';
+                            }
+                        hasilall+='</table>';
+                        $('#resultall').html(hasilall);
+                        $('#tabelall').DataTable();
+                            });
+                             
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
