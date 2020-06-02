@@ -314,6 +314,17 @@
                             </div>
                             <button onclick="displayTabel()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
                             <button onclick="clearDataTable()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan</button>
+
+                            <button onclick="downloadChart1()" class="btn btn-danger"><span class="fa fa-trash"></span> Unduh Grafik</button>
+
+                            <script>
+                                function downloadChart1(){
+                                  var link = document.createElement('a');
+                                  link.download = 'filename.png';
+                                  link.href = document.getElementById('charthasil').toDataURL("image/jpg")
+                                  link.click();
+                                }
+                            </script>
                             
                             <br/><br/>
                             <canvas id="charthasil"></canvas>
@@ -325,6 +336,9 @@
                             var chart = new Chart(ctx, {
                             // The type of chart we want to create
                             type: 'line',
+                            devicePixelRatio:3000,
+                            maintainAspectRatio: false,
+                            responsive:true,
                             // The data for our dataset
                             data: {
                             labels: [],
@@ -850,9 +864,10 @@
                         <h4>Tabel Hasil Seluruh Percobaan</h4>
                         <hr/>
                         <p>Berikut hasil dari seluruh percobaan dalam bentuk tabel</p>
+                        <button id="btnDisplayAll" onclick=" displayAllResult()" class="btn btn-primary btn-sm">Tampilkan</button><br/><br/>
                         <div id="resultall"></div>
                         <script>
-                            $(document).ready(function() {
+                           function displayAllResult(){
                                 var hasilall='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelall">';
                             hasilall+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
                             for(i in datahasil){
@@ -865,7 +880,8 @@
                         hasilall+='</table>';
                         $('#resultall').html(hasilall);
                         $('#tabelall').DataTable();
-                            });
+                        $('#btnDisplayAll').attr('disabled','disabled');
+                            }
                              
                         </script>
                     </div>
