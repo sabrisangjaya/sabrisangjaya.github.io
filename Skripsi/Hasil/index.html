@@ -252,7 +252,9 @@
                         <div class="card-body">
                           <h4>Ekstrasi Fitur</h4>
                           <hr/>
-                          <p>Coming Soon. Belum dihost ke Google Colab</p>  
+                          <p><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Ekstrasi_Fitur.ipynb" target="_blank">Open in Github</a>
+
+                          </p>  
                         </div>
                     </div>
 
@@ -263,7 +265,7 @@
                         <div class="card-body">
                             <h4>Proses Klasifikasi</h4>
                           <hr/>
-                          <p>Coming Soon. Belum dihost ke Google Colab</p>
+                          <p><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Proses_Klasifikasi.ipynb" target="_blank">Open in Github</a></p>
                         </div>
                     </div>
 
@@ -272,7 +274,7 @@
                         <div class="card-body">
                             <h4>Grafik dan Tabel Hasil Performa Satu Skenario</h4>
                             <hr/>
-                            <p>Berikut adalah form untuk menampilkan hasil performa percobaan skenario dalam bentuk grafik dan tabel. Performa yang ditampilkan pada grafik adalah akurasi dan f1-score sedangkan yang ditampilkan pada tabel adalah semua performa</p>
+                            <p>Berikut adalah form untuk menampilkan hasil performa percobaan skenario dalam bentuk grafik dan tabel. Performa yang ditampilkan pada grafik adalah akurasi dan f1-score sedangkan yang ditampilkan pada tabel adalah semua performa. Untuk memperbesar skala grafik gunakan scroll in/out mouse dan untuk menggeser skala  gunakan panning mouse</p>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="jenisknn">Jenis KNN</label>
@@ -315,12 +317,12 @@
                             <button onclick="displayTabel()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
                             <button onclick="clearDataTable()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan</button>
 
-                            <button onclick="downloadChart1()" class="btn btn-danger"><span class="fa fa-trash"></span> Unduh Grafik</button>
+                            <button onclick="downloadChart1()" class="btn btn-success"><span class="fa fa-download"></span> Unduh Grafik</button>
 
                             <script>
                                 function downloadChart1(){
                                   var link = document.createElement('a');
-                                  link.download = 'filename.png';
+                                  link.download = 'exportgrafik.png';
                                   link.href = document.getElementById('charthasil').toDataURL("image/jpg")
                                   link.click();
                                 }
@@ -424,7 +426,7 @@
                             <span style="background-color: #EE3377">&nbsp;magenta </span>
                             <span style="background-color: #CC3311">&nbsp;red </span>
                             <span style="background-color: #009988">&nbsp;teal </span>
-                            <span style="background-color: #BBBBBB">&nbsp;grey&nbsp;</span>
+                            <span style="background-color: #BBBBBB">&nbsp;grey&nbsp;</span>. Untuk memperbesar skala grafik gunakan scroll in/out mouse dan untuk menggeser skala  gunakan panning mouse
                         </p>
                         <div class="form-row">
                             <div class="form-group col-md-3">
@@ -863,7 +865,7 @@
                     <div class="card-body">
                         <h4>Tabel Hasil Seluruh Percobaan</h4>
                         <hr/>
-                        <p>Berikut hasil dari seluruh percobaan dalam bentuk tabel</p>
+                        <p>Berikut hasil dari seluruh percobaan dalam bentuk tabel. Untuk sorting klik pada header kolom. gunakan "shift" untuk multiple sort. data dapat diunduh pada <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/hasil08052020.json" target="_blank">Github Repository</a> dengan merujuk paper []</p>
                         <button id="btnDisplayAll" onclick=" displayAllResult()" class="btn btn-primary btn-sm">Tampilkan</button><br/><br/>
                         <div id="resultall"></div>
                         <script>
@@ -889,5 +891,8 @@
             </div>
         </div>
     </div>
+    <br/>
+    <br/>
+
 </body>
 </html>
