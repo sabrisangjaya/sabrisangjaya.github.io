@@ -2830,7 +2830,13 @@
                             <hr>
                             <p>Dari 14256 skenario percobaan jika dikelompokan dan dilakukan fungsi agregat pada hasil performa berdasarkan jenis penggunaan normalisasi atau jenis penggunaan jarak atau jenis penggunaan KNN atau jenis resampling</p>
                             <div>
-                                <table class="table table-sm table-bordered">
+                                <style>
+                                    .tbagregat > tbody > tr > td {
+                                         vertical-align: middle;
+                                         text-align: center;
+                                    }
+                                </style>
+                                <table class="tbagregat table table-sm table-bordered">
                                     <tr>
                                         <td rowspan="2">Sampling</td>
                                         <td colspan="3">Akurasi</td>
@@ -2863,7 +2869,7 @@
                                         <td>71.83%</td>
                                     </tr>
                                 </table>
-                                <table class="table table-sm table-bordered">
+                                <table class="tbagregat table table-sm table-bordered">
                                     <tr>
                                         <td rowspan="2">Jenis KNN</font></td>
                                         <td colspan="3">Akurasi</td>
@@ -2894,10 +2900,9 @@
                                         <td>46.43%</td>
                                         <td>26.41%</td>
                                         <td>71.83%</td>
-                                    </tr>
-                                    
+                                    </tr>  
                                 </table>
-                                <table class="table table-sm table-bordered">
+                                <table class="tbagregat table table-sm table-bordered">
                                     <tr>
                                         <td rowspan="2">Jenis Jarak</font></td>
                                         <td colspan="3">Akurasi</td>
@@ -2948,7 +2953,7 @@
                                         <td>69.70%</td>
                                     </tr>
                                 </table>
-                                <table class="table table-sm table-bordered">
+                                <table class="tbagregat table table-sm table-bordered">
                                     <tr>
                                         <td rowspan="2">Jenis Normalisasi</td>
                                         <td colspan="3">Akurasi</td>
