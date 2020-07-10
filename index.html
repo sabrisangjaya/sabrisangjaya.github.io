@@ -79,8 +79,8 @@
 		<script>
 			//Create PDf from HTML...
 function CreatePDFfromHTML() {
-    var HTML_Width = $(".html-content").width();
-    var HTML_Height = $(".html-content").height();
+    var HTML_Width = $("#all-content").width();
+    var HTML_Height = $("#all-content").height();
     var top_left_margin = 15;
     var PDF_Width = HTML_Width + (top_left_margin * 2);
     var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
@@ -98,7 +98,7 @@ function CreatePDFfromHTML() {
             pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
         }
         pdf.save("Your_PDF_Name.pdf");
-        $(".html-content").hide();
+        $(".#all-content").hide();
     });
 }
 		</script>
