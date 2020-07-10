@@ -69,13 +69,43 @@
 		})(window,document,'script','dataLayer','GTM-TW2N67X');</script>
 		<!-- End Google Tag Manager -->
 	</head>
-	<body>
+	<body id="all-content">
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TW2N67X"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<button  class="btn btn-primary no-print" onclick="renderFunc()" style="position:fixed;bottom:10px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download JPG</button>
-		<button id="print-btn" class="btn btn-primary no-print" style="position:fixed;bottom:50px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download PDF</button>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+		<script>
+			//Create PDf from HTML...
+function CreatePDFfromHTML() {
+    var HTML_Width = $(".html-content").width();
+    var HTML_Height = $(".html-content").height();
+    var top_left_margin = 15;
+    var PDF_Width = HTML_Width + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas($("#all-content")[0]).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+        for (var i = 1; i <= totalPDFPages; i++) { 
+            pdf.addPage(PDF_Width, PDF_Height);
+            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+        }
+        pdf.save("Your_PDF_Name.pdf");
+        $(".html-content").hide();
+    });
+}
+		</script>
+
+		<button onclick="CreatePDFfromHTML()" class="btn btn-primary no-print" style="position:fixed;bottom:50px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download PDF</button>
 		
 		<br/><br/><br/>
 		<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
@@ -113,7 +143,7 @@
 							<h3>Sabri Sangjaya</h3>
 						</div>
 						<hr/>
-						<p>Person who doesnt decide a special majority between graphic design and computer science. Currently interested in machine learning and his friend. here is CurriculumVitae and Website build by github pages. when i said github pages it means no server side scripting like PHP. use some javascript and mix of other external service like CORS to retrieve data. still in developing process, any suggestion just comment in github repository</p>
+						<p>Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
 						<hr/>
 						<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube"></i></a>
 						<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fa fa-github"></span></a>
@@ -132,12 +162,12 @@
 							<hr>
 							<ul class="timeline">
 								<li>
-									<a target="_blank" href="https://www.um.ac.id">State University of Malang</a>
+									<a target="_blank" href="https://www.um.ac.id">Universitas Negeri Malang</a>
 									<a href="#" class="float-right">2016 - Current</a>
 									<p>Informatic Engineering</p>
 								</li>
 								<li>
-									<a href="#">Vocational High School 4 Malang</a>
+									<a target="_blank" href="https://smkn4malang.sch.id/">Vocational High School 4 Malang</a>
 									<a href="#" class="float-right">2013 - 2016</a>
 									<p>Multimedia Major</p>
 								</li>
@@ -188,28 +218,28 @@
 							<h4>Lifelong learner</h4>
 							<hr>
 							Online Course <br/> 
+							<a href='https://www.datacamp.com/profile/sabrisangjaya
+' class='badge badge-success' target="_blank">Datacamp</a>
+							<br/><small>
+							Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small><br/>
+							<hr/>
+							<a href='#' class='badge badge-success'>Progate</a>
+							<br/><small>
+							Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small><br/>
+							<hr/>
+							<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
+							<br/><small>
+							Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small><br/>
+							<hr/>
+							<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
+							<br/><small>
+							 Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small><br/>
+							<hr/>
 							<a href='#' class='badge badge-success'>Udemy</a>
 							<br/><small>
-							Promotional course </small><br/>
-							<hr/>
-							<a href='#' class='badge badge-secondary'>Progate</a>
-							<br/><small>
-							Reward for being instructor on DTS Program by Ministry of Telecomunication and Information </small><br/>
-							<hr/>
-							<a href='#' class='badge badge-secondary'>Codecademy</a>
-							<br/><small>
-							Scholarship by Codecademy during C0VID-19 pandemic </small><br/>
-							<hr/>
-							<a href='#' class='badge badge-secondary'>Dicoding</a>
-							<br/><small>
-							Scholarship by IDCamp Indosat</small><br/>
-							<hr/>
-							<a href='#' class='badge badge-secondary'>Datacamp</a>
-							<br/><small>
-							Scholarship by Facebook Developer Circle</small><br/>
-							<hr/>
-						</div>
+							Enroll to some promotional course. Mostly Python and Data Science </small>
 					</div>
+				</div>
 					<div class="card">
 						<div class="card-body">
 							
@@ -236,6 +266,38 @@
 							<hr/>
 							
 							<h5 class="mb-1">Comitee</h5>
+							
+							
+							
+							
+							
+							-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a><br/>
+
+-<a href='#' class='badge badge-success'>ICOVET 2019</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+							<br/>
+
+							-<a href='#' class='badge badge-success'>ICOVET 2018</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+							<a href='#' class='badge badge-primary'>Website Management</a>
+							<br/>
+
+							- <a href='#' class='badge badge-success'>LTDC 2018 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
+							<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
+							<br/>
+
+							- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
+							<a href='#' class='badge badge-primary'>Operator</a>
+							<br/>
+
 							- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
 							<a href='#' class='badge badge-secondary'>Regional</a>
 							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
@@ -261,30 +323,7 @@
 							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
 							<a href='#' class='badge badge-secondary'>National</a>
 							<a href='#' class='badge badge-primary'>LO and Operator</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-							<a href='#' class='badge badge-primary'>Operator</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LTDC 2018 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
-							<br/>
-							-<a href='#' class='badge badge-success'>ICOVET 2018</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Website Management</a>
-							<br/>
-							-<a href='#' class='badge badge-success'>ICOVET 2019</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-							<br/>
-							-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-							<br/><br/><hr/>
+							<hr/>
 							<h5 class="mb-1">Internship</h5>
 							- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
 							<a href='#' class='badge badge-secondary'>January-November 2015</a>
