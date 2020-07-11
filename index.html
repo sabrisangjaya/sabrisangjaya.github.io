@@ -49,6 +49,13 @@
 		.card-columns {
 		column-count: 2;
 		}
+		.card-columns2 {
+		column-count: 3;
+		}
+		.card-columns2 .card{
+			display: inline-block;
+		break-inside: avoid;
+		}
 		}
 		@media print
 		{
@@ -60,40 +67,44 @@
 		
 		</style>
 	</head>
-		<body id="all-content">
+	<body id="all-content" >
 		
-		
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+		<script type="text/javascript" src="js/html2canvas.js"></script>
+		<script type="text/javascript" src="js/jspdf.min.js"></script>
 		<script>
 			//Create PDf from HTML...
-function CreatePDFfromHTML() {
-	document.getElementById("card-info").style.visibility="visible";
-    var HTML_Width = $("#all-content").width();
-    var HTML_Height = $("#all-content").height();
-    var top_left_margin = 15;
-    var PDF_Width = HTML_Width + (top_left_margin * 2);
-    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-    var canvas_image_width = HTML_Width;
-    var canvas_image_height = HTML_Height;
-
-    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-    document.getElementById("digital-clock").style.visibility="visible";
-    html2canvas($("#all-content")[0]).then(function (canvas) {
-    	
-        var imgData = canvas.toDataURL("image/jpeg", 1.0);
-        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-        
-        pdf.save("sabri sangjaya cv.pdf");
-        document.getElementById("card-info").style.visibility="hidden";
-        
-    });
-}
-		</script>
-
-		<button onclick="CreatePDFfromHTML()" class="btn btn-primary no-print" style="position:fixed;bottom:50px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download CV PDF</button>
+		function CreatePDFfromHTML() {
+		window.scrollTo(0, 0);
+		document.getElementById("card-info").style.visibility="visible";
+		document.getElementById("digital-clock").style.visibility="visible";
+		document.getElementById("card-info").style.display="block";
+		html2canvas($("#all-content")[0]).then(function (canvas) {
 		
+		var imgData = canvas.toDataURL("image/jpeg", 1.0);
+		//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+		var options = {
+		pagesplit: true
+		};
+		var pdf = new jsPDF('p', 'pt', 'a4');
+		var imgProps= pdf.getImageProperties(imgData);
+		var width = pdf.internal.pageSize.getWidth();
+		var height = (imgProps.height * width) / imgProps.width;
+		var halamanheight=pdf.internal.pageSize.getHeight();
+		var totalPDFPages = Math.ceil(imgProps.height / height) - 1;
+		pdf.addImage(imgData, 'JPG', 0, 0, width, height);
+		for (var i = 1; i <= totalPDFPages; i++) {
+		pdf.addPage(width,halamanheight);
+		pdf.addImage(imgData, 'JPG', 0, -(halamanheight*i), width, height);
+		}
+		
+		pdf.save("sabri sangjaya cv.pdf");
+		document.getElementById("card-info").style.visibility="hidden";
+		document.getElementById("card-info").style.display="none";
+		
+		});
+		}
+		</script>
+		<button onclick="CreatePDFfromHTML()" class="btn btn-primary no-print" style="position:fixed;bottom:20px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download CV PDF</button>
 		<br/><br/><br/>
 		<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
 			<a class="navbar-brand" href="#">
@@ -130,16 +141,79 @@ function CreatePDFfromHTML() {
 							<h3>Sabri Sangjaya</h3>
 						</div>
 						<hr/>
-						<p>Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
+						<p style="text-align: justify;">Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
 						<hr/>
 						<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube"></i></a>
 						<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fa fa-github"></span></a>
 						<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fa fa-linkedin"></span></a>
-						 or find with username @sabrisangjaya
+						or find with username @sabrisangjaya
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success" role="alert" style="visibility: hidden;display:none;" id="card-info">
+					
+					Last updated <a href='#' class='badge badge-secondary'> July 2020</a> . This CV downloaded and auto generate at <a href='#' class='badge badge-success'><span id="digital-clock"></span></a> Access full and interactive CV at <a href='#' class='badge badge-primary'>https://sabrisangjaya.github.io</a> <br/>
+					Email Contact : sabriwp@outlook.com<br/>
+				</div>
+			</div>
+		</div>
+<script>
+function getDateTime() {
+	var now     = new Date();
+	var year    = now.getFullYear();
+
+	var day     = now.getDate();
+	var hour    = now.getHours();
+	var minute  = now.getMinutes();
+	var second  = now.getSeconds();
+	var weekday = new Array(7);
+	weekday[0] = "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";
+	var month = new Array();
+	month[0] = "January";
+	month[1] = "February";
+	month[2] = "March";
+	month[3] = "April";
+	month[4] = "May";
+	month[5] = "June";
+	month[6] = "July";
+	month[7] = "August";
+	month[8] = "September";
+	month[9] = "October";
+	month[10] = "November";
+	month[11] = "December";
+	var bulan= month[now.getMonth()];
+	var hari = weekday[now.getDay()];
+	if(day.toString().length == 1) {
+		day = '0'+day;
+	}
+	if(hour.toString().length == 1) {
+		hour = '0'+hour;
+	}
+	if(minute.toString().length == 1) {
+		minute = '0'+minute;
+	}
+	if(second.toString().length == 1) {
+		second = '0'+second;
+	}
+	var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;
+	return dateTime;
+}
+// example usage: realtime clock
+setInterval(function(){
+	currentTime = getDateTime();
+	document.getElementById("digital-clock").innerHTML = currentTime;
+}, 1000);
+</script>
+		<br/>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card-columns">
@@ -199,221 +273,217 @@ function CreatePDFfromHTML() {
 							
 						</div>
 					</div>
+					
 					<div class="card">
 						<div class="card-body">
-							
-							<h4>Lifelong learner</h4>
-							<hr>
-							Online Course <br/> 
-							<a href='https://www.datacamp.com/profile/sabrisangjaya
-' class='badge badge-success' target="_blank">Datacamp</a>
-							<br/><small>
-							Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small><br/>
+							<h5 class="mb-1">Organization Experience</h5>
 							<hr/>
-							<a href='#' class='badge badge-success'>Progate</a>
-							<br/><small>
-							Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small><br/>
-							<hr/>
-							<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
-							<br/><small>
-							Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small><br/>
-							<hr/>
-							<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
-							<br/><small>
-							 Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small><br/>
-							<hr/>
-							<a href='#' class='badge badge-success'>Udemy</a>
-							<br/><small>
-							Enroll to some promotional course. Mostly Python and Data Science </small>
-					</div>
-				</div>
-					<div class="card">
-						<div class="card-body">
-							
-							<h3>Experience</h3>
-							<hr>
-							<h5 class="mb-1">Organization</h5>
 							<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
-							<a href='#' class='badge badge-secondary'>2017-2019</a><br/><small>
-							Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small><br/>
-							<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a> 
-							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-							<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
-							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-							<br/>
-							<hr/>
-							<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
-							<a href='#' class='badge badge-secondary'>2017-2019</a>
-							<br/><small>
-							WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small><br/>
-							<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
-							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-							<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
-							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-							<hr/>
-							
-							<h5 class="mb-1">Comitee</h5>
-							
-							
-							
-							
-							
-							-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a><br/>
-
--<a href='#' class='badge badge-success'>ICOVET 2019</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-							<br/>
-
-							-<a href='#' class='badge badge-success'>ICOVET 2018</a>
-							<a href='#' class='badge badge-secondary'>International</a>
-							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Website Management</a>
-							<br/>
-
-							- <a href='#' class='badge badge-success'>LTDC 2018 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
-							<br/>
-
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-							<a href='#' class='badge badge-primary'>Operator</a>
-							<br/>
-
-							- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>Workshop Robotika 2017</a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>Workshop at School | 5-6 June 2017 </a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-secondary'>SMK IT </a>
-							<a href='#' class='badge badge-primary'>Technical Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LTDC 2017</a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Operator</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>LO and Operator</a>
-							<hr/>
-							<h5 class="mb-1">Internship</h5>
-							- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
-							<a href='#' class='badge badge-secondary'>January-November 2015</a>
-							<a href='#' class='badge badge-primary'>Frontend Website Developer</a>
-							<a href='#' class='badge badge-primary'>Graphic Designer</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>PT. Meridian Adhireka</a>
-							<a href='#' class='badge badge-secondary'>Mei-July 2019</a>
-							<a href='#' class='badge badge-primary'>Website Developer</a>
-							
-						</div>
-					</div>
-
-					<div class="card" style="visibility: hidden;" id="card-info">
-						<div class="card-body">
-							<h4>Info</h4>
-							<hr/>
-							<p>Access full CV at <a href='#' class='badge badge-primary'>sabrisangjaya.github.io</a> <br/>
-								Last CV content update : <a href='#' class='badge badge-secondary'> July 2020</a><br/>
-								CV Generate at : <a href='#' class='badge badge-success'><span id="digital-clock"></span></a>
-							</p>
-							<script>
-								function getDateTime() {
-        var now     = new Date(); 
-        var year    = now.getFullYear();
-        
-        var day     = now.getDate();
-        var hour    = now.getHours();
-        var minute  = now.getMinutes();
-        var second  = now.getSeconds();
-        var weekday = new Array(7);
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
-		var month = new Array();
-		month[0] = "January";
-		month[1] = "February";
-		month[2] = "March";
-		month[3] = "April";
-		month[4] = "May";
-		month[5] = "June";
-		month[6] = "July";
-		month[7] = "August";
-		month[8] = "September";
-		month[9] = "October";
-		month[10] = "November";
-		month[11] = "December";
-		var bulan= month[now.getMonth()];
-
-		var hari = weekday[now.getDay()]; 
-
-        if(day.toString().length == 1) {
-             day = '0'+day;
-        }   
-        if(hour.toString().length == 1) {
-             hour = '0'+hour;
-        }
-        if(minute.toString().length == 1) {
-             minute = '0'+minute;
-        }
-        if(second.toString().length == 1) {
-             second = '0'+second;
-        }   
-        var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;   
-         return dateTime;
-    }
-
-    // example usage: realtime clock
-    setInterval(function(){
-        currentTime = getDateTime();
-        document.getElementById("digital-clock").innerHTML = currentTime;
-    }, 1000);
-							</script>
-						</div>
+							<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
+						Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
+						<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
+						<a href='#' class='badge badge-secondary'>(2017-2018)</a>
+						<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
+						<a href='#' class='badge badge-secondary'>(2018-2019)</a>
+						<br/>
+						<hr/>
+						<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
+						<a href='#' class='badge badge-secondary'>2017-2019</a>
+						<br/><p style="text-align: justify;"><small>
+						WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small></p>
+						<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
+						<a href='#' class='badge badge-secondary'>(2017-2018)</a>
+						<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
+						<a href='#' class='badge badge-secondary'>(2018-2019)</a>
+						
 					</div>
 				</div>
-			</div>
-			
-		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
 				<div class="card">
 					<div class="card-body">
-						<h3>Portfolio</h3>
+						<h5 class="mb-1">Internship Experience</h5>
+						<hr/>
+						- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
+						<a href='#' class='badge badge-secondary'>January-November 2015</a>
+						<a href='#' class='badge badge-primary'>Frontend Website Developer</a>
+						<a href='#' class='badge badge-primary'>Graphic Designer</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>PT. Meridian Adhireka</a>
+						<a href='#' class='badge badge-secondary'>Mei-July 2019</a>
+						<a href='#' class='badge badge-primary'>Website Developer</a>
+						
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<h5 class="mb-1">Comitee Experience</h5>
+						<hr/>
+						-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
+						<a href='#' class='badge badge-secondary'>International</a>
+						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a><br/>
+						-<a href='#' class='badge badge-success'>ICOVET 2019</a>
+						<a href='#' class='badge badge-secondary'>International</a>
+						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+						<br/>
+						-<a href='#' class='badge badge-success'>ICOVET 2018</a>
+						<a href='#' class='badge badge-secondary'>International</a>
+						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+						<a href='#' class='badge badge-primary'>Website Management</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>LTDC 2018 </a>
+						<a href='#' class='badge badge-secondary'>National</a>
+						<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
+						<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
+						<a href='#' class='badge badge-secondary'>National</a>
+						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
+						<a href='#' class='badge badge-primary'>Operator</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
+						<a href='#' class='badge badge-secondary'>Regional</a>
+						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>Workshop Robotika 2017</a>
+						<a href='#' class='badge badge-secondary'>Regional</a>
+						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>Workshop at School | 5-6 June 2017 </a>
+						<a href='#' class='badge badge-secondary'>Regional</a>
+						<a href='#' class='badge badge-secondary'>SMK IT </a>
+						<a href='#' class='badge badge-primary'>Technical Section</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
+						<a href='#' class='badge badge-secondary'>National</a>
+						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
+						<br/>
+						- <a href='#' class='badge badge-success'>LTDC 2017</a>
+						<a href='#' class='badge badge-secondary'>National</a>
+						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+						<a href='#' class='badge badge-primary'>Operator</a>
+						<br/>
+						- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
+						<a href='#' class='badge badge-secondary'>National</a>
+						<a href='#' class='badge badge-primary'>LO and Operator</a>
+						
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-body">
+						<h5 class="mb-1">Mentorship Experience</h5>
+						<hr/>
+						- <a href='#' class='badge badge-success'>DTS OA 2020 - Progate</a>
+						<p style="text-align: justify;"><small>
+							being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Being instructor for first batch and second batch where each batch takes time seven week training</small>
+						</p>
+						- <a href='#' class='badge badge-success'>Workshop at School 2017 </a>
+						<p style="text-align: justify;"><small>
+							being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMK ARROHMAH KEPANJEN on 5-7 June 2017. </small>
+						</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						
+						<h4>Lifelong learner</h4>
 						<hr>
-						<p>Here are some portfolio</p>
-						<div class="row">
-							<div class="col-md-3 col-sm-6"><a href="#" data-toggle="modal" data-target="#exampleModal"><img src="img/12.jpg" class="img-thumbnail" alt="..."></a></div>
-							<div class="col-md-3 col-sm-6"><img src="img/13.png" class="img-thumbnail" alt="..."></div>
-							<div class="col-md-3 col-sm-6"><img src="img/angkotmalang.png" class="img-thumbnail" alt="..."></div>
-							<div class="col-md-3 col-sm-6"><img data-image="img/semantic.jpg" src="img/semantic.jpg" class="img-thumbnail" alt="..."></div>
+						<div class="row" >
+							<div class="col-md-6">
+								<a href='https://www.datacamp.com/profile/sabrisangjaya
+								' class='badge badge-success' target="_blank">Datacamp</a>
+								<br/><small>
+								Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small>
+							</div>
+							<div class="col-md-6">
+								
+								<a href='#' class='badge badge-success'>Progate</a>
+								<br/><small>
+								Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small>
+							</div>
+							<div class="col-md-6">
+								<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
+								<br/><small>
+								Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small>
+							</div>
+							<div class="col-md-6">
+								<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
+								<br/><small>
+								Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small>
+							</div>
+							<div class="col-md-6">
+								<a href='#' class='badge badge-success'>Udemy</a>
+								<br/><small>
+								Enroll to some promotional course. Mostly Python and Data Science </small>
+							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 		
-		<br/>
 	</div>
+	
+	<br/>
+	<div class="row">
+		<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
+			<div class="card">
+				<div class="card-body">
+					<h3>Portfolio</h3>
+					<hr>
+					<p>Here are some portfolio</p>
+					<div class="card-columns2">
+						
+						<div class="card">
+							<a href="#" data-toggle="modal" data-target="#exampleModal">
+								<img src="img/12.jpg" class="card-img-top" alt="...">
+							</a>
+							<div class="card-body">
+								<h5 class="card-title">ArJogja</h5>
+								<p class="card-text">Jogja branding design implemented through augmented reality </p>
+								
+							</div>
+						</div>
+						
+						<div class="card">
+							<a href="#" data-toggle="modal" data-target="#exampleModal">
+								<img src="img/13.png" class="card-img-top" alt="...">
+							</a>
+							<div class="card-body">
+								<h5 class="card-title">KnightSwitch</h5>
+								<p class="card-text">Unity Game to promote save energy campaign</p>
+								
+							</div>
+						</div>
+						
+						<div class="card">
+							<a href="#" data-toggle="modal" data-target="#exampleModal">
+								<img src="img/angkotmalang.png" class="card-img-top" alt="...">
+							</a>
+							<div class="card-body">
+								<h5 class="card-title">Angkot Malang</h5>
+								<p class="card-text">Information system for public transportation in Malang</p>
+							</div>
+						</div>
+						
+						<div class="card">
+							<a href="#" data-toggle="modal" data-target="#exampleModal">
+								<img src="img/semantic.jpg" class="card-img-top" alt="...">
+							</a>
+							<div class="card-body">
+								<h5 class="card-title">Movie Database</h5>
+								<p class="card-text">Semantic Web Design about Movie Archive</p>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+	
 	
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
@@ -426,6 +496,7 @@ function CreatePDFfromHTML() {
 				</div>
 				<div class="modal-body" id="yt-player">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FAqce83fm-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<p><a href="https://drive.google.com/drive/folders/15TkT2ADuBLwSa-DDokOs582cIFyheyxU?usp=sharing" target="_blank">AR Application and Asset Download</a></p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -438,29 +509,27 @@ function CreatePDFfromHTML() {
 	$("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
 	});
 	</script>
-	<div class="container" data-html2canvas-ignore="true">
-		<div class="row">
-			<div class="col-md-12" style="margin-bottom:10px;">
-				<div class="card">
-					<div class="card-body" id="konten">
-						<h3>Youtube</h3>
-						<hr>
-						<p>Some of educational review, project and tutorial</p>
-						<div class="row" id="kontenyutub">
-						</div>
+	<div class="row">
+		<div class="col-md-12" style="margin-bottom:10px;">
+			<div class="card">
+				<div class="card-body" id="konten">
+					<h3>Youtube</h3>
+					<hr>
+					<p>Some of educational review, project and tutorial</p>
+					<div class="row" id="kontenyutub">
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12">
-				<div class="card">
-					
-					<div class="card-body">
-						<h3>Github Project </h3 >
-						<hr/>
-						Some of programming archieve
-						<br/>
-						<div id="kontengit"></div>
-					</div>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				
+				<div class="card-body">
+					<h3>Github Project </h3 >
+					<hr/>
+					Some of programming archieve
+					<br/>
+					<div id="kontengit"></div>
 				</div>
 			</div>
 		</div>
