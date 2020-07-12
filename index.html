@@ -55,6 +55,7 @@
 		.card-columns2 .card{
 			display: inline-block;
 		break-inside: avoid;
+		margin-bottom: 10px;
 		}
 		}
 		@media print
@@ -78,13 +79,13 @@
 		document.getElementById("card-info").style.visibility="visible";
 		document.getElementById("digital-clock").style.visibility="visible";
 		document.getElementById("card-info").style.display="block";
-		html2canvas($("#all-content")[0]).then(function (canvas) {
 		
+		html2canvas($("#all-content")[0],{scale:1}).then(function (canvas) {
+		
+
 		var imgData = canvas.toDataURL("image/jpeg", 1.0);
 		//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-		var options = {
-		pagesplit: true
-		};
+		
 		var pdf = new jsPDF('p', 'pt', 'a4');
 		var imgProps= pdf.getImageProperties(imgData);
 		var width = pdf.internal.pageSize.getWidth();
@@ -104,6 +105,8 @@
 		});
 		}
 		</script>
+		
+
 		<button onclick="CreatePDFfromHTML()" class="btn btn-primary no-print" style="position:fixed;bottom:20px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download CV PDF</button>
 		<br/><br/><br/>
 		<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
@@ -378,7 +381,7 @@ setInterval(function(){
 						</p>
 						- <a href='#' class='badge badge-success'>Workshop at School 2017 </a>
 						<p style="text-align: justify;"><small>
-							being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMK ARROHMAH KEPANJEN on 5-7 June 2017. </small>
+							being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMKIT ARROHMAH KEPANJEN on 5-7 June 2017. </small>
 						</p>
 					</div>
 				</div>
