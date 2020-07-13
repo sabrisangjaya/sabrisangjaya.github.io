@@ -6,7 +6,7 @@
 		<meta name="description" content="resume website sabri sangjaya cv">
 		<meta name="keywords" content="web,developer,designer,resume,cv,sabri,sangjaya" />
 		<meta name="author" content="Sabri Sangjaya">
-		
+		<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
 		<title>Sabri Sangjaya</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script src="js/jquery.min.js" type="text/javascript"></script>
@@ -74,36 +74,36 @@
 		<script type="text/javascript" src="js/jspdf.min.js"></script>
 		<script>
 			//Create PDf from HTML...
-		function CreatePDFfromHTML() {
-		window.scrollTo(0, 0);
-		document.getElementById("card-info").style.visibility="visible";
-		document.getElementById("digital-clock").style.visibility="visible";
-		document.getElementById("card-info").style.display="block";
-		
-		html2canvas($("#all-content")[0],{scale:1}).then(function (canvas) {
-		
+			function CreatePDFfromHTML() {
+			window.scrollTo(0, 0);
+			document.getElementById("card-info").style.visibility="visible";
+			document.getElementById("digital-clock").style.visibility="visible";
+			document.getElementById("card-info").style.display="block";
+			
+			html2canvas($("#all-content")[0],{scale:1}).then(function (canvas) {
+			
 
-		var imgData = canvas.toDataURL("image/jpeg", 1.0);
-		//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-		
-		var pdf = new jsPDF('p', 'pt', 'a4');
-		var imgProps= pdf.getImageProperties(imgData);
-		var width = pdf.internal.pageSize.getWidth();
-		var height = (imgProps.height * width) / imgProps.width;
-		var halamanheight=pdf.internal.pageSize.getHeight();
-		var totalPDFPages = Math.ceil(imgProps.height / height) - 1;
-		pdf.addImage(imgData, 'JPG', 0, 0, width, height);
-		for (var i = 1; i <= totalPDFPages; i++) {
-		pdf.addPage(width,halamanheight);
-		pdf.addImage(imgData, 'JPG', 0, -(halamanheight*i), width, height);
-		}
-		
-		pdf.save("sabri sangjaya cv.pdf");
-		document.getElementById("card-info").style.visibility="hidden";
-		document.getElementById("card-info").style.display="none";
-		
-		});
-		}
+			var imgData = canvas.toDataURL("image/jpeg", 1.0);
+			//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+			
+			var pdf = new jsPDF('p', 'pt', 'a4');
+			var imgProps= pdf.getImageProperties(imgData);
+			var width = pdf.internal.pageSize.getWidth();
+			var height = (imgProps.height * width) / imgProps.width;
+			var halamanheight=pdf.internal.pageSize.getHeight();
+			var totalPDFPages = Math.ceil(imgProps.height / height) - 1;
+			pdf.addImage(imgData, 'JPG', 0, 0, width, height);
+			for (var i = 1; i <= totalPDFPages; i++) {
+			pdf.addPage(width,halamanheight);
+			pdf.addImage(imgData, 'JPG', 0, -(halamanheight*i), width, height);
+			}
+			
+			pdf.save("sabri sangjaya cv.pdf");
+			document.getElementById("card-info").style.visibility="hidden";
+			document.getElementById("card-info").style.display="none";
+			
+			});
+			}
 		</script>
 		
 
@@ -131,7 +131,7 @@
 				</ul>
 			</div>
 		</nav>
-	</div>
+	
 	<div class="container" id="main">
 		<div class="row">
 			<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
@@ -163,59 +163,59 @@
 				</div>
 			</div>
 		</div>
-<script>
-function getDateTime() {
-	var now     = new Date();
-	var year    = now.getFullYear();
+		<script>
+			function getDateTime() {
+				var now     = new Date();
+				var year    = now.getFullYear();
 
-	var day     = now.getDate();
-	var hour    = now.getHours();
-	var minute  = now.getMinutes();
-	var second  = now.getSeconds();
-	var weekday = new Array(7);
-	weekday[0] = "Sunday";
-	weekday[1] = "Monday";
-	weekday[2] = "Tuesday";
-	weekday[3] = "Wednesday";
-	weekday[4] = "Thursday";
-	weekday[5] = "Friday";
-	weekday[6] = "Saturday";
-	var month = new Array();
-	month[0] = "January";
-	month[1] = "February";
-	month[2] = "March";
-	month[3] = "April";
-	month[4] = "May";
-	month[5] = "June";
-	month[6] = "July";
-	month[7] = "August";
-	month[8] = "September";
-	month[9] = "October";
-	month[10] = "November";
-	month[11] = "December";
-	var bulan= month[now.getMonth()];
-	var hari = weekday[now.getDay()];
-	if(day.toString().length == 1) {
-		day = '0'+day;
-	}
-	if(hour.toString().length == 1) {
-		hour = '0'+hour;
-	}
-	if(minute.toString().length == 1) {
-		minute = '0'+minute;
-	}
-	if(second.toString().length == 1) {
-		second = '0'+second;
-	}
-	var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;
-	return dateTime;
-}
-// example usage: realtime clock
-setInterval(function(){
-	currentTime = getDateTime();
-	document.getElementById("digital-clock").innerHTML = currentTime;
-}, 1000);
-</script>
+				var day     = now.getDate();
+				var hour    = now.getHours();
+				var minute  = now.getMinutes();
+				var second  = now.getSeconds();
+				var weekday = new Array(7);
+				weekday[0] = "Sunday";
+				weekday[1] = "Monday";
+				weekday[2] = "Tuesday";
+				weekday[3] = "Wednesday";
+				weekday[4] = "Thursday";
+				weekday[5] = "Friday";
+				weekday[6] = "Saturday";
+				var month = new Array();
+				month[0] = "January";
+				month[1] = "February";
+				month[2] = "March";
+				month[3] = "April";
+				month[4] = "May";
+				month[5] = "June";
+				month[6] = "July";
+				month[7] = "August";
+				month[8] = "September";
+				month[9] = "October";
+				month[10] = "November";
+				month[11] = "December";
+				var bulan= month[now.getMonth()];
+				var hari = weekday[now.getDay()];
+				if(day.toString().length == 1) {
+					day = '0'+day;
+				}
+				if(hour.toString().length == 1) {
+					hour = '0'+hour;
+				}
+				if(minute.toString().length == 1) {
+					minute = '0'+minute;
+				}
+				if(second.toString().length == 1) {
+					second = '0'+second;
+				}
+				var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;
+				return dateTime;
+			}
+			// example usage: realtime clock
+			setInterval(function(){
+				currentTime = getDateTime();
+				document.getElementById("digital-clock").innerHTML = currentTime;
+			}, 1000);
+		</script>
 		<br/>
 		<div class="row">
 			<div class="col-md-12">
@@ -276,216 +276,200 @@ setInterval(function(){
 							
 						</div>
 					</div>
-					
 					<div class="card">
 						<div class="card-body">
 							<h5 class="mb-1">Organization Experience</h5>
 							<hr/>
 							<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
 							<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
-						Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
-						<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
-						<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-						<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
-						<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-						<br/>
-						<hr/>
-						<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
-						<a href='#' class='badge badge-secondary'>2017-2019</a>
-						<br/><p style="text-align: justify;"><small>
-						WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small></p>
-						<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
-						<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-						<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
-						<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-						
+							Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
+							<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
+							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
+							<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
+							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
+							<br/>
+							<hr/>
+							<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
+							<a href='#' class='badge badge-secondary'>2017-2019</a>
+							<br/><p style="text-align: justify;"><small>
+							WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small></p>
+							<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
+							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
+							<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
+							<a href='#' class='badge badge-secondary'>(2018-2019)</a>	
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Internship Experience</h5>
+							<hr/>
+							- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
+							<a href='#' class='badge badge-secondary'>January-November 2015</a>
+							<a href='#' class='badge badge-primary'>Frontend Website Developer</a>
+							<a href='#' class='badge badge-primary'>Graphic Designer</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>PT. Meridian Adhireka</a>
+							<a href='#' class='badge badge-secondary'>Mei-July 2019</a>
+							<a href='#' class='badge badge-primary'>Website Developer</a>		
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Comitee Experience</h5>
+							<hr/>
+							-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a><br/>
+							-<a href='#' class='badge badge-success'>ICOVET 2019</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+							<br/>
+							-<a href='#' class='badge badge-success'>ICOVET 2018</a>
+							<a href='#' class='badge badge-secondary'>International</a>
+							<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
+							<a href='#' class='badge badge-primary'>Website Management</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>LTDC 2018 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
+							<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
+							<a href='#' class='badge badge-primary'>Operator</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
+							<a href='#' class='badge badge-secondary'>Regional</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>Workshop Robotika 2017</a>
+							<a href='#' class='badge badge-secondary'>Regional</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>Workshop at School | 5-6 June 2017 </a>
+							<a href='#' class='badge badge-secondary'>Regional</a>
+							<a href='#' class='badge badge-secondary'>SMK IT </a>
+							<a href='#' class='badge badge-primary'>Technical Section</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
+							<br/>
+							- <a href='#' class='badge badge-success'>LTDC 2017</a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
+							<a href='#' class='badge badge-primary'>Operator</a>
+							<br/>
+							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
+							<a href='#' class='badge badge-secondary'>National</a>
+							<a href='#' class='badge badge-primary'>LO and Operator</a>
+							
+						</div>
+					</div>			
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Mentorship Experience</h5>
+							<hr/>
+							- <a href='#' class='badge badge-success'>DTS OA 2020 - Progate</a>
+							<p style="text-align: justify;"><small>
+								being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Being instructor for first batch and second batch where each batch takes time seven week training</small>
+							</p>
+							- <a href='#' class='badge badge-success'>Workshop at School 2017 </a>
+							<p style="text-align: justify;"><small>
+								being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMKIT ARROHMAH KEPANJEN on 5-7 June 2017. </small>
+							</p>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h4>Lifelong learner</h4>
+							<hr>
+							<div class="row" >
+								<div class="col-md-6">
+									<a href='https://www.datacamp.com/profile/sabrisangjaya
+									' class='badge badge-success' target="_blank">Datacamp</a>
+									<br/><small>
+									Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small>
+								</div>
+								<div class="col-md-6">
+									
+									<a href='#' class='badge badge-success'>Progate</a>
+									<br/><small>
+									Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small>
+								</div>
+								<div class="col-md-6">
+									<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
+									<br/><small>
+									Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small>
+								</div>
+								<div class="col-md-6">
+									<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
+									<br/><small>
+									Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small>
+								</div>
+								<div class="col-md-6">
+									<a href='#' class='badge badge-success'>Udemy</a>
+									<br/><small>
+									Enroll to some promotional course. Mostly Python and Data Science </small>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
 				<div class="card">
 					<div class="card-body">
-						<h5 class="mb-1">Internship Experience</h5>
-						<hr/>
-						- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
-						<a href='#' class='badge badge-secondary'>January-November 2015</a>
-						<a href='#' class='badge badge-primary'>Frontend Website Developer</a>
-						<a href='#' class='badge badge-primary'>Graphic Designer</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>PT. Meridian Adhireka</a>
-						<a href='#' class='badge badge-secondary'>Mei-July 2019</a>
-						<a href='#' class='badge badge-primary'>Website Developer</a>
-						
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-body">
-						<h5 class="mb-1">Comitee Experience</h5>
-						<hr/>
-						-<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
-						<a href='#' class='badge badge-secondary'>International</a>
-						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a><br/>
-						-<a href='#' class='badge badge-success'>ICOVET 2019</a>
-						<a href='#' class='badge badge-secondary'>International</a>
-						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-						<br/>
-						-<a href='#' class='badge badge-success'>ICOVET 2018</a>
-						<a href='#' class='badge badge-secondary'>International</a>
-						<a href='#' class='badge badge-primary'>Publication and Documentation Section</a>
-						<a href='#' class='badge badge-primary'>Website Management</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>LTDC 2018 </a>
-						<a href='#' class='badge badge-secondary'>National</a>
-						<a href='#' class='badge badge-primary'>Coordinator of Publication, Design and Documentation Section</a>
-						<a href='#' class='badge badge-primary'>Coordinator of Timer of Match</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
-						<a href='#' class='badge badge-secondary'>National</a>
-						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-						<a href='#' class='badge badge-primary'>Operator</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
-						<a href='#' class='badge badge-secondary'>Regional</a>
-						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>Workshop Robotika 2017</a>
-						<a href='#' class='badge badge-secondary'>Regional</a>
-						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>Workshop at School | 5-6 June 2017 </a>
-						<a href='#' class='badge badge-secondary'>Regional</a>
-						<a href='#' class='badge badge-secondary'>SMK IT </a>
-						<a href='#' class='badge badge-primary'>Technical Section</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-						<a href='#' class='badge badge-secondary'>National</a>
-						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-						<br/>
-						- <a href='#' class='badge badge-success'>LTDC 2017</a>
-						<a href='#' class='badge badge-secondary'>National</a>
-						<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-						<a href='#' class='badge badge-primary'>Operator</a>
-						<br/>
-						- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-						<a href='#' class='badge badge-secondary'>National</a>
-						<a href='#' class='badge badge-primary'>LO and Operator</a>
-						
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-body">
-						<h5 class="mb-1">Mentorship Experience</h5>
-						<hr/>
-						- <a href='#' class='badge badge-success'>DTS OA 2020 - Progate</a>
-						<p style="text-align: justify;"><small>
-							being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Being instructor for first batch and second batch where each batch takes time seven week training</small>
-						</p>
-						- <a href='#' class='badge badge-success'>Workshop at School 2017 </a>
-						<p style="text-align: justify;"><small>
-							being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMKIT ARROHMAH KEPANJEN on 5-7 June 2017. </small>
-						</p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-body">
-						
-						<h4>Lifelong learner</h4>
+						<h3>Portfolio</h3>
 						<hr>
-						<div class="row" >
-							<div class="col-md-6">
-								<a href='https://www.datacamp.com/profile/sabrisangjaya
-								' class='badge badge-success' target="_blank">Datacamp</a>
-								<br/><small>
-								Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small>
+						<p>Here are some portfolio</p>
+						<div class="card-columns2">
+							<div class="card">
+								<a href="#" data-toggle="modal" data-target="#exampleModal">
+									<img src="img/12.jpg" class="card-img-top" alt="...">
+								</a>
+								<div class="card-body">
+									<h5 class="card-title">ArJogja</h5>
+									<p class="card-text">Jogja branding design implemented through augmented reality </p>
+								</div>
+							</div>		
+							<div class="card">
+								<a href="#" data-toggle="modal" data-target="#exampleModal">
+									<img src="img/13.png" class="card-img-top" alt="...">
+								</a>
+								<div class="card-body">
+									<h5 class="card-title">KnightSwitch</h5>
+									<p class="card-text">Unity Game to promote save energy campaign</p>	
+								</div>
 							</div>
-							<div class="col-md-6">
-								
-								<a href='#' class='badge badge-success'>Progate</a>
-								<br/><small>
-								Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small>
+							<div class="card">
+								<a href="#" data-toggle="modal" data-target="#exampleModal">
+									<img src="img/angkotmalang.png" class="card-img-top" alt="...">
+								</a>
+								<div class="card-body">
+									<h5 class="card-title">Angkot Malang</h5>
+									<p class="card-text">Information system for public transportation in Malang</p>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
-								<br/><small>
-								Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small>
-							</div>
-							<div class="col-md-6">
-								<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
-								<br/><small>
-								Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small>
-							</div>
-							<div class="col-md-6">
-								<a href='#' class='badge badge-success'>Udemy</a>
-								<br/><small>
-								Enroll to some promotional course. Mostly Python and Data Science </small>
-							</div>
+							<div class="card">
+								<a href="#" data-toggle="modal" data-target="#exampleModal">
+									<img src="img/semantic.jpg" class="card-img-top" alt="...">
+								</a>
+								<div class="card-body">
+									<h5 class="card-title">Movie Database</h5>
+									<p class="card-text">Semantic Web Design about Movie Archive</p>
+								</div>
+							</div>			
 						</div>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-		
-	</div>
-	
-	<br/>
-	<div class="row">
-		<div class="col-md-12 col-sm-12" style="margin-bottom:10px;">
-			<div class="card">
-				<div class="card-body">
-					<h3>Portfolio</h3>
-					<hr>
-					<p>Here are some portfolio</p>
-					<div class="card-columns2">
-						
-						<div class="card">
-							<a href="#" data-toggle="modal" data-target="#exampleModal">
-								<img src="img/12.jpg" class="card-img-top" alt="...">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">ArJogja</h5>
-								<p class="card-text">Jogja branding design implemented through augmented reality </p>
-								
-							</div>
-						</div>
-						
-						<div class="card">
-							<a href="#" data-toggle="modal" data-target="#exampleModal">
-								<img src="img/13.png" class="card-img-top" alt="...">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">KnightSwitch</h5>
-								<p class="card-text">Unity Game to promote save energy campaign</p>
-								
-							</div>
-						</div>
-						
-						<div class="card">
-							<a href="#" data-toggle="modal" data-target="#exampleModal">
-								<img src="img/angkotmalang.png" class="card-img-top" alt="...">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">Angkot Malang</h5>
-								<p class="card-text">Information system for public transportation in Malang</p>
-							</div>
-						</div>
-						
-						<div class="card">
-							<a href="#" data-toggle="modal" data-target="#exampleModal">
-								<img src="img/semantic.jpg" class="card-img-top" alt="...">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">Movie Database</h5>
-								<p class="card-text">Semantic Web Design about Movie Archive</p>
-							</div>
-						</div>
-						
-						
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<br/>
+		<br/>
 	
 	
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -508,9 +492,9 @@ setInterval(function(){
 		</div>
 	</div>
 	<script type="text/javascript">
-	$('#exampleModal').on('hidden.bs.modal', function () {
-	$("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
-	});
+		$('#exampleModal').on('hidden.bs.modal', function () {
+		$("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
+		});
 	</script>
 	<div class="row">
 		<div class="col-md-12" style="margin-bottom:10px;">
@@ -526,7 +510,6 @@ setInterval(function(){
 		</div>
 		<div class="col-md-12">
 			<div class="card">
-				
 				<div class="card-body">
 					<h3>Github Project </h3 >
 					<hr/>
