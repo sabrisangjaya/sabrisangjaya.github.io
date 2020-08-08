@@ -67,6 +67,7 @@
 		}
 		
 		</style>
+		
 	</head>
 	<body id="all-content" >
 		
@@ -82,7 +83,6 @@
 			
 			html2canvas($("#all-content")[0],{scale:1}).then(function (canvas) {
 			
-
 			var imgData = canvas.toDataURL("image/jpeg", 1.0);
 			//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
 			
@@ -106,14 +106,13 @@
 			}
 		</script>
 		
-
 		<button onclick="CreatePDFfromHTML()" class="btn btn-primary no-print" style="position:fixed;bottom:20px;right:10px;z-index: 99999" data-html2canvas-ignore="true">Download CV PDF</button>
 		<br/><br/><br/>
 		<nav class="navbar  fixed-top navbar-dark bg-primary no-print" data-html2canvas-ignore="true">
 			<a class="navbar-brand" href="#">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 3515 3515" xml:space="preserve" class="d-inline-block align-top">
 					<defs>
-						<style type="text/css">.fil0,.fil1{fill:#000}.fil1{fill-rule:nonzero}</style>
+					<style type="text/css">.fil0,.fil1{fill:#000}.fil1{fill-rule:nonzero}</style>
 					</defs>
 					<g id="Layer_x0020_1">
 						<metadata id="CorelCorpID_0Corel-Layer"/>
@@ -142,161 +141,162 @@
 				</ul>
 			</div>
 		</nav>
-	<style>
-		.fil0,.fil1{
-			fill:#FFF;
-		}
-	</style>
-	<div class="container" id="main">
-		<div class="row">
-			<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
-				<img src="img/profil.jpg" class="img-thumbnail" alt="profil">
-			</div>
-			<div class="col-md-8 col-sm-12" style="margin-bottom:10px;">
-				<div class="card">
-					<div class="card-body">
-						<div style="text-align: left">
-							<h3>Sabri Sangjaya</h3>
-						</div>
-						<hr/>
-						<p style="text-align: justify;">Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
-						<hr/>
-						<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube"></i></a>
-						<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fa fa-github"></span></a>
-						<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fa fa-linkedin"></span></a>
-						or find with username @sabrisangjaya
-					</div>
-				</div>
-			</div>
+		<div>
+			<style type='text/css'>
+				.fil0,.fil1{
+					fill:#FFF;
+				}
+			</style>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="alert alert-success" role="alert" style="visibility: hidden;display:none;" id="card-info">
-					
-					Last updated <a href='#' class='badge badge-secondary'> July 2020</a> . This CV downloaded and auto generate at <a href='#' class='badge badge-success'><span id="digital-clock"></span></a> Access full and interactive CV at <a href='#' class='badge badge-primary'>https://sabrisangjaya.github.io</a> <br/>
-					Email Contact : sabriwp@outlook.com<br/>
+		<div class="container" id="main">
+			<div class="row">
+				<div class="col-md-4 col-sm-12" style="margin-bottom:10px;">
+					<img src="img/profil.jpg" class="img-thumbnail" alt="profil">
 				</div>
-			</div>
-		</div>
-		<script>
-			function getDateTime() {
-				var now     = new Date();
-				var year    = now.getFullYear();
-
-				var day     = now.getDate();
-				var hour    = now.getHours();
-				var minute  = now.getMinutes();
-				var second  = now.getSeconds();
-				var weekday = new Array(7);
-				weekday[0] = "Sunday";
-				weekday[1] = "Monday";
-				weekday[2] = "Tuesday";
-				weekday[3] = "Wednesday";
-				weekday[4] = "Thursday";
-				weekday[5] = "Friday";
-				weekday[6] = "Saturday";
-				var month = new Array();
-				month[0] = "January";
-				month[1] = "February";
-				month[2] = "March";
-				month[3] = "April";
-				month[4] = "May";
-				month[5] = "June";
-				month[6] = "July";
-				month[7] = "August";
-				month[8] = "September";
-				month[9] = "October";
-				month[10] = "November";
-				month[11] = "December";
-				var bulan= month[now.getMonth()];
-				var hari = weekday[now.getDay()];
-				if(day.toString().length == 1) {
-					day = '0'+day;
-				}
-				if(hour.toString().length == 1) {
-					hour = '0'+hour;
-				}
-				if(minute.toString().length == 1) {
-					minute = '0'+minute;
-				}
-				if(second.toString().length == 1) {
-					second = '0'+second;
-				}
-				var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;
-				return dateTime;
-			}
-			// example usage: realtime clock
-			setInterval(function(){
-				currentTime = getDateTime();
-				document.getElementById("digital-clock").innerHTML = currentTime;
-			}, 1000);
-		</script>
-		<br/>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card-columns">
+				<div class="col-md-8 col-sm-12" style="margin-bottom:10px;">
 					<div class="card">
 						<div class="card-body">
-							<h4>Education</h4>
-							<hr>
-							<ul class="timeline">
-								<li>
-									<a target="_blank" href="https://www.um.ac.id">Universitas Negeri Malang</a>
-									<a href="#" class="float-right">2016 - Current</a>
-									<p>Informatic Engineering</p>
-								</li>
-								<li>
-									<a target="_blank" href="https://smkn4malang.sch.id/">Vocational High School 4 Malang</a>
-									<a href="#" class="float-right">2013 - 2016</a>
-									<p>Multimedia Major</p>
-								</li>
-								<li>
-									<a href="#">Junior High School 20 Malang</a>
-									<a href="#" class="float-right">2010 - 2013</a>
-									<p>SMP Negeri 20 Malang</p>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							
-							<h4>Skills</h4>
-							<hr>
-							Skills <br/> <a href='#' class='badge badge-success'>Web Design</a>
-							<a href='#' class='badge badge-secondary'>HTML</a>
-							<a href='#' class='badge badge-secondary'>CSS</a>
-							<a href='#' class='badge badge-secondary'>JS</a>
-							<a href='#' class='badge badge-secondary'>Framework</a>
-							<a href='#' class='badge badge-secondary'>Bootstrap</a>
-							<a href='#' class='badge badge-success'>Graphic Design</a>
-							<a href='#' class='badge badge-secondary'>Photoshop</a>
-							<a href='#' class='badge badge-secondary'>Coreldraw</a>
-							<a href='#' class='badge badge-secondary'>Layout</a>
-							<a href='#' class='badge badge-secondary'>Branding</a>
-							<a href='#' class='badge badge-secondary'>Packaging</a>
-							<a href='#' class='badge badge-secondary'>Videography</a>
-							<a href='#' class='badge badge-success'>Programming</a>
-							<a href='#' class='badge badge-secondary'>Python</a>
-							<a href='#' class='badge badge-secondary'>C#</a>
-							<a href='#' class='badge badge-secondary'>Unity</a>
-							<a href='#' class='badge badge-secondary'>Game Programming</a><br/><br/>
-							Interest <br/>
-							<a href='#' class='badge badge-success'>Web Development</a>
-							<a href='#' class='badge badge-success'>Machine Learning</a>
-							<br/><br/>
-							Certification <br/>
-							<a href='#' class='badge badge-success'>Digitalent Kominfo 2019 Online Academy</a>
-							<a href='#' class='badge badge-success'>Netacad PCAP Programming Essential in Python </a>
-							
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="mb-1">Organization Experience</h5>
+							<div style="text-align: left">
+								<h3>Sabri Sangjaya</h3>
+							</div>
 							<hr/>
-							<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
-							<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
+							<p style="text-align: justify;">Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
+							<hr/>
+							<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube"></i></a>
+							<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fa fa-github"></span></a>
+							<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fa fa-linkedin"></span></a>
+							or find with username @sabrisangjaya
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-success" role="alert" style="visibility: hidden;display:none;" id="card-info">
+						
+						Last updated <a href='#' class='badge badge-secondary'> July 2020</a> . This CV downloaded and auto generate at <a href='#' class='badge badge-success'><span id="digital-clock"></span></a> Access full and interactive CV at <a href='#' class='badge badge-primary'>https://sabrisangjaya.github.io</a> <br/>
+						Email Contact : sabriwp@outlook.com<br/>
+					</div>
+				</div>
+			</div>
+			<script>
+				function getDateTime() {
+					var now     = new Date();
+					var year    = now.getFullYear();
+					var day     = now.getDate();
+					var hour    = now.getHours();
+					var minute  = now.getMinutes();
+					var second  = now.getSeconds();
+					var weekday = new Array(7);
+					weekday[0] = "Sunday";
+					weekday[1] = "Monday";
+					weekday[2] = "Tuesday";
+					weekday[3] = "Wednesday";
+					weekday[4] = "Thursday";
+					weekday[5] = "Friday";
+					weekday[6] = "Saturday";
+					var month = new Array();
+					month[0] = "January";
+					month[1] = "February";
+					month[2] = "March";
+					month[3] = "April";
+					month[4] = "May";
+					month[5] = "June";
+					month[6] = "July";
+					month[7] = "August";
+					month[8] = "September";
+					month[9] = "October";
+					month[10] = "November";
+					month[11] = "December";
+					var bulan= month[now.getMonth()];
+					var hari = weekday[now.getDay()];
+					if(day.toString().length == 1) {
+						day = '0'+day;
+					}
+					if(hour.toString().length == 1) {
+						hour = '0'+hour;
+					}
+					if(minute.toString().length == 1) {
+						minute = '0'+minute;
+					}
+					if(second.toString().length == 1) {
+						second = '0'+second;
+					}
+					var dateTime = hari+', '+day+' '+bulan+' '+year+' '+hour+':'+minute+':'+second;
+					return dateTime;
+				}
+				// example usage: realtime clock
+				setInterval(function(){
+					currentTime = getDateTime();
+					document.getElementById("digital-clock").innerHTML = currentTime;
+				}, 1000);
+			</script>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card-columns">
+						<div class="card">
+							<div class="card-body">
+								<h4>Education</h4>
+								<hr>
+								<ul class="timeline">
+									<li>
+										<a target="_blank" href="https://www.um.ac.id">Universitas Negeri Malang</a>
+										<a href="#" class="float-right">2016 - Current</a>
+										<p>Informatic Engineering</p>
+									</li>
+									<li>
+										<a target="_blank" href="https://smkn4malang.sch.id/">Vocational High School 4 Malang</a>
+										<a href="#" class="float-right">2013 - 2016</a>
+										<p>Multimedia Major</p>
+									</li>
+									<li>
+										<a href="#">Junior High School 20 Malang</a>
+										<a href="#" class="float-right">2010 - 2013</a>
+										<p>SMP Negeri 20 Malang</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								
+								<h4>Skills</h4>
+								<hr>
+								Skills <br/> <a href='#' class='badge badge-success'>Web Design</a>
+								<a href='#' class='badge badge-secondary'>HTML</a>
+								<a href='#' class='badge badge-secondary'>CSS</a>
+								<a href='#' class='badge badge-secondary'>JS</a>
+								<a href='#' class='badge badge-secondary'>Framework</a>
+								<a href='#' class='badge badge-secondary'>Bootstrap</a>
+								<a href='#' class='badge badge-success'>Graphic Design</a>
+								<a href='#' class='badge badge-secondary'>Photoshop</a>
+								<a href='#' class='badge badge-secondary'>Coreldraw</a>
+								<a href='#' class='badge badge-secondary'>Layout</a>
+								<a href='#' class='badge badge-secondary'>Branding</a>
+								<a href='#' class='badge badge-secondary'>Packaging</a>
+								<a href='#' class='badge badge-secondary'>Videography</a>
+								<a href='#' class='badge badge-success'>Programming</a>
+								<a href='#' class='badge badge-secondary'>Python</a>
+								<a href='#' class='badge badge-secondary'>C#</a>
+								<a href='#' class='badge badge-secondary'>Unity</a>
+								<a href='#' class='badge badge-secondary'>Game Programming</a><br/><br/>
+								Interest <br/>
+								<a href='#' class='badge badge-success'>Web Development</a>
+								<a href='#' class='badge badge-success'>Machine Learning</a>
+								<br/><br/>
+								Certification <br/>
+								<a href='#' class='badge badge-success'>Digitalent Kominfo 2019 Online Academy</a>
+								<a href='#' class='badge badge-success'>Netacad PCAP Programming Essential in Python </a>
+								
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<h5 class="mb-1">Organization Experience</h5>
+								<hr/>
+								<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
+								<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
 							Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
 							<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
 							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
@@ -311,23 +311,10 @@
 							<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
 							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
 							<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
-							<a href='#' class='badge badge-secondary'>(2018-2019)</a>	
+							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
 						</div>
 					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="mb-1">Internship Experience</h5>
-							<hr/>
-							- <a href='#' class='badge badge-success'>CV. Multi Mega Teknologi Indonesia </a>
-							<a href='#' class='badge badge-secondary'>January-November 2015</a>
-							<a href='#' class='badge badge-primary'>Frontend Website Developer</a>
-							<a href='#' class='badge badge-primary'>Graphic Designer</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>PT. Meridian Adhireka</a>
-							<a href='#' class='badge badge-secondary'>Mei-July 2019</a>
-							<a href='#' class='badge badge-primary'>Website Developer</a>		
-						</div>
-					</div>
+			
 					<div class="card">
 						<div class="card-body">
 							<h5 class="mb-1">Comitee Experience</h5>
@@ -381,7 +368,7 @@
 							<a href='#' class='badge badge-primary'>LO and Operator</a>
 							
 						</div>
-					</div>			
+					</div>
 					<div class="card">
 						<div class="card-body">
 							<h5 class="mb-1">Mentorship Experience</h5>
@@ -451,14 +438,14 @@
 									<h5 class="card-title">ArJogja</h5>
 									<p class="card-text">Jogja branding design implemented through augmented reality </p>
 								</div>
-							</div>		
+							</div>
 							<div class="card">
 								<a href="#" data-toggle="modal" data-target="#exampleModal">
 									<img src="img/13.png" class="card-img-top" alt="...">
 								</a>
 								<div class="card-body">
 									<h5 class="card-title">KnightSwitch</h5>
-									<p class="card-text">Unity Game to promote save energy campaign</p>	
+									<p class="card-text">Unity Game to promote save energy campaign</p>
 								</div>
 							</div>
 							<div class="card">
@@ -478,64 +465,64 @@
 									<h5 class="card-title">Movie Database</h5>
 									<p class="card-text">Semantic Web Design about Movie Archive</p>
 								</div>
-							</div>			
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br/>
-	
-	
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Arjogja</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body" id="yt-player">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FAqce83fm-8"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p><a href="https://drive.google.com/drive/folders/15TkT2ADuBLwSa-DDokOs582cIFyheyxU?usp=sharing" target="_blank">AR Application and Asset Download</a></p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		$('#exampleModal').on('hidden.bs.modal', function () {
-		$("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
-		});
-	</script>
-	<div class="row">
-		<div class="col-md-12" style="margin-bottom:10px;">
-			<div class="card">
-				<div class="card-body" id="konten">
-					<h3>Youtube</h3>
-					<hr>
-					<p>Some of educational review, project and tutorial</p>
-					<div class="row" id="kontenyutub">
+		
+		
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Arjogja</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="yt-player">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FAqce83fm-8"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<p><a href="https://drive.google.com/drive/folders/15TkT2ADuBLwSa-DDokOs582cIFyheyxU?usp=sharing" target="_blank">AR Application and Asset Download</a></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-body">
-					<h3>Github Project </h3 >
-					<hr/>
-					Some of programming archieve
-					<br/>
-					<div id="kontengit"></div>
+		<script type="text/javascript">
+			$('#exampleModal').on('hidden.bs.modal', function () {
+			$("#exampleModal iframe").attr("src", $("#exampleModal iframe").attr("src"));
+			});
+		</script>
+		<div class="row">
+			<div class="col-md-12" style="margin-bottom:10px;">
+				<div class="card">
+					<div class="card-body" id="konten">
+						<h3>Youtube</h3>
+						<hr>
+						<p>Some of educational review, project and tutorial</p>
+						<div class="row" id="kontenyutub">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<h3>Github Project </h3 >
+						<hr/>
+						Some of programming archieve
+						<br/>
+						<div id="kontengit"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 	<br/><br/><br/><br/>
 </body>
 </html>
