@@ -2271,7 +2271,7 @@
                     y: 0
                     },
                     rangeMax: {
-                    y: 1
+                    y: 100
                     }
                     },
                     zoom: {
@@ -2281,7 +2281,7 @@
                     y: 0
                     },
                     rangeMax: {
-                    y: 1
+                    y: 100
                     }
                     }
                     }
@@ -2290,12 +2290,12 @@
                     yAxes: [{
                     scaleLabel: {
                     display: true,
-                    labelString: 'Nilai'
+                    labelString: 'Nilai Performa (%)'
                     },
                     ticks: {
-                    max: 1,
+                    max: 100,
                     min: 0,
-                    stepSize: 0.05
+                    stepSize: 5
                     }
                     }],
                     xAxes: [{
@@ -2399,22 +2399,24 @@
                 zoom: {
                 pan: {
                 enabled: true,
-                mode: 'y',
+                mode: 'xy',
                 rangeMin: {
                 y: 0
                 },
                 rangeMax: {
-                y: 1
+                y: 100
                 }
                 },
                 zoom: {
                 enabled: true,
-                mode: 'y',
+                mode: 'xy',
                 rangeMin: {
+                x:0,
                 y: 0
                 },
                 rangeMax: {
-                y: 1
+                x:100,
+                y: 100
                 }
                 }
                 }
@@ -2423,12 +2425,12 @@
                 yAxes: [{
                 scaleLabel: {
                 display: true,
-                labelString: 'Nilai'
+                labelString: 'Nilai Performa (%)'
                 },
                 ticks: {
-                max: 1,
+                max: 100,
                 min: 0,
-                stepSize: 0.05
+                stepSize: 5
                 }
                 }],
                 xAxes: [{
@@ -2478,78 +2480,78 @@
                 }
                 else if(normalisasi==="2"){
                 var jenisnormalisasi="MinMaxScaler";
-                var awalloop=799;
-                var akhirloop=1598;
+                var awalloop=800;
+                var akhirloop=1599;
                 }
                 else if(normalisasi==="3"){
                 var jenisnormalisasi="MaxAbsScaler";
                 
-                var awalloop=1598; var akhirloop=2397;
+                var awalloop=1600; var akhirloop=2399;
                 }
                 else if(normalisasi==="4"){
                 var jenisnormalisasi="StandardScaler";
-                var awalloop=2397; var akhirloop=3196;
+                var awalloop=2400; var akhirloop=3199;
                 }
                 else if(normalisasi==="5"){
                 var jenisnormalisasi="RobustScaler";
-                var awalloop=3196; var akhirloop=3995;
+                var awalloop=3200; var akhirloop=3999;
                 }
                 else if(normalisasi==="6"){
                 var jenisnormalisasi="Normalizer";
-                var awalloop=3995; var akhirloop=4794;
+                var awalloop=4000;var akhirloop=4799;
                 }
                 else if(normalisasi==="7"){
                 var jenisnormalisasi="QuantileTransformer uniform";
-                var awalloop=4794; var akhirloop=5593;
+                var awalloop=4800;var akhirloop=5599;
                 }
                 else if(normalisasi==="8"){
                 var jenisnormalisasi="QuantileTransformer normal";
-                var awalloop=5593; var akhirloop=6392;
+                var awalloop=5600;var akhirloop=6399;
                 }
                 else if(normalisasi==="9"){
                 var jenisnormalisasi="PowerTransformer yeo-johnson";
-                var awalloop=6392; var akhirloop=7191;
+                var awalloop=6400;var akhirloop=7199;
                 }
                 }
                 else if(knn==="2"){
                 var jenisknn="WDKNN";
-                var awalloop=7191;
-                var akhirloop=14382;
+                var awalloop=7200;
+                var akhirloop=14399;
                 if(normalisasi==="1"){
                 var jenisnormalisasi="Tanpa Normalisasi";
-                var awalloop=7191; var akhirloop=7990;
+                var awalloop=7200;var akhirloop=7999;
                 }
                 else if(normalisasi==="2"){
                 var jenisnormalisasi="MinMaxScaler";
-                var awalloop=7990; var akhirloop=8789;
+                var awalloop=8000;var akhirloop=8799;
                 }
                 else if(normalisasi==="3"){
                 var jenisnormalisasi="MaxAbsScaler";
-                var awalloop=8789; var akhirloop=9588;
+                var awalloop=8800;var akhirloop=9599;
                 }
                 else if(normalisasi==="4"){
                 var jenisnormalisasi="StandardScaler";
-                var awalloop=9588; var akhirloop=10387;
+                var awalloop=9600;var akhirloop=10399;
                 }
                 else if(normalisasi==="5"){
                 var jenisnormalisasi="RobustScaler";
-                var awalloop=10387; var akhirloop=11186;
+                var awalloop=10400;var akhirloop=11199;
                 }
                 else if(normalisasi==="6"){
                 var jenisnormalisasi="Normalizer";
-                var awalloop=11186; var akhirloop=11985;
+                var awalloop=11200;var akhirloop=11999;
                 }
                 else if(normalisasi==="7"){
                 var jenisnormalisasi="QuantileTransformer uniform";
-                var awalloop=11985; var akhirloop=12784;
+                var awalloop=12000;var akhirloop=12799;
                 }
                 else if(normalisasi==="8"){
                 var jenisnormalisasi="QuantileTransformer normal";
-                var awalloop=12784; var akhirloop=13583;
+                var awalloop=12800;var akhirloop=13599;
                 }
                 else if(normalisasi==="9"){
                 var jenisnormalisasi="PowerTransformer yeo-johnson";
-                var awalloop=13583; var akhirloop=14382;
+                var awalloop=13600;var akhirloop=14399;
                 }
                 }
                 if(sampling==="1"){var jenissampling="Tanpa Resampling";}
@@ -2607,92 +2609,92 @@
                     dataakurasi=[];
                     datafmeasure=[];
                     if(knn==="1"){
-                    var jenisknn="KNN";
-                    var awalloop=0;
-                    var akhirloop=7199;
-                    if(normalisasi==="1"){
-                    var jenisnormalisasi="Tanpa Normalisasi";
-                    var awalloop=0;
-                    var akhirloop=799;
-                    }
-                    else if(normalisasi==="2"){
-                    var jenisnormalisasi="MinMaxScaler";
-                    var awalloop=799;
-                    var akhirloop=1598;
-                    }
-                    else if(normalisasi==="3"){
-                    var jenisnormalisasi="MaxAbsScaler";
-                    
-                    var awalloop=1598; var akhirloop=2397;
-                    }
-                    else if(normalisasi==="4"){
-                    var jenisnormalisasi="StandardScaler";
-                    var awalloop=2397; var akhirloop=3196;
-                    }
-                    else if(normalisasi==="5"){
-                    var jenisnormalisasi="RobustScaler";
-                    var awalloop=3196; var akhirloop=3995;
-                    }
-                    else if(normalisasi==="6"){
-                    var jenisnormalisasi="Normalizer";
-                    var awalloop=3995; var akhirloop=4794;
-                    }
-                    else if(normalisasi==="7"){
-                    var jenisnormalisasi="QuantileTransformer uniform";
-                    var awalloop=4794; var akhirloop=5593;
-                    }
-                    else if(normalisasi==="8"){
-                    var jenisnormalisasi="QuantileTransformer normal";
-                    var awalloop=5593; var akhirloop=6392;
-                    }
-                    else if(normalisasi==="9"){
-                    var jenisnormalisasi="PowerTransformer yeo-johnson";
-                    var awalloop=6392; var akhirloop=7191;
-                    }
-                    }
-                    else if(knn==="2"){
-                    var jenisknn="WDKNN";
-                    var awalloop=7191;
-                    var akhirloop=14382;
-                    if(normalisasi==="1"){
-                    var jenisnormalisasi="Tanpa Normalisasi";
-                    var awalloop=7191; var akhirloop=7990;
-                    }
-                    else if(normalisasi==="2"){
-                    var jenisnormalisasi="MinMaxScaler";
-                    var awalloop=7990; var akhirloop=8789;
-                    }
-                    else if(normalisasi==="3"){
-                    var jenisnormalisasi="MaxAbsScaler";
-                    var awalloop=8789; var akhirloop=9588;
-                    }
-                    else if(normalisasi==="4"){
-                    var jenisnormalisasi="StandardScaler";
-                    var awalloop=9588; var akhirloop=10387;
-                    }
-                    else if(normalisasi==="5"){
-                    var jenisnormalisasi="RobustScaler";
-                    var awalloop=10387; var akhirloop=11186;
-                    }
-                    else if(normalisasi==="6"){
-                    var jenisnormalisasi="Normalizer";
-                    var awalloop=11186; var akhirloop=11985;
-                    }
-                    else if(normalisasi==="7"){
-                    var jenisnormalisasi="QuantileTransformer uniform";
-                    var awalloop=11985; var akhirloop=12784;
-                    }
-                    else if(normalisasi==="8"){
-                    var jenisnormalisasi="QuantileTransformer normal";
-                    var awalloop=12784; var akhirloop=13583;
-                    }
-                    else if(normalisasi==="9"){
-                    var jenisnormalisasi="PowerTransformer yeo-johnson";
-                    var awalloop=13583; var akhirloop=14382;
-                    }
-                    }
-                    if(sampling==="1"){var jenissampling="Tanpa Resampling";}
-                    else if(sampling==="2"){var jenissampling="SMOTE";}
+                var jenisknn="KNN";
+                var awalloop=0;
+                var akhirloop=7199;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=0;
+                var akhirloop=799;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=800;
+                var akhirloop=1599;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                
+                var awalloop=1600; var akhirloop=2399;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=2400; var akhirloop=3199;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=3200; var akhirloop=3999;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=4000;var akhirloop=4799;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=4800;var akhirloop=5599;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=5600;var akhirloop=6399;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=6400;var akhirloop=7199;
+                }
+                }
+                else if(knn==="2"){
+                var jenisknn="WDKNN";
+                var awalloop=7200;
+                var akhirloop=14399;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=7200;var akhirloop=7999;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=8000;var akhirloop=8799;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                var awalloop=8800;var akhirloop=9599;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=9600;var akhirloop=10399;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=10400;var akhirloop=11199;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=11200;var akhirloop=11999;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=12000;var akhirloop=12799;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=12800;var akhirloop=13599;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=13600;var akhirloop=14399;
+                }
+                }
+                if(sampling==="1"){var jenissampling="Tanpa Resampling";}
+                else if(sampling==="2"){var jenissampling="SMOTE";}
                     
                     
                     if(jarak==="1"){var jenisjarak="euclidean";}
