@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="resume website sabri sangjaya cv">
+		<meta name="keywords" content="web,developer,designer,resume,cv,sabri,sangjaya" />
+		<meta name="author" content="Sabri Sangjaya">
+		<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
+		<title>Sabri Sangjaya</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/popper.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<style>
+		@media (min-width: 576px) {
+		.card-columns {
+		column-count: 2;
+		}
+		.card-columns2 {
+		column-count: 3;
+		}
+		.card-columns2 .card{
+		display: inline-block;
+		break-inside: avoid;
+		margin-bottom: 10px;
+		}
+		}
+		@media print
+		{
+		.no-print, .no-print *
+		{
+		display: none !important;
+		}
+		}
+		
+		</style>
+		
+	</head>
+	<body id="all-content" >
+		
+		<div class="container" id="main">
+			<br/><br/><br/>
+			<div class="row">
+				<div class="card">
+					<div class="card-body">
+						<div style="text-align: left">
+							<h3>Sabri Sangjaya</h3>
+						</div>
+						<hr>
+						<p style="text-align: justify;">Has skill majority at graphic design and computer science. Currently interested in machine learning and data science. sabrisangjaya.github.io is CurriculumVitae and Website build by github pages. When using github pages it means no server side scripting like PHP. This site was build using some javascript and mix of other external service like CORS to retrieve data. Still in developing process, any suggestion just comment in github repository</p>
+						<hr>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube"></i></a>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.github.com/sabrisangjaya" target="_blank"><span class="fa fa-github"></span></a>
+						<a style="margin:0 5px;font-size: 2em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fa fa-linkedin"></span></a>
+						or find with username @sabrisangjaya
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="card">
+					<div class="card-body" >
+						
+						<canvas id="mycanvas" width="500" height="500"></canvas>
+						<script>
+							function printAtWordWrap( context , text, x, y, lineHeight, fitWidth)
+						{
+						fitWidth = fitWidth || 0;
+						
+						if (fitWidth <= 0)
+						{
+						context.fillText( text, x, y );
+						return;
+						}
+						var words = text.split(' ');
+						var currentLine = 0;
+						var idx = 1;
+						while (words.length > 0 && idx <= words.length)
+						{
+						var str = words.slice(0,idx).join(' ');
+						var w = context.measureText(str).width;
+						if ( w > fitWidth )
+						{
+						if (idx==1)
+						{
+						idx=2;
+						}
+						context.fillText( words.slice(0,idx-1).join(' '), x, y + (lineHeight*currentLine) );
+						currentLine++;
+						words = words.splice(idx-1);
+						idx = 1;
+						}
+						else
+						{idx++;}
+						}
+						if  (idx > 0)
+						context.fillText( words.join(' '), x, y + (lineHeight*currentLine) );
+						}
+						
+						
+						
+						
+							canvas=document.getElementById("mycanvas");
+							ctx=canvas.getContext("2d");
+							img=new Image();
+							img2=new Image();
+							img2.crossOrigin = '*';
+
+							img2.src="https://picsum.photos/600/300";
+							ctx.fillStyle="#F0F0F0"
+							ctx.fillRect(0,0,500,470);
+							$.ajax({
+							type:'GET',
+							url:'https://api.quotable.io/random',
+							success:function(data){
+							console.log(data['content']);
+							ctx.font = "16px Helvetica Neue";
+							ctx.fillStyle = "black";
+							ctx.textAlign = "center";
+							printAtWordWrap(ctx, data['content']+" - "+data['author'], 250, 350, 16, 460 );
+							//ctx.font = "18px Arial";
+							//ctx.fillText(, 10, 50);
+							}
+							});
+							img2.onload=function() {
+								ctx.drawImage(img2,0,0,500,250);
+								//
+								//img.src="img/profil.jpg";
+								
+								$.ajax({
+								
+								url:"https://randomuser.me/api/",
+								dataType: 'json',
+
+								success:function(data){
+								console.log(data["results"][0]["picture"]["large"]);
+								img.crossOrigin = 'Anonymous';
+								img.headers= {'X-Requested-With': 'XMLHttpRequest'};
+								img.src='https://secret-ocean-49799.herokuapp.com/'+data["results"][0]["picture"]["large"];
+								}
+								});
+								
+								
+								
+							}
+							img.onload=function() {
+								ctx.save();
+								ctx.beginPath();
+								ctx.arc(250,250,70,0,2*Math.PI);
+								ctx.clip();
+								ctx.drawImage(img,180,180,140,140);
+								ctx.lineWidth=8;
+								ctx.strokeStyle="#FFFFFF";
+								ctx.stroke();
+								ctx.closePath();
+								ctx.restore();
+								//var result = document.getElementById('mycanvas').toDataURL("image/png");
+								//document.body.appendChild(result);
+							}
+							ctx.fillStyle="#000000"
+							ctx.fillRect(0,470,500,30);
+							
+							
+							
+						// var link = document.createElement('a');
+						// link.innerHTML = 'Save';
+						// //link.href = document.getElementById('mycanvas').toDataURL();
+						// link.addEventListener('click', function(e) {
+						// link.download = "imagename.png";
+						// }, false);
+						
+						</script>
+						
+					</div>
+					
+				</div>
+			</div>
+			<br/>
+			<script>
+			/*
+			ctx.fillStyle="#F0F0F0"
+										ctx.fillRect(0,0,500,470);
+																			img2.onload=function() {
+											ctx.drawImage(img2,0,0,600,200);
+											img.src="img/profil.jpg";
+																	}
+										img.onload=function() {
+											ctx.save();
+											ctx.beginPath();
+											ctx.arc(250,200,80,0,2*Math.PI);
+											ctx.clip();
+											ctx.drawImage(img,170,120,160,160);
+											ctx.lineWidth=7;
+											ctx.strokeStyle="#FFFFFF";
+											ctx.stroke();
+											ctx.closePath();
+											ctx.restore();
+										}
+										ctx.fillStyle="#000000"
+			*/
+			</script>
+		</body>
+	</html>
