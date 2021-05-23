@@ -9,7 +9,38 @@
 
 <url>
   <loc>https://sabrisangjaya.github.io/</loc>
-  <lastmod>2019-09-11T19:00:55+00:00</lastmod>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/resume.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/blog.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfolio.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfolioangkot.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfolioknightswitch.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfoliomoviedb.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
