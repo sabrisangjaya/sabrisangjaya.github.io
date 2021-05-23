@@ -1,0 +1,52 @@
+<div class="card">
+	<div class="card-body">
+		<h4>Portfolio</h4>
+		<hr>
+		<div class="card-columns2">
+			<div class="card">
+				<img src="img/portfolio/angkot/assetangkot.jpg" class="card-img-top" alt="">
+				<div class="card-body">
+					<h3 style="font-family: 'Source Sans Pro', sans-serif;">Angkot Malang</h3>
+					<p class="desc">Information system for public transportation in Malang...<a href="portfolioangkot.html" data-toggle="modal" data-target="#modal" class="openBtn">Read more</a></p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="img/portfolio/knightswitch/Screenshot_1.png" class="card-img-top" alt="">
+				<div class="card-body">
+					<h3 style="font-family: 'Source Sans Pro', sans-serif;">KnightSwitch</h3>
+					<p class="desc">Unity game to promote energy saving campaign...<a href="portfolioknightswitch.html" data-toggle="modal" data-target="#modal" class="openBtn">Read more</a></p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="img/portfolio/moviedb/moviedb (4).png" class="card-img-top" alt="">
+				<div class="card-body">
+					<h3 style="font-family: 'Source Sans Pro', sans-serif;">Movie Database</h3>
+					<p class="desc">Information system about movie database<a href="portfoliomoviedb.html" data-toggle="modal" data-target="#modal" class="openBtn">Read more</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" id="yt-player">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('.openBtn').on('click',function(){
+$('.modal-body').load($(this).attr("href"),function(){
+$('#modal').modal({show:true});
+});
+});
+</script>

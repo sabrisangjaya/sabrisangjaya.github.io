@@ -69,9 +69,8 @@
 		}
 		@media print
 		{
-
 		a, a:hover, a:active, a:link{
-			text-decoration: none;
+		text-decoration: none;
 		}
 		.no-print, .no-print *
 		{
@@ -106,15 +105,41 @@
 							<button class="navbar-toggler navbar-toggler-right btn-sm" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Navigation">
 							<span class="fa fa-bars fa-1"></span>
 							</button>
-							<div class="collapse navbar-collapse" id="navbarNav">
+							<div class="collapse show navbar-collapse" id="navbarNav">
 								<ul class="navbar-nav " style="text-align:right">
-									<li class="nav-item">
-										<a href="#" class="nav-link">CV</a>
-										<a href="#" class="nav-link">Resume</a>
+									<li class="nav-item nav-custom">
+										<a href="resume.html" class="nav-link ">CV</a>
+										<a href="resume.html" class="nav-link">Resume</a>
+										<a href="blog.html" class="nav-link">Blog</a>
+										<a href="portfolio.html" class="nav-link">Portfolio</a>
 									</li>
 								</ul>
 							</div>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									$('.nav-link').on('click',function(event){
+										event.preventDefault();
+										$('#main-content').load($(this).attr("href"));
+										return false;
+									});
+								});
+								
+								
+								
+							</script>
 						</nav>
+						<style>
+						.nav-custom a{
+						float:right;
+						margin-right:10px;
+						padding:0px 5px;
+						}
+						.nav-custom{
+						border-top: 1px solid black;
+						border-bottom: 1px solid black;
+						margin: 5px 0px 0px;
+						}
+						</style>
 						<!-- <img src="https://picsum.photos/400/140" alt=""> -->
 						<img src="img/400x140.jpg" alt="">
 						<div class="card-body">
@@ -136,192 +161,12 @@
 			</div>
 			<br/>
 			<div class="row">
-				<div class="col-md-12">
-					<div class="card-columns">
-						<div class="card">
-							<div class="card-body">
-								<h4>Education</h4>
-								<hr>
-								<ul class="timeline">
-									<li>
-										<a target="_blank" href="https://www.um.ac.id">Universitas Negeri Malang</a>
-										<a href="#" class="float-right">2016 - Current</a>
-										<p>Informatic Engineering</p>
-									</li>
-									<li>
-										<a target="_blank" href="https://smkn4malang.sch.id/">Vocational High School 4 Malang</a>
-										<a href="#" class="float-right">2013 - 2016</a>
-										<p>Multimedia Major</p>
-									</li>
-									<li>
-										<a href="#">Junior High School 20 Malang</a>
-										<a href="#" class="float-right">2010 - 2013</a>
-										<p>SMP Negeri 20 Malang</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-body">
-								<h4>Skills</h4>
-								<hr>
-								Skills <br/> <a href='#' class='badge badge-success'>Web Design</a>
-								<a href='#' class='badge badge-secondary'>HTML</a>
-								<a href='#' class='badge badge-secondary'>CSS</a>
-								<a href='#' class='badge badge-secondary'>JS</a>
-								<a href='#' class='badge badge-secondary'>Framework</a>
-								<a href='#' class='badge badge-secondary'>Bootstrap</a>
-								<a href='#' class='badge badge-success'>Graphic Design</a>
-								<a href='#' class='badge badge-secondary'>Photoshop</a>
-								<a href='#' class='badge badge-secondary'>Coreldraw</a>
-								<a href='#' class='badge badge-secondary'>Layout</a>
-								<a href='#' class='badge badge-secondary'>Branding</a>
-								<a href='#' class='badge badge-secondary'>Packaging</a>
-								<a href='#' class='badge badge-secondary'>Videography</a>
-								<a href='#' class='badge badge-success'>Programming</a>
-								<a href='#' class='badge badge-secondary'>Python</a>
-								<a href='#' class='badge badge-secondary'>C#</a>
-								<a href='#' class='badge badge-secondary'>Unity</a>
-								<a href='#' class='badge badge-secondary'>Game Programming</a><br/><br/>
-								Interest <br/>
-								<a href='#' class='badge badge-success'>Web Development</a>
-								<a href='#' class='badge badge-success'>Machine Learning</a>
-								<br/><br/>
-								Certification <br/>
-								<a href='#' class='badge badge-success'>Digitalent Kominfo 2019 Online Academy</a> <br/>
-								<a href='#' class='badge badge-success'>Netacad PCAP Programming Essential in Python </a>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-body">
-								<h5 class="mb-1">Organization Experience</h5>
-								<hr/>
-								<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
-								<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
-							Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
-							<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
-							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-							<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
-							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-							<br/>
-							<hr/>
-							<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
-							<a href='#' class='badge badge-secondary'>2017-2019</a>
-							<br/><p style="text-align: justify;"><small>
-							WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small></p>
-							<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
-							<a href='#' class='badge badge-secondary'>(2017-2018)</a>
-							<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
-							<a href='#' class='badge badge-secondary'>(2018-2019)</a>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="mb-1">Comitee Experience</h5>
-							<hr/>
-							<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
-							<p style="text-align: justify;"><small>
-							International Conference on Social, Applied Science, and Technology in Home Economics (ICONHOMECS) held by Department of Industrial Technology, Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, certificate designs, ID card designs</small></p>
-							<hr/>
-							<a href='#' class='badge badge-success'>ICOVET 2019</a>
-							<p style="text-align: justify;"><small>
-							International Conference on Vocational Education and Training (ICOVET 2020) held by Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, certificate designs, ID card designs</small></p>
-							<hr/>
-							<a href='#' class='badge badge-success'>ICOVET 2018</a>
-							<p style="text-align: justify;"><small>
-							International Conference on Vocational Education and Training (ICOVET 2019) held by Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, poster and pamphlet and design for website management purposes</small></p>
-							<hr/>
-							<a href='#' class='badge badge-success'>LTDC 2018 </a>
-							<p style="text-align: justify;"><small>
-							LINE TRACER DESIGN & CONTEST (LTDC) UM  is held annually by Workshop Elektro Universitas Negeri Malang. Take part as Coordinator of Publication and Documentation and Design (PDD) Section and Coordinator of timer application system. As coordinator of PDD, i was tasked to coordinate my team to fulfill the design needs during the event. As Coordinator of timer application i was tasked to develop timer system application and operate the application during event</small></p>
-							<hr/>
-							<a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
-							<p style="text-align: justify;"><small>
-							LKTIN PESC 2017 (Power and Energy Systems Competition) is national scientific writing competition for SMA / SMK / MA Level. Held annually by Workshop Elektro Universitas Negeri Malang. Take part as Publication and Documentation and Design (PDD) Section and Stage Operator. i was tasked to coordinate my team to fulfill the design needs during the event. As Coordinator of timer application i was tasked to to design several things such as backdrops, poster and pamphlet.</small></p>
-							<hr/>
-							- <a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>Workshop Robotika 2017</a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>Workshop at School | 5-6 June 2017 </a>
-							<a href='#' class='badge badge-secondary'>Regional</a>
-							<a href='#' class='badge badge-secondary'>SMK IT </a>
-							<a href='#' class='badge badge-primary'>Technical Section</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section </a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LTDC 2017</a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>Publication, Design and Documentation Section</a>
-							<a href='#' class='badge badge-primary'>Operator</a>
-							<br/>
-							- <a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
-							<a href='#' class='badge badge-secondary'>National</a>
-							<a href='#' class='badge badge-primary'>LO and Operator</a>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="mb-1">Mentorship Experience</h5>
-							<hr/>
-							<a href='#' class='badge badge-success'>DTS OA 2021 - Progate</a>
-							<p style="text-align: justify;"><small>
-								being an instructor for Digitalent Scholarhip Online Academy (DTS OA) for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Being instructor for first batch takes time five week training</small>
-							</p>
-							<a href='#' class='badge badge-success'>DTS OA 2020 - Progate</a>
-							<p style="text-align: justify;"><small>
-								being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Being instructor for first batch and second batch where each batch takes time seven week training</small>
-							</p>
-							<a href='#' class='badge badge-success'>Workshop at School 2017 </a>
-							<p style="text-align: justify;"><small>
-								being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMKIT ARROHMAH KEPANJEN on 5-7 June 2017. </small>
-							</p>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h4>Lifelong learner</h4>
-							<hr>
-							<div class="row" >
-								<div class="col-md-6">
-									<a href='https://www.datacamp.com/profile/sabrisangjaya
-									' class='badge badge-success' target="_blank">Datacamp</a>
-									<br/><small>
-									Scholarship by Facebook Developer Circle. Took Data Science Path with python. Had access till April 2021</small>
-								</div>
-								<div class="col-md-6">
-									<a href='#' class='badge badge-success'>Progate</a>
-									<br/><small>
-									Reward for being instructor on DTS Program by Ministry of Telecomunication and Information. Had access till December 2020 </small>
-								</div>
-								<div class="col-md-6">
-									<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank">Codecademy</a>
-									<br/><small>
-									Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path </small>
-								</div>
-								<div class="col-md-6">
-									<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success'>Dicoding</a>
-									<br/><small>
-									Scholarship by <a href="https://idcamp.indosatooredoo.com/" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small>
-								</div>
-								<div class="col-md-6">
-									<a href='#' class='badge badge-success'>Udemy</a>
-									<br/><small>
-									Enroll to some promotional course. Mostly Python and Data Science </small>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="col-md-12" id="main-content">
+					
 				</div>
 			</div>
-		</div>
-	</div>
-	<script src="js/lottie-player.js"></script>
+			<br/><br/>
+</div>
+<script src="js/lottie-player.js"></script>
 </body>
 </html>
