@@ -68,10 +68,17 @@
 										 $('html, body').animate({
 									        scrollTop: $('#main-content').offset().top
 									      }, 800);
-										 
-										 var testpage=$.get('portfolio.html',function(response){
-										 	$('#main-content').append(response)
+										 $.ajax({
+										 	url:"portfolio.html",
+										 	type:"get",
+										 	success:function(response){
+										 		var appendresponse=response.replace('<script src="/js/jquery.min.js" type="text/javascript"></'+'script>',"");
+										 		appendresponse=response.replace('<script src="/js/bootstrap.min.js" type="text/javascript"></'+'script>',"");
+										 		$('#main-content').append(appendresponse)
+										 	}
+
 										 });
+										 
 
 										
 										return false;
