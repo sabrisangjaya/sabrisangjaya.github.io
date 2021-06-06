@@ -57,6 +57,9 @@ break-inside: avoid;
 }
 @media print
 {
+@page{
+	/*size: a4 portrait;*/
+}
 
 .card-columns{
 column-count: 1;
@@ -88,10 +91,18 @@ background-color: white;
 .btn{
 color:black;
 background-color: white;
+border-color: black;
+outline: none;
+box-shadow: none;
 }
 
-
+.btn-primary{
+border-color: black;
+outline: none;
+box-shadow: none;
 }
+}
+
 .navbar-custom{
 background-color: #ffffff;
 }
