@@ -76,62 +76,78 @@
 							<div class="collapse show navbar-collapse" id="navbarNav">
 								<ul class="navbar-nav " style="text-align:right">
 									<li class="nav-item nav-custom">
-										<a href="resume.html" class="plusportfolio">CV</a>
-										<a href="resume.html" class="nav-link">Resume</a>
-										<a href="blog.html" class="nav-link">Blog</a>
-										<a href="portfolio.html" class="nav-link">Portfolio</a>
+										<a href="cv.html" class="nav-link" alt="resume">CV</a>
+										<a href="resume.html" class="nav-link" alt="resume">Resume</a>
+										<a href="blog.html" class="nav-link" alt="blog">Blog</a>
+										<a href="portfolio.html" class="nav-link" alt="portfolio">Portfolio</a>
 									</li>
 								</ul>
 							</div>
-							<script type="text/javascript">
-								$(document).ready(function(){
-									$('.nav-link').on('click',function(event){
-										event.preventDefault();
-										$('#main-content').load($(this).attr("href"));
-										$('html, body').animate({
-									scrollTop: $('#main-content').offset().top
-									}, 800);
-										return false;
-									});
-									$('.plusportfolio').on('click',function(event){
-										event.preventDefault();
-										$('#main-content').load($(this).attr("href"));
-										$('html, body').animate({
-									scrollTop: $('#main-content').offset().top
-									}, 800);
-										$.ajax({
-											url:"portfolio.html",
-											type:"get",
-											success:function(response){
-												console.log(window.location.href);
-							var appendresponse=response.replace('<script src="/js/jquery.min.js" type="text/javascript"></'+'script>',"");
-							appendresponse=appendresponse.replace('<script src="/js/bootstrap.min.js" type="text/javascript"></'+'script>',"");
-							appendresponse=appendresponse.replace('<script src="js/lottie-player.js"></'+'script>',"");
-							appendresponse=appendresponse.replace('document.getElementById("isi").append(s);',"")
-							console.log(appendresponse);
-							$('#main-content').append(appendresponse);
-							}
-							});
-							return false;
-							});
-							});
-							</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.nav-link').on('click',function(event){
+			event.preventDefault();
+			$('#main-content').load($(this).attr("href"),function(response,status,xhr){
+				var isi=response.replace('<script src="/js/jquery.min.js" type="text/javascript"></'+'script>',"");
+				isi=isi.replace('<script src="/js/bootstrap.min.js" type="text/javascript"></'+'script>',"");
+				isi=isi.replace('<script src="/js/popper.min.js" type="text/javascript"></'+'script>',"");
+				isi=isi.replace('<link rel="stylesheet" href="/css/bootstrap.min.css">',"");
+				isi=isi.replace('<link rel="stylesheet" href="/css/index.css">',"");
+				isi=isi.replace('<script src="/js/lottie-player.js" type="text/javascript"></'+'script>',"");
+				$('#main-content').html(isi);
+				console.log(isi);
+			});
+			$('html, body').animate({
+		scrollTop: $('#main-content').offset().top
+		}, 800);
+			return false;
+		});	
+});
+</script>
 						</nav>
 						
 						<!-- <img src="https://picsum.photos/400/140" alt=""> -->
 						<img src="https://picsum.photos/400/140" alt="header web"/>
 						<div class="card-body">
-							<h1 id="judulganteng" style="font-family: 'Source Sans Pro', sans-serif;font-size:2.4em;">SABRI SANGJAYA</h1>
+							<h1 id="judulganteng" style="font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:2.4em;">SABRI SANGJAYA</h1>
 							<p class="desc">
 								noun [sa-bri-sang-ja-ya]
 							</p>
 							<ol>
 								<li>Person who just graduated from bachelor degree of informatics engineering and now looking for jobs</li>
 								<li>Web Developer and Machine Learning Enthusiasts ...
-									<a href="resume.html" class="nav-link" style="display: inline;margin:0px;padding: 0px;">Read more</a>
+									<a href="#" class="fullcontent" style="display: inline;margin:0px;padding: 0px;" alt="resume">View Full Profile</a>
 								</li>
 							</ol>
-							
+<script>
+$(document).ready(function(){
+		$('.fullcontent').on('click',function(event){
+			$('#main-content').empty()
+			event.preventDefault();
+			$.ajax({
+				url:"resume.html",
+				type:"get",
+				success:function(response){
+				$('#main-content').append(response)
+					$.ajax({
+					url:"portfolio.html",
+					type:"get",
+					success:function(response2){
+					$('#main-content').append(response2)
+					}
+				});
+				}
+			});
+			
+
+			
+			$('html, body').animate({
+		scrollTop: $('#main-content').offset().top
+		}, 800);
+			return false;
+		});	
+});	
+</script>
 						</div>
 					</div>
 				</div>
@@ -145,11 +161,11 @@
 					<div class="card" style="margin-top: 10px;">
 						<div class="card-body text-center">
 							<span style="margin:0 5px;font-size: 1.5em">Let's connect : </span>
-							<a style="margin:0 5px;font-size: 1.5em" href="mailto:sabriwp@outlook.com" target="_blank"><i class="fa fa-envelope" rel="nofollow"></i></a>
-							<a style="margin:0 5px;font-size: 1.5em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank"><i class="fa fa-youtube" rel="nofollow"></i></a>
-							<a style="margin:0 5px;font-size: 1.5em" href="https://www.github.com/sabrisangjaya" target="_blank" rel="nofollow"><span class="fa fa-github"></span></a>
-							<a style="margin:0 5px;font-size: 1.5em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank"><span class="fa fa-linkedin" rel="nofollow"></span></a>
-							<a style="margin:0 5px;font-size: 1.5em" href="https://www.twitter.com/sabrisangjaya" target="_blank"><span class="fa fa-twitter" rel="nofollow"></span></a>
+							<a style="margin:0 5px;font-size: 1.5em" href="mailto:sabriwp@outlook.com" target="_blank" rel="noreferrer noopener" alt="email"><i class="fa fa-envelope"></i></a>
+							<a style="margin:0 5px;font-size: 1.5em" href="https://www.youtube.com/channel/UCZJLGfHVtah4VahnU7ZcRcA" target="_blank" rel="noreferrer noopener" alt="link youtube"><i class="fa fa-youtube"></i></a>
+							<a style="margin:0 5px;font-size: 1.5em" href="https://www.github.com/sabrisangjaya" target="_blank" rel="noreferrer noopener" alt="link github"><span class="fa fa-github"></span></a>
+							<a style="margin:0 5px;font-size: 1.5em" href="https://www.linkedin.com/in/sabrisangjaya" target="_blank" alt="linkedin link" rel="noreferrer noopener"><span class="fa fa-linkedin"></span></a>
+							<a style="margin:0 5px;font-size: 1.5em" href="https://www.twitter.com/sabrisangjaya" target="_blank" rel="noreferrer noopener" alt="twitter link"><span class="fa fa-twitter" ></span></a>
 							
 						</div>
 					</div>

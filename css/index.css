@@ -4,10 +4,12 @@ box-sizing: border-box;
 @font-face {
 font-family: "Source Sans Pro";
 src: url("../fonts/SourceSansPro-Bold.ttf");
+font-display: swap;
 }
 @font-face {
 font-family: "Open Sans";
 src: url("../fonts/OpenSans-Regular.ttf");
+font-display: swap;
 }
 ul.timeline {
 list-style-type: none;
