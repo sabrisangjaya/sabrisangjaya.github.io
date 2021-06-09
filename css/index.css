@@ -43,7 +43,7 @@ z-index: 400;
 }
 @media (min-width: 576px) {
 .card-columns {
-column-count: 2;
+column-count: 1;
 }
 .card-columns2 {
 column-count: 3;
