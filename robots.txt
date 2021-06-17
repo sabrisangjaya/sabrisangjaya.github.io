@@ -1,0 +1,4 @@
+Sitemap: https://sabrisangjaya.github.io/sitemap.xml
+User-Agent: *
+Allow: /
+

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sabri Sangjaya</title>
+<meta name="description" content="Web Developer and Machine Learning Enthusiasts">
+<meta name="keywords" content="web,developer,designer,resume,cv,sabri,sangjaya,machine,learning,data,scientist" />
+<meta name="author" content="Sabri Sangjaya">
+<meta property="og:image:alt" content="Sabri Sangjaya">
+<meta property="og:locale" content="en_ID">
+<meta name="theme-color" content="#007bff">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sabrisangjaya.github.io/">
+<meta property="og:title" content="Sabri Sangjaya">
+<meta property="og:description" content="Web Developer and Machine Learning Enthusiasts">
+<meta property="og:image" content="https://sabrisangjaya.github.io/img/webpreview.jpg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://sabrisangjaya.github.io/">
+<meta property="twitter:title" content="Sabri Sangjaya">
+<meta property="twitter:description" content="Web Developer and Machine Learning Enthusiasts">
+<meta property="twitter:image" content="https://sabrisangjaya.github.io/img/webpreview.jpg">
+
+<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
+
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/popper.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="alternate" href="https://sabrisangjaya.github.io/" hreflang="en-id" />
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+
+
+<div class="container">
+<br/>
+<div class="row">
+	<div class="col-md-12 text-center" style="margin-bottom:10px;">
+		<img src="mswc/mswc.png" height="300px" alt="movie spoiler without context"/><br/>
+<form action="" id="searchmovie">
+  <div class="input-group mb-3">
+    <input type="text" name="q" id="moviequery" class="form-control" placeholder="Type movie name" value="">
+    <div class="input-group-append">
+      <button class="btn btn-success" type="submit">Go</button>
+    </div>
+  </div>
+</form>
+	</div>
+<div class="col-md-12">
+
+<div class="row" id="searchresult">
+
+<!-- <div class="col-md-3"><div class="card"><img class="card-img-top" src="https://themoviespoiler.com/wp-content/uploads/2021/02/to_all_the_boys_always_and_forever.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">
+TO ALL THE BOYS: Always and Forever
+</h5><a href="https://themoviespoiler.com/movies/to-all-the-boys-always-and-forever/" class="viewspoiler btn btn-primary">Preview</a></div></div></div>
+<div class="col-md-3"><div class="card"><img class="card-img-top" src="https://themoviespoiler.com/wp-content/uploads/2020/04/to_all_the_boys_ive_loved_before_xxlg.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">
+TO ALL THE BOYS I’VE LOVED BEFORE
+</h5><a href="https://themoviespoiler.com/movies/to-all-the-boys-ive-loved-before/" class="viewspoiler btn btn-primary">Preview</a></div></div></div>
+<div class="col-md-3"><div class="card"><img class="card-img-top" src="https://themoviespoiler.com/wp-content/uploads/2020/04/to_all_the_boys_ps_i_still_love_you_xxlg.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">
+TO ALL THE BOYS:  P.S I Still Love You
+</h5><a href="https://themoviespoiler.com/movies/to-all-the-boys-p-s-i-still-love-you/" class="viewspoiler btn btn-primary">Preview</a></div></div></div> -->
+
+</div>
+</div>
+</div>
+</div>
+<script>
+
+$(document).ready(function(e) {
+
+
+ $('#searchmovie').on('submit', function(formevent){
+ 	formevent.preventDefault();
+ 	$("#searchresult").empty();
+ 	var judulfilm=$('#moviequery').val();
+ 	console.log(judulfilm);
+	var myUrl = 'https://themoviespoiler.com/?s='+judulfilm;
+	var x = new XMLHttpRequest();
+	x.open('GET', 'https://mighty-woodland-45494.herokuapp.com/'+myUrl);
+	x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	x.setRequestHeader("Content-Type", "text/xml");
+	x.responseType = 'document';
+	x.onload = function() {
+		var konten="";
+		Array.from(x.responseXML.getElementsByClassName("box_office_poster")).forEach(
+		function(element, index, array){
+			var poster=element.getElementsByClassName("post-thumbnail")[0];
+			var linkpost=element.getElementsByClassName("post-thumbnail")[0].href;
+			var imgposter=poster.children[0].src;
+			var judul=element.getElementsByClassName("box_office_title")[0].innerHTML;
+			konten+='<div class="col-md-3"><div class="card"><img class="card-img-top" src="'+imgposter+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+judul+'</h5><a href="'+linkpost+'" class="viewspoiler btn btn-primary" data-toggle="modal" data-target="#modal">Preview</a></div></div></div>	';
+		}
+		);
+		$("#searchresult").append(konten);
+		$('.viewspoiler').on('click',function(event){
+			
+			var movieurl = $(this).attr("href");
+			var x2 = new XMLHttpRequest();
+			x2.open('GET', 'https://mighty-woodland-45494.herokuapp.com/'+movieurl);
+			x2.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			x2.setRequestHeader("Content-Type", "text/xml");
+			x2.responseType = 'document';
+			x2.onload = function() {
+				console.log(x2.responseXML);
+				var content = x2.responseXML.getElementsByClassName("entry-content")[0];
+				var plotcontent="";
+				var judulmodal=x2.responseXML.getElementsByClassName("entry-title")[0].innerHTML;
+				console.log(judulmodal);
+				$(".modal-title")[0].innerHTML=judulmodal;
+				Array.from(content.getElementsByTagName("p")).forEach(
+				function(element, index, array) {
+					plotcontent+=element.innerText;
+				});
+				var stopWords = ["a","able","about","above","according","accordingly","across","actually","after","afterwards","again","against","all","allow","allows","almost","alone","along","already","also","although","always","am","among","amongst","an","and","another","any","anybody","anyhow","anyone","anything","anyway","anyways","anywhere","apart","appear","appreciate","appropriate","are","area","areas","around","as","aside","ask","asked","asking","asks","associated","at","available","away","awfully","b","back","backed","backing","backs","be","became","because","become","becomes","becoming","been","before","beforehand","began","behind","being","beings","believe","below","beside","besides","best","better","between","beyond","big","both","brief","but","by","c","came","can","cannot","cant","case","cases","cause","causes","certain","certainly","changes","clear","clearly","co","com","come","comes","concerning","consequently","consider","considering","contain","containing","contains","corresponding","could","course","currently","d","definitely","described","despite","did","differ","different","differently","do","does","doing","done","down","downed","downing","downs","downwards","during","e","each","early","edu","eg","eight","either","else","elsewhere","end","ended","ending","ends","enough","entirely","especially","et","etc","even","evenly","ever","every","everybody","everyone","everything","everywhere","ex","exactly","example","except","f","face","faces","fact","facts","far","felt","few","fifth","find","finds","first","five","followed","following","follows","for","former","formerly","forth","four","from","full","fully","further","furthered","furthering","furthermore","furthers","g","gave","general","generally","get","gets","getting","give","given","gives","go","goes","going","gone","good","goods","got","gotten","great","greater","greatest","greetings","group","grouped","grouping","groups","h","had","happens","hardly","has","have","having","he","hello","help","hence","her","here","hereafter","hereby","herein","hereupon","hers","herself","hi","high","higher","highest","him","himself","his","hither","hopefully","how","howbeit","however","i","ie","if","ignored","immediate","important","in","inasmuch","inc","indeed","indicate","indicated","indicates","inner","insofar","instead","interest","interested","interesting","interests","into","inward","is","it","its","itself","j","just","k","keep","keeps","kept","kind","knew","know","known","knows","l","large","largely","last","lately","later","latest","latter","latterly","least","less","lest","let","lets","like","liked","likely","little","long","longer","longest","look","looking","looks","ltd","m","made","mainly","make","making","man","many","may","maybe","me","mean","meanwhile","member","members","men","merely","might","more","moreover","most","mostly","mr","mrs","much","must","my","myself","n","name","namely","nd","near","nearly","necessary","need","needed","needing","needs","neither","never","nevertheless","new","newer","newest","next","nine","no","nobody","non","none","noone","nor","normally","not","nothing","novel","now","nowhere","number","numbered","numbering","numbers","o","obviously","of","off","often","oh","ok","okay","old","older","oldest","on","once","one","ones","only","onto","open","opened","opening","opens","or","order","ordered","ordering","orders","other","others","otherwise","ought","our","ours","ourselves","out","outside","over","overall","own","p","part","parted","particular","particularly","parting","parts","per","perhaps","place","placed","places","please","plus","point","pointed","pointing","points","possible","present","presented","presenting","presents","presumably","probably","problem","problems","provides","put","puts","q","que","quite","qv","r","rather","rd","re","really","reasonably","regarding","regardless","regards","relatively","respectively","right","room","rooms","s","said","same","saw","say","saying","says","second","secondly","seconds","see","seeing","seem","seemed","seeming","seems","seen","sees","self","selves","sensible","sent","serious","seriously","seven","several","shall","she","should","show","showed","showing","shows","side","sides","since","six","small","smaller","smallest","so","some","somebody","somehow","someone","something","sometime","sometimes","somewhat","somewhere","soon","sorry","specified","specify","specifying","state","states","still","sub","such","sup","sure","t","take","taken","tell","tends","th","than","thank","thanks","thanx","that","thats","the","their","theirs","them","themselves","then","thence","there","thereafter","thereby","therefore","therein","theres","thereupon","these","they","thing","things","think","thinks","third","this","thorough","thoroughly","those","though","thought","thoughts","three","through","throughout","thru","thus","to","today","together","too","took","toward","towards","tried","tries","truly","try","trying","turn","turned","turning","turns","twice","two","u","un","under","unfortunately","unless","unlikely","until","unto","up","upon","us","use","used","useful","uses","using","usually","uucp","v","value","various","very","via","viz","vs","w","want","wanted","wanting","wants","was","way","ways","we","welcome","well","wells","went","were","what","whatever","when","whence","whenever","where","whereafter","whereas","whereby","wherein","whereupon","wherever","whether","which","while","whither","who","whoever","whole","whom","whose","why","will","willing","wish","with","within","without","wonder","work","worked","working","works","would","x","y","year","years","yes","yet","you","young","younger","youngest","your","yours","yourself","yourselves","z","zero"];
+				var divideplot=plotcontent.split("*CUT TO THE CHASE*\nBrought to you by\n");
+				console.log(divideplot[0]);
+				var text = removeStopwords(preprocess(divideplot[0]));
+				const d = .85; // damping factor
+				const n = 4; // search radius
+				const threshold = 0.01; // convergence threshold
+				const numKeywords = 10;
+				var map = {}; // { word: [adjacent words] } 
+
+				// remove numbers from text
+				for(var i = 0; i < text.length; i++)
+				  if(!isNaN(text[i]))
+				    text.splice(i--, 1);
+
+				// populate the map
+				for(var i = 0; i < text.length; i++) {
+				  var currentWord = text[i];
+				  if(!map[currentWord]) 
+				    map[currentWord] = newWord();
+				  for(var j = 1; j <= n && i + j < text.length; j++) { // adjacent to the next n words
+				    var adjacentWord = text[i+j];
+				    if(!map[adjacentWord]) 
+				      map[adjacentWord] = newWord();
+				    if(map[currentWord].neighbors.indexOf(adjacentWord) == -1)
+				      map[currentWord].neighbors.push(adjacentWord);
+				    if(map[adjacentWord].neighbors.indexOf(currentWord) == -1)
+				      map[adjacentWord].neighbors.push(currentWord);
+				  }
+				}
+
+				var iters = 0;
+				var scoreChange = threshold + 1;
+				while(scoreChange >= threshold && iters < 200) {
+				  iters++;
+				  var newMap = {};
+				  for(var key in map) {
+				    newMap[key] = {
+				      neighbors: map[key].neighbors,
+				      score: 1-d
+				    } 
+				    for(var i = 0; i < map[key].neighbors.length; i++) {
+				      newMap[key].score += d * map[map[key].neighbors[i]].score / map[map[key].neighbors[i]].neighbors.length;
+				    }
+				  }
+				  scoreChange = scoreDifference(map, newMap);
+				  map = newMap;
+				}
+
+				var keywords = [];
+				for(var key in map)
+				  if(stopWords.indexOf(key) == -1)
+				    keywords.push({ value: key, score: map[key].score });
+				keywords.sort(function(a, b) {
+				  return b.score-a.score;
+				});
+				keywords = keywords.slice(0, Math.floor(numKeywords*2)).map(function(word){ return word.value }); // select top numKeywords keywords
+				// postprocessing to combine parts of multi-word keyphrases
+				var currentStreak = [];
+				var streaks = [];
+				var multiWordKeyphrases = [];
+				for(var i = 0; i < text.length; i++) {
+				  if(keywords.indexOf(text[i]) != -1) {
+				    currentStreak.push(text[i]);
+				  } else {
+				    if(currentStreak.length > 1) {
+				      var phrase = wordListToString(currentStreak);
+				      if(streaks.indexOf(phrase) >= 0 && multiWordKeyphrases.indexOf(phrase) == -1)
+				        multiWordKeyphrases.push(phrase);
+				      else
+				        streaks.push(phrase);
+				    }
+				    currentStreak = [];
+				  }
+				}
+
+				// if it is part of a multi-word keyphrase, remove its individual occurence in the list
+				for(var i = 0; i < keywords.length; i++)
+				  for(var j = 0; j < multiWordKeyphrases.length; j++)
+				    if(multiWordKeyphrases[j].indexOf(keywords[i]) != -1)
+				      // if the word is part of a larger phrase, remove the word
+				      keywords.splice(i--, 1);
+				keywords.splice(numKeywords - multiWordKeyphrases.length, keywords.length);
+				// add keyphrases to keyword list
+				for(var i = 0; i < multiWordKeyphrases.length; i++)
+				  keywords.unshift(multiWordKeyphrases[i]);
+				var moviekeywords=keywords;
+				console.log(keywords);
+				$("#gifs").empty();
+				moviekeywords.forEach(function(moviekeyword, index, array) {
+					//Sets up the url that the ajax call will use
+					var queryURL = "https://api.giphy.com/v1/gifs/translate?q=" +
+					moviekeyword + "&api_key=TTp0IyLaWoDM42yZ5R8dbuGFE36a1UFh";
+					//Ajax call
+					$.ajax({
+					url: queryURL,
+					method: "GET"
+					}).then(function (response) {
+						//Stores the actual image array that is returned within a results variable for easier access down below
+						var results = response.data;
+						//Loops through all the images in the image array that is returned...
+						// for (var i = 0; i < results.length; i++) {
+							//Creates a new span for each gif within the array, & also a new paragraph to store that gif's rating
+							// var gifnumber=getRandomInt(0,results.length);
+							var movieSpan = $("<div class='col-md-6 movie-span'>");
+							//Sets up variable to hold the code for downloading a gif
+							var downloadLink = $("<a>").attr("href", results.images.original.url).attr("target","_blank");
+							//Creates a new image tag and sets its src attribute to the url of the gif that's in question, as well as setting its dimensions
+							var movieImage = $("<img class='img-fluid movie-image' style='width:100%'>");
+							movieImage.attr("src", results.images.downsized_still.url);
+
+							//Sets up code so that the gifs can be played or paused
+							movieImage.attr("data-state", "still");
+							movieImage.attr("data-still", results.images.downsized_still.url);
+							movieImage.attr("data-animate", results.images.preview_gif.url);
+							//Appends the movie image & its corresponding paragraph to the movie div, as well as the gif download link, and then prepends that movie div to the main gifs div in the page
+							downloadLink.append(movieImage);
+							movieSpan.append(downloadLink);
+							$("#gifs").prepend(movieSpan);
+						// }
+						
+
+					});
+				});
+				$(".movie-image").on({
+          mouseenter: function(){
+          		$(this).attr("src", $(this).attr("data-animate"));
+              $(this).attr("data-state", "animate");
+          },
+          mouseleave: function(){
+          		$(this).attr("src", $(this).attr("data-still"));
+              $(this).attr("data-state", "still");
+          }
+
+    		});
+				$("#modal").modal();
+			};
+			x2.send();
+			return false;
+		});
+	};
+	x.onerror = function() {
+		var konten="";
+		konten+='<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title">Failed to request</h5></div></div></div>	';
+		$("#searchresult").append(konten);
+	};
+	x.send();
+	
+	});
+
+
+
+});
+
+
+function getMatches(string, regex, index) {
+index || (index = 1); // default to the first capturing group
+var matches = [];
+var match;
+while (match = regex.exec(string)) {
+matches.push(match[index]);
+}
+return matches;
+}
+function getRandomInt(min,max) {
+	min=Math.ceil(min);
+	max=Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+// helper functions
+function newWord() {
+  return {
+    neighbors: [],
+    score: 1
+  }
+}
+function scoreDifference(a, b) {
+  var result = 0;
+  for(var key in a) {
+    result += Math.abs(a[key].score - b[key].score);
+  }
+  return result;
+}
+function wordListToString(list) {
+  var result = list[0];
+  for(var i = 1; i < list.length; i++)
+    result += ' '+list[i];
+  return result;
+}
+function preprocess(movieplot) {
+var delimiters = ["(", ")", "[", "]", "{", "}", ".", ",", ":", ";", "!", "#", "$", "&", "?", " - ", "_", "+", "<", ">", '“', '”', '–', "…", ' / ', "|", '’', "'"];
+var str = movieplot.toLowerCase();
+str = " " + str + " ";
+str = splitMulti(str, delimiters).join(" wwttff ");
+return str;
+
+}
+function removeStopwords(str) {
+	var stopWords = ["a","able","about","above","according","accordingly","across","actually","after","afterwards","again","against","all","allow","allows","almost","alone","along","already","also","although","always","am","among","amongst","an","and","another","any","anybody","anyhow","anyone","anything","anyway","anyways","anywhere","apart","appear","appreciate","appropriate","are","area","areas","around","as","aside","ask","asked","asking","asks","associated","at","available","away","awfully","b","back","backed","backing","backs","be","became","because","become","becomes","becoming","been","before","beforehand","began","behind","being","beings","believe","below","beside","besides","best","better","between","beyond","big","both","brief","but","by","c","came","can","cannot","cant","case","cases","cause","causes","certain","certainly","changes","clear","clearly","co","com","come","comes","concerning","consequently","consider","considering","contain","containing","contains","corresponding","could","course","currently","d","definitely","described","despite","did","differ","different","differently","do","does","doing","done","down","downed","downing","downs","downwards","during","e","each","early","edu","eg","eight","either","else","elsewhere","end","ended","ending","ends","enough","entirely","especially","et","etc","even","evenly","ever","every","everybody","everyone","everything","everywhere","ex","exactly","example","except","f","face","faces","fact","facts","far","felt","few","fifth","find","finds","first","five","followed","following","follows","for","former","formerly","forth","four","from","full","fully","further","furthered","furthering","furthermore","furthers","g","gave","general","generally","get","gets","getting","give","given","gives","go","goes","going","gone","good","goods","got","gotten","great","greater","greatest","greetings","group","grouped","grouping","groups","h","had","happens","hardly","has","have","having","he","hello","help","hence","her","here","hereafter","hereby","herein","hereupon","hers","herself","hi","high","higher","highest","him","himself","his","hither","hopefully","how","howbeit","however","i","ie","if","ignored","immediate","important","in","inasmuch","inc","indeed","indicate","indicated","indicates","inner","insofar","instead","interest","interested","interesting","interests","into","inward","is","it","its","itself","j","just","k","keep","keeps","kept","kind","knew","know","known","knows","l","large","largely","last","lately","later","latest","latter","latterly","least","less","lest","let","lets","like","liked","likely","little","long","longer","longest","look","looking","looks","ltd","m","made","mainly","make","making","man","many","may","maybe","me","mean","meanwhile","member","members","men","merely","might","more","moreover","most","mostly","mr","mrs","much","must","my","myself","n","name","namely","nd","near","nearly","necessary","need","needed","needing","needs","neither","never","nevertheless","new","newer","newest","next","nine","no","nobody","non","none","noone","nor","normally","not","nothing","novel","now","nowhere","number","numbered","numbering","numbers","o","obviously","of","off","often","oh","ok","okay","old","older","oldest","on","once","one","ones","only","onto","open","opened","opening","opens","or","order","ordered","ordering","orders","other","others","otherwise","ought","our","ours","ourselves","out","outside","over","overall","own","p","part","parted","particular","particularly","parting","parts","per","perhaps","place","placed","places","please","plus","point","pointed","pointing","points","possible","present","presented","presenting","presents","presumably","probably","problem","problems","provides","put","puts","q","que","quite","qv","r","rather","rd","re","really","reasonably","regarding","regardless","regards","relatively","respectively","right","room","rooms","s","said","same","saw","say","saying","says","second","secondly","seconds","see","seeing","seem","seemed","seeming","seems","seen","sees","self","selves","sensible","sent","serious","seriously","seven","several","shall","she","should","show","showed","showing","shows","side","sides","since","six","small","smaller","smallest","so","some","somebody","somehow","someone","something","sometime","sometimes","somewhat","somewhere","soon","sorry","specified","specify","specifying","state","states","still","sub","such","sup","sure","t","take","taken","tell","tends","th","than","thank","thanks","thanx","that","thats","the","their","theirs","them","themselves","then","thence","there","thereafter","thereby","therefore","therein","theres","thereupon","these","they","thing","things","think","thinks","third","this","thorough","thoroughly","those","though","thought","thoughts","three","through","throughout","thru","thus","to","today","together","too","took","toward","towards","tried","tries","truly","try","trying","turn","turned","turning","turns","twice","two","u","un","under","unfortunately","unless","unlikely","until","unto","up","upon","us","use","used","useful","uses","using","usually","uucp","v","value","various","very","via","viz","vs","w","want","wanted","wanting","wants","was","way","ways","we","welcome","well","wells","went","were","what","whatever","when","whence","whenever","where","whereafter","whereas","whereby","wherein","whereupon","wherever","whether","which","while","whither","who","whoever","whole","whom","whose","why","will","willing","wish","with","within","without","wonder","work","worked","working","works","would","x","y","year","years","yes","yet","you","young","younger","youngest","your","yours","yourself","yourselves","z","zero"];
+  var n = stopWords.length;
+  str = str.replaceAll("n't", " not");
+  str = str.replaceAll("n’t", " not");
+  str = str.replaceAll("'ve", " have");
+  str = str.replaceAll('’ve', " have");
+  str = str.replaceAll('t’s', "t is");
+  str = str.replaceAll("t's", "t is");
+  str = str.replaceAll('\n', " wwttff ");
+  for (var i = 0; i < n; i++) {
+    str = str.replaceAll(" "+stopWords[i]+" ", " wwttff ");
+  }
+  str = str.replace(/\s+/g, ' ');
+  //str = str.replaceAll("wwttff", "+");
+  str = str.split("wwttff");
+  n = str.length;
+  var candidates = [];
+  for (var i = 0; i < n; i++) {
+    if (str[i].length >= 2) {
+      candidates.push(str[i].trim());
+    }
+  }
+  return candidates;
+}
+function countInstances(string, word) {
+return string.split(word).length - 1;
+}
+function splitMulti(str, tokens){
+var tempChar = tokens[0]; // We can use the first token as a temporary join character
+for(var i = 1; i < tokens.length; i++){
+str = str.split(tokens[i]).join(tempChar);
+}
+str = str.split(tempChar);
+return str;
+}
+
+
+
+</script>
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+			<div class="modal-body text-center">
+				<div class="row" id="gifs">
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

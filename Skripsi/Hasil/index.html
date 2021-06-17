@@ -1,0 +1,3015 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Skripsi">
+        <meta name="keywords" content="Rapidminer, Python, Machine Learning, Scikit" />
+        <meta name="author" content="Sabri Sangjaya">
+        <title>Grafik Hasil Percobaan KNN</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/popper.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/chart.js"></script>
+        <script src="js/chartjs-plugin-dragdata.min.js"></script>
+        <script src="js/hammer.js"></script>
+        <script src="js/chartjs-plugin-zoom.js"></script>
+        
+        <script src="js/data.js"></script>
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="datatable/datatables.min.css"/>
+        <script type="text/javascript" src="datatable/datatables.min.js"></script>
+    </head>
+    <body>
+        <br/><br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Hasil Penelitian</h4>
+                            <hr/>
+                            <h5>Link Penting</h5>
+                            <ul>
+                                <li><a href="https://drive.google.com/drive/folders/1LNPSLn9FgTY8KsncQFCERkr57xn3pOFo?usp=sharing" target="_blank">Link Drive Sabri Sangjaya</a><br/></li>
+                                <li><a href="https://drive.google.com/open?id=1C4HpTgIDTZ52bpwpWHVQlsKjE93vZfsD" target="_blank">Link Drive Umum</a></li>
+                            </ul>
+                            <h5>Lampiran</h5>
+                            <ul>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Dataset.xlsx?raw=true" target="_blank">Dataset Klasifikasi</a></li>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Hasil%20Klasifikasi.xlsx?raw=true" target="_blank">Hasil Skenario</a></li>
+<li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Kamus%20Kata.pdf" target="_blank">Kamus Kata Perkembangan Psikologis Anak (PDF)</a>
+
+| <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/kamuskata/romantis.txt" target="_blank">Romantis (TXT)</a>
+| <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/kamuskata/realistis.txt" target="_blank">Realistis (TXT)</a>
+| <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/kamuskata/khayalan.txt" target="_blank">Khayalan (TXT)</a>
+| <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/kamuskata/stopword.txt" target="_blank">Stopword (TXT)</a>
+
+</li>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Validasi%20Ahli.pdf" target="_blank">Lembar Validasi Fitur</a></li>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Ekstrasi_Fitur.ipynb" target="_blank">Source Code Feature Engineering</a></li>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Proses_Klasifikasi.ipynb" target="_blank">Source Code Klasifikasi</a></li>
+                                <li><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/tree/master/Skripsi/Hasil" target="_blank">Repository Website Visualisasi Hasil</a></li>
+                            </ul>
+                            <h5>Daftar isi</h5>
+                            <p>
+                                <ol>
+                                    <li>Simulasi KNN</li>
+                                    <li>Grafik dan Tabel Hasil Satu Skenario</li>
+                                    <li>Grafik Perbandingan Hasil Skenario</li>
+                                    <li>Tabel Hasil Seluruh Skenario</li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Simulasi K-Nearest Neighbor</h4>
+                            <hr/>
+                            <p>Berikut ilustrasi algoritma K-Nearest Neighbor pada 2 dimensi. Objek berbentuk segitiga akan diklasifikasikan ke dalam kelas A yang berbentuk kotak berwarna orange atau kelas B berbentuk lingkaran berwarna biru. Semua objek data dapat digeser untuk merubah posisi dan melakukan perhitungan ulang. Setelah melakukan perhitungan warna dari objek segitiga akan mengikuti warna kelas hasil klasifikasi</p>
+                            <div class="row">
+                                <div class="col-md-8"><canvas id="chartKNN"></canvas></div>
+                                <div class="col-md-4" >
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="nilaik"><b>1. Tentukan Nilai K</b></label>
+                                            <input type="number" class="form-control" min="1" step="1" max="6" name="nilaik" value="3" id="nilaik" onchange="updateValue()">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="jenisjarak3"><b>Jarak</b></label>
+                                            <select class="form-control" id="jenisjarak3" name="jenisjarak3" onchange="updateValue()">
+                                                <option value="euclidean">Euclidean</option>
+                                                <option value="manhattan">Manhattan</option>
+                                                <option value="minkowski">Minkowski p=1.5</option>
+                                                <option value="chebyshev">Chebyshev</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p id="sortDistance"></p>
+                                    <button class="btn btn-primary btn-sm" onclick="updateValue()">Klasifikasi</button>
+                                </div>
+                            </div>
+                            
+                            <script>
+                            var options = {
+                            type: 'scatter',
+                            data: {
+                            labels: ["Red"],
+                            datasets: [
+                            {
+                            label: 'Δ Data yang diklasifikasikan',
+                            data: [
+                            {x: 12,y: 15}
+                            ],
+                            backgroundColor: '#FFFFFF',
+                            borderColor: '#000000',
+                            pointHitRadius: 10,
+                            hoverRadius:10,
+                            radius:10,
+                            pointStyle:'triangle',
+                            fill: false,
+                            borderWidth:2,
+                            hoverBorderWidth:2
+                            
+                            },
+                            {
+                            label: '◻ Class A',
+                            data: [
+                            {x: 9,y: 9},{x: 11,y: 12},{x: 14,y: 9},
+                            ],
+                            backgroundColor: "#EE7733",
+                            pointHitRadius: 10,
+                            hoverRadius:10,
+                            radius:10,
+                            pointStyle:'rect',
+                            fill: false,
+                            },
+                            {
+                            label: '◯ Class B',
+                            data: [
+                            {x: 10,y: 20},{x: 14,y: 17},{x: 19,y: 15},
+                            ],
+                            backgroundColor: "#0077BB",
+                            pointHitRadius: 10,
+                            hoverRadius:10,
+                            radius:10,
+                            pointStyle:'circle',
+                            fill: false,
+                            }
+                            ]
+                            },
+                            options: {
+                            scales: {
+                            yAxes: [{
+                            ticks: {
+                            max: 25,
+                            min: 0,
+                            stepSize: 1
+                            }
+                            }],
+                            xAxes: [{
+                            ticks: {
+                            max: 30,
+                            min: 0,
+                            stepSize: 1
+                            }
+                            }]
+                            },
+                            dragDataRound: 2,
+                            dragOptions: {
+                            showTooltip: true
+                            },
+                            responsive: true,
+                            dragData: true,
+                            dragX: true,
+                            onDragStart: function(e) {
+                            // console.log(e)
+                            },
+                            onDrag: function(e, datasetIndex, index, value) {
+                            e.target.style.cursor = 'grabbing';
+                            //console.log(datasetIndex, index, value);
+                            
+                            },
+                            onDragEnd: function(e, datasetIndex, index, value) {
+                            e.target.style.cursor = 'default' ;
+                            //console.log(datasetIndex, index, value);
+                            chart3.data.datasets[datasetIndex].data[index].x=value.x;
+                            chart3.data.datasets[datasetIndex].data[index].y=value.y;
+                            chart3.update();
+                            updateValue();
+                            },
+                            hover: {
+                            onHover: function(e) {
+                            const point = this.getElementAtEvent(e)
+                            if (point.length) e.target.style.cursor = 'grab'
+                            else e.target.style.cursor = 'default'
+                            }
+                            }
+                            }
+                            }
+                            var ctx3 = document.getElementById('chartKNN').getContext('2d');
+                            var chart3 = new Chart(ctx3, options);
+                            
+                            function calculateDis(a,b,c){
+                            //chart3.data.datasets[0].data[0].x;
+                            if(c=="euclidean"){
+                            var distance = Math.sqrt(Math.pow(Math.abs(a.x-b.x),2)+Math.pow(Math.abs(a.y-b.y),2));
+                            }
+                            else if(c=="manhattan"){
+                            var distance = Math.abs(a.x-b.x,2) + Math.abs(a.y-b.y,2);
+                            }
+                            else if(c=="chebyshev"){
+                            var distance = Math.max(Math.abs(a.x-b.x,2),Math.abs(a.y-b.y,2));
+                            }
+                            else if(c=="minkowski"){
+                            var distance = Math.pow(Math.pow(Math.abs(a.x-b.x),3/2)+Math.pow(Math.abs(a.y-b.y),3/2),1/(3/2));
+                            }
+                            return distance;
+                            
+                            }
+                            function updateValue(){
+                            var jenisjarak3 = $('#jenisjarak3').val();
+                            strDistance="<b>2. Hitung Jarak "+jenisjarak3+"</b><br/>";
+                            sortDistance=[];
+                            
+                            sortDistance.push(["A1",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[0],jenisjarak3),1,0]);
+                            sortDistance.push(["A2",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[1],jenisjarak3),1,1]);
+                            sortDistance.push(["A3",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[2],jenisjarak3),1,2]);
+                            sortDistance.push(["B1",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[0],jenisjarak3),2,0]);
+                            sortDistance.push(["B2",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[1],jenisjarak3),2,1]);
+                            sortDistance.push(["B3",calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[2],jenisjarak3),2,2]);
+                            sortDistance.sort(function(a, b) {
+                            return a[1] - b[1];
+                            });
+                            strDistance+="Jarak A.1 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[0],jenisjarak3);
+                            strDistance+="<br/>Jarak A.2 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[1],jenisjarak3);
+                            strDistance+="<br/>Jarak A.3 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[1].data[2],jenisjarak3);
+                            strDistance+="<br/>Jarak B.1 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[0],jenisjarak3);
+                            strDistance+="<br/>Jarak B.2 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[1],jenisjarak3);
+                            strDistance+="<br/>Jarak B.3 ke Data Baru "+calculateDis(chart3.data.datasets[0].data[0],chart3.data.datasets[2].data[2],jenisjarak3);
+                            strDistance+="<br/><b>3. Urutkan "+$('#nilaik').val()+" data terdekat</b>";
+                            var countA=0;
+                            var countB=0;
+                            for (var i = 0; i < parseInt($('#nilaik').val()); i++) {
+                            strDistance+="<br/>"+sortDistance[i][0]+"="+sortDistance[i][1];
+                            if(sortDistance[i][2]==1){
+                            countA+=1;
+                            }
+                            else{
+                            countB+=1;
+                            }
+                            }
+                            strDistance+="</br><b>4. Voting Mayoritas Kelas</b>";
+                            if(countA>countB){
+                            strDistance+="</br>Mayoritas kelas adalah kelas A, maka diklasifikasikan ke kelas A";
+                            chart3.data.datasets[0].backgroundColor="#EE7733";
+                            }else if (countB>countA) {
+                            strDistance+="</br>Mayoritas kelas adalah kelas B, maka diklasifikasikan ke kelas B"
+                            chart3.data.datasets[0].backgroundColor="#0077BB";
+                            }
+                            else if (countB==countA) {
+                            strDistance+="</br>Mayoritas kelas adalah imbang, maka diklasifikasikan ke kelas A"
+                            chart3.data.datasets[0].backgroundColor="#EE7733";
+                            }
+                            chart3.update();
+                            $('#sortDistance').html(strDistance);
+                            }
+                            
+                            </script>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Ekstrasi Fitur</h4>
+                            <hr/>
+                            <p><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Ekstrasi_Fitur.ipynb" target="_blank">Open in Github</a>
+                        </p>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Proses Klasifikasi</h4>
+                        <hr/>
+                        <p><a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Proses_Klasifikasi.ipynb" target="_blank">Open in Github</a></p>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Tabel Skenario Pengaturan</h4>
+                        <hr/>
+                        <p>
+                            Dari 14400 skenario percobaan jika dikelompokan berdasarkan selain nilai K dan dilakukan fungsi agregat pada hasil performa maka terdapat 144 pengaturan skenario percobaan. Pada tabel dibawah ini ditampilkan nilai rata-rata yang dihasilkan dari skenario percobaan
+                        </p>
+                        <div class="table-responsive" style=" max-height: 400px;overflow: auto;">
+                            
+                            <table class="table table-sm table-bordered">
+                                <tbody><tr>
+                                    <td rowspan="2">NO</td>
+                                    <td rowspan="2">KNN</td>
+                                    <td rowspan="2">Sampling</td>
+                                    <td rowspan="2">Normalisasi</td>
+                                    <td rowspan="2">Jarak</td>
+                                    <td colspan="3">Akurasi</td>
+                                    <td colspan="3">F1
+                                    Score</td>
+                                </tr>
+                                <tr>
+                                    <td>mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                    <td>mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>31</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>32</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>33</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>chebyshev</td>
+                                    <td>53.94%</td>
+                                    <td>49.49%</td>
+                                    <td>68.01%</td>
+                                    <td>53.77%</td>
+                                    <td>49.62%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>34</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>euclidean</td>
+                                    <td>55.02%</td>
+                                    <td>50.64%</td>
+                                    <td>70.13%</td>
+                                    <td>54.72%</td>
+                                    <td>50.92%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>35</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>manhattan</td>
+                                    <td>55.97%</td>
+                                    <td>50.94%</td>
+                                    <td>73.10%</td>
+                                    <td>55.54%</td>
+                                    <td>50.87%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>36</td>
+                                    <td>KNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>55.37%</td>
+                                    <td>50.71%</td>
+                                    <td>71.18%</td>
+                                    <td>55.01%</td>
+                                    <td>50.22%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>37</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.10%</td>
+                                    <td>54.06%</td>
+                                    <td>64.80%</td>
+                                    <td>28.99%</td>
+                                    <td>27.20%</td>
+                                    <td>41.57%</td>
+                                </tr>
+                                <tr>
+                                    <td>38</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.93%</td>
+                                    <td>53.29%</td>
+                                    <td>64.89%</td>
+                                    <td>28.44%</td>
+                                    <td>26.78%</td>
+                                    <td>38.29%</td>
+                                </tr>
+                                <tr>
+                                    <td>39</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.22%</td>
+                                    <td>58.16%</td>
+                                    <td>65.83%</td>
+                                    <td>28.46%</td>
+                                    <td>27.17%</td>
+                                    <td>37.57%</td>
+                                </tr>
+                                <tr>
+                                    <td>40</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.22%</td>
+                                    <td>58.15%</td>
+                                    <td>66.56%</td>
+                                    <td>28.57%</td>
+                                    <td>26.80%</td>
+                                    <td>38.45%</td>
+                                </tr>
+                                <tr>
+                                    <td>41</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.82%</td>
+                                    <td>57.21%</td>
+                                    <td>66.60%</td>
+                                    <td>29.13%</td>
+                                    <td>26.84%</td>
+                                    <td>46.34%</td>
+                                </tr>
+                                <tr>
+                                    <td>42</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.80%</td>
+                                    <td>55.56%</td>
+                                    <td>64.80%</td>
+                                    <td>28.47%</td>
+                                    <td>26.68%</td>
+                                    <td>39.37%</td>
+                                </tr>
+                                <tr>
+                                    <td>43</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.31%</td>
+                                    <td>59.76%</td>
+                                    <td>65.80%</td>
+                                    <td>28.64%</td>
+                                    <td>27.12%</td>
+                                    <td>44.50%</td>
+                                </tr>
+                                <tr>
+                                    <td>44</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.02%</td>
+                                    <td>57.71%</td>
+                                    <td>64.86%</td>
+                                    <td>28.54%</td>
+                                    <td>27.00%</td>
+                                    <td>40.33%</td>
+                                </tr>
+                                <tr>
+                                    <td>45</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.90%</td>
+                                    <td>52.65%</td>
+                                    <td>64.80%</td>
+                                    <td>28.15%</td>
+                                    <td>27.03%</td>
+                                    <td>36.16%</td>
+                                </tr>
+                                <tr>
+                                    <td>46</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.92%</td>
+                                    <td>50.50%</td>
+                                    <td>65.28%</td>
+                                    <td>28.25%</td>
+                                    <td>27.19%</td>
+                                    <td>34.78%</td>
+                                </tr>
+                                <tr>
+                                    <td>47</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.00%</td>
+                                    <td>45.80%</td>
+                                    <td>65.83%</td>
+                                    <td>28.44%</td>
+                                    <td>27.39%</td>
+                                    <td>36.23%</td>
+                                </tr>
+                                <tr>
+                                    <td>48</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.96%</td>
+                                    <td>49.38%</td>
+                                    <td>65.36%</td>
+                                    <td>28.34%</td>
+                                    <td>27.32%</td>
+                                    <td>34.32%</td>
+                                </tr>
+                                <tr>
+                                    <td>49</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.56%</td>
+                                    <td>55.11%</td>
+                                    <td>66.97%</td>
+                                    <td>29.66%</td>
+                                    <td>27.45%</td>
+                                    <td>48.38%</td>
+                                </tr>
+                                <tr>
+                                    <td>50</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.86%</td>
+                                    <td>55.92%</td>
+                                    <td>68.06%</td>
+                                    <td>29.64%</td>
+                                    <td>27.59%</td>
+                                    <td>42.72%</td>
+                                </tr>
+                                <tr>
+                                    <td>51</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>manhattan</td>
+                                    <td>65.06%</td>
+                                    <td>57.71%</td>
+                                    <td>67.97%</td>
+                                    <td>29.56%</td>
+                                    <td>27.40%</td>
+                                    <td>42.68%</td>
+                                </tr>
+                                <tr>
+                                    <td>52</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.93%</td>
+                                    <td>57.62%</td>
+                                    <td>67.97%</td>
+                                    <td>29.43%</td>
+                                    <td>27.59%</td>
+                                    <td>42.53%</td>
+                                </tr>
+                                <tr>
+                                    <td>53</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.68%</td>
+                                    <td>55.48%</td>
+                                    <td>66.94%</td>
+                                    <td>29.28%</td>
+                                    <td>27.59%</td>
+                                    <td>41.26%</td>
+                                </tr>
+                                <tr>
+                                    <td>54</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>euclidean</td>
+                                    <td>65.65%</td>
+                                    <td>55.49%</td>
+                                    <td>69.05%</td>
+                                    <td>30.62%</td>
+                                    <td>27.59%</td>
+                                    <td>42.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>55</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>manhattan</td>
+                                    <td>65.71%</td>
+                                    <td>54.52%</td>
+                                    <td>71.22%</td>
+                                    <td>30.75%</td>
+                                    <td>27.59%</td>
+                                    <td>42.05%</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>65.74%</td>
+                                    <td>56.99%</td>
+                                    <td>69.67%</td>
+                                    <td>30.88%</td>
+                                    <td>27.59%</td>
+                                    <td>43.89%</td>
+                                </tr>
+                                <tr>
+                                    <td>57</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.79%</td>
+                                    <td>47.40%</td>
+                                    <td>65.33%</td>
+                                    <td>27.78%</td>
+                                    <td>26.57%</td>
+                                    <td>33.13%</td>
+                                </tr>
+                                <tr>
+                                    <td>58</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.95%</td>
+                                    <td>54.98%</td>
+                                    <td>67.06%</td>
+                                    <td>29.96%</td>
+                                    <td>27.59%</td>
+                                    <td>41.78%</td>
+                                </tr>
+                                <tr>
+                                    <td>59</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>manhattan</td>
+                                    <td>65.24%</td>
+                                    <td>61.34%</td>
+                                    <td>69.11%</td>
+                                    <td>30.05%</td>
+                                    <td>27.59%</td>
+                                    <td>43.65%</td>
+                                </tr>
+                                <tr>
+                                    <td>60</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>65.04%</td>
+                                    <td>55.57%</td>
+                                    <td>68.68%</td>
+                                    <td>30.00%</td>
+                                    <td>27.59%</td>
+                                    <td>44.99%</td>
+                                </tr>
+                                <tr>
+                                    <td>61</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.04%</td>
+                                    <td>60.14%</td>
+                                    <td>65.42%</td>
+                                    <td>29.42%</td>
+                                    <td>27.18%</td>
+                                    <td>44.94%</td>
+                                </tr>
+                                <tr>
+                                    <td>62</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.10%</td>
+                                    <td>55.00%</td>
+                                    <td>65.92%</td>
+                                    <td>29.02%</td>
+                                    <td>26.74%</td>
+                                    <td>41.14%</td>
+                                </tr>
+                                <tr>
+                                    <td>63</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.71%</td>
+                                    <td>58.14%</td>
+                                    <td>66.88%</td>
+                                    <td>29.15%</td>
+                                    <td>27.13%</td>
+                                    <td>43.42%</td>
+                                </tr>
+                                <tr>
+                                    <td>64</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.23%</td>
+                                    <td>56.58%</td>
+                                    <td>65.51%</td>
+                                    <td>28.87%</td>
+                                    <td>27.06%</td>
+                                    <td>40.64%</td>
+                                </tr>
+                                <tr>
+                                    <td>65</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.29%</td>
+                                    <td>57.04%</td>
+                                    <td>64.93%</td>
+                                    <td>28.42%</td>
+                                    <td>26.27%</td>
+                                    <td>43.52%</td>
+                                </tr>
+                                <tr>
+                                    <td>66</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.68%</td>
+                                    <td>55.59%</td>
+                                    <td>64.80%</td>
+                                    <td>28.62%</td>
+                                    <td>27.31%</td>
+                                    <td>39.16%</td>
+                                </tr>
+                                <tr>
+                                    <td>67</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.27%</td>
+                                    <td>58.12%</td>
+                                    <td>65.86%</td>
+                                    <td>28.63%</td>
+                                    <td>27.06%</td>
+                                    <td>37.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>68</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.88%</td>
+                                    <td>55.62%</td>
+                                    <td>65.30%</td>
+                                    <td>28.53%</td>
+                                    <td>26.85%</td>
+                                    <td>36.03%</td>
+                                </tr>
+                                <tr>
+                                    <td>69</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.71%</td>
+                                    <td>48.20%</td>
+                                    <td>65.33%</td>
+                                    <td>28.07%</td>
+                                    <td>26.85%</td>
+                                    <td>36.47%</td>
+                                </tr>
+                                <tr>
+                                    <td>70</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.02%</td>
+                                    <td>50.12%</td>
+                                    <td>65.33%</td>
+                                    <td>28.15%</td>
+                                    <td>27.10%</td>
+                                    <td>37.03%</td>
+                                </tr>
+                                <tr>
+                                    <td>71</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>manhattan</td>
+                                    <td>63.88%</td>
+                                    <td>49.03%</td>
+                                    <td>64.80%</td>
+                                    <td>27.99%</td>
+                                    <td>26.60%</td>
+                                    <td>34.77%</td>
+                                </tr>
+                                <tr>
+                                    <td>72</td>
+                                    <td>KNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.03%</td>
+                                    <td>47.48%</td>
+                                    <td>65.86%</td>
+                                    <td>28.13%</td>
+                                    <td>27.28%</td>
+                                    <td>36.62%</td>
+                                </tr>
+                                <tr>
+                                    <td>73</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>74</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>75</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>76</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>77</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>78</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>79</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>80</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>81</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>82</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>83</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>84</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Normalizer</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>85</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>86</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>87</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>88</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>89</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>90</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>91</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>92</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>93</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>94</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>95</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>96</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>97</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>98</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>99</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>100</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>RobustScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>101</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>102</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>103</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>104</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>StandardScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>105</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.25%</td>
+                                    <td>61.28%</td>
+                                    <td>68.01%</td>
+                                    <td>62.41%</td>
+                                    <td>60.55%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>106</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.32%</td>
+                                    <td>61.54%</td>
+                                    <td>70.13%</td>
+                                    <td>63.18%</td>
+                                    <td>60.70%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>107</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.00%</td>
+                                    <td>63.42%</td>
+                                    <td>73.10%</td>
+                                    <td>64.76%</td>
+                                    <td>62.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>108</td>
+                                    <td>WDKNN</td>
+                                    <td>SMOTE</td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.91%</td>
+                                    <td>62.07%</td>
+                                    <td>71.18%</td>
+                                    <td>63.72%</td>
+                                    <td>61.29%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>109</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.89%</td>
+                                    <td>54.06%</td>
+                                    <td>64.84%</td>
+                                    <td>29.38%</td>
+                                    <td>27.20%</td>
+                                    <td>40.98%</td>
+                                </tr>
+                                <tr>
+                                    <td>110</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.79%</td>
+                                    <td>53.29%</td>
+                                    <td>65.95%</td>
+                                    <td>28.77%</td>
+                                    <td>26.98%</td>
+                                    <td>36.78%</td>
+                                </tr>
+                                <tr>
+                                    <td>111</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.09%</td>
+                                    <td>58.16%</td>
+                                    <td>65.89%</td>
+                                    <td>28.91%</td>
+                                    <td>27.17%</td>
+                                    <td>37.57%</td>
+                                </tr>
+                                <tr>
+                                    <td>112</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MaxAbsScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.02%</td>
+                                    <td>58.15%</td>
+                                    <td>66.98%</td>
+                                    <td>28.84%</td>
+                                    <td>27.19%</td>
+                                    <td>37.32%</td>
+                                </tr>
+                                <tr>
+                                    <td>113</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.69%</td>
+                                    <td>57.27%</td>
+                                    <td>66.01%</td>
+                                    <td>29.60%</td>
+                                    <td>26.84%</td>
+                                    <td>46.78%</td>
+                                </tr>
+                                <tr>
+                                    <td>114</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.54%</td>
+                                    <td>55.56%</td>
+                                    <td>64.80%</td>
+                                    <td>28.82%</td>
+                                    <td>26.91%</td>
+                                    <td>39.37%</td>
+                                </tr>
+                                <tr>
+                                    <td>115</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.14%</td>
+                                    <td>59.76%</td>
+                                    <td>65.83%</td>
+                                    <td>29.11%</td>
+                                    <td>27.17%</td>
+                                    <td>44.50%</td>
+                                </tr>
+                                <tr>
+                                    <td>116</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>MinMaxScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.87%</td>
+                                    <td>57.71%</td>
+                                    <td>64.80%</td>
+                                    <td>28.94%</td>
+                                    <td>27.11%</td>
+                                    <td>40.33%</td>
+                                </tr>
+                                <tr>
+                                    <td>117</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.24%</td>
+                                    <td>52.65%</td>
+                                    <td>64.80%</td>
+                                    <td>28.30%</td>
+                                    <td>26.76%</td>
+                                    <td>36.00%</td>
+                                </tr>
+                                <tr>
+                                    <td>118</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.50%</td>
+                                    <td>50.50%</td>
+                                    <td>64.84%</td>
+                                    <td>28.56%</td>
+                                    <td>26.91%</td>
+                                    <td>35.17%</td>
+                                </tr>
+                                <tr>
+                                    <td>119</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>manhattan</td>
+                                    <td>63.57%</td>
+                                    <td>45.80%</td>
+                                    <td>65.30%</td>
+                                    <td>28.78%</td>
+                                    <td>27.12%</td>
+                                    <td>36.27%</td>
+                                </tr>
+                                <tr>
+                                    <td>120</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Normalizer</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.56%</td>
+                                    <td>49.38%</td>
+                                    <td>64.80%</td>
+                                    <td>28.62%</td>
+                                    <td>27.05%</td>
+                                    <td>35.39%</td>
+                                </tr>
+                                <tr>
+                                    <td>121</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.35%</td>
+                                    <td>55.11%</td>
+                                    <td>66.97%</td>
+                                    <td>30.12%</td>
+                                    <td>27.59%</td>
+                                    <td>46.35%</td>
+                                </tr>
+                                <tr>
+                                    <td>122</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.88%</td>
+                                    <td>55.48%</td>
+                                    <td>68.58%</td>
+                                    <td>30.36%</td>
+                                    <td>27.59%</td>
+                                    <td>42.72%</td>
+                                </tr>
+                                <tr>
+                                    <td>123</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>manhattan</td>
+                                    <td>65.15%</td>
+                                    <td>57.71%</td>
+                                    <td>68.53%</td>
+                                    <td>30.47%</td>
+                                    <td>27.59%</td>
+                                    <td>42.68%</td>
+                                </tr>
+                                <tr>
+                                    <td>124</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>PowerTransformer yeo-johnson</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>65.07%</td>
+                                    <td>57.58%</td>
+                                    <td>68.62%</td>
+                                    <td>30.41%</td>
+                                    <td>27.59%</td>
+                                    <td>42.53%</td>
+                                </tr>
+                                <tr>
+                                    <td>125</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>chebyshev</td>
+                                    <td>65.19%</td>
+                                    <td>55.34%</td>
+                                    <td>70.19%</td>
+                                    <td>30.96%</td>
+                                    <td>27.59%</td>
+                                    <td>40.45%</td>
+                                </tr>
+                                <tr>
+                                    <td>126</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>euclidean</td>
+                                    <td>66.33%</td>
+                                    <td>55.49%</td>
+                                    <td>70.72%</td>
+                                    <td>32.55%</td>
+                                    <td>27.59%</td>
+                                    <td>43.42%</td>
+                                </tr>
+                                <tr>
+                                    <td>127</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>manhattan</td>
+                                    <td>66.14%</td>
+                                    <td>54.52%</td>
+                                    <td>70.72%</td>
+                                    <td>32.15%</td>
+                                    <td>27.59%</td>
+                                    <td>43.31%</td>
+                                </tr>
+                                <tr>
+                                    <td>128</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer normal</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>66.35%</td>
+                                    <td>56.99%</td>
+                                    <td>71.25%</td>
+                                    <td>32.58%</td>
+                                    <td>27.59%</td>
+                                    <td>43.32%</td>
+                                </tr>
+                                <tr>
+                                    <td>129</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.29%</td>
+                                    <td>46.87%</td>
+                                    <td>64.80%</td>
+                                    <td>27.75%</td>
+                                    <td>26.48%</td>
+                                    <td>32.79%</td>
+                                </tr>
+                                <tr>
+                                    <td>130</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.80%</td>
+                                    <td>54.98%</td>
+                                    <td>67.09%</td>
+                                    <td>29.99%</td>
+                                    <td>27.59%</td>
+                                    <td>40.05%</td>
+                                </tr>
+                                <tr>
+                                    <td>131</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>manhattan</td>
+                                    <td>65.23%</td>
+                                    <td>61.34%</td>
+                                    <td>67.56%</td>
+                                    <td>30.59%</td>
+                                    <td>27.59%</td>
+                                    <td>43.65%</td>
+                                </tr>
+                                <tr>
+                                    <td>132</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>QuantileTransformer uniform</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>65.00%</td>
+                                    <td>55.57%</td>
+                                    <td>69.26%</td>
+                                    <td>30.30%</td>
+                                    <td>27.59%</td>
+                                    <td>44.21%</td>
+                                </tr>
+                                <tr>
+                                    <td>133</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>64.04%</td>
+                                    <td>59.01%</td>
+                                    <td>65.54%</td>
+                                    <td>30.00%</td>
+                                    <td>27.18%</td>
+                                    <td>45.60%</td>
+                                </tr>
+                                <tr>
+                                    <td>134</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>64.03%</td>
+                                    <td>55.00%</td>
+                                    <td>65.95%</td>
+                                    <td>29.58%</td>
+                                    <td>27.02%</td>
+                                    <td>41.14%</td>
+                                </tr>
+                                <tr>
+                                    <td>135</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.65%</td>
+                                    <td>58.14%</td>
+                                    <td>67.60%</td>
+                                    <td>29.71%</td>
+                                    <td>27.53%</td>
+                                    <td>43.42%</td>
+                                </tr>
+                                <tr>
+                                    <td>136</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>RobustScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>64.16%</td>
+                                    <td>55.87%</td>
+                                    <td>65.97%</td>
+                                    <td>29.43%</td>
+                                    <td>27.18%</td>
+                                    <td>40.64%</td>
+                                </tr>
+                                <tr>
+                                    <td>137</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>chebyshev</td>
+                                    <td>63.11%</td>
+                                    <td>57.54%</td>
+                                    <td>64.80%</td>
+                                    <td>29.04%</td>
+                                    <td>26.47%</td>
+                                    <td>45.27%</td>
+                                </tr>
+                                <tr>
+                                    <td>138</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.44%</td>
+                                    <td>55.59%</td>
+                                    <td>64.80%</td>
+                                    <td>28.97%</td>
+                                    <td>27.31%</td>
+                                    <td>39.16%</td>
+                                </tr>
+                                <tr>
+                                    <td>139</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>manhattan</td>
+                                    <td>64.21%</td>
+                                    <td>58.12%</td>
+                                    <td>66.88%</td>
+                                    <td>29.12%</td>
+                                    <td>27.26%</td>
+                                    <td>38.51%</td>
+                                </tr>
+                                <tr>
+                                    <td>140</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>StandardScaler</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.73%</td>
+                                    <td>55.62%</td>
+                                    <td>64.80%</td>
+                                    <td>28.89%</td>
+                                    <td>26.85%</td>
+                                    <td>37.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>141</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>chebyshev</td>
+                                    <td>62.31%</td>
+                                    <td>48.20%</td>
+                                    <td>64.80%</td>
+                                    <td>28.11%</td>
+                                    <td>26.41%</td>
+                                    <td>37.43%</td>
+                                </tr>
+                                <tr>
+                                    <td>142</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>euclidean</td>
+                                    <td>63.00%</td>
+                                    <td>50.12%</td>
+                                    <td>64.80%</td>
+                                    <td>28.16%</td>
+                                    <td>26.92%</td>
+                                    <td>37.03%</td>
+                                </tr>
+                                <tr>
+                                    <td>143</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>manhattan</td>
+                                    <td>63.05%</td>
+                                    <td>49.03%</td>
+                                    <td>64.80%</td>
+                                    <td>27.93%</td>
+                                    <td>26.57%</td>
+                                    <td>34.77%</td>
+                                </tr>
+                                <tr>
+                                    <td>144</td>
+                                    <td>WDKNN</td>
+                                    <td>Tanpa Resampling</span></td>
+                                    <td>Tanpa Normalisasi</span></td>
+                                    <td>minkowski 1.5</td>
+                                    <td>63.01%</td>
+                                    <td>47.48%</td>
+                                    <td>64.80%</td>
+                                    <td>28.09%</td>
+                                    <td>26.73%</td>
+                                    <td>34.40%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+            <br/><br/>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Grafik dan Tabel Hasil Performa Satu Skenario</h4>
+                    <hr/>
+                    <p>Berikut adalah form untuk menampilkan hasil performa percobaan skenario dalam bentuk grafik dan tabel. Performa yang ditampilkan pada grafik adalah akurasi dan f1-score sedangkan yang ditampilkan pada tabel adalah semua performa. Untuk memperbesar skala grafik gunakan scroll in/out mouse dan untuk menggeser skala  gunakan panning mouse</p>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="jenisknn">Jenis KNN</label>
+                            <select class="form-control" id="jenisknn" name="jenisknn">
+                                <option value="1">KNN</option>
+                                <option value="2">Weighted Distance KNN</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="jenissampling">Sampling</label>
+                            <select class="form-control" id="jenissampling" name="jenissampling">
+                                <option value="1">Tanpa Resampling</option>
+                                <option value="2">SMOTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="jenisnormalisasi">Normalisasi</label>
+                            <select class="form-control" id="jenisnormalisasi" name="jenisnormalisasi">
+                                <option value="1">Tanpa Normalisasi</option>
+                                <option value="2">MinMax Normalization</option>
+                                <option value="4">Standard Scaler</option>
+                                <option value="3">MaxAbs Scaler</option>
+                                <option value="5">Robust Scaler</option>
+                                <option value="6">Normalizer</option>
+                                <option value="7">Quantile Transformer Uniform</option>
+                                <option value="8">Quantile Transformer Normal</option>
+                                <option value="9">Power Transformer yeo-johnson</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="jenisjarak">Jarak</label>
+                            <select class="form-control" id="jenisjarak" name="jenisjarak">
+                                <option value="1">Euclidean</option>
+                                <option value="2">Manhattan</option>
+                                <option value="3">Minkowski</option>
+                                <option value="4">Chebyshev</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="displayTabel()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
+                    <button onclick="clearDataTable()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan</button>
+                    <button onclick="downloadChart1()" class="btn btn-success"><span class="fa fa-download"></span> Unduh Grafik</button>
+                    <script>
+                    function downloadChart1(){
+                    var link = document.createElement('a');
+                    link.download = 'exportgrafik.png';
+                    link.href = document.getElementById('charthasil').toDataURL("image/jpg")
+                    link.click();
+                    }
+                    </script>
+                    
+                    <br/><br/>
+                    <canvas id="charthasil"></canvas>
+                    <br/><br/>
+                    <div id="hasilpencarian">
+                    </div>
+                    <script>
+                    var ctx = document.getElementById('charthasil').getContext('2d');
+                    var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+                    devicePixelRatio:3000,
+                    maintainAspectRatio: false,
+                    responsive:true,
+                    // The data for our dataset
+                    data: {
+                    labels: [],
+                    datasets: [
+                    {
+                    label: 'F-Measure',
+                    borderColor: 'rgb(255, 99, 50)',
+                    backgroundColor: 'rgb(255, 99, 50)',
+                    fill: false,
+                    data: []
+                    },
+                    {
+                    label: 'Akurasi',
+                    borderColor: 'rgb(50, 99, 255)',
+                    backgroundColor:'rgb(50, 99, 255)',
+                    fill: false,
+                    data: []
+                    }]
+                    },
+                    // Configuration options go here
+                    options: {
+                    title: {
+                    display: true,
+                    text: 'Performa Klasifikasi'
+                    },
+                    plugins: {
+                    zoom: {
+                    pan: {
+                    enabled: true,
+                    mode: 'y',
+                    rangeMin: {
+                    y: 0
+                    },
+                    rangeMax: {
+                    y: 100
+                    }
+                    },
+                    zoom: {
+                    enabled: true,
+                    mode: 'y',
+                    rangeMin: {
+                    y: 0
+                    },
+                    rangeMax: {
+                    y: 100
+                    }
+                    }
+                    }
+                    },
+                    scales: {
+                    yAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Nilai Performa (%)'
+                    },
+                    ticks: {
+                    max: 100,
+                    min: 0,
+                    stepSize: 5
+                    }
+                    }],
+                    xAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Nilai K'
+                    }
+                    }]
+                    }
+                    }
+                    });
+                    </script>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Grafik Perbandingan Skenario</h4>
+                    <hr/>
+                    <p>Berikut adalah form untuk menampilkan beberapa hasil performa percobaan skenario dalam bentuk grafik. Form ini bertujuan untuk melakukan perbandingan skenario. Performa yang ditampilkan sesuai inputan form. warna grafik akan mengikuti panduan <a href="https://personal.sron.nl/~pault/data/colourschemes.pdf" target="_blank">QUALITATIVE COLOUR SCHEMES</a> yang memiliki urutan <span style="background-color: #EE7733">&nbsp;orange </span>
+                    <span style="background-color: #0077BB">&nbsp;blue </span>
+                    <span style="background-color: #33BBEE">&nbsp;cyan </span>
+                    <span style="background-color: #EE3377">&nbsp;magenta </span>
+                    <span style="background-color: #CC3311">&nbsp;red </span>
+                    <span style="background-color: #009988">&nbsp;teal </span>
+                    <span style="background-color: #BBBBBB">&nbsp;grey&nbsp;</span>. Untuk memperbesar skala grafik gunakan scroll in/out mouse dan untuk menggeser skala  gunakan panning mouse
+                </p>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="jenisknn2">Jenis KNN</label>
+                        <select class="form-control" id="jenisknn2" name="jenisknn2">
+                            <option value="1">KNN</option>
+                            <option value="2">Weighted Distance KNN</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="jenissampling2">Sampling</label>
+                        <select class="form-control" id="jenissampling2" name="jenissampling2">
+                            <option value="1">Tanpa Resampling</option>
+                            <option value="2">SMOTE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="jenisnormalisasi2">Normalisasi</label>
+                        <select class="form-control" id="jenisnormalisasi2" name="jenisnormalisasi2">
+                            <option value="1">Tanpa Normalisasi</option>
+                            <option value="2">MinMax Normalization</option>
+                            <option value="4">Standard Scaler</option>
+                            <option value="3">MaxAbs Scaler</option>
+                            <option value="5">Robust Scaler</option>
+                            <option value="6">Normalizer</option>
+                            <option value="7">Quantile Transformer Uniform</option>
+                            <option value="8">Quantile Transformer Normal</option>
+                            <option value="9">Power Transformer yeo-johnson</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="jenisjarak2">Jarak</label>
+                        <select class="form-control" id="jenisjarak2" name="jenisjarak2">
+                            <option value="1">Euclidean</option>
+                            <option value="2">Manhattan</option>
+                            <option value="3">Minkowski</option>
+                            <option value="4">Chebyshev</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="jenisperforma">Performa</label>
+                        <select class="form-control" id="jenisperforma" name="jenisperforma">
+                            <option value="1">Akurasi</option>
+                            <option value="2">F1-Score</option>
+                            <option value="3">Presisi</option>
+                            <option value="4">Recall</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <button onclick="checkData()" class="btn btn-primary"><span class="fa fa-eye"></span> Tampilkan</button>
+                <button onclick="clearData()" class="btn btn-danger"><span class="fa fa-trash"></span> Bersihkan Semua</button>
+                <br/><br/>
+                <canvas id="charthasil2"></canvas>
+                <br/><br/>
+                <div id="hasilpencarian2">
+                </div>
+                <script>
+                var ctx2 = document.getElementById('charthasil2').getContext('2d');
+                var chart2 = new Chart(ctx2, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset
+                data: {
+                datasets: []
+                },
+                // Configuration options go here
+                options: {
+                title: {
+                display: true,
+                text: 'Performa Klasifikasi'
+                },
+                plugins: {
+                zoom: {
+                pan: {
+                enabled: true,
+                mode: 'xy',
+                rangeMin: {
+                y: 0
+                },
+                rangeMax: {
+                y: 100
+                }
+                },
+                zoom: {
+                enabled: true,
+                mode: 'xy',
+                rangeMin: {
+                x:0,
+                y: 0
+                },
+                rangeMax: {
+                x:100,
+                y: 100
+                }
+                }
+                }
+                },
+                scales: {
+                yAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'Nilai Performa (%)'
+                },
+                ticks: {
+                max: 100,
+                min: 0,
+                stepSize: 5
+                }
+                }],
+                xAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'Nilai K'
+                }
+                }]
+                },
+                }
+                });
+                console.log(chart2);
+                var currentIndex=0;
+                var currentItem=[];
+                var colorList=["#EE7733","#0077BB","#33BBEE","#EE3377","#CC3311","#009988","#BBBBBB"];
+                
+                function clearData(){
+                console.log("terpanggil",currentIndex);
+                for (var i = 0; i < currentIndex; i++) {
+                chart2.data.datasets.pop();
+                }
+                currentIndex=0;
+                currentItem=[];
+                chart2.update();
+                }
+                function clearDataTable(){
+                chart.data.datasets[0].data=[];
+                chart.data.datasets[1].data=[];
+                hasil="";
+                $('#hasilpencarian').html(hasil);
+                chart.update();
+                }
+                function checkData(jarak=$('#jenisjarak2').val(),
+                normalisasi=$('#jenisnormalisasi2').val(),
+                performa=$('#jenisperforma').val(),
+                sampling=$('#jenissampling2').val(),
+                knn=$('#jenisknn2').val()
+                ){
+                if(knn==="1"){
+                var jenisknn="KNN";
+                var awalloop=0;
+                var akhirloop=7199;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=0;
+                var akhirloop=799;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=800;
+                var akhirloop=1599;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                
+                var awalloop=1600; var akhirloop=2399;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=2400; var akhirloop=3199;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=3200; var akhirloop=3999;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=4000;var akhirloop=4799;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=4800;var akhirloop=5599;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=5600;var akhirloop=6399;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=6400;var akhirloop=7199;
+                }
+                }
+                else if(knn==="2"){
+                var jenisknn="WDKNN";
+                var awalloop=7200;
+                var akhirloop=14399;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=7200;var akhirloop=7999;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=8000;var akhirloop=8799;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                var awalloop=8800;var akhirloop=9599;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=9600;var akhirloop=10399;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=10400;var akhirloop=11199;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=11200;var akhirloop=11999;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=12000;var akhirloop=12799;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=12800;var akhirloop=13599;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=13600;var akhirloop=14399;
+                }
+                }
+                if(sampling==="1"){var jenissampling="Tanpa Resampling";}
+                else if(sampling==="2"){var jenissampling="SMOTE";}
+                
+                
+                
+                if(jarak==="1"){var jenisjarak="euclidean";}
+                else if(jarak==="2"){var jenisjarak="manhattan";}
+                else if(jarak==="3"){var jenisjarak="minkowski 1.5";}
+                else if(jarak==="4"){var jenisjarak="chebyshev";}
+                if(performa==="1"){var jenisperforma="Akurasi";}
+                else if(performa==="2"){var jenisperforma="F1 Score";}
+                else if(performa==="3"){var jenisperforma="Presisi";}
+                else if(performa==="4"){var jenisperforma="Recall";}
+                var dataToCheck=jenisknn+" "+jenisjarak+" "+jenissampling+" "+jenisnormalisasi+" "+jenisperforma;
+                console.log(currentItem,dataToCheck);
+                if(currentItem.indexOf(dataToCheck)>-1){
+                alert("sudah ada");
+                }
+                else{
+                addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma,awalloop,akhirloop);
+                }
+                }
+                function addData(jenisknn,jenisjarak,jenissampling,jenisnormalisasi,jenisperforma,awalloop,akhirloop){
+                var correct = [];
+                for(var i=awalloop;i<akhirloop;i++){
+                    if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
+                    correct.push(datahasil[i]);
+                    }
+                    }
+                    data=[];
+                    labelisi=[];
+                    for(i in correct){
+                    data.push(correct[i][jenisperforma]);
+                    labelisi.push(correct[i]["Nilai K"]);
+                    }
+                    var dataToAppend=jenisknn+" "+jenisjarak+" "+jenissampling+" "+jenisnormalisasi+" "+jenisperforma;
+                    chart2.data.datasets[currentIndex]={data:data,label: dataToAppend,
+                    borderColor: colorList[currentIndex%7],
+                    backgroundColor:colorList[currentIndex%7],
+                    fill: false};
+                    chart2.data.labels = labelisi;
+                    currentIndex+=1;
+                    
+                    currentItem.push(dataToAppend);
+                    chart2.update();
+                    }
+                    function displayTabel(jarak=$('#jenisjarak').val(),
+                    normalisasi=$('#jenisnormalisasi').val(),
+                    sampling=$('#jenissampling').val(),
+                    knn=$('#jenisknn').val()
+                    ){
+                    labelsisi=[];
+                    dataakurasi=[];
+                    datafmeasure=[];
+                    if(knn==="1"){
+                var jenisknn="KNN";
+                var awalloop=0;
+                var akhirloop=7199;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=0;
+                var akhirloop=799;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=800;
+                var akhirloop=1599;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                
+                var awalloop=1600; var akhirloop=2399;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=2400; var akhirloop=3199;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=3200; var akhirloop=3999;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=4000;var akhirloop=4799;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=4800;var akhirloop=5599;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=5600;var akhirloop=6399;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=6400;var akhirloop=7199;
+                }
+                }
+                else if(knn==="2"){
+                var jenisknn="WDKNN";
+                var awalloop=7200;
+                var akhirloop=14399;
+                if(normalisasi==="1"){
+                var jenisnormalisasi="Tanpa Normalisasi";
+                var awalloop=7200;var akhirloop=7999;
+                }
+                else if(normalisasi==="2"){
+                var jenisnormalisasi="MinMaxScaler";
+                var awalloop=8000;var akhirloop=8799;
+                }
+                else if(normalisasi==="3"){
+                var jenisnormalisasi="MaxAbsScaler";
+                var awalloop=8800;var akhirloop=9599;
+                }
+                else if(normalisasi==="4"){
+                var jenisnormalisasi="StandardScaler";
+                var awalloop=9600;var akhirloop=10399;
+                }
+                else if(normalisasi==="5"){
+                var jenisnormalisasi="RobustScaler";
+                var awalloop=10400;var akhirloop=11199;
+                }
+                else if(normalisasi==="6"){
+                var jenisnormalisasi="Normalizer";
+                var awalloop=11200;var akhirloop=11999;
+                }
+                else if(normalisasi==="7"){
+                var jenisnormalisasi="QuantileTransformer uniform";
+                var awalloop=12000;var akhirloop=12799;
+                }
+                else if(normalisasi==="8"){
+                var jenisnormalisasi="QuantileTransformer normal";
+                var awalloop=12800;var akhirloop=13599;
+                }
+                else if(normalisasi==="9"){
+                var jenisnormalisasi="PowerTransformer yeo-johnson";
+                var awalloop=13600;var akhirloop=14399;
+                }
+                }
+                if(sampling==="1"){var jenissampling="Tanpa Resampling";}
+                else if(sampling==="2"){var jenissampling="SMOTE";}
+                    
+                    
+                    if(jarak==="1"){var jenisjarak="euclidean";}
+                    else if(jarak==="2"){var jenisjarak="manhattan";}
+                    else if(jarak==="3"){var jenisjarak="minkowski 1.5";}
+                    else if(jarak==="4"){var jenisjarak="chebyshev";}
+                    var correct = [];
+                    for(var i=awalloop;i<akhirloop;i++){
+                        if(datahasil[i]["KNN"]===jenisknn&&datahasil[i]["Jarak"]===jenisjarak&&datahasil[i]["Normalisasi"]===jenisnormalisasi&&datahasil[i]["Sampling"]===jenissampling){
+                        correct.push(datahasil[i]);
+                        }
+                        }
+                        console.log(correct);
+                        var hasil='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelhasil">';
+                            hasil+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
+                            for(i in correct){
+                            hasil+='<tr>';
+                                labelsisi.push(correct[i]["Nilai K"]);
+                                dataakurasi.push(correct[i]["Akurasi"]);
+                                datafmeasure.push(correct[i]["F1 Score"]);
+                                
+                                for(j in correct[i]){
+                                hasil+='<td>'+correct[i][j]+'</td>';
+                                }
+                            hasil+='</tr>';
+                            }
+                        hasil+='</table>';
+                        $('#hasilpencarian').html(hasil);
+                        $('#tabelhasil').DataTable();
+                        chart.data.datasets[0].data=datafmeasure;
+                        chart.data.datasets[1].data=dataakurasi;
+                        chart.data.labels=labelsisi;
+                        chart.update();
+                        }
+                        </script>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Tabel Hasil Seluruh Percobaan</h4>
+                        <hr/>
+                        <p>Berikut hasil dari seluruh percobaan dalam bentuk tabel. Untuk sorting klik pada header kolom. gunakan "shift" untuk multiple sort. data dapat diunduh pada <a href="https://github.com/sabrisangjaya/sabrisangjaya.github.io/blob/master/Skripsi/Hasil/Lampiran/Hasil%20Klasifikasi.xlsx" target="_blank">Github Repository</a></p>
+                        <button id="btnDisplayAll" onclick=" displayAllResult()" class="btn btn-primary btn-sm">Tampilkan</button><br/><br/>
+                        <div id="resultall"></div>
+                        <script>
+                        function displayAllResult(){
+                        var hasilall='<table class="table table-bordered table-sm table-fixed  table-responsive" id="tabelall">';
+                            hasilall+='<thead><th>KNN</th><th>Sampling</th><th>Normalisasi</th><th>Jarak</th><th>Nilai K</th><th>Time Train</th><th>Score Time</th><th>Akurasi</th><th>Presisi</th><th>Recall</th><th>F1 Score</th><th>True SD Pred SD</th><th>True SD Pred SMP</th><th>True SD Pred SMA</th><th>True SMP Pred SD</th><th>True SMP Pred SMP</th><th>True SMP Pred SMA</th><th>True SMA Pred SD</th><th>True SMA Pred SMP</th><th>True SMA Pred SMA</th></thead>';
+                            for(i in datahasil){
+                            hasilall+='<tr>';
+                                for(j in datahasil[i]){
+                                hasilall+='<td>'+datahasil[i][j]+'</td>';
+                                }
+                            hasilall+='</tr>';
+                            }
+                        hasilall+='</table>';
+                        $('#resultall').html(hasilall);
+                        $('#tabelall').DataTable();
+                        $('#btnDisplayAll').attr('disabled','disabled');
+                        }
+                        
+                        </script>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Perbandingan Parameter Pengaturan</h4>
+                        <hr>
+                        <p>Dari 14400 skenario percobaan jika dikelompokan dan dilakukan fungsi agregat pada hasil performa berdasarkan jenis penggunaan normalisasi atau jenis penggunaan jarak atau jenis penggunaan KNN atau jenis resampling</p>
+                        <div>
+                            <style>
+                            .tbagregat > tbody > tr > td {
+                            vertical-align: middle;
+                            text-align: center;
+                            }
+                            </style>
+                            <table class="tbagregat table table-sm table-bordered">
+                                <tr>
+                                    <td rowspan="2">Sampling</td>
+                                    <td colspan="3">Akurasi</td>
+                                    <td colspan="3">F1 Score</td>
+                                </tr>
+                                <tr>
+                                    <td>mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                    <td>mean</td>
+                                    <td>Min</td>
+                                    <td>max</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanpa Resampling</td>
+                                    <td>64.25%</td>
+                                    <td>45.80%</td>
+                                    <td>71.25%</td>
+                                    <td>29.24%</td>
+                                    <td>26.27%</td>
+                                    <td>48.38%</td>
+                                </tr>
+                                <tr>
+                                    <td>SMOTE</td>
+                                    <td>59.85%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>59.14%</td>
+                                    <td>49.62%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                            </table>
+                            <table class="tbagregat table table-sm table-bordered">
+                                <tr>
+                                    <td rowspan="2">Jenis KNN</font></td>
+                                    <td colspan="3">Akurasi</td>
+                                    <td colspan="3">F1 Score</td>
+                                </tr>
+                                <tr>
+                                    <td>Mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                    <td>Mean</td>
+                                    <td>Min</td>
+                                    <td>Max</td>
+                                </tr>
+                                <tr>
+                                    <td>K-NN</td>
+                                    <td>59.71%</td>
+                                    <td>45.80%</td>
+                                    <td>73.10%</td>
+                                    <td>41.87%</td>
+                                    <td>26.27%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>WDK-NN</td>
+                                    <td>64.39%</td>
+                                    <td>45.80%</td>
+                                    <td>73.10%</td>
+                                    <td>46.51%</td>
+                                    <td>26.41%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                            </table>
+                            <table class="tbagregat table table-sm table-bordered">
+                                <tr>
+                                    <td rowspan="2">Jenis Jarak</font></td>
+                                    <td colspan="3">Akurasi</td>
+                                    <td colspan="3">F1 Score</td>
+                                </tr>
+                                <tr>
+                                    <td>Mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                    <td>Mean</td>
+                                    <td>Min</td>
+                                    <td>Max</td>
+                                </tr>
+                                <tr>
+                                    <td>chebyshev</td>
+                                    <td>61.21%</td>
+                                    <td>46.87%</td>
+                                    <td>70.19%</td>
+                                    <td>43.55%</td>
+                                    <td>26.27%</td>
+                                    <td>66.59%</td>
+                                </tr>
+                                <tr>
+                                    <td>euclidean</td>
+                                    <td>61.95%</td>
+                                    <td>50.12%</td>
+                                    <td>70.72%</td>
+                                    <td>44.11%</td>
+                                    <td>26.68%</td>
+                                    <td>68.40%</td>
+                                </tr>
+                                <tr>
+                                    <td>manhattan</td>
+                                    <td>62.76%</td>
+                                    <td>45.80%</td>
+                                    <td>73.10%</td>
+                                    <td>44.75%</td>
+                                    <td>26.57%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>minkowski</td>
+                                    <td>62.26%</td>
+                                    <td>47.48%</td>
+                                    <td>71.25%</td>
+                                    <td>44.33%</td>
+                                    <td>26.73%</td>
+                                    <td>69.70%</td>
+                                </tr>
+                            </table>
+                            <table class="tbagregat table table-sm table-bordered">
+                                <tr>
+                                    <td rowspan="2">Jenis Normalisasi</td>
+                                    <td colspan="3">Akurasi</td>
+                                    <td colspan="3">F1 Score</td>
+                                </tr>
+                                <tr>
+                                    <td>Mean</td>
+                                    <td>min</td>
+                                    <td>max</td>
+                                    <td>Mean</td>
+                                    <td>Min</td>
+                                    <td>Max</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxAbsScaler</td>
+                                    <td>61.94%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>43.97%</td>
+                                    <td>26.78%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>MinMaxScaler</td>
+                                    <td>61.87%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>44.02%</td>
+                                    <td>26.68%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>Normalizer</td>
+                                    <td>61.78%</td>
+                                    <td>45.80%</td>
+                                    <td>73.10%</td>
+                                    <td>43.78%</td>
+                                    <td>26.76%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>PowerTransformer yeo-johnson</td>
+                                    <td>62.35%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>44.55%</td>
+                                    <td>27.40%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>QuantileTransformer normal</td>
+                                    <td>62.79%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>45.18%</td>
+                                    <td>27.59%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>QuantileTransformer uniform</td>
+                                    <td>62.26%</td>
+                                    <td>46.87%</td>
+                                    <td>73.10%</td>
+                                    <td>44.35%</td>
+                                    <td>26.48%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>RobustScaler</td>
+                                    <td>62.05%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>44.27%</td>
+                                    <td>26.74%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>StandardScaler</td>
+                                    <td>61.77%</td>
+                                    <td>49.49%</td>
+                                    <td>73.10%</td>
+                                    <td>43.96%</td>
+                                    <td>26.27%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanpa Normalisasi</td>
+                                    <td>61.61%</td>
+                                    <td>47.48%</td>
+                                    <td>73.10%</td>
+                                    <td>43.61%</td>
+                                    <td>26.41%</td>
+                                    <td>71.83%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+</body>
+</html>
