@@ -207,14 +207,16 @@ $(document).ready(function(e) {
 				$("#gifs").empty();
 				moviekeywords.forEach(function(moviekeyword, index, array) {
 					//Sets up the url that the ajax call will use
-					var queryURL = "https://api.giphy.com/v1/gifs/translate?q=" +
-					moviekeyword + "&api_key=TTp0IyLaWoDM42yZ5R8dbuGFE36a1UFh";
+					var queryURL = "https://api.giphy.com/v1/gifs/translate?s=" +
+					moviekeyword + "&api_key=TTp0IyLaWoDM42yZ5R8dbuGFE36a1UFh&weirdness="+getRandomInt(0,10);
+					console.log(queryURL);
 					//Ajax call
 					$.ajax({
 					url: queryURL,
 					method: "GET"
 					}).then(function (response) {
 						//Stores the actual image array that is returned within a results variable for easier access down below
+						
 						var results = response.data;
 						//Loops through all the images in the image array that is returned...
 						// for (var i = 0; i < results.length; i++) {
@@ -224,7 +226,7 @@ $(document).ready(function(e) {
 							//Sets up variable to hold the code for downloading a gif
 							var downloadLink = $("<a>").attr("href", results.images.original.url).attr("target","_blank");
 							//Creates a new image tag and sets its src attribute to the url of the gif that's in question, as well as setting its dimensions
-							var movieImage = $("<img class='img-fluid movie-image' style='width:100%'>");
+							var movieImage = $("<img class='img-fluid movie-image' style='width:100%' alt='"+moviekeyword+"'>");
 							movieImage.attr("src", results.images.downsized_still.url);
 
 							//Sets up code so that the gifs can be played or paused
