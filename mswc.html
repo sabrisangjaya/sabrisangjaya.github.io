@@ -93,8 +93,12 @@ $(document).ready(function(e) {
 			var linkpost=element.getElementsByClassName("post-thumbnail")[0].href;
 			var imgposter=poster.children[0].src;
 			var judul=element.getElementsByClassName("box_office_title")[0].innerHTML;
-			if(judul.indexOf(judulfilm)!==-1){
+			if(judul.toLowerCase().indexOf(judulfilm.toLowerCase()) !== -1){
 				konten+='<div class="col-md-3"><div class="card"><img class="card-img-top" src="'+imgposter+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+judul+'</h5><a href="'+linkpost+'" class="viewspoiler btn btn-primary" data-toggle="modal" data-target="#modal">Preview</a></div></div></div>	';
+			}
+			else{
+				// console.log(judul);
+				// console.log("gagal");
 			}
 		}
 		);
