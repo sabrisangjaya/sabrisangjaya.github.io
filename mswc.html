@@ -93,7 +93,9 @@ $(document).ready(function(e) {
 			var linkpost=element.getElementsByClassName("post-thumbnail")[0].href;
 			var imgposter=poster.children[0].src;
 			var judul=element.getElementsByClassName("box_office_title")[0].innerHTML;
-			konten+='<div class="col-md-3"><div class="card"><img class="card-img-top" src="'+imgposter+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+judul+'</h5><a href="'+linkpost+'" class="viewspoiler btn btn-primary" data-toggle="modal" data-target="#modal">Preview</a></div></div></div>	';
+			if(judul.indexOf(judulfilm)!==-1){
+				konten+='<div class="col-md-3"><div class="card"><img class="card-img-top" src="'+imgposter+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+judul+'</h5><a href="'+linkpost+'" class="viewspoiler btn btn-primary" data-toggle="modal" data-target="#modal">Preview</a></div></div></div>	';
+			}
 		}
 		);
 		$("#searchresult").append(konten);
@@ -338,6 +340,28 @@ function removeStopwords(str) {
       candidates.push(str[i].trim());
     }
   }
+  var candidatescounts={};
+  for(var i=0;i<candidates.length;i++){
+    var num=candidates[i];
+    candidatescounts[num]=candidatescounts[num] ? candidatescounts[num] + 1 : 1;
+  }
+  var entries=Object.entries(candidatescounts);
+  var sortedcandidates= entries.sort((a,b)=>b[1]-a[1]);
+  var counterwords=0;
+  var arraycounter=[];
+  for(var i=0;i<sortedcandidates.length;i++){
+    arraycounter.push(sortedcandidates[i][1]);
+  }
+  var arraymean=arraycounter.reduce((a,b)=>a+b)/arraycounter.length;
+  var arraystd= Math.sqrt(arraycounter.map(x=>Math.pow(x - arraymean, 2)).reduce((a,b)=>a+b)/arraycounter.length)
+  //console.log(Math.ceil(counterwords/sortedcandidates.length));
+  console.log(Math.ceil(2*arraymean+arraystd));
+  console.log(sortedcandidates);
+  for(var i=0;i<sortedcandidates.length;i++){
+    if(sortedcandidates[i][1]>Math.ceil(2*arraymean+arraystd)){
+      removeItemAll(candidates,sortedcandidates[i][0]);
+    }
+  }
   return candidates;
 }
 function countInstances(string, word) {
@@ -351,7 +375,17 @@ str = str.split(tokens[i]).join(tempChar);
 str = str.split(tempChar);
 return str;
 }
-
+function removeItemAll(arr,value){
+  var i = 0;
+  while(i<arr.length){
+    if(arr[i]===value){
+      arr.splice(i,1);
+    }else{
+      ++i;
+    }
+  }
+  return arr;
+}
 
 
 </script>
