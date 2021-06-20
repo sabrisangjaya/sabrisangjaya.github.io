@@ -129,7 +129,7 @@ $(document).ready(function(e) {
 				const d = .85; // damping factor
 				const n = 4; // search radius
 				const threshold = 0.01; // convergence threshold
-				const numKeywords = 10;
+				const numKeywords = 5;
 				var map = {}; // { word: [adjacent words] } 
 
 				// remove numbers from text
@@ -233,7 +233,7 @@ $(document).ready(function(e) {
 							var downloadLink = $("<a>").attr("href", results.images.original.url).attr("target","_blank");
 							//Creates a new image tag and sets its src attribute to the url of the gif that's in question, as well as setting its dimensions
 							var movieImage = $("<img class='img-fluid movie-image' style='width:100%' alt='"+moviekeyword+"'>");
-							movieImage.attr("src", results.images.downsized_still.url);
+							movieImage.attr("src", results.images.preview_gif.url);
 
 							//Sets up code so that the gifs can be played or paused
 							movieImage.attr("data-state", "still");
@@ -242,7 +242,7 @@ $(document).ready(function(e) {
 							//Appends the movie image & its corresponding paragraph to the movie div, as well as the gif download link, and then prepends that movie div to the main gifs div in the page
 							downloadLink.append(movieImage);
 							movieSpan.append(downloadLink);
-							$("#gifs").prepend(movieSpan);
+							$("#gifs").append(movieSpan);
 						// }
 						
 
