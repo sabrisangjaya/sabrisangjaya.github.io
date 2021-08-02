@@ -2,8 +2,35 @@
 <div class="card" id="content" style="margin-bottom: 10px;">
 	<div class="card-body">
 		<h3 class="no-print">Resume</h3>
-		<button onclick="window.print()" class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;"><span class="fa fa-download"></span> Download Resume (PDF)</button>
-		<button onclick="window.print()" class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;"><span class="fa fa-print"></span> Generate Resume from Web Version</button>
+		<button class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;"><span class="fa fa-download"></span> Download Resume (PDF)</button>
+		<button onclick="window.print()" id="webgenerate" class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;" data-toggle="tooltip" data-placement="bottom"><span class="fa fa-print"></span> Generate Resume from Web Version</button>
+		<script>
+			var browsercek = (function() {
+			    var test = function(regexp) {return regexp.test(window.navigator.userAgent)}
+			    switch (true) {
+			        case test(/edg/i): return "Microsoft Edge";
+			        case test(/trident/i): return "Microsoft Internet Explorer";
+			        case test(/firefox|fxios/i): return "Mozilla Firefox";
+			        case test(/opr\//i): return "Opera";
+			        case test(/ucbrowser/i): return "UC Browser";
+			        case test(/samsungbrowser/i): return "Samsung Browser";
+			        case test(/chrome|chromium|crios/i): return "Google Chrome";
+			        case test(/safari/i): return "Apple Safari";
+			        default: return "Other";
+			    }
+			})();
+			console.log(browsercek)
+			if(browsercek==="Google Chrome"){
+				document.getElementById("webgenerate").disabled=false;
+				console.log(browsercek);
+			}
+			else{
+				document.getElementById("webgenerate").disabled=true;
+				console.log(browsercek);
+				var pesanbrowser="Not available in "+browsercek;
+				$("#webgenerate").attr('data-original-title',pesanbrowser).tooltip('show');
+			}
+		</script>
 		<div class="card-columns">
 			<div class="card">
 				<div class="card-body">
@@ -11,6 +38,7 @@
 						<div class="col-md-3"><img src="img/profil2.jpg" class="img-thumbnail img-fluid" alt="profil" ></div>
 						<div class="col-md-9">
 							<h1>Sabri Sangjaya</h1>
+							<p id="browsercheck"></p>
 							<p>
 								<a href='#' class='badge badge-primary'><span class="fa fa-map-marker fa-lg"></span> Malang, Indonesia</a>
 								 
@@ -157,7 +185,7 @@
 				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
 				<a href='#' class='badge badge-secondary'>2018</a>
 				<p style="text-align: justify;"><small>
-				LKTIN PESC 2017 (Power and Energy Systems Competition) is national scientific writing competition for SMA / SMK / MA Level. Held annually by Workshop Elektro Universitas Negeri Malang. Take part as Publication and Documentation and Design (PDD) Section and Stage Operator. i was tasked to coordinate my team to fulfill the design needs during the event. As Coordinator of timer application i was tasked to to design several things such as backdrops, poster and pamphlet.</small></p>
+				LKTIN PESC 2018 (Power and Energy Systems Competition) is national scientific writing competition for SMA / SMK / MA Level. Held annually by Workshop Elektro Universitas Negeri Malang. Take part as Publication and Documentation and Design (PDD) Section and Stage Operator. i was tasked to design several things such as backdrops, poster and pamphlet.</small></p>
 				<hr/>
 				<a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
 				<a href='#' class='badge badge-secondary'>Coordinator of Publication and Documentation and Design Section</a>
