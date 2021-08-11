@@ -85,9 +85,10 @@
 							<div class="collapse navbar-collapse" id="navbarNav">
 								<ul class="navbar-nav " style="text-align:right">
 									<li class="nav-item nav-custom">
-										<a href="cv.html" class="nav-link" alt="resume">CV</a>
+										<a href="cv.html" class="nav-link" alt="cv">CV</a>
 										<a href="resume.html" class="nav-link" alt="resume">Resume</a>
 										<a href="blog.html" class="nav-link" alt="blog">Blog</a>
+										<a href="news.html" class="nav-link" alt="news">News</a>
 										<a href="portfolio.html" class="nav-link" alt="portfolio">Portfolio</a>
 									</li>
 								</ul>
@@ -132,7 +133,7 @@
 								<li>Web Developer and Machine Learning Enthusiasts
 								</li>
 							</ol>
-							<a href="#" class="fullcontent btn btn-primary btn-sm" style="display: inline;" alt="resume">Full Resume</a>
+							<a href="#" class="fullcontent btn btn-primary btn-sm" style="display: inline;" alt="resume">Curriculum Vitae</a>
 							<a href="portfolio.html" class="portfolio-link btn btn-primary btn-sm" style="display: inline;" alt="portfolio link">Portfolio</a>
 <script>
 $(document).ready(function(){
@@ -140,7 +141,7 @@ $(document).ready(function(){
 			$('#main-content').empty()
 			event.preventDefault();
 			$.ajax({
-				url:"resume.html",
+				url:"cv.html",
 				type:"get",
 				success:function(response){
 				$('#main-content').append(response)

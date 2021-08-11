@@ -1,5 +1,285 @@
-<div class="card">
+<div id="divtambahan"></div>
+<div class="card" id="content" style="margin-bottom: 10px;">
 	<div class="card-body">
-		<h3>Not ready yet</h3>
+		<h3 class="no-print">Curriculum Vitae</h3>
+		<button class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;"><span class="fa fa-download"></span> Download CV (PDF)</button>
+		<button onclick="window.print()" id="webgenerate" class="btn btn-primary no-print btn-sm" data-html2canvas-ignore="true" style="margin-bottom: 10px;" data-toggle="tooltip" data-placement="bottom"><span class="fa fa-print"></span> Generate CV from Web Version</button>
+		<script>
+			var browsercek = (function() {
+			    var test = function(regexp) {return regexp.test(window.navigator.userAgent)}
+			    switch (true) {
+			        case test(/edg/i): return "Microsoft Edge";
+			        case test(/trident/i): return "Microsoft Internet Explorer";
+			        case test(/firefox|fxios/i): return "Mozilla Firefox";
+			        case test(/opr\//i): return "Opera";
+			        case test(/ucbrowser/i): return "UC Browser";
+			        case test(/samsungbrowser/i): return "Samsung Browser";
+			        case test(/chrome|chromium|crios/i): return "Google Chrome";
+			        case test(/safari/i): return "Apple Safari";
+			        default: return "Other";
+			    }
+			})();
+			console.log(browsercek)
+			if(browsercek==="Google Chrome"){
+				document.getElementById("webgenerate").disabled=false;
+				console.log(browsercek);
+			}
+			else{
+				document.getElementById("webgenerate").disabled=true;
+				console.log(browsercek);
+			}
+		</script>
+		<div class="card-columns">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-3"><img src="img/profil2.jpg" class="img-thumbnail img-fluid" alt="profil" ></div>
+						<div class="col-md-9">
+							<h1>Sabri Sangjaya</h1>
+							<p id="browsercheck"></p>
+							<p>
+								<a href='#' class='badge badge-primary'><span class="fa fa-map-marker fa-lg"></span> Malang, Indonesia</a>
+								 
+								<a href='mailto:sabriwp@outlook.com' class='badge badge-primary'><span class="fa fa-envelope fa-lg"></span> sabriwp@outlook.com</a> 
+								<a href='https://sabrisangjaya.github.io' class='badge badge-primary' target="_blank"><span class="fa fa-globe fa-lg"></span> sabrisangjaya.github.io</a>
+								<a href='https://linkedin.com/in/sabrisangjaya' class='badge badge-primary' target="_blank"><span class="fa fa-linkedin fa-lg"></span> linkedin.com/in/sabrisangjaya</a>
+								<a href='https://github.com/sabrisangjaya' class='badge badge-primary' target="_blank"><span class="fa fa-github fa-lg"></span> github.com/sabrisangjaya</a><br/><br/>
+								Software Developer who has big interest in front-end web development, data science and machine learning. Love to develop project, make things better or even improve it. Also good at graphic design.
+							</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h4>Education</h4>
+					<hr/>
+					<b>Bachelor Degree</b><br/>
+					Universitas Negeri Malang<br/>
+					<a href='#' class='badge badge-primary'>Major: Informatic Engineering</a>
+					<a href='#' class='badge badge-success'>GPA : 3.64 (Cumlaude)</a>
+					<a href='#' class='badge badge-secondary'>August 2016 - January 2021</a><br/>
+					<a href='#' class='badge badge-secondary'>Thesis : Indonesian Folklore Classification Based on Education Level Using Feature Engineering and K-Nearest Neighbor</a>
+					<hr/>
+					<b>Vocational High School</b><br/>
+					SMK Negeri 4 Malang<br/>
+					<a href='#' class='badge badge-primary'>Major : Multimedia</a>
+					<a href='#' class='badge badge-success'>2013 - 2016</a>
+					
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h4>Skills</h4>
+					<hr>
+					Skills <br/> 
+
+					<a href='#' class='badge badge-success'>Web Design</a>
+					<a href='#' class='badge badge-secondary'>HTML</a>
+					<a href='#' class='badge badge-secondary'>CSS</a>
+					<a href='#' class='badge badge-secondary'>JS</a>
+					<a href='#' class='badge badge-secondary'>Framework</a>
+					<a href='#' class='badge badge-secondary'>Bootstrap</a>
+					<a href='#' class='badge badge-success'>Graphic Design</a>
+					<a href='#' class='badge badge-secondary'>Photoshop</a>
+					<a href='#' class='badge badge-secondary'>Coreldraw</a>
+					<a href='#' class='badge badge-secondary'>Layout</a>
+					<a href='#' class='badge badge-success'>Programming</a>
+					<a href='#' class='badge badge-secondary'>Python</a>
+					<a href='#' class='badge badge-secondary'>C#</a>
+					<a href='#' class='badge badge-secondary'>Unity</a>
+					<a href='#' class='badge badge-secondary'>Game Programming</a>
+					<a href='#' class='badge badge-success'>Machine Learning</a>
+					<a href='#' class='badge badge-secondary'>Data Science</a>
+					<a href='#' class='badge badge-secondary'>Computer Vision</a>
+					<a href='#' class='badge badge-secondary'>Text Mining</a>
+
+					<hr/>
+					Interest <br/>
+					<a href='#' class='badge badge-success'>Web Development</a>
+					<a href='#' class='badge badge-success'>Machine Learning</a>
+					<a href='#' class='badge badge-success'>Data Science</a>
+					<hr/>
+					Certification <br/>
+					<a href='#' class='badge badge-success'>Digitalent Kominfo 2019 Online Academy</a> <br/>
+					<a href='#' class='badge badge-success'>Netacad PCAP Programming Essential in Python </a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="mb-1">Organization Experience</h5>
+					<hr/>
+					<a href='#' class='badge badge-success'>Student Department Association of Electro Students</a>
+					<a href='#' class='badge badge-secondary'>2017-2019</a><br/><p style="text-align: justify;"><small>
+				Student Department Association of Electro Students or known as HMJ-TE is student organisation under Department of Electrical Engineering, Faculty of Engineering, Universitas Negeri Malang. </small></p>
+				<a href='#' class='badge badge-primary'>Staff Division of Education and Reasoning</a>
+				<a href='#' class='badge badge-secondary'>(2017-2018)</a><br/>
+				<a href='#' class='badge badge-primary'>Staff Division of Interest And Talent</a>
+				<a href='#' class='badge badge-secondary'>(2018-2019)</a>
+				<br/>
+				<hr/>
+				<a href='#' class='badge badge-success'>Workshop Elektro (WSE)</a>
+				<a href='#' class='badge badge-secondary'>2017-2019</a>
+				<br/><p style="text-align: justify;"><small>
+				WSE is organisation to increase soft-skill and hard-skill to it's member. has held many events like workshop, writing competition and robot competition.</small></p>
+				<a href='#' class='badge badge-primary'>Staff Division of Product and Service</a>
+				<a href='#' class='badge badge-secondary'>(2017-2018)</a><br/>
+				<a href='#' class='badge badge-primary'>Chief Division of Product and Service</a>
+				<a href='#' class='badge badge-secondary'>(2018-2019)</a>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="mb-1">Mentorship Experience</h5>
+				<hr/>
+				<a href='#' class='badge badge-success'>DTS OA 2021 - Progate</a>
+				<p style="text-align: justify;"><small>
+					being an instructor for Digitalent Scholarhip Online Academy (DTS OA) for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Five week training with hundred participant for each instructor</small>
+				</p>
+				<a href='#' class='badge badge-success'>DTS OA 2020 - Progate Batch 2</a>
+				<p style="text-align: justify;"><small>
+					being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Seven week training with hundred participant for each instructor</small>
+				</p>
+				<a href='#' class='badge badge-success'>DTS OA 2020 - Progate Batch 1</a>
+				<p style="text-align: justify;"><small>
+					being an instructor for Digitalent Scholarhip Online Academy for HTML, CSS, Javascript Training who held by Indonesia Ministry of Communication and Information with Progate as global tech partner. Seven week training with hundred participant for each instructor</small>
+				</p>
+				<a href='#' class='badge badge-success'>Workshop at School 2017 </a>
+				<p style="text-align: justify;"><small>
+					being an instructor for a workshop on making a web-based mobile application for vocational student participants. the workshop was held at SMKIT ARROHMAH KEPANJEN on 5-7 June 2017. </small>
+				</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="mb-1">Comitee Experience</h5>
+				<hr/>
+				<a href='#' class='badge badge-success'>ICONHOMECS 2019</a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2019</a>
+				<p style="text-align: justify;"><small>
+				International Conference on Social, Applied Science, and Technology in Home Economics (ICONHOMECS) held by Department of Industrial Technology, Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, certificate designs, ID card designs</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>ICOVET 2019</a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2019</a>
+				<p style="text-align: justify;"><small>
+				International Conference on Vocational Education and Training (ICOVET 2020) held by Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, certificate designs, ID card designs</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>ICOVET 2018</a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2019</a>
+				<p style="text-align: justify;"><small>
+				International Conference on Vocational Education and Training (ICOVET 2019) held by Faculty of Engineering, Universitas Negeri Malang in 2019. Take part as Publication and Documentation and Design Section. I was assigned to design several things such as backdrops, poster and pamphlet and design for website management purposes</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>LTDC 2018 </a>
+				<a href='#' class='badge badge-secondary'>Coordinator of Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2018</a>
+				<p style="text-align: justify;"><small>
+				LINE TRACER DESIGN & CONTEST (LTDC) UM  is national robotic competition held annually by Workshop Elektro Universitas Negeri Malang. Take part as Coordinator of Publication and Documentation and Design (PDD) Section and Coordinator of timer application system. As coordinator of PDD, i was tasked to coordinate my team to fulfill the design needs during the event. As Coordinator of timer application i was tasked to develop timer system application and operate the application during event</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>LKTIN PESC 2018 </a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2018</a>
+				<p style="text-align: justify;"><small>
+				LKTIN PESC 2018 (Power and Energy Systems Competition) is national scientific writing competition for SMA / SMK / MA Level. Held annually by Workshop Elektro Universitas Negeri Malang. Take part as Publication and Documentation and Design (PDD) Section and Stage Operator. i was tasked to design several things such as backdrops, poster and pamphlet.</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>Workshop Mobile Apps 2017</a>
+				<a href='#' class='badge badge-secondary'>Coordinator of Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2017</a>
+				<p style="text-align: justify;"><small>
+				Workshop Mobile Apps 2017 held by Workshop Elektro Universitas Negeri Malang. Take part as Coordinator of Publication and Documentation and Design (PDD) Section. As coordinator of PDD, i was tasked to coordinate my team to fulfill the design needs during the event.</small></p>
+				
+				<hr/>
+				<a href='#' class='badge badge-success'>Workshop at School 2017 </a>
+				<a href='#' class='badge badge-secondary'>Technical Section</a> <a href='#' class='badge badge-secondary'>Mentor</a>
+				<a href='#' class='badge badge-secondary'>2017</a>
+				<p style="text-align: justify;"><small>
+				Workshop at School 2017 held by Workshop Elektro Universitas Negeri Malang. Event that teach SMK student how to make web based mobile apps. Take part as Mentor and Technical Section.</small></p>
+				<hr/>
+				<a href='#' class='badge badge-success'>LKTIN PESC 2017 </a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2017</a>
+				<p style="text-align: justify;"><small>
+				National scientific writing competition for SMA / SMK / MA Level. Held annually by Workshop Elektro Universitas Negeri Malang. Take part as Publication and Documentation and Design (PDD) Section.</small></p><hr/>
+				<a href='#' class='badge badge-success'>LTDC 2017</a>
+				<a href='#' class='badge badge-secondary'>Publication and Documentation and Design Section</a>
+				<a href='#' class='badge badge-secondary'>2017</a>
+				<p style="text-align: justify;"><small>
+				National robotic competition held annually by Workshop Elektro Universitas Negeri Malang. Take part as Coordinator of Publication and Documentation and Design section</small></p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h4>Online Course</h4>
+				<hr>
+				<a href='https://www.datacamp.com/profile/sabrisangjaya
+				' class='badge badge-success' target="_blank" rel="nofollow">Datacamp</a> <a href='https://www.datacamp.com/profile/sabrisangjaya
+			' class='badge badge-primary' target="_blank" rel="nofollow">Profile Link</a>
+			<p><small>
+				Scholarship by Facebook Developer Circle. Took Data Science Path with python.
+			finished course :</small></p>
+			<a href="#" class="badge badge-secondary">Introduction to Python</a>
+			<a href="#" class="badge badge-secondary">Introduction to SQL</a>
+			<a href="#" class="badge badge-secondary">Introduction to R</a>
+			<a href="#" class="badge badge-secondary">Intermediate Python</a>
+			<a href="#" class="badge badge-secondary">Data Manipulation with pandas</a>
+			<a href="#" class="badge badge-secondary">Python Data Science Toolbox (Part 1)</a>
+			<a href="#" class="badge badge-secondary">Python Data Science Toolbox (Part 2)</a>
+			<a href="#" class="badge badge-secondary">Introduction to Importing Data in Python</a>
+			<a href="#" class="badge badge-secondary">pandas Foundations</a>
+			<a href="#" class="badge badge-secondary">Intermediate Importing Data in Python</a>
+			<a href="#" class="badge badge-secondary">Cleaning Data in Python</a>
+			<a href="#" class="badge badge-secondary">Manipulating DataFrames with pandas</a>
+			<hr/>
+			
+			<a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-success' target="_blank" rel="nofollow">Codecademy</a> <a href='https://www.codecademy.com/profiles/sabrisangjaya' class='badge badge-primary' target="_blank" rel="nofollow">Profile Link</a>
+			<p><small>
+				Free Access by Codecademy during C0VID-19 pandemic. Took Machine Learning Path <br/></small>
+			</p>
+			<a href="#" class="badge badge-secondary">Skill Path Build a Machine Learning Model with Python</a>
+			<hr/>
+			<a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-success' rel="nofollow">Dicoding</a> <a href='https://www.dicoding.com/users/378599' target="_blank" class='badge badge-primary' rel="nofollow">Profile Link</a>
+			<p><small>
+				Scholarship by <a href="https://idcamp.indosatooredoo.com/" rel="nofollow" target="_blank">IDCamp Indosat</a>. Took Machine Learning Path.</small>
+			</p>
+			<a href="#" class="badge badge-secondary">Belajar Machine Learning untuk Pemula</a>
+			<a href="#" class="badge badge-secondary">Belajar Dasar Visualisasi Data</a>
+			<a href="#" class="badge badge-secondary">Memulai Pemrograman Dengan Python</a>
+			<hr/>
+			<a href='#' class='badge badge-success'>Progate</a>
+			<p><small>
+			Reward for being instructor on DTS Program by Ministry of Telecomunication and Information.</small></p>
+			<a href="#" class="badge badge-secondary">HTML&CSS</a>
+			<a href="#" class="badge badge-secondary">Python</a>
+			<hr/>
+			
+		</div>
 	</div>
 </div>
+</div>
+</div>
+<script>
+	document.addEventListener("DOMContentLoaded",function(event){
+		if(window.location.href.indexOf("cv.html")!=-1){
+		var isi="";
+		isi+='<link rel="stylesheet" href="/css/bootstrap.min.css">';
+		isi+='<link rel="stylesheet" href="/css/index.css">';
+		isi+='<link rel="stylesheet" href="/css/font-awesome.css">';
+isi+='<script src="/js/jquery.min.js" type="text/javascript"></'+'script>';
+isi+='<script src="/js/popper.min.js" type="text/javascript"></'+'script>';
+isi+='<script src="/js/bootstrap.min.js" type="text/javascript"></'+'script>';
+isi+='<div class="container"><div class="row"><div class="col-md-12" ><div class="card" id="isi"></div></div></div></div>';
+document.getElementById("divtambahan").innerHTML=isi;
+movecontent();
+}
+});
+
+function movecontent(){
+if(window.location.href.indexOf("cv.html")!=-1){
+	document.getElementById("isi").innerHTML=document.getElementById("content").innerHTML;
+	document.getElementById("content").remove();
+}
+}
+</script>
