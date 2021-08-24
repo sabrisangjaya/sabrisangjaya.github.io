@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#content{
+			width: 3000px;
+			height: 100%;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			float: left;
+			margin: 5px;
+		}
+		.box2{
+			width: 400px;
+			height: 200px;
+			background-color: red;
+			float: left;
+			margin: 5px;
+		}
+	</style>
+	<script>
+	(function() {
+	    function scrollHorizontally(e) {
+	        e = window.event || e;
+	        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+	        // Scroll to the left or right in `document.documentElement` and `document.body`
+	        document.documentElement.scrollLeft -= (delta * 40); // Multiplied by 40
+	        document.body.scrollLeft -= (delta * 40); // Multiplied by 40
+	        e.preventDefault();
+	    }
+	    if (window.addEventListener) {
+	        // IE9, Chrome, Safari, Opera
+	        window.addEventListener("mousewheel", scrollHorizontally, false);
+	        // Firefox
+	        window.addEventListener("DOMMouseScroll", scrollHorizontally, false);
+	    } else {
+	        // IE 6/7/8
+	        window.attachEvent("onmousewheel", scrollHorizontally);
+	    }
+	})();
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div style="width: 450px;float: left;">
+		<div class="box1"></div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box1"></div>
+		</div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box1"></div>
+		<div class="box1"></div>
+	</div>
+</body>
+</html>
