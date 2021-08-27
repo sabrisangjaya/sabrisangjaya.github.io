@@ -18,6 +18,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://sabrisangjaya.github.io/cv.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://sabrisangjaya.github.io/blog.html</loc>
   <lastmod>2021-05-23T07:49:13+00:00</lastmod>
   <priority>0.80</priority>
@@ -41,6 +46,41 @@
   <loc>https://sabrisangjaya.github.io/portfoliomoviedb.html</loc>
   <lastmod>2021-05-23T07:49:13+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfolioarjogja.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfoliorps.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/portfoliotwibbon.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/news.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/cuaca.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/mswc.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sabrisangjaya.github.io/twibbon.html</loc>
+  <lastmod>2021-05-23T07:49:13+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
 	<loc>https://sabrisangjaya.github.io/</loc>
