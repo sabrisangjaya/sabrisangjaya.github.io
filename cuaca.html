@@ -3,88 +3,84 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sabri Sangjaya - Cuaca</title>
-	
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery.min.js" type="text/javascript"></script>
 	<script src="js/popper.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="cuaca/css/all.min.css">
 	<script src="cuaca/js/all.js" type="text/javascript"></script>
 
-		
-		<meta name="description" content="Web Developer and Machine Learning Enthusiasts">
-		<meta name="keywords" content="web,developer,designer,resume,cv,sabri,sangjaya,machine,learning,data,scientist" />
-		<meta name="author" content="Sabri Sangjaya">
-		<meta property="og:image:alt" content="Sabri Sangjaya">
-		<meta property="og:locale" content="en_ID">
-		<meta name="theme-color" content="#007bff">
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://sabrisangjaya.github.io/cuaca.html">
-		<meta property="og:title" content="Sabri Sangjaya - Cuaca">
-		<meta property="og:description" content="Web Developer and Machine Learning Enthusiasts">
-		<meta property="og:image" content="https://sabrisangjaya.github.io/img/malang.jpg">
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content="https://sabrisangjaya.github.io/cuaca.html">
-		<meta property="twitter:title" content="Sabri Sangjaya - Cuaca">
-		<meta property="twitter:description" content="Web Developer and Machine Learning Enthusiasts">
-		<meta property="twitter:image" content="https://sabrisangjaya.github.io/img/malang.jpg">
-		<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
-		<link rel="canonical" href="https://sabrisangjaya.github.io/cuaca.html">
-		<link rel="alternate" href="https://sabrisangjaya.github.io/cuaca.html" hreflang="en-id" />
+	<link rel="stylesheet" type="text/css" href="cuaca/js/jquery-ui.css">
+    <script type="text/javascript" src="cuaca/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="cuaca/js/jquery-ui.js"></script>
+
+	<meta name="description" content="Web Developer and Machine Learning Enthusiasts">
+	<meta name="keywords" content="web,developer,designer,resume,cv,sabri,sangjaya,machine,learning,data,scientist" />
+	<meta name="author" content="Sabri Sangjaya">
+	<meta property="og:image:alt" content="Sabri Sangjaya">
+	<meta property="og:locale" content="en_ID">
+	<meta name="theme-color" content="#007bff">
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://sabrisangjaya.github.io/cuaca.html">
+	<meta property="og:title" content="Sabri Sangjaya - Cuaca">
+	<meta property="og:description" content="Web Developer and Machine Learning Enthusiasts">
+	<meta property="og:image" content="https://sabrisangjaya.github.io/img/malang.jpg">
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://sabrisangjaya.github.io/cuaca.html">
+	<meta property="twitter:title" content="Sabri Sangjaya - Cuaca">
+	<meta property="twitter:description" content="Web Developer and Machine Learning Enthusiasts">
+	<meta property="twitter:image" content="https://sabrisangjaya.github.io/img/malang.jpg">
+	<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
+	<link rel="canonical" href="https://sabrisangjaya.github.io/cuaca.html">
+	<link rel="alternate" href="https://sabrisangjaya.github.io/cuaca.html" hreflang="en-id" />
 
 
-		<link rel="apple-touch-icon" href="icon/hello-icon-152.png">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="Sabri Sangjaya">
-		<meta name="msapplication-TileImage" content="icon/hello-icon-144.png">
-		<meta name="msapplication-TileColor" content="#FFFFFF">
+	<link rel="apple-touch-icon" href="icon/hello-icon-152.png">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Sabri Sangjaya">
+	<meta name="msapplication-TileImage" content="icon/hello-icon-144.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
 
 
-
-	<style>
-		.card-day{
-			background-image: linear-gradient(
-				90deg,
-				#4a4969 0%,
-				#757abf 10%,
-				#82addb 20%,
-				#94c5f8 30%,
-				#b7eaff 40%,
-				#9be2fe 50%,
-				#90dffe 60%,
-				#57c1eb 70%,
-				#2d91c2 80%,
-				#2473ab 90%, 
-				#1e528e 100%
-			);
+    <style>
+		.card-00{
+			background-image: linear-gradient(0deg, #3a3a52 10%,#020111 100%);
 			color: white;
-			animation: movebg 30s ease infinite;
+			animation: movebg 60s ease infinite;
 			background-size: 400% 400%;
-
 		}
-		.card-night{
-			background-image: url("cuaca/cerah-berawan-malam.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center center;
+		.card-06{
+			background-image: linear-gradient(0deg, #82addb 0%,#ebb2b1 100%);
 			color: white;
+			animation: movebg 60s ease infinite;
+			background-size: 400% 400%;
 		}
+		.card-12{
+			background-image:linear-gradient(0deg, #57c1eb 0%,#246fa8 100%); 
+			color: white;
+			animation: movebg 60s ease infinite;
+			background-size: 400% 400%;
+		}
+		.card-18{
+			background-image: linear-gradient(0deg, #010A10 30%,#59230B 80%,#2F1107 100%);
+			color: white;
+			animation: movebg 60s ease infinite;
+			background-size: 400% 400%;
+		}
+		
 		@keyframes movebg{
-			0%{background-position: 0% 50%;}
-			50%{background-position: 100% 50%;}
-			100%{background-position: 0% 50%;}
+			0%{background-position: 50% 0%;}
+			50%{background-position: 50% 100%;}
+			100%{background-position: 50% 0%;}
 		}
-
-
-	
 	</style>
 </head>
 <body>
-	<br/>
-	<script>
+
+<script>
 		function getDateTime(isodate) {
 		var now     = new Date(isodate);
 		var year    = now.getFullYear();
@@ -93,26 +89,26 @@
 		var minute  = now.getMinutes();
 		var second  = now.getSeconds();
 		var weekday = new Array(7);
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
+		weekday[0] = "Minggu";
+		weekday[1] = "Senin";
+		weekday[2] = "Selasa";
+		weekday[3] = "Rabu";
+		weekday[4] = "Kamis";
+		weekday[5] = "Jumat";
+		weekday[6] = "Sabtu";
 		var month = new Array();
-		month[0] = "January";
-		month[1] = "February";
-		month[2] = "March";
+		month[0] = "Januari";
+		month[1] = "Februari";
+		month[2] = "Maret";
 		month[3] = "April";
-		month[4] = "May";
-		month[5] = "June";
-		month[6] = "July";
-		month[7] = "August";
+		month[4] = "Mei";
+		month[5] = "Juni";
+		month[6] = "Juli";
+		month[7] = "Agustus";
 		month[8] = "September";
-		month[9] = "October";
+		month[9] = "Oktober";
 		month[10] = "November";
-		month[11] = "December";
+		month[11] = "Desember";
 		var bulan= month[now.getMonth()];
 		var hari = weekday[now.getDay()];
 		if(day.toString().length == 1) {
@@ -133,180 +129,49 @@
 
 
 
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET','cuaca/DigitalForecast-JawaTimur.xml',true);
-		// xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',true);
-		xhr.responseType='document';
-		xhr.onload=function() {
-			var status=xhr.status;
-			if(status===200){
-				var datakota=xhr.response.getElementById("501290");
-				// console.log(datakota);
-				var suhu=datakota.querySelector("[description='Temperature']");
-				var kelembapan=datakota.querySelector("[description='Humidity']");
-				var cuaca=datakota.querySelector("[description='Weather']");
-				var arahangin=datakota.querySelector("[description='Wind direction']");
-				var kecepatanangin=datakota.querySelector("[description='Wind speed']");
-				var dictdata={};
-				for (var i = 0; i < suhu.children.length; i++) {
-					var jamData = suhu.children[i].getAttribute("datetime");
-					var tempC=suhu.children[i].querySelector("[unit='C']").innerHTML;
-					var tempF=suhu.children[i].querySelector("[unit='F']").innerHTML;
-					var stringdate=jamData.slice(0,4)+"-"+jamData.slice(4,6)+"-"+jamData.slice(6,8)+"T"+jamData.slice(8,10)+":"+jamData.slice(10,12)+":00.000+07:00";
-					dictdata[stringdate]={};
-					dictdata[stringdate]["isoDate"]=stringdate;
-					dictdata[stringdate]["tempC"]=tempC;
-					dictdata[stringdate]["tempF"]=tempF;
-					var humidity=kelembapan.children[i].querySelector("[unit='%']").innerHTML;
-					dictdata[stringdate]["humidity"]=humidity;
-					var weather=cuaca.children[i].querySelector("[unit='icon']").innerHTML;
-					dictdata[stringdate]["cuaca"]=weather;
-					var wd_card=arahangin.children[i].querySelector("[unit='CARD']").innerHTML;
-					var wd_deg=arahangin.children[i].querySelector("[unit='deg']").innerHTML;
-					dictdata[stringdate]["wd_deg"]=wd_deg;
-					dictdata[stringdate]["wd_card"]=wd_card;
-					var ws_KPH=kecepatanangin.children[i].querySelector("[unit='KPH']").innerHTML;
-					dictdata[stringdate]["ws_kph"]=ws_KPH;
-
-				}
-				var weathercontent="";
-				Object.keys(dictdata).forEach(function(key){
-					weathercontent+='<div class="col-md-6">';
-					if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-						weathercontent+='<div class="card card-day" style="margin-bottom: 10px;">';
-					}
-					else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-						weathercontent+='<div class="card card-night" style="margin-bottom: 10px;">';
-					}
-					
-
-
-					weathercontent+='<div class="card-body">';
-					weathercontent+='<div style="text-align:center">';
-					weathercontent+=getDateTime(dictdata[key]["isoDate"])+"<br/><br/>";
-					if(dictdata[key]["cuaca"]==0){
-						
-						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-							weathercontent+='<span class="fa fa-sun fa-5x"></span><br/>';
-						}
-						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-							weathercontent+='<span class="fa fa-moon fa-5x"></span><br/>';
-						}
-						weathercontent+='Cerah / Clear Skies';
-					}
-					else if(dictdata[key]["cuaca"]==1){
-						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-						weathercontent+='<span class="fa fa-cloud-sun fa-5x"></span><br/>';
-						}
-						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-							weathercontent+='<span class="fa fa-cloud-moon fa-5x"></span><br/>';
-						}
-						weathercontent+='Cerah Berawan / Partly Cloudy';
-					}
-					else if(dictdata[key]["cuaca"]==2){
-						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-						weathercontent+='<span class="fa fa-clouds-sun fa-5x"></span><br/>';
-						}
-						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-							weathercontent+='<span class="fa fa-clouds-moon fa-5x"></span><br/>';
-						}
-						weathercontent+='Cerah Berawan / Partly Cloudy';
-					}
-					else if(dictdata[key]["cuaca"]==3){
-						weathercontent+='<span class="fa fa-cloud fa-5x"></span><br/>';
-						weathercontent+='Berawan / Mostly Cloudy';
-					}
-					else if(dictdata[key]["cuaca"]==4){
-						weathercontent+='<span class="fa fa-clouds fa-5x"></span><br/>';
-						weathercontent+='Berawan Tebal / Overcast';
-					}
-					else if(dictdata[key]["cuaca"]==5){
-						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-						weathercontent+='<span class="fa fa-sun-haze fa-5x"></span><br/>';
-						}
-						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-							weathercontent+='<span class="fa fa-fog fa-5x"></span><br/>';
-						}
-						weathercontent+='Udara Kabur / Haze';
-					}
-					else if(dictdata[key]["cuaca"]==10){
-						weathercontent+='<span class="fa fa-smoke fa-5x"></span><br/>';
-						weathercontent+='Asap / Smoke';
-					}
-					else if(dictdata[key]["cuaca"]==45){
-						weathercontent+='<span class="fa fa-fog fa-5x"></span><br/>';
-						weathercontent+='Kabut / Fog';
-					}
-					else if(dictdata[key]["cuaca"]==60){
-						weathercontent+='<span class="fa fa-cloud-rain fa-5x"></span><br/>';
-						weathercontent+='Hujan Ringan / Light Rain';
-					}
-					else if(dictdata[key]["cuaca"]==61){
-						weathercontent+='<span class="fa fa-cloud-showers fa-5x"></span><br/>';
-						weathercontent+='Hujan Sedang / Rain';
-					}
-					else if(dictdata[key]["cuaca"]==63){
-						weathercontent+='<span class="fa fa-cloud-showers-heavy fa-5x"></span><br/>';
-						weathercontent+='Hujan Lebat / Heavy Rain';
-					}
-					else if(dictdata[key]["cuaca"]==80){
-						weathercontent+='<span class="fa fa-cloud-showers fa-5x"></span><br/>';
-						weathercontent+='Hujan Lokal / Isolated Rain';
-					}
-					else if(dictdata[key]["cuaca"]==95){
-						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
-						weathercontent+='<span class="fa fa-thunderstorm-sun fa-5x"></span><br/>';
-						}
-						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
-							weathercontent+='<span class="fa fa-thunderstorm-moon fa-5x"></span><br/>';
-						}
-						weathercontent+='Hujan Petir / Severe Thunderstorm';
-					}
-					else if(dictdata[key]["cuaca"]==97){
-						weathercontent+='<span class="fa fa-thunderstorm fa-5x"></span><br/>';
-						weathercontent+='Hujan Petir / Severe Thunderstorm';
-					}
-					
-					
-					
-					weathercontent+='</div><br/><br/>';
-					weathercontent+='<span class="fa fa-temperature-low"></span> ';
-					weathercontent+=dictdata[key]["tempC"]+"°C | "+dictdata[key]["tempF"]+"°F<br/>";
-					weathercontent+='<span class="fa fa-humidity"></span> ';
-					weathercontent+=dictdata[key]["humidity"]+"%<br/>";
-					weathercontent+='<span class="fa fa-wind"></span> ';
-					weathercontent+=dictdata[key]["ws_kph"]+" km/jam<br/>";
-					var derajat=parseFloat(dictdata[key]["wd_deg"])+135;
-					weathercontent+='<span class="fa fa-location-arrow" data-fa-transform="rotate-'+derajat+'"></span> ';
-					// console.log(derajat);
-					weathercontent+=dictdata[key]["wd_card"]+"<br/>";
-					weathercontent+='</div>';
-					weathercontent+='</div>';
-					weathercontent+='</div>';
-				});
-				document.getElementById("weather").insertAdjacentHTML('beforeend',weathercontent);
-			}
-			else{
-				console.log("error");
-			}
-		}
-		xhr.send();
+		
 	</script>
 	
-
+<br/>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6" style="margin-bottom:10px;">
+			<div class="col-md-5" style="margin-bottom:10px;">
 				<img src="img/malang.jpg" class="img-fluid" alt="cuaca sabrisangjaya">	
 			</div>
-			<div class="col-md-6" style="margin-bottom:10px;">
+			<div class="col-md-7" style="margin-bottom:10px;">
 					<div class="card">
 						<div class="card-body">
 							
-							<p>Aplikasi web prakiraan cuaca Kota Malang dalam waktu 3 harian. Data diambil dari <a href="https://data.bmkg.go.id/prakiraan-cuaca/" target="_blank" rel="noreferrer nofollow">BMKG (Badan Meteorologi,Klimatologi, dan Geofisika)</a>.<br/>
+							<p>Aplikasi web prakiraan cuaca dalam waktu 3 harian. Data diambil dari <a href="https://data.bmkg.go.id/prakiraan-cuaca/" target="_blank" rel="noreferrer nofollow">BMKG (Badan Meteorologi,Klimatologi, dan Geofisika)</a>.<br/>
 							</p>
-							<a href="#" data-toggle="modal" data-target="#modal" class="badge badge-primary"><span class="fa fa-question-circle"></span> Panduan aplikasi</a> <a href='#' class='badge badge-primary'><span id="digital-clock"></span> </a> 
+							<label for="name">Masukan Nama Daerah </label>
+							<div class="form-row">
 
+							<div class="form-group col-md-8">
+							
+							<input id="tags" name="name" class="ui-autocomplete-input form-control" autocomplete="off" placeholder="Wakanda City">
+							 
+							</div>
+							<div class="form-group col-md-4">
+								<button onclick="akseslokasi()" class="btn btn-primary">Deteksi Lokasi</button>
+							</div>
+							</div>
+							<p id="citydesc"></p>
+							<a href="#" data-toggle="modal" data-target="#modal" class="badge badge-primary"><span class="fa fa-question-circle"></span> Panduan aplikasi</a> <a href='#' class='badge badge-primary'><span id="digital-clock"></span> </a>
+							
+							<script>
+								function akseslokasi(){
+								if(navigator.geolocation){
+									navigator.geolocation.getCurrentPosition(showPosition,showError);
+								}
+								}
+								function showPosition(position) {
+									console.log(position.coords.latitude);
+								}
+								function showError(error) {
+									console.log(error);
+								}
+							</script>
 							
 						</div>
 					</div>
@@ -453,86 +318,7 @@
 		</div>
 		<br/>
 		<div class="row" id="weather">
-			<style>
-				.sky-gradient-00, .sky-gradient-24 { background: #00000c; }
-.sky-gradient-01 { background: linear-gradient(to bottom, #020111 85%,#191621 100%); }
-.sky-gradient-02 { background: linear-gradient(to bottom, #020111 60%,#20202c 100%); }
-.sky-gradient-03 { background: linear-gradient(to bottom, #020111 10%,#3a3a52 100%); }
-.sky-gradient-04 { background: linear-gradient(to bottom, #20202c 0%,#515175 100%); }
-.sky-gradient-05 { background: linear-gradient(to bottom, #40405c 0%,#6f71aa 80%,#8a76ab 100%); }
-.sky-gradient-06 { background: linear-gradient(to bottom, #4a4969 0%,#7072ab 50%,#cd82a0 100%); }
-.sky-gradient-07 { background: linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%); }
-.sky-gradient-08 { background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%); }
-.sky-gradient-09 { background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%); }
-.sky-gradient-10 { background: linear-gradient(to bottom, #b7eaff 0%,#94dfff 100%); }
-.sky-gradient-11 { background: linear-gradient(to bottom, #9be2fe 0%,#67d1fb 100%); }
-.sky-gradient-12 { background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); }
-.sky-gradient-13 { background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%); }
-.sky-gradient-14 { background: linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%); }
-.sky-gradient-15 { background: linear-gradient(to bottom, #2473ab 0%,#1e528e 70%,#5b7983 100%); }
-.sky-gradient-16 { background: linear-gradient(to bottom, #1e528e 0%,#265889 50%,#9da671 100%); }
-.sky-gradient-17 { background: linear-gradient(to bottom, #1e528e 0%,#728a7c 50%,#e9ce5d 100%); }
-.sky-gradient-18 { background: linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%); }
-.sky-gradient-19 { background: linear-gradient(to bottom, #163C52 0%,#4F4F47 30%,#C5752D 60%,#B7490F 80%, #2F1107 100%); }
-.sky-gradient-20 { background: linear-gradient(to bottom, #071B26 0%,#071B26 30%,#8A3B12 80%,#240E03 100%); }
-.sky-gradient-21 { background: linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%); }
-.sky-gradient-22 { background: linear-gradient(to bottom, #090401 50%,#4B1D06 100%); }
-.sky-gradient-23 { background: linear-gradient(to bottom, #00000c 80%,#150800 100%); }
-			</style>
-			<div class="sky-gradient-00" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-01" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-02" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-03" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-04" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-05" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-06" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-07" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-08" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-09" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-10" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-11" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-12" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-13" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-14" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-15" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-16" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-17" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-18" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-19" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-20" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-21" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-22" style="width: 190px;height:200px"></div>
-			<div class="sky-gradient-23" style="width: 190px;height:200px"></div>
-
-<div style="width: 190px;height:200px;background: linear-gradient(to bottom, #00000c 0%,
-#020111 8%,
-#191621 16%,
-#20202c 24%,
-#3a3a52 32%,
-#40405c 40%,
-#4a4969 48%,
-#515175 56%,
-#6f71aa 64%,
-#7072ab 72%,
-#8a76ab 80%,
-#cd82a0 100%);"></div>
-
-
-<div style="width: 190px;height:200px;background: linear-gradient(to bottom, #38a3d1 0%,
-#67d1fb 7%,
-#757abf 14%,
-#82addb 21%,
-#8583be 28%,
-#90dffe 35%,
-#94c5f8 42%,
-#94dfff 49%,
-#9be2fe 56%,
-#a6e6ff 63%,
-#b1b5ea 70%,
-#b7eaff 77%,
-#eab0d1 84%,
-#ebb2b1 100%);"></div>
-
+			
 		</div>
 	</div>
 	<script>
@@ -544,26 +330,26 @@
 					var minute  = now.getMinutes();
 					var second  = now.getSeconds();
 					var weekday = new Array(7);
-					weekday[0] = "Sunday";
-					weekday[1] = "Monday";
-					weekday[2] = "Tuesday";
-					weekday[3] = "Wednesday";
-					weekday[4] = "Thursday";
-					weekday[5] = "Friday";
-					weekday[6] = "Saturday";
+					weekday[0] = "Minggu";
+					weekday[1] = "Senin";
+					weekday[2] = "Selasa";
+					weekday[3] = "Rabu";
+					weekday[4] = "Kamis";
+					weekday[5] = "Jumat";
+					weekday[6] = "Sabtu";
 					var month = new Array();
-					month[0] = "January";
-					month[1] = "February";
-					month[2] = "March";
+					month[0] = "Januari";
+					month[1] = "Februari";
+					month[2] = "Maret";
 					month[3] = "April";
-					month[4] = "May";
-					month[5] = "June";
-					month[6] = "July";
-					month[7] = "August";
+					month[4] = "Mei";
+					month[5] = "Juni";
+					month[6] = "Juli";
+					month[7] = "Agustus";
 					month[8] = "September";
-					month[9] = "October";
+					month[9] = "Oktober";
 					month[10] = "November";
-					month[11] = "December";
+					month[11] = "Desember";
 					var bulan= month[now.getMonth()];
 					var hari = weekday[now.getDay()];
 					if(day.toString().length == 1) {
@@ -588,35 +374,778 @@
 				}, 1000);
 	</script>
 
+	<script type="text/javascript">
+var tags = [
+{"label":"Bantul - DI Yogyakarta", "value":"Bantul", "areacode":501186,"filename":"DigitalForecast-DIYogyakarta.xml"},
+{"label":"Sleman - DI Yogyakarta", "value":"Sleman", "areacode":501187,"filename":"DigitalForecast-DIYogyakarta.xml"},
+{"label":"Wates - DI Yogyakarta", "value":"Wates", "areacode":501188,"filename":"DigitalForecast-DIYogyakarta.xml"},
+{"label":"Gunung Kidul - DI Yogyakarta", "value":"Gunung Kidul", "areacode":501189,"filename":"DigitalForecast-DIYogyakarta.xml"},
+{"label":"Yogyakarta - DI Yogyakarta", "value":"Yogyakarta", "areacode":501190,"filename":"DigitalForecast-DIYogyakarta.xml"},
+{"label":"Amlapura - Bali", "value":"Amlapura", "areacode":501162,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Bangli - Bali", "value":"Bangli", "areacode":501163,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Denpasar - Bali", "value":"Denpasar", "areacode":501164,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Gianyar - Bali", "value":"Gianyar", "areacode":501165,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Mengwi - Bali", "value":"Mengwi", "areacode":501166,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Negara - Bali", "value":"Negara", "areacode":501167,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Semarapura - Bali", "value":"Semarapura", "areacode":501168,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Singaraja - Bali", "value":"Singaraja", "areacode":501169,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Tabanan - Bali", "value":"Tabanan", "areacode":501170,"filename":"DigitalForecast-Bali.xml"},
+{"label":"Jebus - Kep. Bangka Belitung", "value":"Jebus", "areacode":5002247,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Koba - Kep. Bangka Belitung", "value":"Koba", "areacode":501362,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Manggar - Kep. Bangka Belitung", "value":"Manggar", "areacode":501363,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Mentok - Kep. Bangka Belitung", "value":"Mentok", "areacode":501364,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Pangkal Pinang - Kep. Bangka Belitung", "value":"Pangkal Pinang", "areacode":501365,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Selat Nasik - Kep. Bangka Belitung", "value":"Selat Nasik", "areacode":5002249,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Sungai Liat - Kep. Bangka Belitung", "value":"Sungai Liat", "areacode":501366,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Sungai Selan - Kep. Bangka Belitung", "value":"Sungai Selan", "areacode":5002248,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Tanjung Pandan - Kep. Bangka Belitung", "value":"Tanjung Pandan", "areacode":501367,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Toboali - Kep. Bangka Belitung", "value":"Toboali", "areacode":501368,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Pelabuhan Belinyu - Pelabuhan", "value":"Pelabuhan Belinyu", "areacode":1200018,"filename":"DigitalForecast-BangkaBelitung.xml"},
+{"label":"Bengkulu - Bengkulu", "value":"Bengkulu", "areacode":501178,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Bengkulu Selatan - Bengkulu", "value":"Bengkulu Selatan", "areacode":501182,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Bengkulu Tengah - Bengkulu", "value":"Bengkulu Tengah", "areacode":5002220,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Bengkulu Utara - Bengkulu", "value":"Bengkulu Utara", "areacode":501177,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Kaur - Bengkulu", "value":"Kaur", "areacode":501179,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Kepahiang - Bengkulu", "value":"Kepahiang", "areacode":501181,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Lebong - Bengkulu", "value":"Lebong", "areacode":501185,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Mukomuko - Bengkulu", "value":"Mukomuko", "areacode":501183,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Rejang Lebong - Bengkulu", "value":"Rejang Lebong", "areacode":501180,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Seluma - Bengkulu", "value":"Seluma", "areacode":501184,"filename":"DigitalForecast-Bengkulu.xml"},
+{"label":"Jakarta Barat - DKI Jakarta", "value":"Jakarta Barat", "areacode":501192,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Jakarta Pusat - DKI Jakarta", "value":"Jakarta Pusat", "areacode":501195,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Jakarta Selatan - DKI Jakarta", "value":"Jakarta Selatan", "areacode":501193,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Jakarta Timur - DKI Jakarta", "value":"Jakarta Timur", "areacode":501191,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Jakarta Utara - DKI Jakarta", "value":"Jakarta Utara", "areacode":501196,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Kepulauan Seribu - DKI Jakarta", "value":"Kepulauan Seribu", "areacode":501194,"filename":"DigitalForecast-DKIJakarta.xml"},
+{"label":"Gorontalo - Gorontalo", "value":"Gorontalo", "areacode":501197,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Kwandang - Gorontalo", "value":"Kwandang", "areacode":501598,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Limboto - Gorontalo", "value":"Limboto", "areacode":501198,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Marisa - Gorontalo", "value":"Marisa", "areacode":501199,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Suwawa - Gorontalo", "value":"Suwawa", "areacode":501200,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Tilamuta - Gorontalo", "value":"Tilamuta", "areacode":501201,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Pelabuhan Gorontalo - Pelabuhan", "value":"Pelabuhan Gorontalo", "areacode":1200027,"filename":"DigitalForecast-Gorontalo.xml"},
+{"label":"Bangko Barat - Jambi", "value":"Bangko Barat", "areacode":501202,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Bulian - Jambi", "value":"Bulian", "areacode":501203,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Bungo - Jambi", "value":"Bungo", "areacode":501204,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Jambi - Jambi", "value":"Jambi", "areacode":501205,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Siulak - Jambi", "value":"Siulak", "areacode":5002260,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Kuala Tungkal - Jambi", "value":"Kuala Tungkal", "areacode":501207,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Sabak - Jambi", "value":"Sabak", "areacode":501208,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Sakernan - Jambi", "value":"Sakernan", "areacode":501210,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Sarolangun - Jambi", "value":"Sarolangun", "areacode":501209,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Sungai Penuh - Jambi", "value":"Sungai Penuh", "areacode":501206,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Tebo - Jambi", "value":"Tebo", "areacode":501211,"filename":"DigitalForecast-Jambi.xml"},
+{"label":"Bengkayang - Kalimantan Barat", "value":"Bengkayang", "areacode":501310,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Kapuas Hulu - Kalimantan Barat", "value":"Kapuas Hulu", "areacode":5002241,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Kayong Utara - Kalimantan Barat", "value":"Kayong Utara", "areacode":5002243,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Ketapang - Kalimantan Barat", "value":"Ketapang", "areacode":501311,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Kubu Raya - Kalimantan Barat", "value":"Kubu Raya", "areacode":5002218,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Landak - Kalimantan Barat", "value":"Landak", "areacode":501312,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Melawi - Kalimantan Barat", "value":"Melawi", "areacode":5002242,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Mempawah - Kalimantan Barat", "value":"Mempawah", "areacode":501313,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Pontianak - Kalimantan Barat", "value":"Pontianak", "areacode":501315,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Sambas - Kalimantan Barat", "value":"Sambas", "areacode":501317,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Sanggau - Kalimantan Barat", "value":"Sanggau", "areacode":501318,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Sekadau - Kalimantan Barat", "value":"Sekadau", "areacode":501319,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Singkawang - Kalimantan Barat", "value":"Singkawang", "areacode":501320,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Sintang - Kalimantan Barat", "value":"Sintang", "areacode":501321,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Sungai Raya - Kalimantan Barat", "value":"Sungai Raya", "areacode":5002258,"filename":"DigitalForecast-KalimantanBarat.xml"},
+{"label":"Amuntai - Kalimantan Selatan", "value":"Amuntai", "areacode":501323,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Banjarbaru - Kalimantan Selatan", "value":"Banjarbaru", "areacode":501324,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Banjarmasin - Kalimantan Selatan", "value":"Banjarmasin", "areacode":501325,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Barabai - Kalimantan Selatan", "value":"Barabai", "areacode":501327,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Batulicin - Kalimantan Selatan", "value":"Batulicin", "areacode":501326,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Kandangan - Kalimantan Selatan", "value":"Kandangan", "areacode":501328,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Kotabaru - Kalimantan Selatan", "value":"Kotabaru", "areacode":501329,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Marabahan - Kalimantan Selatan", "value":"Marabahan", "areacode":501330,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Martapura - Kalimantan Selatan", "value":"Martapura", "areacode":501563,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Paringin - Kalimantan Selatan", "value":"Paringin", "areacode":501332,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Pelaihari - Kalimantan Selatan", "value":"Pelaihari", "areacode":501333,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Rantau - Kalimantan Selatan", "value":"Rantau", "areacode":501334,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Tanjung - Kalimantan Selatan", "value":"Tanjung", "areacode":501426,"filename":"DigitalForecast-KalimantanSelatan.xml"},
+{"label":"Buntok - Kalimantan Tengah", "value":"Buntok", "areacode":501335,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Kasongan - Kalimantan Tengah", "value":"Kasongan", "areacode":501336,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Kuala Kapuas - Kalimantan Tengah", "value":"Kuala Kapuas", "areacode":501337,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Kuala Kurun - Kalimantan Tengah", "value":"Kuala Kurun", "areacode":501338,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Kuala Pembuang - Kalimantan Tengah", "value":"Kuala Pembuang", "areacode":501339,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Muarateweh - Kalimantan Tengah", "value":"Muarateweh", "areacode":501340,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Nanga Bulik - Kalimantan Tengah", "value":"Nanga Bulik", "areacode":501341,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Palangkaraya - Kalimantan Tengah", "value":"Palangkaraya", "areacode":501342,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Pangkalan Bun - Kalimantan Tengah", "value":"Pangkalan Bun", "areacode":501343,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Pulangpisau - Kalimantan Tengah", "value":"Pulangpisau", "areacode":501344,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Puruk Cahu - Kalimantan Tengah", "value":"Puruk Cahu", "areacode":501345,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Sampit - Kalimantan Tengah", "value":"Sampit", "areacode":501346,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Sukamara - Kalimantan Tengah", "value":"Sukamara", "areacode":501347,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Tamiang Layang - Kalimantan Tengah", "value":"Tamiang Layang", "areacode":501348,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Pelabuhan Sampit - Pelabuhan", "value":"Pelabuhan Sampit", "areacode":1200067,"filename":"DigitalForecast-KalimantanTengah.xml"},
+{"label":"Balikpapan - Kalimantan Timur", "value":"Balikpapan", "areacode":501349,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Bontang - Kalimantan Timur", "value":"Bontang", "areacode":501350,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Penajam - Kalimantan Timur", "value":"Penajam", "areacode":501353,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Samarinda - Kalimantan Timur", "value":"Samarinda", "areacode":501354,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Sendawar - Kalimantan Timur", "value":"Sendawar", "areacode":501355,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Sengata - Kalimantan Timur", "value":"Sengata", "areacode":501356,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Tanah Grogot - Kalimantan Timur", "value":"Tanah Grogot", "areacode":501357,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Tanjung Redeb - Kalimantan Timur", "value":"Tanjung Redeb", "areacode":501358,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Tenggarong - Kalimantan Timur", "value":"Tenggarong", "areacode":501361,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Pelabuhan Balikpapan - Pelabuhan", "value":"Pelabuhan Balikpapan", "areacode":1200003,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Pelabuhan Nunukan - Pelabuhan", "value":"Pelabuhan Nunukan", "areacode":1200059,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Pelabuhan Tarakan - Pelabuhan", "value":"Pelabuhan Tarakan", "areacode":1200079,"filename":"DigitalForecast-KalimantanTimur.xml"},
+{"label":"Malinau - Kalimantan Utara", "value":"Malinau", "areacode":501351,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Nunukan - Kalimantan Utara", "value":"Nunukan", "areacode":501352,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Tana Tidung - Kalimantan Utara", "value":"Tana Tidung", "areacode":501600,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Tanjung Selor - Kalimantan Utara", "value":"Tanjung Selor", "areacode":501359,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Tarakan - Kalimantan Utara", "value":"Tarakan", "areacode":501360,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Pelabuhan Balikpapan - Pelabuhan", "value":"Pelabuhan Balikpapan", "areacode":1200003,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Pelabuhan Nunukan - Pelabuhan", "value":"Pelabuhan Nunukan", "areacode":1200059,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Pelabuhan Tarakan - Pelabuhan", "value":"Pelabuhan Tarakan", "areacode":1200079,"filename":"DigitalForecast-KalimantanUtara.xml"},
+{"label":"Batam - Kep. Riau", "value":"Batam", "areacode":501601,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Bintan - Kep. Riau", "value":"Bintan", "areacode":501602,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Daik Lingga - Kep. Riau", "value":"Daik Lingga", "areacode":501369,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Ranai - Kep. Riau", "value":"Ranai", "areacode":501370,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Tanjung Balai Karimun - Kep. Riau", "value":"Tanjung Balai Karimun", "areacode":501603,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Tanjung Pinang - Kep. Riau", "value":"Tanjung Pinang", "areacode":501371,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Kab. Anambas - Kep. Riau", "value":"Kab. Anambas", "areacode":501372,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Pelabuhan Batam - Pelabuhan", "value":"Pelabuhan Batam", "areacode":1200008,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Pelabuhan Tarempa - Pelabuhan", "value":"Pelabuhan Tarempa", "areacode":1200080,"filename":"DigitalForecast-KepulauanRiau.xml"},
+{"label":"Bandar Lampung - Lampung", "value":"Bandar Lampung", "areacode":501373,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Blambangan Umpu - Lampung", "value":"Blambangan Umpu", "areacode":501374,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Gedong Tataan - Lampung", "value":"Gedong Tataan", "areacode":5002236,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Gunung Sugih - Lampung", "value":"Gunung Sugih", "areacode":501375,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Kalianda - Lampung", "value":"Kalianda", "areacode":501376,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Kota Agung - Lampung", "value":"Kota Agung", "areacode":501377,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Kotabumi - Lampung", "value":"Kotabumi", "areacode":501378,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Krui - Lampung", "value":"Krui", "areacode":5002237,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Liwa - Lampung", "value":"Liwa", "areacode":501379,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Menggala - Lampung", "value":"Menggala", "areacode":501380,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Metro - Lampung", "value":"Metro", "areacode":501381,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Panaragan Jaya - Lampung", "value":"Panaragan Jaya", "areacode":5002238,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Pringsewu - Lampung", "value":"Pringsewu", "areacode":5013669,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Sukadana - Lampung", "value":"Sukadana", "areacode":5002234,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Wiralaga Mulya - Lampung", "value":"Wiralaga Mulya", "areacode":5002239,"filename":"DigitalForecast-Lampung.xml"},
+{"label":"Ambon - Maluku", "value":"Ambon", "areacode":501382,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Bula - Maluku", "value":"Bula", "areacode":501383,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Dobo - Maluku", "value":"Dobo", "areacode":501384,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Kisar - Maluku", "value":"Kisar", "areacode":1200097,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Leksula - Maluku", "value":"Leksula", "areacode":1200094,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Masohi - Maluku", "value":"Masohi", "areacode":501385,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Namlea - Maluku", "value":"Namlea", "areacode":501386,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Piru - Maluku", "value":"Piru", "areacode":501387,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Saumlaki - Maluku", "value":"Saumlaki", "areacode":501388,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Tual - Maluku", "value":"Tual", "areacode":501389,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Ambon - Pelabuhan", "value":"Pelabuhan Ambon", "areacode":1200001,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Bula - Pelabuhan", "value":"Pelabuhan Bula", "areacode":1200020,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Dobo - Pelabuhan", "value":"Pelabuhan Dobo", "areacode":1200022,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Namlea - Pelabuhan", "value":"Pelabuhan Namlea", "areacode":1200056,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Saumlaki - Pelabuhan", "value":"Pelabuhan Saumlaki", "areacode":1200069,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Pelabuhan Tual - Pelabuhan", "value":"Pelabuhan Tual", "areacode":1200090,"filename":"DigitalForecast-Maluku.xml"},
+{"label":"Jailolo - Maluku Utara", "value":"Jailolo", "areacode":501390,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Labuha - Maluku Utara", "value":"Labuha", "areacode":501391,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Maba - Maluku Utara", "value":"Maba", "areacode":501392,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Morotai - Maluku Utara", "value":"Morotai", "areacode":5002255,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Sanana - Maluku Utara", "value":"Sanana", "areacode":501393,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Sofifi - Maluku Utara", "value":"Sofifi", "areacode":5002253,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Taliabu - Maluku Utara", "value":"Taliabu", "areacode":5002254,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Ternate - Maluku Utara", "value":"Ternate", "areacode":501394,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Tidore - Maluku Utara", "value":"Tidore", "areacode":501604,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Tobelo - Maluku Utara", "value":"Tobelo", "areacode":501395,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Weda - Maluku Utara", "value":"Weda", "areacode":501396,"filename":"DigitalForecast-MalukuUtara.xml"},
+{"label":"Dompu - Nusa Tenggara Barat", "value":"Dompu", "areacode":501419,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Gerung - Nusa Tenggara Barat", "value":"Gerung", "areacode":501420,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Kota Bima - Nusa Tenggara Barat", "value":"Kota Bima", "areacode":501418,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Mataram - Nusa Tenggara Barat", "value":"Mataram", "areacode":501421,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Praya - Nusa Tenggara Barat", "value":"Praya", "areacode":501422,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Sape - Nusa Tenggara Barat", "value":"Sape", "areacode":5002222,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Selong - Nusa Tenggara Barat", "value":"Selong", "areacode":501423,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Sumbawa Besar - Nusa Tenggara Barat", "value":"Sumbawa Besar", "areacode":501424,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Taliwang - Nusa Tenggara Barat", "value":"Taliwang", "areacode":501425,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Tanjung - Nusa Tenggara Barat", "value":"Tanjung", "areacode":5002223,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Pelabuhan Bima - Pelabuhan", "value":"Pelabuhan Bima", "areacode":1200016,"filename":"DigitalForecast-NusaTenggaraBarat.xml"},
+{"label":"Aimas - Papua Barat", "value":"Aimas", "areacode":501463,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Bintuni - Papua Barat", "value":"Bintuni", "areacode":501464,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Fakfak - Papua Barat", "value":"Fakfak", "areacode":501465,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Kaimana - Papua Barat", "value":"Kaimana", "areacode":501466,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Kumurkek - Papua Barat", "value":"Kumurkek", "areacode":1200099,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Manokwari - Papua Barat", "value":"Manokwari", "areacode":501467,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Ransiki - Papua Barat", "value":"Ransiki", "areacode":1200101,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Sorong - Papua Barat", "value":"Sorong", "areacode":501468,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Teminabuan - Papua Barat", "value":"Teminabuan", "areacode":501469,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Waisai - Papua Barat", "value":"Waisai", "areacode":501470,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Wasior - Papua Barat", "value":"Wasior", "areacode":501471,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Pelabuhan Kaimana - Pelabuhan", "value":"Pelabuhan Kaimana", "areacode":1200029,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Pelabuhan Manokwari - Pelabuhan", "value":"Pelabuhan Manokwari", "areacode":1200046,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Pelabuhan Sorong - Pelabuhan", "value":"Pelabuhan Sorong", "areacode":1200075,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Pelabuhan Wasior - Pelabuhan", "value":"Pelabuhan Wasior", "areacode":1200093,"filename":"DigitalForecast-PapuaBarat.xml"},
+{"label":"Bagan Siapiapi - Riau", "value":"Bagan Siapiapi", "areacode":501472,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Bangkinang - Riau", "value":"Bangkinang", "areacode":501473,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Bengkalis - Riau", "value":"Bengkalis", "areacode":501474,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Dumai - Riau", "value":"Dumai", "areacode":501475,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Pangkalan Kerinci - Riau", "value":"Pangkalan Kerinci", "areacode":501476,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Pasir Pengarairan - Riau", "value":"Pasir Pengarairan", "areacode":501477,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Pekanbaru - Riau", "value":"Pekanbaru", "areacode":501478,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Rengat - Riau", "value":"Rengat", "areacode":501479,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Selat panjang - Riau", "value":"Selat panjang", "areacode":5002217,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Siak Sri Indrapura - Riau", "value":"Siak Sri Indrapura", "areacode":501480,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Teluk Kuantan - Riau", "value":"Teluk Kuantan", "areacode":501481,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Tembilahan - Riau", "value":"Tembilahan", "areacode":501482,"filename":"DigitalForecast-Riau.xml"},
+{"label":"Majene - Sulawesi Barat", "value":"Majene", "areacode":501483,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Mamasa - Sulawesi Barat", "value":"Mamasa", "areacode":501484,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Mamuju - Sulawesi Barat", "value":"Mamuju", "areacode":501485,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Mamuju Tengah - Sulawesi Barat", "value":"Mamuju Tengah", "areacode":1200113,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Mamuju Utara - Sulawesi Barat", "value":"Mamuju Utara", "areacode":501486,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Polewali Mandar - Sulawesi Barat", "value":"Polewali Mandar", "areacode":501487,"filename":"DigitalForecast-SulawesiBarat.xml"},
+{"label":"Banggai - Pelabuhan", "value":"Banggai", "areacode":1200005,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Kolonedale - Pelabuhan", "value":"Kolonedale", "areacode":1200035,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Luwuk - Pelabuhan", "value":"Luwuk", "areacode":1200044,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Pelabuhan Poso - Pelabuhan", "value":"Pelabuhan Poso", "areacode":1200063,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Ampana - Sulawesi Tengah", "value":"Ampana", "areacode":501520,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Bungku - Sulawesi Tengah", "value":"Bungku", "areacode":501521,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Buol - Sulawesi Tengah", "value":"Buol", "areacode":501522,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Donggala - Sulawesi Tengah", "value":"Donggala", "areacode":501523,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Luwuk - Sulawesi Tengah", "value":"Luwuk", "areacode":501524,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Palu - Sulawesi Tengah", "value":"Palu", "areacode":1200106,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Parigi - Sulawesi Tengah", "value":"Parigi", "areacode":501526,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Poso - Sulawesi Tengah", "value":"Poso", "areacode":501527,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Salakan - Sulawesi Tengah", "value":"Salakan", "areacode":501528,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Sigi Biromaru - Sulawesi Tengah", "value":"Sigi Biromaru", "areacode":5002257,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Toli Toli - Sulawesi Tengah", "value":"Toli Toli", "areacode":501529,"filename":"DigitalForecast-SulawesiTengah.xml"},
+{"label":"Pelabuhan Kendari - Pelabuhan", "value":"Pelabuhan Kendari", "areacode":1200032,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Pelabuhan Raha - Pelabuhan", "value":"Pelabuhan Raha", "areacode":1200064,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Bau Bau - Sulawesi Tenggara", "value":"Bau Bau", "areacode":501512,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Bombana - Sulawesi Tenggara", "value":"Bombana", "areacode":501518,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Buranga - Sulawesi Tenggara", "value":"Buranga", "areacode":501612,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Buton - Sulawesi Tenggara", "value":"Buton", "areacode":501516,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Kolaka - Sulawesi Tenggara", "value":"Kolaka", "areacode":501514,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Kolaka Utara - Sulawesi Tenggara", "value":"Kolaka Utara", "areacode":501515,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Konawe - Sulawesi Tenggara", "value":"Konawe", "areacode":501613,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Konawe Selatan - Sulawesi Tenggara", "value":"Konawe Selatan", "areacode":501511,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Kota Kendari - Sulawesi Tenggara", "value":"Kota Kendari", "areacode":501513,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Raha - Sulawesi Tenggara", "value":"Raha", "areacode":501517,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Wanggudu - Sulawesi Tenggara", "value":"Wanggudu", "areacode":501614,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Wangi Wangi - Sulawesi Tenggara", "value":"Wangi Wangi", "areacode":501519,"filename":"DigitalForecast-SulawesiTenggara.xml"},
+{"label":"Pelabuhan Tahuna - Pelabuhan", "value":"Pelabuhan Tahuna", "areacode":1200077,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Air Madidi - Sulawesi Utara", "value":"Air Madidi", "areacode":501530,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Amurang - Sulawesi Utara", "value":"Amurang", "areacode":501531,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Bitung - Sulawesi Utara", "value":"Bitung", "areacode":501532,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Boroko - Sulawesi Utara", "value":"Boroko", "areacode":1200110,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Kotamobagu - Sulawesi Utara", "value":"Kotamobagu", "areacode":501615,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Lolak - Sulawesi Utara", "value":"Lolak", "areacode":501533,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Manado - Sulawesi Utara", "value":"Manado", "areacode":501534,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Melongguane - Sulawesi Utara", "value":"Melongguane", "areacode":501535,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Ondong Siau - Sulawesi Utara", "value":"Ondong Siau", "areacode":501616,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Ratahan - Sulawesi Utara", "value":"Ratahan", "areacode":501617,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Tahuna - Sulawesi Utara", "value":"Tahuna", "areacode":501536,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Tomohon - Sulawesi Utara", "value":"Tomohon", "areacode":1200111,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Tondano - Sulawesi Utara", "value":"Tondano", "areacode":501538,"filename":"DigitalForecast-SulawesiUtara.xml"},
+{"label":"Aceh Barat - Aceh", "value":"Aceh Barat", "areacode":501409,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Barat Daya - Aceh", "value":"Aceh Barat Daya", "areacode":501400,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Besar - Aceh", "value":"Aceh Besar", "areacode":501404,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Jaya - Aceh", "value":"Aceh Jaya", "areacode":501401,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Selatan - Aceh", "value":"Aceh Selatan", "areacode":501417,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Singkil - Aceh", "value":"Aceh Singkil", "areacode":501414,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Tamiang - Aceh", "value":"Aceh Tamiang", "areacode":501403,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Tengah - Aceh", "value":"Aceh Tengah", "areacode":501416,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Tenggara - Aceh", "value":"Aceh Tenggara", "areacode":501405,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Timur - Aceh", "value":"Aceh Timur", "areacode":501402,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Aceh Utara - Aceh", "value":"Aceh Utara", "areacode":501408,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Banda Aceh - Aceh", "value":"Banda Aceh", "areacode":501397,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Bener Meriah - Aceh", "value":"Bener Meriah", "areacode":501412,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Bireun - Aceh", "value":"Bireun", "areacode":501398,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Gayo Lues - Aceh", "value":"Gayo Lues", "areacode":501399,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Langsa - Aceh", "value":"Langsa", "areacode":501406,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Lhokseumawe - Aceh", "value":"Lhokseumawe", "areacode":501407,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Nagan Raya - Aceh", "value":"Nagan Raya", "areacode":501415,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Pidie - Aceh", "value":"Pidie", "areacode":501411,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Pidie Jaya - Aceh", "value":"Pidie Jaya", "areacode":501605,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Sabang - Aceh", "value":"Sabang", "areacode":501410,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Simeulue - Aceh", "value":"Simeulue", "areacode":501413,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Subulussalam - Aceh", "value":"Subulussalam", "areacode":501606,"filename":"DigitalForecast-Aceh.xml"},
+{"label":"Anyer - Banten", "value":"Anyer", "areacode":5008861,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Bayah - Banten", "value":"Bayah", "areacode":5008798,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Binuangen - Banten", "value":"Binuangen", "areacode":5002244,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Bojonegara - Banten", "value":"Bojonegara", "areacode":5002208,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Carita - Banten", "value":"Carita", "areacode":5002209,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Kota Cilegon - Banten", "value":"Kota Cilegon", "areacode":501171,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Ciruas - Banten", "value":"Ciruas", "areacode":501597,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Gunung kencana - Banten", "value":"Gunung kencana", "areacode":5002205,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Labuan - Banten", "value":"Labuan", "areacode":5002203,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Kab. Lebak - Banten", "value":"Kab. Lebak", "areacode":5002207,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Malingping - Banten", "value":"Malingping", "areacode":5002206,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Pelabuhan Merak - Banten", "value":"Pelabuhan Merak", "areacode":5002201,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Pandeglang - Banten", "value":"Pandeglang", "areacode":501172,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Rangkasbitung - Banten", "value":"Rangkasbitung", "areacode":501173,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Serang - Banten", "value":"Serang", "areacode":501174,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Kota Tangerang - Banten", "value":"Kota Tangerang", "areacode":5002333,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Tigaraksa - Banten", "value":"Tigaraksa", "areacode":501176,"filename":"DigitalForecast-Banten.xml"},
+{"label":" - ", "value":"", "areacode":0,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Pelabuhan Merak - Pelabuhan", "value":"Pelabuhan Merak", "areacode":1100084,"filename":"DigitalForecast-Banten.xml"},
+{"label":"Atambua - Nusa Tenggara Timur", "value":"Atambua", "areacode":501427,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Ba a - Nusa Tenggara Timur", "value":"Ba a", "areacode":501428,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Bajawa - Nusa Tenggara Timur", "value":"Bajawa", "areacode":501429,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Betun - Nusa Tenggara Timur", "value":"Betun", "areacode":5002265,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Borong - Nusa Tenggara Timur", "value":"Borong", "areacode":501607,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Ende - Nusa Tenggara Timur", "value":"Ende", "areacode":501430,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Kalabahi - Nusa Tenggara Timur", "value":"Kalabahi", "areacode":501431,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Kefamenanu - Nusa Tenggara Timur", "value":"Kefamenanu", "areacode":501432,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Kupang - Nusa Tenggara Timur", "value":"Kupang", "areacode":501434,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Labuan Bajo - Nusa Tenggara Timur", "value":"Labuan Bajo", "areacode":501435,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Larantuka - Nusa Tenggara Timur", "value":"Larantuka", "areacode":501436,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Lewoleba - Nusa Tenggara Timur", "value":"Lewoleba", "areacode":501437,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Maumere - Nusa Tenggara Timur", "value":"Maumere", "areacode":501438,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Mbay - Nusa Tenggara Timur", "value":"Mbay", "areacode":501608,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Oelamasi - Nusa Tenggara Timur", "value":"Oelamasi", "areacode":5002266,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Ruteng - Nusa Tenggara Timur", "value":"Ruteng", "areacode":501439,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Sabu - Nusa Tenggara Timur", "value":"Sabu", "areacode":5002256,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Soe - Nusa Tenggara Timur", "value":"Soe", "areacode":501440,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Waibakul - Nusa Tenggara Timur", "value":"Waibakul", "areacode":501609,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Waikabubak - Nusa Tenggara Timur", "value":"Waikabubak", "areacode":501441,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Waingapu - Nusa Tenggara Timur", "value":"Waingapu", "areacode":501442,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Weetabula - Nusa Tenggara Timur", "value":"Weetabula", "areacode":501610,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Ende - Pelabuhan", "value":"Pelabuhan Ende", "areacode":1200023,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Kalabahi - Pelabuhan", "value":"Pelabuhan Kalabahi", "areacode":1200030,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Kupang - Pelabuhan", "value":"Pelabuhan Kupang", "areacode":1200037,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Larantuka - Pelabuhan", "value":"Pelabuhan Larantuka", "areacode":1200039,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Lewoleba - Pelabuhan", "value":"Pelabuhan Lewoleba", "areacode":1200043,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Maumere - Pelabuhan", "value":"Pelabuhan Maumere", "areacode":1200049,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Pelabuhan Waingapu - Pelabuhan", "value":"Pelabuhan Waingapu", "areacode":1200091,"filename":"DigitalForecast-NusaTenggaraTimur.xml"},
+{"label":"Agats - Papua", "value":"Agats", "areacode":501443,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Biak - Papua", "value":"Biak", "areacode":501444,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Botawa - Papua", "value":"Botawa", "areacode":501445,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Burmeso - Papua", "value":"Burmeso", "areacode":501611,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Enarotali - Papua", "value":"Enarotali", "areacode":501446,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Genyem - Papua", "value":"Genyem", "areacode":5002259,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Jayapura - Papua", "value":"Jayapura", "areacode":501447,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Karubaga - Papua", "value":"Karubaga", "areacode":501448,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Kepi - Papua", "value":"Kepi", "areacode":501449,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Merauke - Papua", "value":"Merauke", "areacode":501450,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Mulia - Papua", "value":"Mulia", "areacode":501451,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Nabire - Papua", "value":"Nabire", "areacode":501452,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Oksibil - Papua", "value":"Oksibil", "areacode":501453,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Sarmi - Papua", "value":"Sarmi", "areacode":501454,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Sentani - Papua", "value":"Sentani", "areacode":501455,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Serui - Papua", "value":"Serui", "areacode":501456,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Sorendiweri - Papua", "value":"Sorendiweri", "areacode":501457,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Sumohai - Papua", "value":"Sumohai", "areacode":501458,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Tanah Merah - Papua", "value":"Tanah Merah", "areacode":501459,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Timika - Papua", "value":"Timika", "areacode":501460,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Wamena - Papua", "value":"Wamena", "areacode":501461,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Waris - Papua", "value":"Waris", "areacode":501462,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Agats - Pelabuhan", "value":"Pelabuhan Agats", "areacode":1200000,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Biak - Pelabuhan", "value":"Pelabuhan Biak", "areacode":1200015,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Jayapura - Pelabuhan", "value":"Pelabuhan Jayapura", "areacode":1200028,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Merauke - Pelabuhan", "value":"Pelabuhan Merauke", "areacode":1200050,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Nabire - Pelabuhan", "value":"Pelabuhan Nabire", "areacode":1200055,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Serui - Pelabuhan", "value":"Pelabuhan Serui", "areacode":1200073,"filename":"DigitalForecast-Papua.xml"},
+{"label":"Pelabuhan Barru - Pelabuhan", "value":"Pelabuhan Barru", "areacode":1200007,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Bantaeng - Sulawesi Selatan", "value":"Bantaeng", "areacode":501488,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Barru - Sulawesi Selatan", "value":"Barru", "areacode":501489,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Benteng - Sulawesi Selatan", "value":"Benteng", "areacode":501490,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Bulukumba - Sulawesi Selatan", "value":"Bulukumba", "areacode":501491,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Enrekang - Sulawesi Selatan", "value":"Enrekang", "areacode":501492,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Jeneponto - Sulawesi Selatan", "value":"Jeneponto", "areacode":501493,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Makale - Sulawesi Selatan", "value":"Makale", "areacode":501494,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Makassar - Sulawesi Selatan", "value":"Makassar", "areacode":501495,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Malili - Sulawesi Selatan", "value":"Malili", "areacode":501496,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Maros - Sulawesi Selatan", "value":"Maros", "areacode":501497,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Masamba - Sulawesi Selatan", "value":"Masamba", "areacode":501498,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Palopo - Sulawesi Selatan", "value":"Palopo", "areacode":501499,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Pangkajene dan Kepulauan - Sulawesi Selatan", "value":"Pangkajene dan Kepulauan", "areacode":5007709,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Pare Pare - Sulawesi Selatan", "value":"Pare Pare", "areacode":501501,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Pinrang - Sulawesi Selatan", "value":"Pinrang", "areacode":501502,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Rantepao - Sulawesi Selatan", "value":"Rantepao", "areacode":501503,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Sengkang - Sulawesi Selatan", "value":"Sengkang", "areacode":501504,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Sidenreng - Sulawesi Selatan", "value":"Sidenreng", "areacode":501505,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Sinjai - Sulawesi Selatan", "value":"Sinjai", "areacode":501506,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Sungguminasa - Sulawesi Selatan", "value":"Sungguminasa", "areacode":501507,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Takalar - Sulawesi Selatan", "value":"Takalar", "areacode":501508,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Watampone - Sulawesi Selatan", "value":"Watampone", "areacode":501509,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Watan Soppeng - Sulawesi Selatan", "value":"Watan Soppeng", "areacode":501510,"filename":"DigitalForecast-SulawesiSelatan.xml"},
+{"label":"Arosuka - Sumatera Barat", "value":"Arosuka", "areacode":501539,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Batusangkar - Sumatera Barat", "value":"Batusangkar", "areacode":501540,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Bukittinggi - Sumatera Barat", "value":"Bukittinggi", "areacode":501541,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Lubuk Basung - Sumatera Barat", "value":"Lubuk Basung", "areacode":501542,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Lubuk Sikaping - Sumatera Barat", "value":"Lubuk Sikaping", "areacode":501543,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Muaro Sijunjung - Sumatera Barat", "value":"Muaro Sijunjung", "areacode":501544,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Padang - Sumatera Barat", "value":"Padang", "areacode":501545,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Padang Aro - Sumatera Barat", "value":"Padang Aro", "areacode":501546,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Padangpanjang - Sumatera Barat", "value":"Padangpanjang", "areacode":501547,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Painan - Sumatera Barat", "value":"Painan", "areacode":501548,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Pariaman - Sumatera Barat", "value":"Pariaman", "areacode":501549,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Parit Malintang - Sumatera Barat", "value":"Parit Malintang", "areacode":501550,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Payakumbuh - Sumatera Barat", "value":"Payakumbuh", "areacode":501551,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Pulau Punjung - Sumatera Barat", "value":"Pulau Punjung", "areacode":501552,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Sarilamak - Sumatera Barat", "value":"Sarilamak", "areacode":501553,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Sawahlunto - Sumatera Barat", "value":"Sawahlunto", "areacode":501554,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Simpang Empat - Sumatera Barat", "value":"Simpang Empat", "areacode":501555,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Solok - Sumatera Barat", "value":"Solok", "areacode":501556,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Tuapejat - Sumatera Barat", "value":"Tuapejat", "areacode":501557,"filename":"DigitalForecast-SumateraBarat.xml"},
+{"label":"Martapura - Kalimantan Selatan", "value":"Martapura", "areacode":501563,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Baturaja - Sumatera Selatan", "value":"Baturaja", "areacode":501558,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Indralaya - Sumatera Selatan", "value":"Indralaya", "areacode":501559,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Kayu Agung - Sumatera Selatan", "value":"Kayu Agung", "areacode":5002230,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Lahat - Sumatera Selatan", "value":"Lahat", "areacode":501561,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Lubuk Linggau - Sumatera Selatan", "value":"Lubuk Linggau", "areacode":501562,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Martapura - Sumatera Selatan", "value":"Martapura", "areacode":5002231,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Muaradua - Sumatera Selatan", "value":"Muaradua", "areacode":501565,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Muara Enim - Sumatera Selatan", "value":"Muara Enim", "areacode":501564,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Muara Rumpit - Sumatera Selatan", "value":"Muara Rumpit", "areacode":5002251,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Musirawas - Sumatera Selatan", "value":"Musirawas", "areacode":501566,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Pagar Alam - Sumatera Selatan", "value":"Pagar Alam", "areacode":501567,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Palembang - Sumatera Selatan", "value":"Palembang", "areacode":501568,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Pangkalan Balai - Sumatera Selatan", "value":"Pangkalan Balai", "areacode":501569,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Prabumulih - Sumatera Selatan", "value":"Prabumulih", "areacode":501570,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Sekayu - Sumatera Selatan", "value":"Sekayu", "areacode":501571,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Talang Ubi - Sumatera Selatan", "value":"Talang Ubi", "areacode":5002250,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Tebing Tinggi - Sumatera Selatan", "value":"Tebing Tinggi", "areacode":501618,"filename":"DigitalForecast-SumateraSelatan.xml"},
+{"label":"Banda Aceh - Aceh", "value":"Banda Aceh", "areacode":501397,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Denpasar - Bali", "value":"Denpasar", "areacode":501164,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Serang - Banten", "value":"Serang", "areacode":501174,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Bengkulu - Bengkulu", "value":"Bengkulu", "areacode":501178,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Yogyakarta - DI Yogyakarta", "value":"Yogyakarta", "areacode":501190,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Jakarta Pusat - DKI Jakarta", "value":"Jakarta Pusat", "areacode":501195,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Gorontalo - Gorontalo", "value":"Gorontalo", "areacode":501197,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Jambi - Jambi", "value":"Jambi", "areacode":501205,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Bandung - Jawa Barat", "value":"Bandung", "areacode":501212,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Semarang - Jawa Tengah", "value":"Semarang", "areacode":501262,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Surabaya - Jawa Timur", "value":"Surabaya", "areacode":501306,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Pontianak - Kalimantan Barat", "value":"Pontianak", "areacode":501315,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Banjarmasin - Kalimantan Selatan", "value":"Banjarmasin", "areacode":501325,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Palangkaraya - Kalimantan Tengah", "value":"Palangkaraya", "areacode":501342,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Samarinda - Kalimantan Timur", "value":"Samarinda", "areacode":501354,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Tarakan - Kalimantan Utara", "value":"Tarakan", "areacode":501360,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Pangkal Pinang - Kep. Bangka Belitung", "value":"Pangkal Pinang", "areacode":501365,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Tanjung Pinang - Kep. Riau", "value":"Tanjung Pinang", "areacode":501371,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Bandar Lampung - Lampung", "value":"Bandar Lampung", "areacode":501373,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Ambon - Maluku", "value":"Ambon", "areacode":501382,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Ternate - Maluku Utara", "value":"Ternate", "areacode":501394,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Mataram - Nusa Tenggara Barat", "value":"Mataram", "areacode":501421,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Kupang - Nusa Tenggara Timur", "value":"Kupang", "areacode":501434,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Jayapura - Papua", "value":"Jayapura", "areacode":501447,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Manokwari - Papua Barat", "value":"Manokwari", "areacode":501467,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Pekanbaru - Riau", "value":"Pekanbaru", "areacode":501478,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Mamuju - Sulawesi Barat", "value":"Mamuju", "areacode":501485,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Makassar - Sulawesi Selatan", "value":"Makassar", "areacode":501495,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Kendari - Sulawesi Tenggara", "value":"Kendari", "areacode":5013053,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Manado - Sulawesi Utara", "value":"Manado", "areacode":501534,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Padang - Sumatera Barat", "value":"Padang", "areacode":501545,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Palembang - Sumatera Selatan", "value":"Palembang", "areacode":501568,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Medan - Sumatera Utara", "value":"Medan", "areacode":501580,"filename":"DigitalForecast-Indonesia.xml"},
+{"label":"Bandung - Jawa Barat", "value":"Bandung", "areacode":501212,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Banjar - Jawa Barat", "value":"Banjar", "areacode":501213,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Bekasi - Jawa Barat", "value":"Bekasi", "areacode":5002228,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Ciamis - Jawa Barat", "value":"Ciamis", "areacode":501216,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cianjur - Jawa Barat", "value":"Cianjur", "areacode":501217,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cibinong - Jawa Barat", "value":"Cibinong", "areacode":501218,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cikarang - Jawa Barat", "value":"Cikarang", "areacode":501219,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cimahi - Jawa Barat", "value":"Cimahi", "areacode":501220,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cipanas - Jawa Barat", "value":"Cipanas", "areacode":5002287,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cirebon - Jawa Barat", "value":"Cirebon", "areacode":501221,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Cisarua - Jawa Barat", "value":"Cisarua", "areacode":5002286,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Depok - Jawa Barat", "value":"Depok", "areacode":5002229,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Gadog - Jawa Barat", "value":"Gadog", "areacode":5002288,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Garut - Jawa Barat", "value":"Garut", "areacode":501224,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Indramayu - Jawa Barat", "value":"Indramayu", "areacode":501225,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Karawang - Jawa Barat", "value":"Karawang", "areacode":501226,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Kota Bogor - Jawa Barat", "value":"Kota Bogor", "areacode":5002227,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Kuningan - Jawa Barat", "value":"Kuningan", "areacode":501227,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Lembang - Jawa Barat", "value":"Lembang", "areacode":501599,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Majalengka - Jawa Barat", "value":"Majalengka", "areacode":501228,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Parigi - Jawa Barat", "value":"Parigi", "areacode":5002252,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Pelabuhan Ratu - Jawa Barat", "value":"Pelabuhan Ratu", "areacode":501229,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Purwakarta - Jawa Barat", "value":"Purwakarta", "areacode":501230,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Singaparna - Jawa Barat", "value":"Singaparna", "areacode":501231,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Soreang - Jawa Barat", "value":"Soreang", "areacode":501232,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Subang - Jawa Barat", "value":"Subang", "areacode":501233,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Sukabumi - Jawa Barat", "value":"Sukabumi", "areacode":501222,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Sumber - Jawa Barat", "value":"Sumber", "areacode":501234,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Sumedang - Jawa Barat", "value":"Sumedang", "areacode":501235,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Tasikmalaya - Jawa Barat", "value":"Tasikmalaya", "areacode":501236,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Pelabuhan Ratu - Wisata Lokasi", "value":"Pelabuhan Ratu", "areacode":1100117,"filename":"DigitalForecast-JawaBarat.xml"},
+{"label":"Banjarnegara - Jawa Tengah", "value":"Banjarnegara", "areacode":501237,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Batang - Jawa Tengah", "value":"Batang", "areacode":501238,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Blora - Jawa Tengah", "value":"Blora", "areacode":501239,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Boyolali - Jawa Tengah", "value":"Boyolali", "areacode":501240,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Brebes - Jawa Tengah", "value":"Brebes", "areacode":501241,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Cilacap - Jawa Tengah", "value":"Cilacap", "areacode":501242,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Demak - Jawa Tengah", "value":"Demak", "areacode":501243,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Jepara - Jawa Tengah", "value":"Jepara", "areacode":501244,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Kajen - Jawa Tengah", "value":"Kajen", "areacode":501245,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Karanganyar - Jawa Tengah", "value":"Karanganyar", "areacode":501246,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Kebumen - Jawa Tengah", "value":"Kebumen", "areacode":501247,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Kendal - Jawa Tengah", "value":"Kendal", "areacode":501248,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Klaten - Jawa Tengah", "value":"Klaten", "areacode":501249,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Kudus - Jawa Tengah", "value":"Kudus", "areacode":501250,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Magelang - Jawa Tengah", "value":"Magelang", "areacode":501251,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Mungkid - Jawa Tengah", "value":"Mungkid", "areacode":501252,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Pati - Jawa Tengah", "value":"Pati", "areacode":501253,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Pekalongan - Jawa Tengah", "value":"Pekalongan", "areacode":501254,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Pemalang - Jawa Tengah", "value":"Pemalang", "areacode":501255,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Purbalingga - Jawa Tengah", "value":"Purbalingga", "areacode":501256,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Purwodadi - Jawa Tengah", "value":"Purwodadi", "areacode":501257,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Purwokerto - Jawa Tengah", "value":"Purwokerto", "areacode":501258,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Purworejo - Jawa Tengah", "value":"Purworejo", "areacode":501259,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Rembang - Jawa Tengah", "value":"Rembang", "areacode":501260,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Salatiga - Jawa Tengah", "value":"Salatiga", "areacode":501261,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Semarang - Jawa Tengah", "value":"Semarang", "areacode":501262,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Slawi - Jawa Tengah", "value":"Slawi", "areacode":501263,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Sragen - Jawa Tengah", "value":"Sragen", "areacode":501264,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Sukoharjo - Jawa Tengah", "value":"Sukoharjo", "areacode":501265,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Surakarta - Jawa Tengah", "value":"Surakarta", "areacode":501266,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Tegal - Jawa Tengah", "value":"Tegal", "areacode":501267,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Temanggung - Jawa Tengah", "value":"Temanggung", "areacode":501268,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Ungaran - Jawa Tengah", "value":"Ungaran", "areacode":501269,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Wonogiri - Jawa Tengah", "value":"Wonogiri", "areacode":501270,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Wonosobo - Jawa Tengah", "value":"Wonosobo", "areacode":501271,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Pelabuhan Semarang - Pelabuhan", "value":"Pelabuhan Semarang", "areacode":1200071,"filename":"DigitalForecast-JawaTengah.xml"},
+{"label":"Bangkalan - Jawa Timur", "value":"Bangkalan", "areacode":501272,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Banyuwangi - Jawa Timur", "value":"Banyuwangi", "areacode":501273,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Batu - Jawa Timur", "value":"Batu", "areacode":501274,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Bojonegoro - Jawa Timur", "value":"Bojonegoro", "areacode":501277,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Bondowoso - Jawa Timur", "value":"Bondowoso", "areacode":501278,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Gresik - Jawa Timur", "value":"Gresik", "areacode":501279,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Jember - Jawa Timur", "value":"Jember", "areacode":501280,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Jombang - Jawa Timur", "value":"Jombang", "areacode":501281,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Blitar - Jawa Timur", "value":"Kabupaten Blitar", "areacode":5002271,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Kediri - Jawa Timur", "value":"Kabupaten Kediri", "areacode":5002268,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Madiun - Jawa Timur", "value":"Kabupaten Madiun", "areacode":501288,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Malang - Jawa Timur", "value":"Kabupaten Malang", "areacode":501284,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Mojokerto - Jawa Timur", "value":"Kabupaten Mojokerto", "areacode":5002269,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Pasuruan - Jawa Timur", "value":"Kabupaten Pasuruan", "areacode":5002272,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kabupaten Probolinggo - Jawa Timur", "value":"Kabupaten Probolinggo", "areacode":5002270,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Blitar - Jawa Timur", "value":"Kota Blitar", "areacode":501275,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Kediri - Jawa Timur", "value":"Kota Kediri", "areacode":501282,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Madiun - Jawa Timur", "value":"Kota Madiun", "areacode":501287,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Malang - Jawa Timur", "value":"Kota Malang", "areacode":501290,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Mojokerto - Jawa Timur", "value":"Kota Mojokerto", "areacode":501291,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Pasuruan - Jawa Timur", "value":"Kota Pasuruan", "areacode":501297,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Kota Probolinggo - Jawa Timur", "value":"Kota Probolinggo", "areacode":501300,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Lamongan - Jawa Timur", "value":"Lamongan", "areacode":501285,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Lumajang - Jawa Timur", "value":"Lumajang", "areacode":501286,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Magetan - Jawa Timur", "value":"Magetan", "areacode":501289,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Nganjuk - Jawa Timur", "value":"Nganjuk", "areacode":501293,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Ngawi - Jawa Timur", "value":"Ngawi", "areacode":501294,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Pacitan - Jawa Timur", "value":"Pacitan", "areacode":501295,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Pamekasan - Jawa Timur", "value":"Pamekasan", "areacode":501296,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Ponorogo - Jawa Timur", "value":"Ponorogo", "areacode":501299,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Sampang - Jawa Timur", "value":"Sampang", "areacode":501302,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Sidoarjo - Jawa Timur", "value":"Sidoarjo", "areacode":501303,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Situbondo - Jawa Timur", "value":"Situbondo", "areacode":501304,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Sumenep - Jawa Timur", "value":"Sumenep", "areacode":501305,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Surabaya - Jawa Timur", "value":"Surabaya", "areacode":501306,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Trenggalek - Jawa Timur", "value":"Trenggalek", "areacode":501307,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Tuban - Jawa Timur", "value":"Tuban", "areacode":501308,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Tulungagung - Jawa Timur", "value":"Tulungagung", "areacode":501309,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Pelabuhan Surabaya - Pelabuhan", "value":"Pelabuhan Surabaya", "areacode":1200076,"filename":"DigitalForecast-JawaTimur.xml"},
+{"label":"Aek Kanopan - Sumatera Utara", "value":"Aek Kanopan", "areacode":5002212,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Balige - Sumatera Utara", "value":"Balige", "areacode":501573,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Binjai Kota - Sumatera Utara", "value":"Binjai Kota", "areacode":501574,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Dolok Sanggul - Sumatera Utara", "value":"Dolok Sanggul", "areacode":501575,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Gunung Sitoli - Sumatera Utara", "value":"Gunung Sitoli", "areacode":501576,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Gunung Tua - Sumatera Utara", "value":"Gunung Tua", "areacode":5002214,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Kabanjahe - Sumatera Utara", "value":"Kabanjahe", "areacode":501577,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Kisaran - Sumatera Utara", "value":"Kisaran", "areacode":501578,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Kota Pinang - Sumatera Utara", "value":"Kota Pinang", "areacode":5002211,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Lahomi - Sumatera Utara", "value":"Lahomi", "areacode":5002216,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Lima Puluh - Sumatera Utara", "value":"Lima Puluh", "areacode":5002210,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Lotu - Sumatera Utara", "value":"Lotu", "areacode":5002215,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Lubuk Pakam - Sumatera Utara", "value":"Lubuk Pakam", "areacode":501579,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Medan - Sumatera Utara", "value":"Medan", "areacode":501580,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Padang Sidempuan - Sumatera Utara", "value":"Padang Sidempuan", "areacode":501581,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Pandan - Sumatera Utara", "value":"Pandan", "areacode":501582,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Pangururan - Sumatera Utara", "value":"Pangururan", "areacode":501583,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Panyabungan - Sumatera Utara", "value":"Panyabungan", "areacode":501584,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Pematang Raya - Sumatera Utara", "value":"Pematang Raya", "areacode":501585,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Pematang Siantar - Sumatera Utara", "value":"Pematang Siantar", "areacode":501586,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Rantau Prapat - Sumatera Utara", "value":"Rantau Prapat", "areacode":501587,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Salak - Sumatera Utara", "value":"Salak", "areacode":501588,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Sei Rampah - Sumatera Utara", "value":"Sei Rampah", "areacode":501589,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Sibolga - Sumatera Utara", "value":"Sibolga", "areacode":501590,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Sibuhuan - Sumatera Utara", "value":"Sibuhuan", "areacode":5002213,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Sidikalang - Sumatera Utara", "value":"Sidikalang", "areacode":501591,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Sipirok - Sumatera Utara", "value":"Sipirok", "areacode":501592,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Stabat - Sumatera Utara", "value":"Stabat", "areacode":501593,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Tanjung Balai - Sumatera Utara", "value":"Tanjung Balai", "areacode":501594,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Tarutung - Sumatera Utara", "value":"Tarutung", "areacode":501595,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Tebing Tinggi - Sumatera Utara", "value":"Tebing Tinggi", "areacode":501572,"filename":"DigitalForecast-SumateraUtara.xml"},
+{"label":"Teluk Dalam - Sumatera Utara", "value":"Teluk Dalam", "areacode":501596,"filename":"DigitalForecast-SumateraUtara.xml"}
+];
 
+$("#tags" ).autocomplete({ 
+    source: tags,
+    select: function (event, ui) {
+    	document.getElementById("weather").innerHTML="";
+        $("#tags_code").val(ui.item.filename); 
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','cuaca/'+ui.item.filename,true);
+		// xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',true);
+		xhr.responseType='document';
+		xhr.onload=function() {
+			var status=xhr.status;
+			if(status===200){
+				var datakota=xhr.response.getElementById(ui.item.areacode);
+				// console.log(datakota);
+				var citydesc="";
+				citydesc+="<b>"+datakota.getAttribute("description")+", "+datakota.getAttribute("domain")+"</b><br/>";
+				citydesc+="<b>Latitude</b>: "+datakota.getAttribute("latitude")+" <b>Longitude</b>: "+datakota.getAttribute("longitude")+" <br/><b>Coordinate</b>: "+datakota.getAttribute("coordinate");
+				document.getElementById("citydesc").innerHTML=citydesc;
+				var suhu=datakota.querySelector("[description='Temperature']");
+				var kelembapan=datakota.querySelector("[description='Humidity']");
+				var cuaca=datakota.querySelector("[description='Weather']");
+				var arahangin=datakota.querySelector("[description='Wind direction']");
+				var kecepatanangin=datakota.querySelector("[description='Wind speed']");
+				var dictdata={};
+				for (var i = 0; i < suhu.children.length; i++) {
+					var jamData = suhu.children[i].getAttribute("datetime");
+					var tempC=suhu.children[i].querySelector("[unit='C']").innerHTML;
+					var tempF=suhu.children[i].querySelector("[unit='F']").innerHTML;
+					var stringdate=jamData.slice(0,4)+"-"+jamData.slice(4,6)+"-"+jamData.slice(6,8)+"T"+jamData.slice(8,10)+":"+jamData.slice(10,12)+":00.000+07:00";
+					dictdata[stringdate]={};
+					dictdata[stringdate]["isoDate"]=stringdate;
+					dictdata[stringdate]["tempC"]=tempC;
+					dictdata[stringdate]["tempF"]=tempF;
+					var humidity=kelembapan.children[i].querySelector("[unit='%']").innerHTML;
+					dictdata[stringdate]["humidity"]=humidity;
+					var weather=cuaca.children[i].querySelector("[unit='icon']").innerHTML;
+					dictdata[stringdate]["cuaca"]=weather;
+					var wd_card=arahangin.children[i].querySelector("[unit='CARD']").innerHTML;
+					var wd_deg=arahangin.children[i].querySelector("[unit='deg']").innerHTML;
+					dictdata[stringdate]["wd_deg"]=wd_deg;
+					dictdata[stringdate]["wd_card"]=wd_card;
+					var ws_KPH=kecepatanangin.children[i].querySelector("[unit='KPH']").innerHTML;
+					dictdata[stringdate]["ws_kph"]=ws_KPH;
 
-<!-- 	<script>
-		
-		var namafile=["DigitalForecast-Aceh.xml","DigitalForecast-Bali.xml","DigitalForecast-BangkaBelitung.xml","DigitalForecast-Banten.xml","DigitalForecast-Bengkulu.xml","DigitalForecast-DIYogyakarta.xml","DigitalForecast-DKIJakarta.xml","DigitalForecast-Gorontalo.xml","DigitalForecast-Indonesia.xml","DigitalForecast-Jambi.xml","DigitalForecast-JawaBarat.xml","DigitalForecast-JawaTengah.xml","DigitalForecast-JawaTimur.xml","DigitalForecast-KalimantanBarat.xml","DigitalForecast-KalimantanSelatan.xml","DigitalForecast-KalimantanTengah.xml","DigitalForecast-KalimantanTimur.xml","DigitalForecast-KalimantanUtara.xml","DigitalForecast-KepulauanRiau.xml","DigitalForecast-Lampung.xml","DigitalForecast-Maluku.xml","DigitalForecast-MalukuUtara.xml","DigitalForecast-NusaTenggaraBarat.xml","DigitalForecast-NusaTenggaraTimur.xml","DigitalForecast-Papua.xml","DigitalForecast-PapuaBarat.xml","DigitalForecast-Riau.xml","DigitalForecast-SulawesiBarat.xml","DigitalForecast-SulawesiSelatan.xml","DigitalForecast-SulawesiTengah.xml","DigitalForecast-SulawesiTenggara.xml","DigitalForecast-SulawesiUtara.xml","DigitalForecast-SumateraBarat.xml","DigitalForecast-SumateraSelatan.xml","DigitalForecast-SumateraUtara.xml"];
-			
-			for(var j=0;j<namafile.length;j++){
-					
-					let xhr=new XMLHttpRequest();
-					url="cuaca/"+namafile[j];
-					xhr.open('GET',url,true);
-					xhr.responseType='document';
-					xhr.onreadystatechange = function(){
-						
-						var datakota=xhr.response.getElementsByTagName("area");
-						for (var i = 0; i < datakota.length; i++) {
-document.write('{"label":"'+datakota[i].getAttribute("description")+" - "+datakota[i].getAttribute("domain")+'", "value":'+datakota[i].getAttribute("id")+',"filename":"'+xhr.responseURL.slice(28,xhr.responseURL.length)+'"'+"},"+"<br/>");		
-						}
+				}
+				var weathercontent="";
+				Object.keys(dictdata).forEach(function(key){
+					weathercontent+='<div class="col-md-3">';
+					if(dictdata[key]["isoDate"].slice(11,13)=="00"){
+						weathercontent+='<div class="card card-00" style="margin-bottom: 10px;">';
 					}
-					xhr.send();
-				
+					else if(dictdata[key]["isoDate"].slice(11,13)=="06"){
+						weathercontent+='<div class="card card-06" style="margin-bottom: 10px;">';
+					}
+					else if(dictdata[key]["isoDate"].slice(11,13)=="12"){
+						weathercontent+='<div class="card card-12" style="margin-bottom: 10px;">';
+					}
+					else if(dictdata[key]["isoDate"].slice(11,13)=="18"){
+						weathercontent+='<div class="card card-18" style="margin-bottom: 10px;">';
+					}
+					
+
+
+					weathercontent+='<div class="card-body">';
+					weathercontent+='<div style="text-align:center">';
+					weathercontent+=getDateTime(dictdata[key]["isoDate"])+"<br/><br/>";
+					if(dictdata[key]["cuaca"]==0){
+						
+						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
+							weathercontent+='<span class="fa fa-sun fa-5x"></span><br/>';
+						}
+						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
+							weathercontent+='<span class="fa fa-moon fa-5x"></span><br/>';
+						}
+						weathercontent+='Cerah / Clear Skies';
+					}
+					else if(dictdata[key]["cuaca"]==1){
+						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
+						weathercontent+='<span class="fa fa-cloud-sun fa-5x"></span><br/>';
+						}
+						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
+							weathercontent+='<span class="fa fa-cloud-moon fa-5x"></span><br/>';
+						}
+						weathercontent+='Cerah Berawan / Partly Cloudy';
+					}
+					else if(dictdata[key]["cuaca"]==2){
+						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
+						weathercontent+='<span class="fa fa-clouds-sun fa-5x"></span><br/>';
+						}
+						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
+							weathercontent+='<span class="fa fa-clouds-moon fa-5x"></span><br/>';
+						}
+						weathercontent+='Cerah Berawan / Partly Cloudy';
+					}
+					else if(dictdata[key]["cuaca"]==3){
+						weathercontent+='<span class="fa fa-cloud fa-5x"></span><br/>';
+						weathercontent+='Berawan / Mostly Cloudy';
+					}
+					else if(dictdata[key]["cuaca"]==4){
+						weathercontent+='<span class="fa fa-clouds fa-5x"></span><br/>';
+						weathercontent+='Berawan Tebal / Overcast';
+					}
+					else if(dictdata[key]["cuaca"]==5){
+						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
+						weathercontent+='<span class="fa fa-sun-haze fa-5x"></span><br/>';
+						}
+						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
+							weathercontent+='<span class="fa fa-fog fa-5x"></span><br/>';
+						}
+						weathercontent+='Udara Kabur / Haze';
+					}
+					else if(dictdata[key]["cuaca"]==10){
+						weathercontent+='<span class="fa fa-smoke fa-5x"></span><br/>';
+						weathercontent+='Asap / Smoke';
+					}
+					else if(dictdata[key]["cuaca"]==45){
+						weathercontent+='<span class="fa fa-fog fa-5x"></span><br/>';
+						weathercontent+='Kabut / Fog';
+					}
+					else if(dictdata[key]["cuaca"]==60){
+						weathercontent+='<span class="fa fa-cloud-rain fa-5x"></span><br/>';
+						weathercontent+='Hujan Ringan / Light Rain';
+					}
+					else if(dictdata[key]["cuaca"]==61){
+						weathercontent+='<span class="fa fa-cloud-showers fa-5x"></span><br/>';
+						weathercontent+='Hujan Sedang / Rain';
+					}
+					else if(dictdata[key]["cuaca"]==63){
+						weathercontent+='<span class="fa fa-cloud-showers-heavy fa-5x"></span><br/>';
+						weathercontent+='Hujan Lebat / Heavy Rain';
+					}
+					else if(dictdata[key]["cuaca"]==80){
+						weathercontent+='<span class="fa fa-cloud-showers fa-5x"></span><br/>';
+						weathercontent+='Hujan Lokal / Isolated Rain';
+					}
+					else if(dictdata[key]["cuaca"]==95){
+						if(dictdata[key]["isoDate"].slice(11,13)=="06" || dictdata[key]["isoDate"].slice(11,13)=="12"){
+						weathercontent+='<span class="fa fa-thunderstorm-sun fa-5x"></span><br/>';
+						}
+						else if(dictdata[key]["isoDate"].slice(11,13)=="00" || dictdata[key]["isoDate"].slice(11,13)=="18"){
+							weathercontent+='<span class="fa fa-thunderstorm-moon fa-5x"></span><br/>';
+						}
+						weathercontent+='Hujan Petir / Severe Thunderstorm';
+					}
+					else if(dictdata[key]["cuaca"]==97){
+						weathercontent+='<span class="fa fa-thunderstorm fa-5x"></span><br/>';
+						weathercontent+='Hujan Petir / Severe Thunderstorm';
+					}
+					
+					
+					
+					weathercontent+='</div><br/><br/>';
+					weathercontent+='<span class="fa fa-temperature-low"></span> ';
+					weathercontent+=dictdata[key]["tempC"]+"°C | "+dictdata[key]["tempF"]+"°F<br/>";
+					weathercontent+='<span class="fa fa-humidity"></span> ';
+					weathercontent+=dictdata[key]["humidity"]+"%<br/>";
+					weathercontent+='<span class="fa fa-wind"></span> ';
+					weathercontent+=dictdata[key]["ws_kph"]+" km/jam<br/>";
+					var derajat=parseFloat(dictdata[key]["wd_deg"])+135;
+					weathercontent+='<span class="fa fa-location-arrow" data-fa-transform="rotate-'+derajat+'"></span> ';
+					// console.log(derajat);
+					weathercontent+=dictdata[key]["wd_card"]+"<br/>";
+					weathercontent+='</div>';
+					weathercontent+='</div>';
+					weathercontent+='</div>';
+				});
+				document.getElementById("weather").insertAdjacentHTML('beforeend',weathercontent);
 			}
-
-		
-	</script>
-	 -->
-
-
-
-	
+			else{
+				console.log("error");
+			}
+		}
+		xhr.send();
+    }
+});
+</script>
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
 </body>
 </html>
