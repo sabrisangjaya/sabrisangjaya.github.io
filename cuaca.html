@@ -46,11 +46,23 @@
 
 	<style>
 		.card-day{
-			background-image: url("cuaca/cerah-berawan-siang.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center center;
+			background-image: linear-gradient(
+				90deg,
+				#4a4969 0%,
+				#757abf 10%,
+				#82addb 20%,
+				#94c5f8 30%,
+				#b7eaff 40%,
+				#9be2fe 50%,
+				#90dffe 60%,
+				#57c1eb 70%,
+				#2d91c2 80%,
+				#2473ab 90%, 
+				#1e528e 100%
+			);
 			color: white;
+			animation: movebg 30s ease infinite;
+			background-size: 400% 400%;
 
 		}
 		.card-night{
@@ -59,6 +71,11 @@
 			background-size: cover;
 			background-position: center center;
 			color: white;
+		}
+		@keyframes movebg{
+			0%{background-position: 0% 50%;}
+			50%{background-position: 100% 50%;}
+			100%{background-position: 0% 50%;}
 		}
 
 
@@ -117,8 +134,8 @@
 
 
 		var xhr = new XMLHttpRequest();
-		// xhr.open('GET','cuaca/DigitalForecast-JawaTimur.xml',true);
-		xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',true);
+		xhr.open('GET','cuaca/DigitalForecast-JawaTimur.xml',true);
+		// xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',true);
 		xhr.responseType='document';
 		xhr.onload=function() {
 			var status=xhr.status;
@@ -436,7 +453,86 @@
 		</div>
 		<br/>
 		<div class="row" id="weather">
-			
+			<style>
+				.sky-gradient-00, .sky-gradient-24 { background: #00000c; }
+.sky-gradient-01 { background: linear-gradient(to bottom, #020111 85%,#191621 100%); }
+.sky-gradient-02 { background: linear-gradient(to bottom, #020111 60%,#20202c 100%); }
+.sky-gradient-03 { background: linear-gradient(to bottom, #020111 10%,#3a3a52 100%); }
+.sky-gradient-04 { background: linear-gradient(to bottom, #20202c 0%,#515175 100%); }
+.sky-gradient-05 { background: linear-gradient(to bottom, #40405c 0%,#6f71aa 80%,#8a76ab 100%); }
+.sky-gradient-06 { background: linear-gradient(to bottom, #4a4969 0%,#7072ab 50%,#cd82a0 100%); }
+.sky-gradient-07 { background: linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%); }
+.sky-gradient-08 { background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%); }
+.sky-gradient-09 { background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%); }
+.sky-gradient-10 { background: linear-gradient(to bottom, #b7eaff 0%,#94dfff 100%); }
+.sky-gradient-11 { background: linear-gradient(to bottom, #9be2fe 0%,#67d1fb 100%); }
+.sky-gradient-12 { background: linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%); }
+.sky-gradient-13 { background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%); }
+.sky-gradient-14 { background: linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%); }
+.sky-gradient-15 { background: linear-gradient(to bottom, #2473ab 0%,#1e528e 70%,#5b7983 100%); }
+.sky-gradient-16 { background: linear-gradient(to bottom, #1e528e 0%,#265889 50%,#9da671 100%); }
+.sky-gradient-17 { background: linear-gradient(to bottom, #1e528e 0%,#728a7c 50%,#e9ce5d 100%); }
+.sky-gradient-18 { background: linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%); }
+.sky-gradient-19 { background: linear-gradient(to bottom, #163C52 0%,#4F4F47 30%,#C5752D 60%,#B7490F 80%, #2F1107 100%); }
+.sky-gradient-20 { background: linear-gradient(to bottom, #071B26 0%,#071B26 30%,#8A3B12 80%,#240E03 100%); }
+.sky-gradient-21 { background: linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%); }
+.sky-gradient-22 { background: linear-gradient(to bottom, #090401 50%,#4B1D06 100%); }
+.sky-gradient-23 { background: linear-gradient(to bottom, #00000c 80%,#150800 100%); }
+			</style>
+			<div class="sky-gradient-00" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-01" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-02" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-03" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-04" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-05" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-06" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-07" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-08" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-09" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-10" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-11" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-12" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-13" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-14" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-15" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-16" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-17" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-18" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-19" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-20" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-21" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-22" style="width: 190px;height:200px"></div>
+			<div class="sky-gradient-23" style="width: 190px;height:200px"></div>
+
+<div style="width: 190px;height:200px;background: linear-gradient(to bottom, #00000c 0%,
+#020111 8%,
+#191621 16%,
+#20202c 24%,
+#3a3a52 32%,
+#40405c 40%,
+#4a4969 48%,
+#515175 56%,
+#6f71aa 64%,
+#7072ab 72%,
+#8a76ab 80%,
+#cd82a0 100%);"></div>
+
+
+<div style="width: 190px;height:200px;background: linear-gradient(to bottom, #38a3d1 0%,
+#67d1fb 7%,
+#757abf 14%,
+#82addb 21%,
+#8583be 28%,
+#90dffe 35%,
+#94c5f8 42%,
+#94dfff 49%,
+#9be2fe 56%,
+#a6e6ff 63%,
+#b1b5ea 70%,
+#b7eaff 77%,
+#eab0d1 84%,
+#ebb2b1 100%);"></div>
+
 		</div>
 	</div>
 	<script>
@@ -491,5 +587,36 @@
 					document.getElementById("digital-clock").innerHTML = currentTime;
 				}, 1000);
 	</script>
+
+
+
+<!-- 	<script>
+		
+		var namafile=["DigitalForecast-Aceh.xml","DigitalForecast-Bali.xml","DigitalForecast-BangkaBelitung.xml","DigitalForecast-Banten.xml","DigitalForecast-Bengkulu.xml","DigitalForecast-DIYogyakarta.xml","DigitalForecast-DKIJakarta.xml","DigitalForecast-Gorontalo.xml","DigitalForecast-Indonesia.xml","DigitalForecast-Jambi.xml","DigitalForecast-JawaBarat.xml","DigitalForecast-JawaTengah.xml","DigitalForecast-JawaTimur.xml","DigitalForecast-KalimantanBarat.xml","DigitalForecast-KalimantanSelatan.xml","DigitalForecast-KalimantanTengah.xml","DigitalForecast-KalimantanTimur.xml","DigitalForecast-KalimantanUtara.xml","DigitalForecast-KepulauanRiau.xml","DigitalForecast-Lampung.xml","DigitalForecast-Maluku.xml","DigitalForecast-MalukuUtara.xml","DigitalForecast-NusaTenggaraBarat.xml","DigitalForecast-NusaTenggaraTimur.xml","DigitalForecast-Papua.xml","DigitalForecast-PapuaBarat.xml","DigitalForecast-Riau.xml","DigitalForecast-SulawesiBarat.xml","DigitalForecast-SulawesiSelatan.xml","DigitalForecast-SulawesiTengah.xml","DigitalForecast-SulawesiTenggara.xml","DigitalForecast-SulawesiUtara.xml","DigitalForecast-SumateraBarat.xml","DigitalForecast-SumateraSelatan.xml","DigitalForecast-SumateraUtara.xml"];
+			
+			for(var j=0;j<namafile.length;j++){
+					
+					let xhr=new XMLHttpRequest();
+					url="cuaca/"+namafile[j];
+					xhr.open('GET',url,true);
+					xhr.responseType='document';
+					xhr.onreadystatechange = function(){
+						
+						var datakota=xhr.response.getElementsByTagName("area");
+						for (var i = 0; i < datakota.length; i++) {
+document.write('{"label":"'+datakota[i].getAttribute("description")+" - "+datakota[i].getAttribute("domain")+'", "value":'+datakota[i].getAttribute("id")+',"filename":"'+xhr.responseURL.slice(28,xhr.responseURL.length)+'"'+"},"+"<br/>");		
+						}
+					}
+					xhr.send();
+				
+			}
+
+		
+	</script>
+	 -->
+
+
+
+	
 </body>
 </html>
