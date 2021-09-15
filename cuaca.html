@@ -1045,8 +1045,8 @@ $("#tags" ).autocomplete({
     	document.getElementById("weather").innerHTML="";
         $("#tags_code").val(ui.item.filename); 
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET','cuaca/'+ui.item.filename,true);
-		// xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',true);
+		// xhr.open('GET','cuaca/'+ui.item.filename,true);
+		xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/'+ui.item.filename,true);
 		xhr.responseType='document';
 		xhr.onload=function() {
 			var status=xhr.status;
