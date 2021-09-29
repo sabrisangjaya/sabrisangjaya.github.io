@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Sabri Sangjaya - CNN News</title>
+		<link rel="manifest" href="../manifest.json">
+		<meta name="description" content="Baca informasi,berita, dan update terbaru">
+		<meta name="keywords" content="berita,CNN,news,koran,info terbaru,web,developer" />
+		<meta name="author" content="Sabri Sangjaya">
+		<meta property="og:image:alt" content="Sabri Sangjaya">
+		<meta property="og:locale" content="en_ID">
+		<meta name="theme-color" content="#007bff">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://sabrisangjaya.github.io/news/CNN-news.html">
+		<meta property="og:title" content="Sabri Sangjaya - CNN News">
+		<meta property="og:description" content="Baca informasi,berita, dan update terbaru">
+		<meta property="og:image" content="https://sabrisangjaya.github.io/img/webpreview.jpg">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://sabrisangjaya.github.io/news.html">
+		<meta property="twitter:title" content="Sabri Sangjaya - News">
+		<meta property="twitter:description" content="Baca informasi, berita, dan update terbaru">
+		<meta property="twitter:image" content="https://sabrisangjaya.github.io/img/webpreview.jpg">
+		<link rel="icon" href="../img/logo.svg" sizes="any" type="image/svg+xml">
+		<link rel="canonical" href="https://sabrisangjaya.github.io/news.html">
+		<link rel="stylesheet" href="../css/font-awesome.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<script src="../js/jquery.min.js" type="text/javascript"></script>
+		<script src="../js/popper.min.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+		<link rel="alternate" href="https://sabrisangjaya.github.io/news.html" hreflang="en-id" />
+
+		<link rel="apple-touch-icon" href="../icon/hello-icon-152.png">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Sabri Sangjaya">
+		<meta name="msapplication-TileImage" content="../icon/hello-icon-144.png">
+		<meta name="msapplication-TileColor" content="#FFFFFF">
+	</head>
+<body>
+<script>
+	var getNews=function(url,callback){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET',url,true);
+		xhr.responseType='json';
+		xhr.onload=function() {
+			var status=xhr.status;
+			if(status===200){
+				callback(null,xhr.response);
+			}
+			else{
+				callback(status,xhr.response);
+			}
+		}
+		xhr.send();
+	};
+	function getDateTime(isodate) {
+		var now     = new Date(isodate);
+		var year    = now.getFullYear();
+		var day     = now.getDate();
+		var hour    = now.getHours();
+		var minute  = now.getMinutes();
+		var second  = now.getSeconds();
+		var weekday = new Array(7);
+		weekday[0] = "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+		var month = new Array();
+		month[0] = "January";
+		month[1] = "February";
+		month[2] = "March";
+		month[3] = "April";
+		month[4] = "May";
+		month[5] = "June";
+		month[6] = "July";
+		month[7] = "August";
+		month[8] = "September";
+		month[9] = "October";
+		month[10] = "November";
+		month[11] = "December";
+		var bulan= month[now.getMonth()];
+		var hari = weekday[now.getDay()];
+		if(day.toString().length == 1) {
+			day = '0'+day;
+		}
+		if(hour.toString().length == 1) {
+			hour = '0'+hour;
+		}
+		if(minute.toString().length == 1) {
+			minute = '0'+minute;
+		}
+		if(second.toString().length == 1) {
+			second = '0'+second;
+		}
+		var dateTime = '<span class="fa fa-calendar"></span> '+hari+', '+day+' '+bulan+' '+year+' <span class="fa fa-clock-o"></span> '+hour+':'+minute+':'+second;
+		return dateTime;
+	}
+</script>
+<br/>
+<div class="container">
+
+<div class="card" id="content" style="margin-bottom: 10px;">
+	<div class="card-body">
+		<h2>CNN News</h2>
+		<p>Indonesian news from CNN news channel. News obtained from <a href="https://github.com/satyawikananda/berita-indo-api" target="_blank" rel="noreferrer nofollow">Berita Indo API</a></p>
+		<p id="hottopic">Hot topics: </p>
+		
+		<hr/>	
+		<div id="jsonnews" class="row"></div>
+		<script type="text/javascript">
+			var textberita="";
+			var stopWords = ["kata","ada","adalah","adanya","adapun","agak","agaknya","agar","akan","akankah","akhir","akhiri","akhirnya","aku","akulah","amat","amatlah","anda","andalah","antar","antara","antaranya","apa","apaan","apabila","apakah","apalagi","apatah","artinya","asal","asalkan","atas","atau","ataukah","ataupun","awal","awalnya","bagai","bagaikan","bagaimana","bagaimanakah","bagaimanapun","bagi","bagian","bahkan","bahwa","bahwasanya","baik","bakal","bakalan","balik","banyak","bapak","baru","bawah","beberapa","begini","beginian","beginikah","beginilah","begitu","begitukah","begitulah","begitupun","bekerja","belakang","belakangan","belum","belumlah","benar","benarkah","benarlah","berada","berakhir","berakhirlah","berakhirnya","berapa","berapakah","berapalah","berapapun","berarti","berawal","berbagai","berdatangan","beri","berikan","berikut","berikutnya","berjumlah","berkali-kali","berkata","berkehendak","berkeinginan","berkenaan","berlainan","berlalu","berlangsung","berlebihan","bermacam","bermacam-macam","bermaksud","bermula","bersama","bersama-sama","bersiap","bersiap-siap","bertanya","bertanya-tanya","berturut","berturut-turut","bertutur","berujar","berupa","besar","betul","betulkah","biasa","biasanya","bila","bilakah","bisa","bisakah","boleh","bolehkah","bolehlah","buat","bukan","bukankah","bukanlah","bukannya","bulan","bung","cara","caranya","cukup","cukupkah","cukuplah","cuma","dahulu","dalam","dan","dapat","dari","daripada","datang","dekat","demi","demikian","demikianlah","dengan","depan","di","dia","diakhiri","diakhirinya","dialah","diantara","diantaranya","diberi","diberikan","diberikannya","dibuat","dibuatnya","didapat","didatangkan","digunakan","diibaratkan","diibaratkannya","diingat","diingatkan","diinginkan","dijawab","dijelaskan","dijelaskannya","dikarenakan","dikatakan","dikatakannya","dikerjakan","diketahui","diketahuinya","dikira","dilakukan","dilalui","dilihat","dimaksud","dimaksudkan","dimaksudkannya","dimaksudnya","diminta","dimintai","dimisalkan","dimulai","dimulailah","dimulainya","dimungkinkan","dini","dipastikan","diperbuat","diperbuatnya","dipergunakan","diperkirakan","diperlihatkan","diperlukan","diperlukannya","dipersoalkan","dipertanyakan","dipunyai","diri","dirinya","disampaikan","disebut","disebutkan","disebutkannya","disini","disinilah","ditambahkan","ditandaskan","ditanya","ditanyai","ditanyakan","ditegaskan","ditujukan","ditunjuk","ditunjuki","ditunjukkan","ditunjukkannya","ditunjuknya","dituturkan","dituturkannya","diucapkan","diucapkannya","diungkapkan","dong","dua","dulu","empat","enggak","enggaknya","entah","entahlah","guna","gunakan","hal","hampir","hanya","hanyalah","hari","harus","haruslah","harusnya","hendak","hendaklah","hendaknya","hingga","ia","ialah","ibarat","ibaratkan","ibaratnya","ibu","ikut","ingat","ingat-ingat","ingin","inginkah","inginkan","ini","inikah","inilah","itu","itukah","itulah","jadi","jadilah","jadinya","jangan","jangankan","janganlah","jauh","jawab","jawaban","jawabnya","jelas","jelaskan","jelaslah","jelasnya","jika","jikalau","juga","jumlah","jumlahnya","justru","kala","kalau","kalaulah","kalaupun","kalian","kami","kamilah","kamu","kamulah","kan","kapan","kapankah","kapanpun","karena","karenanya","kasus","kata","katakan","katakanlah","katanya","ke","keadaan","kebetulan","kecil","kedua","keduanya","keinginan","kelamaan","kelihatan","kelihatannya","kelima","keluar","kembali","kemudian","kemungkinan","kemungkinannya","kenapa","kepada","kepadanya","kesampaian","keseluruhan","keseluruhannya","keterlaluan","ketika","khususnya","kini","kinilah","kira","kira-kira","kiranya","kita","kitalah","kok","kurang","lagi","lagian","lah","lain","lainnya","lalu","lama","lamanya","lanjut","lanjutnya","lebih","lewat","lima","luar","macam","maka","makanya","makin","malah","malahan","mampu","mampukah","mana","manakala","manalagi","masa","masalah","masalahnya","masih","masihkah","masing","masing-masing","mau","maupun","melainkan","melakukan","melalui","melihat","melihatnya","memang","memastikan","memberi","memberikan","membuat","memerlukan","memihak","meminta","memintakan","memisalkan","memperbuat","mempergunakan","memperkirakan","memperlihatkan","mempersiapkan","mempersoalkan","mempertanyakan","mempunyai","memulai","memungkinkan","menaiki","menambahkan","menandaskan","menanti","menanti-nanti","menantikan","menanya","menanyai","menanyakan","mendapat","mendapatkan","mendatang","mendatangi","mendatangkan","menegaskan","mengakhiri","mengapa","mengatakan","mengatakannya","mengenai","mengerjakan","mengetahui","menggunakan","menghendaki","mengibaratkan","mengibaratkannya","mengingat","mengingatkan","menginginkan","mengira","mengucapkan","mengucapkannya","mengungkapkan","menjadi","menjawab","menjelaskan","menuju","menunjuk","menunjuki","menunjukkan","menunjuknya","menurut","menuturkan","menyampaikan","menyangkut","menyatakan","menyebutkan","menyeluruh","menyiapkan","merasa","mereka","merekalah","merupakan","meski","meskipun","meyakini","meyakinkan","minta","mirip","misal","misalkan","misalnya","mula","mulai","mulailah","mulanya","mungkin","mungkinkah","nah","naik","namun","nanti","nantinya","nyaris","nyatanya","oleh","olehnya","pada","padahal","padanya","pak","paling","panjang","pantas","para","pasti","pastilah","penting","pentingnya","per","percuma","perlu","perlukah","perlunya","pernah","persoalan","pertama","pertama-tama","pertanyaan","pertanyakan","pihak","pihaknya","pukul","pula","pun","punya","rasa","rasanya","rata","rupanya","saat","saatnya","saja","sajalah","saling","sama","sama-sama","sambil","sampai","sampai-sampai","sampaikan","sana","sangat","sangatlah","satu","saya","sayalah","se","sebab","sebabnya","sebagai","sebagaimana","sebagainya","sebagian","sebaik","sebaik-baiknya","sebaiknya","sebaliknya","sebanyak","sebegini","sebegitu","sebelum","sebelumnya","sebenarnya","seberapa","sebesar","sebetulnya","sebisanya","sebuah","sebut","sebutlah","sebutnya","secara","secukupnya","sedang","sedangkan","sedemikian","sedikit","sedikitnya","seenaknya","segala","segalanya","segera","seharusnya","sehingga","seingat","sejak","sejauh","sejenak","sejumlah","sekadar","sekadarnya","sekali","sekali-kali","sekalian","sekaligus","sekalipun","sekarang","sekarang","sekecil","seketika","sekiranya","sekitar","sekitarnya","sekurang-kurangnya","sekurangnya","sela","selain","selaku","selalu","selama","selama-lamanya","selamanya","selanjutnya","seluruh","seluruhnya","semacam","semakin","semampu","semampunya","semasa","semasih","semata","semata-mata","semaunya","sementara","semisal","semisalnya","sempat","semua","semuanya","semula","sendiri","sendirian","sendirinya","seolah","seolah-olah","seorang","sepanjang","sepantasnya","sepantasnyalah","seperlunya","seperti","sepertinya","sepihak","sering","seringnya","serta","serupa","sesaat","sesama","sesampai","sesegera","sesekali","seseorang","sesuatu","sesuatunya","sesudah","sesudahnya","setelah","setempat","setengah","seterusnya","setiap","setiba","setibanya","setidak-tidaknya","setidaknya","setinggi","seusai","sewaktu","siap","siapa","siapakah","siapapun","sini","sinilah","soal","soalnya","suatu","sudah","sudahkah","sudahlah","supaya","tadi","tadinya","tahu","tahun","tak","tambah","tambahnya","tampak","tampaknya","tandas","tandasnya","tanpa","tanya","tanyakan","tanyanya","tapi","tegas","tegasnya","telah","tempat","tengah","tentang","tentu","tentulah","tentunya","tepat","terakhir","terasa","terbanyak","terdahulu","terdapat","terdiri","terhadap","terhadapnya","teringat","teringat-ingat","terjadi","terjadilah","terjadinya","terkira","terlalu","terlebih","terlihat","termasuk","ternyata","tersampaikan","tersebut","tersebutlah","tertentu","tertuju","terus","terutama","tetap","tetapi","tiap","tiba","tiba-tiba","tidak","tidakkah","tidaklah","tiga","tinggi","toh","tunjuk","turut","tutur","tuturnya","ucap","ucapnya","ujar","ujarnya","umum","umumnya","ungkap","ungkapnya","untuk","usah","usai","waduh","wah","wahai","waktu","waktunya","walau","walaupun","wong","yaitu","yakin","yakni","yang","kota","orang","warga","negara"];
+			
+			getNews('https://berita-indo-api.vercel.app/v1/cnn-news',function(err,data){
+				if(err!== null){
+					console.log("something went wrong");
+				}
+				else{
+					console.log(data);
+					var newscontent="";
+					data.data.forEach(function(element, index, array){
+						textberita+=element.title+" ";
+						textberita+=element.description+" ";
+						newscontent+='<div class="col-md-6">';
+						newscontent+='<p><strong>'+element.title+'</strong><br/>';
+						newscontent+=''+getDateTime(element.isoDate)+' <a href="#" class="badge badge-secondary">CNN News</a> <br/>';
+						newscontent+=element.description;
+						newscontent+=' <a href="'+element.link+'" rel="noreferrer noopener" target="_blank">Baca selengkapnya</a>';
+
+						newscontent+='</p><hr/></div>';
+					});
+					document.getElementById("jsonnews").insertAdjacentHTML('beforeend',newscontent);
+					textberita=textberita.replace(/[^\w\s]/gi,"");
+					//textberita=textberita.toLowerCase();
+					var wordberita=textberita.split(' ');
+					var wordcounter={};
+
+					for(var i=0;i<wordberita.length;i++){
+						if(wordcounter[wordberita[i]]){
+							wordcounter[wordberita[i]]+=1;
+						}
+						else{
+							wordcounter[wordberita[i]]=1;
+						}
+					}
+					var wordcountersort=[];
+					for(var i in wordcounter){
+						if(stopWords.indexOf(i.toLowerCase()) == -1){
+							if(i.length>=2){
+								if(i.match(/^[0-9]+$/) == null){
+									wordcountersort.push([i,wordcounter[i]]);	
+								}
+							}
+						}
+					}
+					wordcountersort.sort(function(a,b){
+						return b[1]-a[1];
+					});
+					var badge=["badge-primary","badge-secondary","badge-success","badge-danger","badge-warning","badge-info","badge-dark"]
+					for (var i = 0; i <= 20; i++) {
+						var topiccontent='<a href="#" class="badge '+badge[i%7]+'">'+wordcountersort[i][0]+'</a> ';
+						document.getElementById("hottopic").insertAdjacentHTML('beforeend',topiccontent);
+					}
+				}
+			});
+		</script>
+	</div>
+</div>
+</div>
+</body>
+</html>
