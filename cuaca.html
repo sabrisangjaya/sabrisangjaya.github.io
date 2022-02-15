@@ -1045,10 +1045,12 @@ $("#tags" ).autocomplete({
     	document.getElementById("weather").innerHTML="";
         $("#tags_code").val(ui.item.filename); 
 		var xhr = new XMLHttpRequest();
-		xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-		xhr.withCredentials=false;
+
 		// xhr.open('GET','cuaca/'+ui.item.filename,true);
 		xhr.open('GET','https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/'+ui.item.filename,true);
+		xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+		xhr.setRequestHeader('Access-Control-Allow-Methods','GET');
+		xhr.setRequestHeader('Access-Control-Allow-Headers','accept, content-type');
 		xhr.responseType='document';
 		xhr.onload=function() {
 			var status=xhr.status;
