@@ -1,0 +1,380 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malang</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">CCTV Malang</h2>
+        <hr/>
+        <div class="cctvlist row">
+
+        </div>
+        <br/>
+        <h2 class="text-center">Indeks Standar Pencemaran Udara Malang</h2>
+        <hr/>
+        <div class="row ispu">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="ispudetail"></div>
+                        <hr/>
+                        <h5 class="card-title">Parameter 24 Jam</h5>
+                        <canvas id="myChart" width="400" height="250"></canvas>
+                        <hr/>
+                        <div class="tabledetail"></div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <br/>
+        <div class="row">
+            <h5>CCTV ALL</h5>
+            <hr/>
+            <div class="col-md-12 cctvlistall"></div>
+            
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid image-modal-detail"/>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        </div>
+    </div>
+    <script>
+        function hexToRgbA(hex){
+            var c;
+            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+                c= hex.substring(1).split('');
+                if(c.length== 3){
+                    c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+                }
+                c= '0x'+c.join('');
+                return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+            }
+            console.log(hex);
+            return 'rgba(255,255,255,1)' 
+        }
+
+
+         $.getJSON('https://ispu.menlhk.go.id/apimobile/v1/getDetail/stasiun/MALANG', function(dt) {
+            // Any of the following formats may be used
+            const cht = document.getElementById('myChart');
+
+            var datapm25nilai=[];
+            var datapm25warna=[];
+            var datapm10nilai=[];
+            var datapm10warna=[];
+            var dataso2nilai=[];
+            var dataso2warna=[];
+            var dataconilai=[];
+            var datacowarna=[];
+            var datao3nilai=[];
+            var datao3warna=[];
+            var datano2nilai=[];
+            var datano2warna=[];
+            var datahcnilai=[];
+            var datahcwarna=[];
+            var itemispu = `
+                Waktu: `+dt.rows[0]['waktu']+`<br/>
+                Kategori <span style="color:`+dt.rows[0]['kategori'].color+`">`+dt.rows[0]['kategori'].nilai+`</span> `+dt.rows[0]['kategori'].keterangan+`<br/>
+                Parameter kritis `+dt.rows[0]['param']+`: `+dt.rows[0].val+`<br/>
+                PM₁₀: `+dt.rows[0].pm10+`<br/>
+                PM₂.₅: `+dt.rows[0].pm25+`<br/>
+                SO₂: `+dt.rows[0].so2+`<br/>
+                CO: `+dt.rows[0].co+`<br/>
+                O₃: `+dt.rows[0].o3+`<br/>
+                NO₂: `+dt.rows[0].no2+`<br/>
+                HC: `+dt.rows[0].hc+`
+                `;
+
+            $('.ispudetail').append(itemispu);
+
+            for(var i in dt.rows[0].waktu_24){
+                if(dt.rows[0].pm25_24_rev[i].nilai !== null){
+                    datapm25nilai.push(dt.rows[0].pm25_24_rev[i].nilai);
+                    datapm25warna.push(hexToRgbA(dt.rows[0].pm25_24_rev[i].warna));
+                }
+                else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].pm10_24_rev[i].nilai !== null){
+                    datapm10nilai.push(dt.rows[0].pm10_24_rev[i].nilai);
+                    datapm10warna.push(hexToRgbA(dt.rows[0].pm10_24_rev[i].warna));
+                }else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].so2_24_rev[i].nilai !== null){
+                    dataso2nilai.push(dt.rows[0].so2_24_rev[i].nilai);
+                    dataso2warna.push(hexToRgbA(dt.rows[0].so2_24_rev[i].warna));
+                }else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].co_24_rev[i].nilai !== null){
+                    dataconilai.push(dt.rows[0].co_24_rev[i].nilai);
+                    datacowarna.push(hexToRgbA(dt.rows[0].co_24_rev[i].warna));
+                }else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].o3_24_rev[i].nilai !== null){
+                    datao3nilai.push(dt.rows[0].o3_24_rev[i].nilai);
+                    datao3warna.push(hexToRgbA(dt.rows[0].o3_24_rev[i].warna));
+                }else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].no2_24_rev[i].nilai !== null){
+                    datano2nilai.push(dt.rows[0].no2_24_rev[i].nilai);
+                    datano2warna.push(hexToRgbA(dt.rows[0].no2_24_rev[i].warna));
+                }else{
+                    datahcnilai.push("null");
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+                if(dt.rows[0].hc_24_rev[i].nilai !== null){
+                    datahcnilai.push(dt.rows[0].hc_24_rev[i].nilai);
+                    datahcwarna.push(hexToRgbA(dt.rows[0].hc_24_rev[i].warna));
+                }else{
+                    datahcnilai.push(null);
+                    datahcwarna.push(hexToRgbA("#FFFFFF"));
+                }
+            }
+
+
+            var tablecontent=`<div class="table-responsive"><table class="table table-bordered">`;
+            tablecontent+=`<tr><th>Waktu/Parameter</th>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<th>"+dt.rows[0].waktu_24[i]+"</th>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>PM₂.₅</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datapm25warna[i]+";'>"+datapm25nilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>PM₁₀</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datapm10warna[i]+";'>"+datapm10nilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>SO₂</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+dataso2warna[i]+";'>"+dataso2nilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>CO</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datacowarna[i]+";'>"+dataconilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>O₃</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datao3warna[i]+";'>"+datao3nilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>NO₂</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datano2warna[i]+";'>"+datano2nilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+=`<tr><td>HC</td>`;
+            for(var i in dt.rows[0].waktu_24_rev){
+                tablecontent+="<td style='background-color:"+datahcwarna[i]+";'>"+datahcnilai[i]+"</td>";
+            }
+            tablecontent+=`</tr>`;
+            tablecontent+="</table></div>";
+            console.log(tablecontent);
+            $('.tabledetail').append(tablecontent);
+            
+            
+            const myChart = new Chart(cht, {
+                type: 'bar',
+                data: {
+                    labels:  dt.rows[0].waktu_24,
+                    datasets: [{
+                        label: 'PM₂.₅',
+                        data: datapm25nilai,
+                        backgroundColor: datapm25warna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'PM'+"₁₀",
+                        data: datapm10nilai,
+                        backgroundColor: datapm10warna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'SO₂',
+                        data: dataso2nilai,
+                        backgroundColor: dataso2warna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'CO',
+                        data: dataconilai,
+                        backgroundColor: datacowarna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'O₃',
+                        data: datao3nilai,
+                        backgroundColor: datao3warna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'NO₂',
+                        data: datano2nilai,
+                        backgroundColor: datano2warna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                    {
+                        label: 'HC',
+                        data: datahcnilai,
+                        backgroundColor: datahcwarna,
+                        borderColor: 'rgba(0,0,0,1)',
+                        borderWidth: 1,
+                        
+                    },
+                ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            
+                        }
+                    }
+                }
+            });
+         });
+
+        function getCamera() {
+                $.getJSON('http://api.cctv.malangkota.go.id/records/cameras', function(dt) {
+
+                    if (dt.records) {
+                        for (let index = 0; index < 9; index++) {
+                            var i = Math.floor(Math.random() * 259);
+                            var item = `
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <img class="img-card-top" src="http://proxy.cctv.malangkota.go.id/image?host=`+dt.records[i].host+`"/>
+                                    <div class="card-body">
+                                    <p class="card-text"><b>`+dt.records[i].name+`</b><br/>
+                                    `+dt.records[i].address+`</p>
+                                    <button type="button" class="openBtn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+dt.records[i].name+`" data-cctv="`+dt.records[i].host+`">
+                                        <i class="bi-fullscreen"></i> Fullscreen
+                                    </button>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            `;
+
+                            $('.cctvlist').append(item);
+                        }
+                        for (let index = 0; index < dt.records.length; index++) {
+                            var i=index;
+                            var item = `<button class="btn btn-sm btn-primary m-1 openBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+dt.records[i].name+`" data-cctv="`+dt.records[i].host+`">`+dt.records[i].name+`</button> `;
+                            $('.cctvlistall').append(item);
+                        }
+
+                    }
+
+                });
+ 
+            }
+            $(document).ready(function() {
+                getCamera();
+                var inv=null;
+                $('.cctvlist').on('click','.openBtn',function(){
+                $(".image-modal-detail").attr('src', "https://via.placeholder.com/468x360?text=loading");
+                clearInterval(inv);
+                if($(this).attr("data-cctv")!="#"){
+                    var urlhost=$(this).attr("data-cctv");
+                    var modaltitle=$(this).attr("data-title");
+                    $(".modal-title").text(modaltitle);
+                    inv=setInterval(function() {
+                    var url = 'http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+                    console.log(url);
+                    $(".image-modal-detail").attr('src', url);
+                    }, 1000);
+                }
+
+                $('.modal').on('click','.closebtn',function(){
+                    clearInterval(inv);
+                    inv=null;
+                });
+                
+
+                return false;
+
+                });
+                $('.cctvlistall').on('click','.openBtn',function(){
+                $(".image-modal-detail").attr('src', "https://via.placeholder.com/468x360?text=loading");
+                clearInterval(inv);
+                if($(this).attr("data-cctv")!="#"){
+                    var urlhost=$(this).attr("data-cctv");
+                    var modaltitle=$(this).attr("data-title");
+                    $(".modal-title").text(modaltitle);
+                    inv=setInterval(function() {
+                    var url = 'http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+                    console.log(url);
+                    $(".image-modal-detail").attr('src', url);
+                    }, 1000);
+                }
+
+                $('.modal').on('click','.closebtn',function(){
+                    clearInterval(inv);
+                    inv=null;
+                });
+                
+
+                return false;
+
+                });
+
+
+                
+            });
+            
+
+
+            
+
+           
+    </script>
+</body>
+</html>
