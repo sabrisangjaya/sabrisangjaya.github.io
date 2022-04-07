@@ -283,13 +283,9 @@
          });
 
         function getCamera() {
+                $.getJSON('https://api.allorigins.win/raw?url=http://api.cctv.malangkota.go.id/records/cameras', function(dt) {
 
-            var req = new XMLHttpRequest();
-            req.responseType = 'json';
-            req.open('GET', "http://api.cctv.malangkota.go.id/records/cameras", true);
-            req.onload  = function() {
-            var dt = req.response;
-             if (dt.records) {
+                    if (dt.records) {
                         for (let index = 0; index < 9; index++) {
                             var i = Math.floor(Math.random() * 259);
                             var item = `
@@ -315,11 +311,12 @@
                             var item = `<button class="btn btn-sm btn-primary m-1 openBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+dt.records[i].name+`" data-cctv="`+dt.records[i].host+`">`+dt.records[i].name+`</button> `;
                             $('.cctvlistall').append(item);
                         }
+
                     }
-            };
-            req.send(null);
+
+                });
  
-        }
+            }
             $(document).ready(function() {
                 getCamera();
                 var inv=null;
