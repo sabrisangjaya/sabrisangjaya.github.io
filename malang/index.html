@@ -284,22 +284,22 @@
 
         function getCamera() {
 
-            $.ajax({ 
-            type: 'GET', 
-                url: 'http://api.cctv.malangkota.go.id/records/cameras', 
-                dataType: 'json',
-                success: function (data) { 
-                    if (data.records) {
+            var req = new XMLHttpRequest();
+            req.responseType = 'json';
+            req.open('GET', "http://api.cctv.malangkota.go.id/records/cameras", true);
+            req.onload  = function() {
+            var dt = req.response;
+             if (dt.records) {
                         for (let index = 0; index < 9; index++) {
                             var i = Math.floor(Math.random() * 259);
                             var item = `
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img class="img-card-top" src="http://proxy.cctv.malangkota.go.id/image?host=`+data.records[i].host+`"/>
+                                    <img class="img-card-top" src="http://proxy.cctv.malangkota.go.id/image?host=`+dt.records[i].host+`"/>
                                     <div class="card-body">
-                                    <p class="card-text"><b>`+data.records[i].name+`</b><br/>
-                                    `+data.records[i].address+`</p>
-                                    <button type="button" class="openBtn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+data.records[i].name+`" data-cctv="`+data.records[i].host+`">
+                                    <p class="card-text"><b>`+dt.records[i].name+`</b><br/>
+                                    `+dt.records[i].address+`</p>
+                                    <button type="button" class="openBtn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+dt.records[i].name+`" data-cctv="`+dt.records[i].host+`">
                                         <i class="bi-fullscreen"></i> Fullscreen
                                     </button>
                                     </div>
@@ -310,22 +310,16 @@
 
                             $('.cctvlist').append(item);
                         }
-                        for (let index = 0; index < data.records.length; index++) {
+                        for (let index = 0; index < dt.records.length; index++) {
                             var i=index;
-                            var item = `<button class="btn btn-sm btn-primary m-1 openBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+data.records[i].name+`" data-cctv="`+data.records[i].host+`">`+data.records[i].name+`</button> `;
+                            var item = `<button class="btn btn-sm btn-primary m-1 openBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="`+dt.records[i].name+`" data-cctv="`+dt.records[i].host+`">`+dt.records[i].name+`</button> `;
                             $('.cctvlistall').append(item);
                         }
-
                     }
-                }
-            });
-                // $.getJSON('http://api.cctv.malangkota.go.id/records/cameras', function(dt) {
-
-                    
-
-                // });
+            };
+            req.send(null);
  
-            }
+        }
             $(document).ready(function() {
                 getCamera();
                 var inv=null;
