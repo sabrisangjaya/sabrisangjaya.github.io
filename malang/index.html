@@ -327,11 +327,11 @@
                     var urlhost=$(this).attr("data-cctv");
                     var modaltitle=$(this).attr("data-title");
                     $(".modal-title").text(modaltitle);
-                    inv=setInterval(function() {
-                    var url = 'https://sabricors.herokuapp.com/url=http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+                    // inv=setInterval(function() {
+                    var url = 'https://api.allorigins.win/raw?url=http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
                     console.log(url);
                     $(".image-modal-detail").attr('src', url);
-                    }, 1000);
+                    // }, 1000);
                 }
 
                 $('.modal').on('click','.closebtn',function(){
@@ -350,11 +350,11 @@
                     var urlhost=$(this).attr("data-cctv");
                     var modaltitle=$(this).attr("data-title");
                     $(".modal-title").text(modaltitle);
-                    inv=setInterval(function() {
-                    var url = 'https://sabricors.herokuapp.com/url=http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+                    // inv=setInterval(function() {
+                    var url = 'https://api.allorigins.win/raw?url=http://proxy.cctv.malangkota.go.id/image?host=' + urlhost + '&t=' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
                     console.log(url);
                     $(".image-modal-detail").attr('src', url);
-                    }, 1000);
+                    // }, 1000);
                 }
 
                 $('.modal').on('click','.closebtn',function(){
