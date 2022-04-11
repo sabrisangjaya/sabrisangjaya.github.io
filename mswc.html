@@ -103,13 +103,14 @@
 						else{
 							var movieposter=`https://image.tmdb.org/t/p/w154${movie.poster_path}`;
 						}
+						
+					
 						var movieContent=`
-
 						<div class="col-md-3">
 						<div class="card">
 						<img class="card-img-top" src="${movieposter}" alt="${movie.title}"/>
 						<div class="card-body">
-						<h5 class="card-title">${movie.title}</h5>
+						<h5 class="card-title">${movie.title} (${movie.release_date})</h5>
 						<a href="#" class="viewspoiler btn btn-danger btn-sm" movie-data-id="${movie.id}" data-toggle="modal" data-target="#modal">Spoiler</a>
 						<a href="#" movie-data-id="${movie.id}"  class="viewinfo btn btn-success btn-sm"  data-target="#modal" data-toggle="modal">Info</a>
 						</div>
@@ -122,7 +123,8 @@
 					});
 				
 				$('.viewinfo').on('click',async function(event){
-				$("#gifs").empty()
+				$("#gifs").empty();
+				$("#spoilertags").empty();
 				// $(".modal-title")[0].innerHTML=$(this).attr("movie-data-id");;
 				var movieurl = $(this).attr("movie-data-id");
 				var moviedetail = await getMovieDetails(movieurl);
@@ -151,7 +153,8 @@
 				});
 
 				$('.viewspoiler').on('click',async function(event){
-				$("#gifs").empty()
+				$("#gifs").empty();
+				$("#spoilertags").empty();
 				// $(".modal-title")[0].innerHTML=$(this).attr("movie-data-id");;
 				var movieurl = $(this).attr("movie-data-id");
 				var moviedetail = await getMovieKeywords(movieurl);
@@ -190,6 +193,8 @@
 			
 			function GifRetrieve(moviekeywords){
 					$("#gifs").innerHTML="";
+					$("#spoilertags").innerHTML="";
+					
 					moviekeywords.forEach(function(moviekeyword, index, array) {
 					//Sets up the url that the ajax call will use
 					var queryURL = "https://api.giphy.com/v1/gifs/translate?s=" +
@@ -227,6 +232,11 @@
 
 					});
 				});
+				$("#spoilertags").append("<br/><br/>");
+				moviekeywords.forEach(function(moviekeyword, index, array) {
+						$("#spoilertags").append("<span class='badge badge-primary'>"+moviekeyword.name+"</span> ");
+				});
+				$("#spoilertags").append("<br/><br/>");
 			}
 
 
@@ -243,6 +253,9 @@
 					</div>
 					<div class="modal-body">
 						<div class="row" id="gifs">
+						</div>
+						<div id="spoilertags">
+
 						</div>
 					</div>
 					<div class="modal-footer">
