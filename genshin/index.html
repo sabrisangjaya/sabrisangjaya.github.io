@@ -1,0 +1,393 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Genshin</title>
+        <style>
+            @font-face {
+            font-family: 'GenshinFont';
+            src: url('css/font/zh-cn.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+            }
+            .centered-axis-x {
+                /* position: absolute;  */
+                margin-left: auto; 
+                margin-right: auto; 
+                width: 500px;
+                display: block;
+                text-align: center;
+                
+            }
+            .score-box{
+                width: 280px;
+                height: auto;
+                margin: 0 auto;
+                display: block;
+                font-family: 'GenshinFont';
+                color: white;
+                font-size: 1.3em;
+                text-align: center;
+            }
+            .box{
+                height: 50px;
+                width:30px;
+                display: inline-block;
+                
+                background-size: cover;
+                background-position: center center;
+                
+            }
+            .timer-box{
+                width: 200px;
+                height: 80px;
+                margin: 0 auto;
+                display: inline-block;
+                border: 1px solid white;
+                margin-bottom: 5px;
+                color:white;
+            }
+            .name-box{
+                width: 100%;
+                height: 50px;
+                margin: 0 auto;
+                display: block;
+                box-sizing: border-box;
+                font-family: 'GenshinFont';
+                color: white;
+                font-size: 1.3em;
+            }
+            .playerAparty1, .playerAparty2, .playerBparty1, .playerBparty2{
+                width: 100px;
+                height: 100px;
+                background-size: cover;
+                display: inline-block;
+                padding: 1px;
+                border: 1px solid white;
+                
+            }
+            
+        </style>
+       <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+       <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+       <script type="text/javascript" src="js/jquery-ui.js"></script>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+<body style="width: 1280;height: 720;position: absolute;">
+    <div class="centered-axis-x">
+        <div class="score-box">
+            Score
+            <div style="float: left;">
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+            </div>
+            <div style="float: right;">
+                <div class="box box3"></div>
+                <div class="box box4"></div>
+            </div>
+            
+        </div>
+        <div class="timer-box">Timer</div>
+        <div class="name-box">
+            
+            <span class="playerAname">Player A</span> V.S <span class="playerBname">Player B</span>
+        </div>
+    </div>
+        <div style="position: absolute;left: 0;top:0;">
+            <div style="display:block">
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
+            </div>
+            <div style="display:block">
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
+            </div>
+        </div>
+        <div style="position: absolute;right: 0;top:0;">
+            <div style="display:block">
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
+            </div>
+            <div style="display:block">
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
+            </div>
+        </div>
+
+        <div style="position: absolute;left: 0;bottom:200;width: 100%;background-color: white;">
+            <table class="table table-responsive w-100 d-block d-md-table table-bordered">
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                Player A Name : <input type="text" name="PlayerAName" class="form-control form-control-sm playername">
+                            </div>
+                            <div class="col"> 
+                                Player B Name: <input type="text" name="PlayerAName" class="form-control form-control-sm playername">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        Score Player A
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option1">
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option2">
+                        || Score Player B
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option1">
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option2"><br/>
+                        Timer<br/>    
+                        <button type="button" class="btn btn-primary btn-sm">Start Timer</button>
+                        <button type="button" class="btn btn-primary btn-sm">Reset Timer</button>
+                        <button type="button" class="btn btn-primary btn-sm">Mode Tanding</button>
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="partyA">
+                            Party A - Team 1
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="Aparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                            Party A - Team 2
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="Aparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                           
+                        </div>
+                       
+                    </td>
+                    <td>
+                        <div class="partyB">
+                            Party B - Team 1
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="Bparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                            Party B - Team 2
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="Bparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+
+        
+            
+        
+        <script>
+
+            $('.playername').change(function() {
+                console.log("ganti");
+                if($('.playername').eq(0).val()!=""){
+                    $('.playerAname').text($('.playername').eq(0).val());
+                }
+                if($('.playername').eq(1).val()!=""){
+                    $('.playerBname').text($('.playername').eq(1).val());
+                }    
+            });
+
+            $(".checkboxscore").change(function() {
+                console.log($(".checkboxscore")[0].checked);
+                if($(".checkboxscore")[0].checked) {
+                    $(".box")[0].style.backgroundImage="url('img/Primogem.png')";
+                }
+                else{
+                    $(".box")[0].style.backgroundImage='none';
+                }
+                if($(".checkboxscore")[1].checked) {
+                    $(".box")[1].style.backgroundImage="url('img/Primogem.png')";
+                }
+                else{
+                    $(".box")[1].style.backgroundImage='none';
+                }
+                if($(".checkboxscore")[2].checked) {
+                    $(".box")[2].style.backgroundImage="url('img/Primogem.png')";
+                }
+                else{
+                    $(".box")[2].style.backgroundImage='none';
+                }
+                if($(".checkboxscore")[3].checked) {
+                    $(".box")[3].style.backgroundImage="url('img/Primogem.png')";
+                }
+                else{
+                    $(".box")[3].style.backgroundImage='none';
+                }
+            });
+
+    
+            $( function() {
+              var availableTags = [
+              {"value":"albedo","image":"albedo.png","label":"albedo"},
+{"value":"aloy","image":"aloy.png","label":"aloy"},
+{"value":"amber","image":"amber.png","label":"amber"},
+{"value":"arataki_itto","image":"arataki_itto.png","label":"arataki itto"},
+{"value":"barbara","image":"barbara.png","label":"barbara"},
+{"value":"beidou","image":"beidou.png","label":"beidou"},
+{"value":"bennett","image":"bennett.png","label":"bennett"},
+{"value":"chongyun","image":"chongyun.png","label":"chongyun"},
+{"value":"diluc","image":"diluc.png","label":"diluc"},
+{"value":"diona","image":"diona.png","label":"diona"},
+{"value":"eula","image":"eula.png","label":"eula"},
+{"value":"fischl","image":"fischl.png","label":"fischl"},
+{"value":"ganyu","image":"ganyu.png","label":"ganyu"},
+{"value":"gorou","image":"gorou.png","label":"gorou"},
+{"value":"hu_tao","image":"hu_tao.png","label":"hu tao"},
+{"value":"jean","image":"jean.png","label":"jean"},
+{"value":"kaedehara_kazuha","image":"kaedehara_kazuha.png","label":"kaedehara kazuha"},
+{"value":"kaeya","image":"kaeya.png","label":"kaeya"},
+{"value":"kamisato_ayaka","image":"kamisato_ayaka.png","label":"kamisato ayaka"},
+{"value":"kamisato_ayato","image":"kamisato_ayato.png","label":"kamisato ayato"},
+{"value":"keqing","image":"keqing.png","label":"keqing"},
+{"value":"klee","image":"klee.png","label":"klee"},
+{"value":"kujou_sara","image":"kujou_sara.png","label":"kujou sara"},
+{"value":"lisa","image":"lisa.png","label":"lisa"},
+{"value":"mona","image":"mona.png","label":"mona"},
+{"value":"ningguang","image":"ningguang.png","label":"ningguang"},
+{"value":"noelle","image":"noelle.png","label":"noelle"},
+{"value":"qiqi","image":"qiqi.png","label":"qiqi"},
+{"value":"raiden_shogun","image":"raiden_shogun.png","label":"raiden shogun"},
+{"value":"razor","image":"razor.png","label":"razor"},
+{"value":"rosaria","image":"rosaria.png","label":"rosaria"},
+{"value":"sangonomiya_kokomi","image":"sangonomiya_kokomi.png","label":"sangonomiya kokomi"},
+{"value":"sayu","image":"sayu.png","label":"sayu"},
+{"value":"shenhe","image":"shenhe.png","label":"shenhe"},
+{"value":"sucrose","image":"sucrose.png","label":"sucrose"},
+{"value":"tartaglia","image":"tartaglia.png","label":"tartaglia"},
+{"value":"thoma","image":"thoma.png","label":"thoma"},
+{"value":"traveler_lumine","image":"traveler_anemo.png","label":"traveler lumine"},
+{"value":"traveler_aether","image":"traveler_geo.png","label":"traveler aether"},
+{"value":"venti","image":"venti.png","label":"venti"},
+{"value":"xiangling","image":"xiangling.png","label":"xiangling"},
+{"value":"xiao","image":"xiao.png","label":"xiao"},
+{"value":"xingqiu","image":"xingqiu.png","label":"xingqiu"},
+{"value":"xinyan","image":"xinyan.png","label":"xinyan"},
+{"value":"yae_miko","image":"yae_miko.png","label":"yae miko"},
+{"value":"yanfei","image":"yanfei.png","label":"yanfei"},
+{"value":"yoimiya","image":"yoimiya.png","label":"yoimiya"},
+{"value":"yun_jin","image":"yun_jin.png","label":"yun jin"},
+{"value":"zhongli","image":"zhongli.png","label":"zhongli"}
+              ];
+              $( ".partypick" ).autocomplete({
+                source: availableTags,
+                focus: function(event, ui) {
+                    $(this).val(ui.item.label);
+                    if(this.name=="Aparty1-1"){
+                        $(".playerAparty1")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty1-2"){
+                        $(".playerAparty1")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty1-3"){
+                        $(".playerAparty1")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty1-4"){
+                        $(".playerAparty1")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty2-1"){
+                        $(".playerAparty2")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty2-2"){
+                        $(".playerAparty2")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty2-3"){
+                        $(".playerAparty2")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Aparty2-4"){
+                        $(".playerAparty2")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+
+                    if(this.name=="Bparty1-1"){
+                        $(".playerBparty1")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty1-2"){
+                        $(".playerBparty1")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty1-3"){
+                        $(".playerBparty1")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty1-4"){
+                        $(".playerBparty1")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty2-1"){
+                        $(".playerBparty2")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty2-2"){
+                        $(".playerBparty2")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty2-3"){
+                        $(".playerBparty2")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    else if(this.name=="Bparty2-4"){
+                        $(".playerBparty2")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
+                    }
+                    
+
+                    return false;
+                },
+                select: function(event, ui) {
+                    $(this).val(ui.item.label);
+                    return false;
+                }
+              });
+            } );
+            </script>
+</body>
+</html>
