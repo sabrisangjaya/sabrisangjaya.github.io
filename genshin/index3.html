@@ -29,7 +29,6 @@
                 color: white;
                 font-size: 1.3em;
                 text-align: center;
-                text-shadow: 2px 2px #272727;
             }
             .box{
                 height: 50px;
@@ -48,7 +47,6 @@
                 border: 1px solid white;
                 margin-bottom: 5px;
                 color:white;
-                text-shadow: 2px 2px #272727;
             }
             .name-box{
                 width: 100%;
@@ -59,20 +57,18 @@
                 font-family: 'GenshinFont';
                 color: white;
                 font-size: 1.3em;
-                text-shadow: 2px 2px #272727;
             }
             .playerAparty1, .playerAparty2, .playerBparty1, .playerBparty2{
-                width: 108px;
-                height: 128px;
+                width: 100px;
+                height: 100px;
                 background-size: cover;
                 display: inline-block;
-                /* padding: 1px;
-                border: 1px solid white; */
+                padding: 1px;
+                border: 1px solid white;
                 
             }
             
         </style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
        <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
        <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -94,7 +90,7 @@
             </div>
             
         </div>
-        <div class="timer-box"></div>
+        <div class="timer-box">Timer</div>
         <div class="name-box">
             
             <span class="playerAname">Player A</span> V.S <span class="playerBname">Player B</span>
@@ -102,34 +98,34 @@
     </div>
         <div style="position: absolute;left: 0;top:0;">
             <div style="display:block">
-                <img src="img/card/unknown.png" alt="" class="playerAparty1">
-                <img src="img/card/unknown.png" alt="" class="playerAparty1">
-                <img src="img/card/unknown.png" alt="" class="playerAparty1">
-                <img src="img/card/unknown.png" alt="" class="playerAparty1">
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
+                <div class="playerAparty1"></div>
             </div>
             <div style="display:block">
-                <img src="img/card/unknown.png" alt="" class="playerAparty2">
-                <img src="img/card/unknown.png" alt="" class="playerAparty2">
-                <img src="img/card/unknown.png" alt="" class="playerAparty2">
-                <img src="img/card/unknown.png" alt="" class="playerAparty2">
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
+                <div class="playerAparty2"></div>
             </div>
         </div>
         <div style="position: absolute;right: 0;top:0;">
             <div style="display:block">
-                <img src="img/card/unknown.png" alt="" class="playerBparty1">
-                <img src="img/card/unknown.png" alt="" class="playerBparty1">
-                <img src="img/card/unknown.png" alt="" class="playerBparty1">
-                <img src="img/card/unknown.png" alt="" class="playerBparty1">
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
+                <div class="playerBparty1"></div>
             </div>
             <div style="display:block">
-                <img src="img/card/unknown.png" alt="" class="playerBparty2">
-                <img src="img/card/unknown.png" alt="" class="playerBparty2">
-                <img src="img/card/unknown.png" alt="" class="playerBparty2">
-                <img src="img/card/unknown.png" alt="" class="playerBparty2">
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
+                <div class="playerBparty2"></div>
             </div>
         </div>
 
-        <div style="position: absolute;left: 0;bottom:0;width: 100%;background-color: white;">
+        <div style="position: absolute;left: 0;bottom:-400;width: 100%;background-color: white;">
             <table class="table table-responsive w-100 d-block d-md-table table-bordered">
                 <tr>
                     <td>
@@ -239,29 +235,6 @@
             </table>
             
         </div>
-        <script>
-            const animateCSS = (element, animation, prefix = 'animate__') =>
-            // We create a Promise and return it
-            new Promise((resolve, reject) => {
-                const animationName = `${prefix}${animation}`;
-                const node = element;
-
-                node.addClass(`${prefix}animated ` +animationName);
-
-                // When the animation ends, we clean the classes and resolve the Promise
-                function handleAnimationEnd(event) {
-                event.stopPropagation();
-                node.removeClass(`${prefix}animated `+animationName);
-                resolve('Animation ended');
-                }
-
-                node.on('animationend', function(event) {
-                event.stopPropagation();
-                node.removeClass(`${prefix}animated `+animationName);
-                resolve('Animation ended');
-                });
-            });
-        </script>
 
         
             
@@ -308,128 +281,109 @@
 
     
             $( function() {
-              var availableTags = [{"label": "albedo","card": "albedo.png","avatar": "Albedo.png","value": "albedo","namecard": "i_7050"},
-{"label": "aloy","card": "aloy.png","avatar": "aloy.png","value": "aloy","namecard": "i_7091"},
-{"label": "amber","card": "amber.png","avatar": "Amber.png","value": "amber","namecard": "i_7003"},
-{"label": "kamisato ayaka","card": "ayaka.png","avatar": "Ayaka.png","value": "ayaka","namecard": "i_7085"},
-{"label": "kamisato ayato","card": "ayato.png","avatar": "Ayato.png","value": "ayato","namecard": "i_7110"},
-{"label": "barbara","card": "barbara.png","avatar": "Barbara.png","value": "barbara","namecard": "i_7009"},
-{"label": "beidou","card": "beidou.png","avatar": "Beidou.png","value": "beidou","namecard": "i_7035"},
-{"label": "bennet","card": "bennett.png","avatar": "Bennett.png","value": "bennet","namecard": "i_7016"},
-{"label": "childe","card": "tartaglia.png","avatar": "Tartaglia.png","value": "childe","namecard": "i_7042"},
-{"label": "chongyun","card": "chongyun.png","avatar": "Chongyun.png","value": "chongyun","namecard": "i_7036"},
-{"label": "diluc","card": "diluc.png","avatar": "Diluc.png","value": "diluc","namecard": "i_7005"},
-{"label": "diona","card": "diona.png","avatar": "Diona.png","value": "diona","namecard": "i_7039"},
-{"label": "eula","card": "eula.png","avatar": "Eula.png","value": "eula","namecard": "i_7065"},
-{"label": "fischl","card": "fischl.png","avatar": "Fischl.png","value": "fischl","namecard": "i_7013"},
-{"label": "ganyu","card": "ganyu.png","avatar": "Ganyu.png","value": "ganyu","namecard": "i_7049"},
-{"label": "gorou","card": "gorou.png","avatar": "Gorou.png","value": "gorou","namecard": "i_7100"},
-{"label": "hu tao","card": "hutao.png","avatar": "HuTao.png","value": "hutao","namecard": "i_7055"},
-{"label": "arataki itto","card": "itto.png","avatar": "Itto.png","value": "itto","namecard": "i_7101"},
-{"label": "jean","card": "jean.png","avatar": "Jean.png","value": "jean","namecard": "i_7008"},
-{"label": "kaeya","card": "kaeya.png","avatar": "Kaeya.png","value": "kaeya","namecard": "i_7010"},
-{"label": "kaedehara kazuha","card": "kazuha.png","avatar": "Kazuha.png","value": "kazuha","namecard": "i_7069"},
-{"label": "keqing","card": "keqing.png","avatar": "Keqing.png","value": "keqing","namecard": "i_7020"},
-{"label": "klee","card": "klee.png","avatar": "Klee.png","value": "klee","namecard": "i_7004"},
-{"label": "sangonomiya kokomi","card": "kokomi.png","avatar": "Kokomi.png","value": "kokomi","namecard": "i_7089"},
-{"label": "kuki shinobu","card": "unknown.png","avatar": "Kuki.png","value": "kuki","namecard": "i_7116"},
-{"label": "lisa","card": "lisa.png","avatar": "Lisa.png","value": "lisa","namecard": "i_7011"},
-{"label": "mona","card": "mona.png","avatar": "Mona.png","value": "mona","namecard": "i_7015"},
-{"label": "ningguang","card": "ningguang.png","avatar": "Ningguang.png","value": "ningguang","namecard": "i_7034"},
-{"label": "noelle","card": "noelle.png","avatar": "Noelle.png","value": "noelle","namecard": "i_7014"},
-{"label": "qiqi","card": "qiqi.png","avatar": "Qiqi.png","value": "qiqi","namecard": "i_7019"},
-{"label": "razor","card": "razor.png","avatar": "Razor.png","value": "razor","namecard": "i_7006"},
-{"label": "rosaria","card": "rosaria.png","avatar": "Rosaria.png","value": "rosaria","namecard": "i_7059"},
-{"label": "kujou sara","card": "sara.png","avatar": "Sara.png","value": "sara","namecard": "i_7090"},
-{"label": "sayu","card": "sayu.png","avatar": "Sayu.png","value": "sayu","namecard": "i_7087"},
-{"label": "shenhe","card": "shenhe.png","avatar": "Shenhe.png","value": "shenhe","namecard": "i_7103"},
-{"label": "raiden shogun","card": "shougun.png","avatar": "shogun.png","value": "shogun","namecard": "i_7088"},
-{"label": "sucrose","card": "sucrose.png","avatar": "Sucrose.png","value": "sucrose","namecard": "i_7012"},
-{"label": "thoma","card": "thoma.png","avatar": "Thoma.png","value": "thoma","namecard": "i_7097"},
-{"label": "venti","card": "venti.png","avatar": "Venti.png","value": "venti","namecard": "i_7007"},
-{"label": "xiangling","card": "xiangling.png","avatar": "Xiangling.png","value": "xiangling","namecard": "i_7017"},
-{"label": "xiao","card": "xiao.png","avatar": "Xiao.png","value": "xiao","namecard": "i_7054"},
-{"label": "xingqiu","card": "xingqiu.png","avatar": "Xingqiu.png","value": "xingqiu","namecard": "i_7018"},
-{"label": "xinyan","card": "xinyan.png","avatar": "Xinyan.png","value": "xinyan","namecard": "i_7041"},
-{"label": "yae miko","card": "yaemiko.png","avatar": "Yaemiko.png","value": "yae miko","namecard": "i_7108"},
-{"label": "yanfei","card": "feiyan.png","avatar": "Yanfei.png","value": "yanfei","namecard": "i_7064"},
-{"label": "yelan","card": "unknown.png","avatar": "Yelan.png","value": "yelan","namecard": "i_7115"},
-{"label": "yoimiya","card": "yoimiya.png","avatar": "Yoimiya.png","value": "yoimiya","namecard": "i_7086"},
-{"label": "yunjin","card": "yunjin.png","avatar": "Yunjin.png","value": "yunjin","namecard": "i_7104"},
-{"label": "zhongli","card": "zhongli.png","avatar": "Zhongli.png","value": "zhongli","namecard": "i_7040"},
-{"label": "traveler aether","card": "traveler_aether.png","avatar": "unknown_avatar.png","value": "aether","namecard": "i_0000"},
-{"label": "traveler lumine","card": "traveler_lumine.png","avatar": "unknown_avatar.png","value": "lumine","namecard": "i_0001"}
-];
+              var availableTags = [
+              {"value":"albedo","image":"albedo.png","label":"albedo"},
+{"value":"aloy","image":"aloy.png","label":"aloy"},
+{"value":"amber","image":"amber.png","label":"amber"},
+{"value":"arataki_itto","image":"arataki_itto.png","label":"arataki itto"},
+{"value":"barbara","image":"barbara.png","label":"barbara"},
+{"value":"beidou","image":"beidou.png","label":"beidou"},
+{"value":"bennett","image":"bennett.png","label":"bennett"},
+{"value":"chongyun","image":"chongyun.png","label":"chongyun"},
+{"value":"diluc","image":"diluc.png","label":"diluc"},
+{"value":"diona","image":"diona.png","label":"diona"},
+{"value":"eula","image":"eula.png","label":"eula"},
+{"value":"fischl","image":"fischl.png","label":"fischl"},
+{"value":"ganyu","image":"ganyu.png","label":"ganyu"},
+{"value":"gorou","image":"gorou.png","label":"gorou"},
+{"value":"hu_tao","image":"hu_tao.png","label":"hu tao"},
+{"value":"jean","image":"jean.png","label":"jean"},
+{"value":"kaedehara_kazuha","image":"kaedehara_kazuha.png","label":"kaedehara kazuha"},
+{"value":"kaeya","image":"kaeya.png","label":"kaeya"},
+{"value":"kamisato_ayaka","image":"kamisato_ayaka.png","label":"kamisato ayaka"},
+{"value":"kamisato_ayato","image":"kamisato_ayato.png","label":"kamisato ayato"},
+{"value":"keqing","image":"keqing.png","label":"keqing"},
+{"value":"klee","image":"klee.png","label":"klee"},
+{"value":"kujou_sara","image":"kujou_sara.png","label":"kujou sara"},
+{"value":"lisa","image":"lisa.png","label":"lisa"},
+{"value":"mona","image":"mona.png","label":"mona"},
+{"value":"ningguang","image":"ningguang.png","label":"ningguang"},
+{"value":"noelle","image":"noelle.png","label":"noelle"},
+{"value":"qiqi","image":"qiqi.png","label":"qiqi"},
+{"value":"raiden_shogun","image":"raiden_shogun.png","label":"raiden shogun"},
+{"value":"razor","image":"razor.png","label":"razor"},
+{"value":"rosaria","image":"rosaria.png","label":"rosaria"},
+{"value":"sangonomiya_kokomi","image":"sangonomiya_kokomi.png","label":"sangonomiya kokomi"},
+{"value":"sayu","image":"sayu.png","label":"sayu"},
+{"value":"shenhe","image":"shenhe.png","label":"shenhe"},
+{"value":"sucrose","image":"sucrose.png","label":"sucrose"},
+{"value":"tartaglia","image":"tartaglia.png","label":"tartaglia"},
+{"value":"thoma","image":"thoma.png","label":"thoma"},
+{"value":"traveler_lumine","image":"traveler_anemo.png","label":"traveler lumine"},
+{"value":"traveler_aether","image":"traveler_geo.png","label":"traveler aether"},
+{"value":"venti","image":"venti.png","label":"venti"},
+{"value":"xiangling","image":"xiangling.png","label":"xiangling"},
+{"value":"xiao","image":"xiao.png","label":"xiao"},
+{"value":"xingqiu","image":"xingqiu.png","label":"xingqiu"},
+{"value":"xinyan","image":"xinyan.png","label":"xinyan"},
+{"value":"yae_miko","image":"yae_miko.png","label":"yae miko"},
+{"value":"yanfei","image":"yanfei.png","label":"yanfei"},
+{"value":"yoimiya","image":"yoimiya.png","label":"yoimiya"},
+{"value":"yun_jin","image":"yun_jin.png","label":"yun jin"},
+{"value":"zhongli","image":"zhongli.png","label":"zhongli"}
+              ];
               $( ".partypick" ).autocomplete({
                 source: availableTags,
                 focus: function(event, ui) {
                     $(this).val(ui.item.label);
                     if(this.name=="Aparty1-1"){
-                        $(".playerAparty1")[0].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerAparty1").eq(0), 'flipInY');
+                        $(".playerAparty1")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty1-2"){
-                        $(".playerAparty1")[1].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty1").eq(1), 'flipInY');
+                        $(".playerAparty1")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty1-3"){
-                        $(".playerAparty1")[2].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty1").eq(2), 'flipInY');
+                        $(".playerAparty1")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty1-4"){
-                        $(".playerAparty1")[3].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty1").eq(3), 'flipInY');
+                        $(".playerAparty1")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty2-1"){
-                        $(".playerAparty2")[0].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty2").eq(0), 'flipInY');
+                        $(".playerAparty2")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty2-2"){
-                        $(".playerAparty2")[1].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty2").eq(1), 'flipInY');
+                        $(".playerAparty2")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty2-3"){
-                        $(".playerAparty2")[2].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty2").eq(2), 'flipInY');
+                        $(".playerAparty2")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Aparty2-4"){
-                        $(".playerAparty2")[3].src="img/card/"+ui.item.card;
-                        animateCSS($(".playerAparty2").eq(3), 'flipInY');
+                        $(".playerAparty2")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
 
                     if(this.name=="Bparty1-1"){
-                        $(".playerBparty1")[0].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty1").eq(0), 'flipInY');
+                        $(".playerBparty1")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty1-2"){
-                        $(".playerBparty1")[1].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty1").eq(1), 'flipInY');
+                        $(".playerBparty1")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty1-3"){
-                        $(".playerBparty1")[2].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty1").eq(2), 'flipInY');
+                        $(".playerBparty1")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty1-4"){
-                        $(".playerBparty1")[3].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty1").eq(3), 'flipInY');
+                        $(".playerBparty1")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
-                    
-                    
-                    if(this.name=="Bparty2-1"){
-                        $(".playerBparty2")[0].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty2").eq(0), 'flipInY');
+                    else if(this.name=="Bparty2-1"){
+                        $(".playerBparty2")[0].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty2-2"){
-                        $(".playerBparty2")[1].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty2").eq(1), 'flipInY');
+                        $(".playerBparty2")[1].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty2-3"){
-                        $(".playerBparty2")[2].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty2").eq(2), 'flipInY');
+                        $(".playerBparty2")[2].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     else if(this.name=="Bparty2-4"){
-                        $(".playerBparty2")[3].src="img/card/"+ui.item.card;                
-                        animateCSS($(".playerBparty2").eq(3), 'flipInY');
+                        $(".playerBparty2")[3].style.backgroundImage="url('img/"+ui.item.image+"')";
                     }
                     
 
@@ -442,7 +396,5 @@
               });
             } );
             </script>
-
-            
 </body>
 </html>
