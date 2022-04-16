@@ -283,6 +283,11 @@
                                 Player B Name: <input type="text" name="PlayerAName" class="form-control form-control-sm playername">
                             </div>
                         </div>
+                        <Br/>
+                        <button type="button" onClick="resetPartyA1()" class="btn btn-danger btn-sm">Clear Party A 1</button>
+                        <button type="button" onClick="resetPartyA2()" class="btn btn-danger btn-sm">Clear Party A 2</button> || 
+                        <button type="button" onClick="resetPartyB1()" class="btn btn-danger btn-sm">Clear Party B 1</button>
+                        <button type="button" onClick="resetPartyB2()" class="btn btn-danger btn-sm">Clear Party B 2</button>
                     </td>
                     <td>
                         Score Player A
@@ -290,7 +295,8 @@
                             <input class="form-check-input checkboxscore" type="checkbox" value="option2">
                         || Score Player B
                             <input class="form-check-input checkboxscore" type="checkbox" value="option1">
-                            <input class="form-check-input checkboxscore" type="checkbox" value="option2"><br/>
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option2">
+                            <hr/>
                         Timer:    
                         <button type="button" onClick="timer.start(1000)" class="btn btn-primary btn-sm">Start</button>
                         <button type="button" onClick="timer.reset(300)" id="reset" class="btn btn-warning btn-sm">Reset</button>
@@ -300,14 +306,14 @@
                         <button type="button" onClick="timer.textphase('Battle Phase')" class="btn btn-primary btn-sm">Battle</button>
                         <button type="button" onClick="timer.textphase('Pick Party')" class="btn btn-primary btn-sm">Pick Party</button>
                         <button type="button" onClick="timer.textphase('Preparation')" class="btn btn-primary btn-sm">Persiapan</button>
-                          
+                         
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="partyA">
                             Party A - Team 1
-                            <div class="row">
+                            <div class="row partyA1">
                                 <div class="col">
                                     <input type="text" name="Aparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
                                 </div>
@@ -322,7 +328,7 @@
                                 </div>
                             </div>
                             Party A - Team 2
-                            <div class="row">
+                            <div class="row partyA2">
                                 <div class="col">
                                     <input type="text" name="Aparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
                                 </div>
@@ -343,7 +349,7 @@
                     <td>
                         <div class="partyB">
                             Party B - Team 1
-                            <div class="row">
+                            <div class="row partyB1">
                                 <div class="col">
                                     <input type="text" name="Bparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
                                 </div>
@@ -358,7 +364,7 @@
                                 </div>
                             </div>
                             Party B - Team 2
-                            <div class="row">
+                            <div class="row partyB2">
                                 <div class="col">
                                     <input type="text" name="Bparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
                                 </div>
@@ -403,6 +409,37 @@
             });
         </script>
 
+        <script>
+            function resetPartyA1(){
+                $(".playerAparty1").each(function(i, obj) {
+                    obj.src="img/card/unknown.png"; 
+                    $(".partyA1 input").eq(i).val(""); 
+                });             
+                animateCSS($(".playerAparty1"), 'flipInY');
+            }
+            function resetPartyA2(){
+                $(".playerAparty2").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyA2 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerAparty2"), 'flipInY');
+            }
+            function resetPartyB1(){
+                $(".playerBparty1").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyB1 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerBparty1"), 'flipInY');
+            }
+            function resetPartyB2(){
+                $(".playerBparty2").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyB2 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerBparty2"), 'flipInY');
+            }
+        </script>
+
         
             
         
@@ -423,6 +460,7 @@
                 for (let index = 0; index < 4; index++) {
                     if($(".checkboxscore")[index].checked) {
                         $(".box")[index].src='img/primogem.png';
+                        animateCSS($(".box").eq(index), 'bounceIn');
                     }
                     else{
                         $(".box")[index].src='img/noprimo.png';
