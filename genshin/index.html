@@ -49,6 +49,8 @@
                 margin-bottom: 5px;
                 color:white;
                 text-shadow: 2px 2px #272727;
+                font-size: 1.8em;
+                font-family: 'GenshinFont';
             }
             .name-box{
                 width: 100%;
@@ -94,7 +96,142 @@
             </div>
             
         </div>
-        <div class="timer-box"></div>
+        <div class="timer-box">
+            <div class="timer">
+                <span class="minute">00</span>:
+                <span class="second">00</span>
+            </div>
+            <span class="textstatus">Battle Phase</span>
+        </div>
+        <script>
+            function _timer(callback)
+            {
+                var time = 0;     //  The default time of the timer
+                var mode = 0;     //    Mode: count up or count down
+                var status = 0;    //    Status: timer is running or stoped
+                var timer_id;    //    This is used by setInterval function
+                
+                // this will start the timer ex. start the timer with 1 second interval timer.start(1000) 
+                this.start = function(interval)
+                {
+                    interval = (typeof(interval) !== 'undefined') ? interval : 1000;
+            
+                    if(status == 0)
+                    {
+                        status = 1;
+                        timer_id = setInterval(function()
+                        {
+                            switch(mode)
+                            {
+                                default:
+                                if(time)
+                                {
+                                    time--;
+                                    generateTime();
+                                    if(typeof(callback) === 'function') callback(time);
+                                }
+                                break;
+                                
+                                case 1:
+                                if(time < 86400)
+                                {
+                                    time++;
+                                    generateTime();
+                                    if(typeof(callback) === 'function') callback(time);
+                                }
+                                break;
+                            }
+                        }, interval);
+                    }
+                }
+                
+                //  Same as the name, this will stop or pause the timer ex. timer.stop()
+                this.stop =  function()
+                {
+                    if(status == 1)
+                    {
+                        status = 0;
+                        clearInterval(timer_id);
+                    }
+                }
+                
+                // Reset the timer to zero or reset it to your own custom time ex. reset to zero second timer.reset(0)
+                this.reset =  function(sec)
+                {
+                    $('div.timer').show();
+                    $('.textstatus').hide();
+                    sec = (typeof(sec) !== 'undefined') ? sec : 0;
+                    time = sec;
+                    generateTime(time);
+                }
+                
+                // Change the mode of the timer, count-up (1) or countdown (0)
+                this.mode = function(tmode)
+                {
+                    mode = tmode;
+                }
+                
+                // This methode return the current value of the timer
+                this.getTime = function()
+                {
+                    return time;
+                }
+                
+                // This methode return the current mode of the timer count-up (1) or countdown (0)
+                this.getMode = function()
+                {
+                    return mode;
+                }
+
+                this.tanding = function()
+                {
+                    $('div.timer').hide();
+                    $('.textstatus').show();
+                }
+                
+                // This methode return the status of the timer running (1) or stoped (1)
+                this.getStatus
+                {
+                    return status;
+                }
+                
+                // This methode will render the time variable to hour:minute:second format
+                function generateTime()
+                {
+                    var second = time % 60;
+                    var minute = Math.floor(time / 60) % 60;
+                    var hour = Math.floor(time / 3600) % 60;
+                    
+                    second = (second < 10) ? '0'+second : second;
+                    minute = (minute < 10) ? '0'+minute : minute;
+                    hour = (hour < 10) ? '0'+hour : hour;
+                    
+                    $('div.timer span.second').html(second);
+                    $('div.timer span.minute').html(minute);
+                    // $('div.timer span.hour').html(hour);
+                }
+            }
+            
+            // example use
+            var timer;
+            
+            $(document).ready(function(e) 
+            {
+                timer = new _timer
+                (
+                    function(time)
+                    {
+                        if(time == 0)
+                        {
+                            timer.stop();
+                            alert('time out');
+                        }
+                    }
+                );
+                timer.reset(0);
+                timer.mode(0);
+            });
+        </script>
         <div class="name-box">
             
             <span class="playerAname">Player A</span> V.S <span class="playerBname">Player B</span>
@@ -129,7 +266,7 @@
             </div>
         </div>
 
-        <div style="position: absolute;left: 0;bottom:0;width: 100%;background-color: white;">
+        <div style="position: absolute;left: 0;bottom:150;width: 100%;background-color: white;">
             <table class="table table-responsive w-100 d-block d-md-table table-bordered">
                 <tr>
                     <td>
@@ -149,17 +286,14 @@
                         || Score Player B
                             <input class="form-check-input checkboxscore" type="checkbox" value="option1">
                             <input class="form-check-input checkboxscore" type="checkbox" value="option2"><br/>
-                        Timer<br/>    
-                        <button type="button" class="btn btn-primary btn-sm">Start Timer</button>
-                        <button type="button" class="btn btn-primary btn-sm">Reset Timer</button>
-                        <button type="button" class="btn btn-primary btn-sm">Mode Tanding</button>
-                        <br/>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                        Timer:    
+                        <button type="button" onClick="timer.start(1000)" class="btn btn-primary btn-sm">Start</button>
+                        <button type="button" onClick="timer.reset(300)" id="reset" class="btn btn-warning btn-sm">Reset</button>
+                        <button type="button" onClick="timer.stop()" id="stop" class="btn btn-danger btn-sm">Stop</button>
+                        
+                        Mode: 
+                        <button type="button" onClick="timer.tanding()" class="btn btn-primary btn-sm">Mode Tanding</button>
+                       
                           
                     </td>
                 </tr>
