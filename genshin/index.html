@@ -32,13 +32,9 @@
                 text-shadow: 2px 2px #272727;
             }
             .box{
-                height: 50px;
-                width:30px;
-                display: inline-block;
-                
-                background-size: cover;
-                background-position: center center;
-                
+                height: 40px;
+                width:40px;
+                display: inline-block;           
             }
             .timer-box{
                 width: 200px;
@@ -87,21 +83,22 @@
         <div class="score-box">
             Score
             <div style="float: left;">
-                <div class="box box1"></div>
-                <div class="box box2"></div>
+                <img class="box" src="img/noprimo.png">
+                <img class="box" src="img/noprimo.png">
             </div>
             <div style="float: right;">
-                <div class="box box3"></div>
-                <div class="box box4"></div>
+                <img class="box" src="img/noprimo.png">
+                <img class="box" src="img/noprimo.png">
             </div>
             
         </div>
         <div class="timer-box">
+            <span class="textstatus">Welcome</span><br/>
             <div class="timer">
                 <span class="minute">00</span>:
                 <span class="second">00</span>
             </div>
-            <span class="textstatus">Battle Phase</span>
+            
         </div>
         <script>
             function _timer(callback)
@@ -159,7 +156,6 @@
                 this.reset =  function(sec)
                 {
                     $('div.timer').show();
-                    $('.textstatus').hide();
                     sec = (typeof(sec) !== 'undefined') ? sec : 0;
                     time = sec;
                     generateTime(time);
@@ -183,10 +179,19 @@
                     return mode;
                 }
 
-                this.tanding = function()
+                this.textphase = function(status)
                 {
-                    $('div.timer').hide();
+                    if(status=="Battle Phase"){
+                        $('div.timer').hide();
+                    }
+                    else{
+                        
+                        $('div.timer').show();
+                        
+                    }
+                    $('.textstatus').text(status);
                     $('.textstatus').show();
+                    
                 }
                 
                 // This methode return the status of the timer running (1) or stoped (1)
@@ -292,8 +297,9 @@
                         <button type="button" onClick="timer.stop()" id="stop" class="btn btn-danger btn-sm">Stop</button>
                         
                         Mode: 
-                        <button type="button" onClick="timer.tanding()" class="btn btn-primary btn-sm">Mode Tanding</button>
-                       
+                        <button type="button" onClick="timer.textphase('Battle Phase')" class="btn btn-primary btn-sm">Battle</button>
+                        <button type="button" onClick="timer.textphase('Pick Party')" class="btn btn-primary btn-sm">Pick Party</button>
+                        <button type="button" onClick="timer.textphase('Preparation')" class="btn btn-primary btn-sm">Persiapan</button>
                           
                     </td>
                 </tr>
@@ -414,30 +420,14 @@
 
             $(".checkboxscore").change(function() {
                 console.log($(".checkboxscore")[0].checked);
-                if($(".checkboxscore")[0].checked) {
-                    $(".box")[0].style.backgroundImage="url('img/Primogem.png')";
-                }
-                else{
-                    $(".box")[0].style.backgroundImage='none';
-                }
-                if($(".checkboxscore")[1].checked) {
-                    $(".box")[1].style.backgroundImage="url('img/Primogem.png')";
-                }
-                else{
-                    $(".box")[1].style.backgroundImage='none';
-                }
-                if($(".checkboxscore")[2].checked) {
-                    $(".box")[2].style.backgroundImage="url('img/Primogem.png')";
-                }
-                else{
-                    $(".box")[2].style.backgroundImage='none';
-                }
-                if($(".checkboxscore")[3].checked) {
-                    $(".box")[3].style.backgroundImage="url('img/Primogem.png')";
-                }
-                else{
-                    $(".box")[3].style.backgroundImage='none';
-                }
+                for (let index = 0; index < 4; index++) {
+                    if($(".checkboxscore")[index].checked) {
+                        $(".box")[index].src='img/primogem.png';
+                    }
+                    else{
+                        $(".box")[index].src='img/noprimo.png';
+                    }
+                }       
             });
 
     
