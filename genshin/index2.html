@@ -1,0 +1,606 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Genshin</title>
+        <style>
+            @font-face {
+            font-family: 'GenshinFont';
+            src: url('css/font/zh-cn.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+            }
+            .centered-axis-x {
+                
+                display: block;
+                margin-bottom: 20px;
+                
+            }
+            .score-box{
+                width: 280px;
+                height: auto;
+                
+                display: block;
+                font-family: 'GenshinFont';
+                color: white;
+                font-size: 1.3em;
+                text-align: center;
+                text-shadow: 2px 2px #272727;
+            }
+            .box{
+                height: 40px;
+                width:40px;
+                display: inline-block;           
+            }
+            .timer-box{
+                width: 200px;
+                height: 80px;
+                margin: 0 10px;
+                display: inline-block;
+                border: 1px solid white;
+                margin-bottom: 5px;
+                color:white;
+                text-shadow: 2px 2px #272727;
+                font-size: 1.8em;
+                font-family: 'GenshinFont';
+            }
+            .name-box{
+                width: 100%;
+                height: 50px;
+                margin: 0 10px;
+                display: block;
+                box-sizing: border-box;
+                font-family: 'GenshinFont';
+                color: white;
+                font-size: 1.3em;
+                text-shadow: 2px 2px #272727;
+            }
+            .playerAparty1, .playerAparty2, .playerBparty1, .playerBparty2{
+                width: 108px;
+                height: 128px;
+                background-size: cover;
+                display: inline-block;
+                /* padding: 1px;
+                border: 1px solid white; */
+                
+            }
+            
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+       <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+       <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+       <script type="text/javascript" src="js/jquery-ui.js"></script>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+<body style="width: 1280;height: 720;position: absolute;">
+    <div class="centered-axis-x">
+        <div class="score-box">
+            Score
+            <div style="float: left;">
+                <img class="box" src="img/noprimo.png">
+                <img class="box" src="img/noprimo.png">
+            </div>
+            <div style="float: right;">
+                <img class="box" src="img/noprimo.png">
+                <img class="box" src="img/noprimo.png">
+            </div>
+            
+        </div>
+        <div class="timer-box">
+            <span class="textstatus">Welcome</span><br/>
+            <div class="timer">
+                <span class="minute">00</span>:
+                <span class="second">00</span>
+            </div>
+        </div>
+        <script>
+            function _timer(callback)
+            {
+                var time = 0;     //  The default time of the timer
+                var mode = 0;     //    Mode: count up or count down
+                var status = 0;    //    Status: timer is running or stoped
+                var timer_id;    //    This is used by setInterval function
+                
+                // this will start the timer ex. start the timer with 1 second interval timer.start(1000) 
+                this.start = function(interval)
+                {
+                    interval = (typeof(interval) !== 'undefined') ? interval : 1000;
+            
+                    if(status == 0)
+                    {
+                        status = 1;
+                        timer_id = setInterval(function()
+                        {
+                            switch(mode)
+                            {
+                                default:
+                                if(time)
+                                {
+                                    time--;
+                                    generateTime();
+                                    if(typeof(callback) === 'function') callback(time);
+                                }
+                                break;
+                                
+                                case 1:
+                                if(time < 86400)
+                                {
+                                    time++;
+                                    generateTime();
+                                    if(typeof(callback) === 'function') callback(time);
+                                }
+                                break;
+                            }
+                        }, interval);
+                    }
+                }
+                
+                //  Same as the name, this will stop or pause the timer ex. timer.stop()
+                this.stop =  function()
+                {
+                    if(status == 1)
+                    {
+                        status = 0;
+                        clearInterval(timer_id);
+                    }
+                }
+                
+                // Reset the timer to zero or reset it to your own custom time ex. reset to zero second timer.reset(0)
+                this.reset =  function(sec)
+                {
+                    $('div.timer').show();
+                    sec = (typeof(sec) !== 'undefined') ? sec : 0;
+                    time = sec;
+                    generateTime(time);
+                }
+                
+                // Change the mode of the timer, count-up (1) or countdown (0)
+                this.mode = function(tmode)
+                {
+                    mode = tmode;
+                }
+                
+                // This methode return the current value of the timer
+                this.getTime = function()
+                {
+                    return time;
+                }
+                
+                // This methode return the current mode of the timer count-up (1) or countdown (0)
+                this.getMode = function()
+                {
+                    return mode;
+                }
+
+                this.textphase = function(status)
+                {
+                    if(status=="Battle Phase"){
+                        $('div.timer').hide();
+                    }
+                    else{
+                        
+                        $('div.timer').show();
+                        
+                    }
+                    $('.textstatus').text(status);
+                    $('.textstatus').show();
+                    
+                }
+                
+                // This methode return the status of the timer running (1) or stoped (1)
+                this.getStatus
+                {
+                    return status;
+                }
+                
+                // This methode will render the time variable to hour:minute:second format
+                function generateTime()
+                {
+                    var second = time % 60;
+                    var minute = Math.floor(time / 60) % 60;
+                    var hour = Math.floor(time / 3600) % 60;
+                    
+                    second = (second < 10) ? '0'+second : second;
+                    minute = (minute < 10) ? '0'+minute : minute;
+                    hour = (hour < 10) ? '0'+hour : hour;
+                    
+                    $('div.timer span.second').html(second);
+                    $('div.timer span.minute').html(minute);
+                    // $('div.timer span.hour').html(hour);
+                }
+            }
+            
+            // example use
+            var timer;
+            
+            $(document).ready(function(e) 
+            {
+                timer = new _timer
+                (
+                    function(time)
+                    {
+                        if(time == 0)
+                        {
+                            timer.stop();
+                            // alert('time out');
+                        }
+                    }
+                );
+                timer.reset(0);
+                timer.mode(0);
+            });
+        </script>
+        <div class="name-box">
+            <span class="playerAname" style="text-align:left">Player A</span><br/>
+            <span class="playerBname" style="text-align:right">Player B</span>
+        </div>
+    </div>
+        <div style="">
+            <div style="display:block">
+                <img src="img/card/unknown.png" alt="" class="playerAparty1">
+                <img src="img/card/unknown.png" alt="" class="playerAparty1">
+                <img src="img/card/unknown.png" alt="" class="playerAparty1">
+                <img src="img/card/unknown.png" alt="" class="playerAparty1">
+            </div>
+            <div style="display:block">
+                <img src="img/card/unknown.png" alt="" class="playerAparty2">
+                <img src="img/card/unknown.png" alt="" class="playerAparty2">
+                <img src="img/card/unknown.png" alt="" class="playerAparty2">
+                <img src="img/card/unknown.png" alt="" class="playerAparty2">
+            </div>
+        </div>
+        <div style="">
+            <div style="display:block">
+                <img src="img/card/unknown.png" alt="" class="playerBparty1">
+                <img src="img/card/unknown.png" alt="" class="playerBparty1">
+                <img src="img/card/unknown.png" alt="" class="playerBparty1">
+                <img src="img/card/unknown.png" alt="" class="playerBparty1">
+            </div>
+            <div style="display:block">
+                <img src="img/card/unknown.png" alt="" class="playerBparty2">
+                <img src="img/card/unknown.png" alt="" class="playerBparty2">
+                <img src="img/card/unknown.png" alt="" class="playerBparty2">
+                <img src="img/card/unknown.png" alt="" class="playerBparty2">
+            </div>
+        </div>
+
+        <div style="position: absolute;width: 100%;background-color: white;">
+            <table class="table table-responsive w-100 d-block d-md-table table-bordered">
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                Player A Name : <input type="text" name="PlayerAName" class="form-control form-control-sm playername">
+                            </div>
+                            <div class="col"> 
+                                Player B Name: <input type="text" name="PlayerAName" class="form-control form-control-sm playername">
+                            </div>
+                        </div>
+                        <Br/>
+                        <button type="button" onClick="resetPartyA1()" class="btn btn-danger btn-sm">Clear Party A 1</button>
+                        <button type="button" onClick="resetPartyA2()" class="btn btn-danger btn-sm">Clear Party A 2</button> || 
+                        <button type="button" onClick="resetPartyB1()" class="btn btn-danger btn-sm">Clear Party B 1</button>
+                        <button type="button" onClick="resetPartyB2()" class="btn btn-danger btn-sm">Clear Party B 2</button>
+                    </td>
+                    <td>
+                        Score Player A
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option1">
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option2">
+                        || Score Player B
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option1">
+                            <input class="form-check-input checkboxscore" type="checkbox" value="option2">
+                            <hr/>
+                        Timer:    
+                        <button type="button" onClick="timer.start(1000)" class="btn btn-primary btn-sm">Start</button>
+                        <button type="button" onClick="timer.reset(300)" id="reset" class="btn btn-warning btn-sm">Reset</button>
+                        <button type="button" onClick="timer.stop()" id="stop" class="btn btn-danger btn-sm">Stop</button>
+                        
+                        Mode: 
+                        <button type="button" onClick="timer.textphase('Battle Phase')" class="btn btn-primary btn-sm">Battle</button>
+                        <button type="button" onClick="timer.textphase('Pick Party')" class="btn btn-primary btn-sm">Pick Party</button>
+                        <button type="button" onClick="timer.textphase('Preparation')" class="btn btn-primary btn-sm">Persiapan</button>
+                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="partyA">
+                            Party A - Team 1
+                            <div class="row partyA1">
+                                <div class="col">
+                                    <input type="text" name="Aparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty1-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                            Party A - Team 2
+                            <div class="row partyA2">
+                                <div class="col">
+                                    <input type="text" name="Aparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Aparty2-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                           
+                        </div>
+                       
+                    </td>
+                    <td>
+                        <div class="partyB">
+                            Party B - Team 1
+                            <div class="row partyB1">
+                                <div class="col">
+                                    <input type="text" name="Bparty1-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty1-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                            Party B - Team 2
+                            <div class="row partyB2">
+                                <div class="col">
+                                    <input type="text" name="Bparty2-1" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-2" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-3" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Bparty2-4" class="ui-autocomplete-input form-control form-control-sm partypick">
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <script>
+            const animateCSS = (element, animation, prefix = 'animate__') =>
+            // We create a Promise and return it
+            new Promise((resolve, reject) => {
+                const animationName = `${prefix}${animation}`;
+                const node = element;
+
+                node.addClass(`${prefix}animated ` +animationName);
+
+                // When the animation ends, we clean the classes and resolve the Promise
+                function handleAnimationEnd(event) {
+                event.stopPropagation();
+                node.removeClass(`${prefix}animated `+animationName);
+                resolve('Animation ended');
+                }
+
+                node.on('animationend', function(event) {
+                event.stopPropagation();
+                node.removeClass(`${prefix}animated `+animationName);
+                resolve('Animation ended');
+                });
+            });
+        </script>
+
+        <script>
+            function resetPartyA1(){
+                $(".playerAparty1").each(function(i, obj) {
+                    obj.src="img/card/unknown.png"; 
+                    $(".partyA1 input").eq(i).val(""); 
+                });             
+                animateCSS($(".playerAparty1"), 'flipInY');
+            }
+            function resetPartyA2(){
+                $(".playerAparty2").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyA2 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerAparty2"), 'flipInY');
+            }
+            function resetPartyB1(){
+                $(".playerBparty1").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyB1 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerBparty1"), 'flipInY');
+            }
+            function resetPartyB2(){
+                $(".playerBparty2").each(function(i, obj) {
+                    obj.src="img/card/unknown.png";
+                    $(".partyB2 input").eq(i).val("");  
+                });             
+                animateCSS($(".playerBparty2"), 'flipInY');
+            }
+        </script>
+
+        
+            
+        
+        <script>
+
+            $('.playername').change(function() {
+                console.log("ganti");
+                if($('.playername').eq(0).val()!=""){
+                    $('.playerAname').text($('.playername').eq(0).val());
+                }
+                if($('.playername').eq(1).val()!=""){
+                    $('.playerBname').text($('.playername').eq(1).val());
+                }    
+            });
+
+            $(".checkboxscore").change(function() {
+                console.log($(".checkboxscore")[0].checked);
+                for (let index = 0; index < 4; index++) {
+                    if($(".checkboxscore")[index].checked) {
+                        $(".box")[index].src='img/Primogem.png';
+                        animateCSS($(".box").eq(index), 'bounceIn');
+                    }
+                    else{
+                        $(".box")[index].src='img/noprimo.png';
+                    }
+                }       
+            });
+
+    
+            $( function() {
+              var availableTags = [{"label": "albedo","card": "albedo.png","avatar": "Albedo.png","value": "albedo","namecard": "i_7050"},
+{"label": "aloy","card": "aloy.png","avatar": "aloy.png","value": "aloy","namecard": "i_7091"},
+{"label": "amber","card": "amber.png","avatar": "Amber.png","value": "amber","namecard": "i_7003"},
+{"label": "kamisato ayaka","card": "ayaka.png","avatar": "Ayaka.png","value": "ayaka","namecard": "i_7085"},
+{"label": "kamisato ayato","card": "ayato.png","avatar": "Ayato.png","value": "ayato","namecard": "i_7110"},
+{"label": "barbara","card": "barbara.png","avatar": "Barbara.png","value": "barbara","namecard": "i_7009"},
+{"label": "beidou","card": "beidou.png","avatar": "Beidou.png","value": "beidou","namecard": "i_7035"},
+{"label": "bennet","card": "bennett.png","avatar": "Bennett.png","value": "bennet","namecard": "i_7016"},
+{"label": "childe","card": "tartaglia.png","avatar": "Tartaglia.png","value": "childe","namecard": "i_7042"},
+{"label": "chongyun","card": "chongyun.png","avatar": "Chongyun.png","value": "chongyun","namecard": "i_7036"},
+{"label": "diluc","card": "diluc.png","avatar": "Diluc.png","value": "diluc","namecard": "i_7005"},
+{"label": "diona","card": "diona.png","avatar": "Diona.png","value": "diona","namecard": "i_7039"},
+{"label": "eula","card": "eula.png","avatar": "Eula.png","value": "eula","namecard": "i_7065"},
+{"label": "fischl","card": "fischl.png","avatar": "Fischl.png","value": "fischl","namecard": "i_7013"},
+{"label": "ganyu","card": "ganyu.png","avatar": "Ganyu.png","value": "ganyu","namecard": "i_7049"},
+{"label": "gorou","card": "gorou.png","avatar": "Gorou.png","value": "gorou","namecard": "i_7100"},
+{"label": "hu tao","card": "hutao.png","avatar": "HuTao.png","value": "hutao","namecard": "i_7055"},
+{"label": "arataki itto","card": "itto.png","avatar": "Itto.png","value": "itto","namecard": "i_7101"},
+{"label": "jean","card": "jean.png","avatar": "Jean.png","value": "jean","namecard": "i_7008"},
+{"label": "kaeya","card": "kaeya.png","avatar": "Kaeya.png","value": "kaeya","namecard": "i_7010"},
+{"label": "kaedehara kazuha","card": "kazuha.png","avatar": "Kazuha.png","value": "kazuha","namecard": "i_7069"},
+{"label": "keqing","card": "keqing.png","avatar": "Keqing.png","value": "keqing","namecard": "i_7020"},
+{"label": "klee","card": "klee.png","avatar": "Klee.png","value": "klee","namecard": "i_7004"},
+{"label": "sangonomiya kokomi","card": "kokomi.png","avatar": "Kokomi.png","value": "kokomi","namecard": "i_7089"},
+{"label": "kuki shinobu","card": "unknown.png","avatar": "Kuki.png","value": "kuki","namecard": "i_7116"},
+{"label": "lisa","card": "lisa.png","avatar": "Lisa.png","value": "lisa","namecard": "i_7011"},
+{"label": "mona","card": "mona.png","avatar": "Mona.png","value": "mona","namecard": "i_7015"},
+{"label": "ningguang","card": "ningguang.png","avatar": "Ningguang.png","value": "ningguang","namecard": "i_7034"},
+{"label": "noelle","card": "noelle.png","avatar": "Noelle.png","value": "noelle","namecard": "i_7014"},
+{"label": "qiqi","card": "qiqi.png","avatar": "Qiqi.png","value": "qiqi","namecard": "i_7019"},
+{"label": "razor","card": "razor.png","avatar": "Razor.png","value": "razor","namecard": "i_7006"},
+{"label": "rosaria","card": "rosaria.png","avatar": "Rosaria.png","value": "rosaria","namecard": "i_7059"},
+{"label": "kujou sara","card": "sara.png","avatar": "Sara.png","value": "sara","namecard": "i_7090"},
+{"label": "sayu","card": "sayu.png","avatar": "Sayu.png","value": "sayu","namecard": "i_7087"},
+{"label": "shenhe","card": "shenhe.png","avatar": "Shenhe.png","value": "shenhe","namecard": "i_7103"},
+{"label": "raiden shogun","card": "shougun.png","avatar": "shogun.png","value": "shogun","namecard": "i_7088"},
+{"label": "sucrose","card": "sucrose.png","avatar": "Sucrose.png","value": "sucrose","namecard": "i_7012"},
+{"label": "thoma","card": "thoma.png","avatar": "Thoma.png","value": "thoma","namecard": "i_7097"},
+{"label": "venti","card": "venti.png","avatar": "Venti.png","value": "venti","namecard": "i_7007"},
+{"label": "xiangling","card": "xiangling.png","avatar": "Xiangling.png","value": "xiangling","namecard": "i_7017"},
+{"label": "xiao","card": "xiao.png","avatar": "Xiao.png","value": "xiao","namecard": "i_7054"},
+{"label": "xingqiu","card": "xingqiu.png","avatar": "Xingqiu.png","value": "xingqiu","namecard": "i_7018"},
+{"label": "xinyan","card": "xinyan.png","avatar": "Xinyan.png","value": "xinyan","namecard": "i_7041"},
+{"label": "yae miko","card": "yaemiko.png","avatar": "Yaemiko.png","value": "yae miko","namecard": "i_7108"},
+{"label": "yanfei","card": "feiyan.png","avatar": "Yanfei.png","value": "yanfei","namecard": "i_7064"},
+{"label": "yelan","card": "unknown.png","avatar": "Yelan.png","value": "yelan","namecard": "i_7115"},
+{"label": "yoimiya","card": "yoimiya.png","avatar": "Yoimiya.png","value": "yoimiya","namecard": "i_7086"},
+{"label": "yunjin","card": "yunjin.png","avatar": "Yunjin.png","value": "yunjin","namecard": "i_7104"},
+{"label": "zhongli","card": "zhongli.png","avatar": "Zhongli.png","value": "zhongli","namecard": "i_7040"},
+{"label": "traveler aether","card": "traveler_aether.png","avatar": "Aether.png","value": "aether","namecard": "i_0000"},
+{"label": "traveler lumine","card": "traveler_lumine.png","avatar": "Lumine.png","value": "lumine","namecard": "i_0001"}
+];
+              $( ".partypick" ).autocomplete({
+                source: availableTags,
+                focus: function(event, ui) {
+                    $(this).val(ui.item.label);
+                    if(this.name=="Aparty1-1"){
+                        $(".playerAparty1")[0].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerAparty1").eq(0), 'flipInY');
+                    }
+                    else if(this.name=="Aparty1-2"){
+                        $(".playerAparty1")[1].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty1").eq(1), 'flipInY');
+                    }
+                    else if(this.name=="Aparty1-3"){
+                        $(".playerAparty1")[2].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty1").eq(2), 'flipInY');
+                    }
+                    else if(this.name=="Aparty1-4"){
+                        $(".playerAparty1")[3].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty1").eq(3), 'flipInY');
+                    }
+                    else if(this.name=="Aparty2-1"){
+                        $(".playerAparty2")[0].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty2").eq(0), 'flipInY');
+                    }
+                    else if(this.name=="Aparty2-2"){
+                        $(".playerAparty2")[1].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty2").eq(1), 'flipInY');
+                    }
+                    else if(this.name=="Aparty2-3"){
+                        $(".playerAparty2")[2].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty2").eq(2), 'flipInY');
+                    }
+                    else if(this.name=="Aparty2-4"){
+                        $(".playerAparty2")[3].src="img/card/"+ui.item.card;
+                        animateCSS($(".playerAparty2").eq(3), 'flipInY');
+                    }
+
+                    if(this.name=="Bparty1-1"){
+                        $(".playerBparty1")[0].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty1").eq(0), 'flipInY');
+                    }
+                    else if(this.name=="Bparty1-2"){
+                        $(".playerBparty1")[1].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty1").eq(1), 'flipInY');
+                    }
+                    else if(this.name=="Bparty1-3"){
+                        $(".playerBparty1")[2].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty1").eq(2), 'flipInY');
+                    }
+                    else if(this.name=="Bparty1-4"){
+                        $(".playerBparty1")[3].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty1").eq(3), 'flipInY');
+                    }
+                    
+                    
+                    if(this.name=="Bparty2-1"){
+                        $(".playerBparty2")[0].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty2").eq(0), 'flipInY');
+                    }
+                    else if(this.name=="Bparty2-2"){
+                        $(".playerBparty2")[1].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty2").eq(1), 'flipInY');
+                    }
+                    else if(this.name=="Bparty2-3"){
+                        $(".playerBparty2")[2].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty2").eq(2), 'flipInY');
+                    }
+                    else if(this.name=="Bparty2-4"){
+                        $(".playerBparty2")[3].src="img/card/"+ui.item.card;                
+                        animateCSS($(".playerBparty2").eq(3), 'flipInY');
+                    }
+                    
+
+                    return false;
+                },
+                select: function(event, ui) {
+                    $(this).val(ui.item.label);
+                    return false;
+                }
+              });
+            } );
+            </script>
+
+            
+</body>
+</html>
