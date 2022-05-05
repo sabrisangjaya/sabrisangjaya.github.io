@@ -7,7 +7,7 @@
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <style>
         body{
-            
+            overflow: hidden;
         }
         @font-face {
             font-family: 'GenshinFont';
@@ -15,79 +15,44 @@
 
             }
         #rounds{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            width: 1280px;
-            height: 720px;
+            width: 1920px;
+            height: 1080px;
+            background-image: url('Bracket-Turney-Warnet-all23.png');
+            background-size: cover;
+            overflow: hidden;
         }
         
-        ._16besar{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        ._16besar .battle{
-            height: 12.5%;
-            width: 100%;
-        }
-        ._8besar{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            
-        }
-        ._8besar .battle{
-            height: 25%;
-            width: 100%;
-        }
-        ._semifinal{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        ._semifinal .battle{
-            height: 50%;
-            width: 100%;
-        }
-        ._final{
-            width: 100%;
-        }
+        
         .teams{
-            width:200px;
-            position: relative;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
+            width:300px;
+
         }
 
         .teams input[type=text]{
             background: none;
             font-family: 'GenshinFont';
-            height: 25px;
+            height: 30px;
+            font-size: 1.5em;
+            border: none;
+        }
+
+        .teams ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: rgb(255, 255, 255);
+            opacity: 1; /* Firefox */
         }
         .score{
             text-align: center;
+            color:white;
             background: none;
             font-family: 'GenshinFont';
             height: 25px;
-        }
-        .teams:nth-child(even) {
-            margin-bottom: 20px;
         }
         .player{
             width: 80%;
             box-sizing: border-box;
         }
         .score{
-            width: 18%;
+            width:26px;
             box-sizing: border-box;
         }
     </style>
@@ -95,170 +60,188 @@
 <body>
     <div id="rounds">
         <div class="_16besar">
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:65px;left:155px">
                 <div class="teams">
-                    <input type="text" class="player player1">
-                    <input type="text" class="score score1">
+                    <input type="text" class="player player1" placeholder="Player 1">
+                    <input type="text" class="score score1" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player2">
-                    <input type="text" class="score score2">
-                </div>
-            </div>
-            <div class="battle">
-                <div class="teams">
-                    <input type="text" class="player player3">
-                    <input type="text" class="score score3">
-                </div>
-                <div class="teams">
-                    <input type="text" class="player player4">
-                    <input type="text" class="score score4">
+                    <input type="text" class="player player2" style="width:230px" placeholder="Player 2">
+                    <input type="text" class="score score2" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:195px;left:155px">
                 <div class="teams">
-                    <input type="text" class="player player5">
-                    <input type="text" class="score score5">
+                    <input type="text" class="player player3" placeholder="Player 3">
+                    <input type="text" class="score score3" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player6">
-                    <input type="text" class="score score6">
-                </div>
-            </div>
-            <div class="battle">
-                <div class="teams">
-                    <input type="text" class="player player7">
-                    <input type="text" class="score score7">
-                </div>
-                <div class="teams">
-                    <input type="text" class="player player8">
-                    <input type="text" class="score score8">
+                    <input type="text" class="player player4" style="width:230px" placeholder="Player 4">
+                    <input type="text" class="score score4" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:325px;left:155px">
                 <div class="teams">
-                    <input type="text" class="player player9">
-                    <input type="text" class="score score9">
+                    <input type="text" class="player player5" placeholder="Player 5">
+                    <input type="text" class="score score5" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player10">
-                    <input type="text" class="score score10">
-                </div>
-            </div>
-            <div class="battle">
-                <div class="teams">
-                    <input type="text" class="player player11">
-                    <input type="text" class="score score11">
-                </div>
-                <div class="teams">
-                    <input type="text" class="player player12">
-                    <input type="text" class="score score12">
+                    <input type="text" class="player player6" style="width:230px" placeholder="Player 6">
+                    <input type="text" class="score score6" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:455px;left:155px">
                 <div class="teams">
-                    <input type="text" class="player player13">
-                    <input type="text" class="score score13">
+                    <input type="text" class="player player7" placeholder="Player 7">
+                    <input type="text" class="score score7" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player14">
-                    <input type="text" class="score score14">
+                    <input type="text" class="player player8" style="width:230px" placeholder="Player 8">
+                    <input type="text" class="score score8" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:585px;left:155px">
                 <div class="teams">
-                    <input type="text" class="player player15">
-                    <input type="text" class="score score15">
+                    <input type="text" class="player player9" placeholder="Player 9">
+                    <input type="text" class="score score9" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player16">
-                    <input type="text" class="score score16">
+                    <input type="text" class="player player10" style="width:230px" placeholder="Player 10">
+                    <input type="text" class="score score10" placeholder="-">
+                </div>
+            </div>
+            <div class="battle" style="position: absolute;top:715px;left:155px" >
+                <div class="teams">
+                    <input type="text" class="player player11" placeholder="Player 11">
+                    <input type="text" class="score score11" placeholder="-">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player12" style="width:230px" placeholder="Player 12">
+                    <input type="text" class="score score12" placeholder="-">
+                </div>
+            </div>
+            <div class="battle" style="position: absolute;top:845px;left:155px">
+                <div class="teams">
+                    <input type="text" class="player player13" placeholder="Player 13">
+                    <input type="text" class="score score13" placeholder="-">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player14" style="width:230px" placeholder="Player 14">
+                    <input type="text" class="score score14" placeholder="-">
+                </div>
+            </div>
+            <div class="battle" style="position: absolute;top:975px;left:155px">
+                <div class="teams">
+                    <input type="text" class="player player15" placeholder="Player 15">
+                    <input type="text" class="score score15" placeholder="-">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player16" style="width:230px" placeholder="Player 16">
+                    <input type="text" class="score score16" placeholder="-">
                 </div>
             </div>
             
            
         </div>
-        <div class="_8besar">
-            <div class="battle">
+        <div class="_8besar" >
+            <div class="battle" style="position: absolute;top:129px;left:510px">
                 <div class="teams">
-                    <input type="text" class="player player8-1">
-                    <input type="text" class="score score8-1">
+                    <input type="text" class="player player8-1" style="width:225px">
+                    <input type="text" class="score score8-1" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player8-2">
-                    <input type="text" class="score score8-2">
-                </div>
-            </div>
-            <div class="battle">
-                <div class="teams">
-                    <input type="text" class="player player8-3">
-                    <input type="text" class="score score8-3">
-                </div>
-                <div class="teams">
-                    <input type="text" class="player player8-4">
-                    <input type="text" class="score score8-4">
+                    <input type="text" class="player player8-2" style="width:215px">
+                    <input type="text" class="score score8-2" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:389px;left:510px">
                 <div class="teams">
-                    <input type="text" class="player player8-5">
-                    <input type="text" class="score score8-5">
+                    <input type="text" class="player player8-3" style="width:225px">
+                    <input type="text" class="score score8-3" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player8-6">
-                    <input type="text" class="score score8-6">
-                </div>
-            </div>
-            <div class="battle">
-                <div class="teams">
-                    <input type="text" class="player player8-7">
-                    <input type="text" class="score score8-7">
-                </div>
-                <div class="teams">
-                    <input type="text" class="player player8-8">
-                    <input type="text" class="score score8-8">
+                    <input type="text" class="player player8-4" style="width:215px">
+                    <input type="text" class="score score8-4" placeholder="-">
                 </div>
             </div>
-           
-        </div>
-        <div class="_semifinal">
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:649px;left:510px">
                 <div class="teams">
-                    <input type="text" class="player player4-1">
-                    <input type="text" class="score score4-1">
+                    <input type="text" class="player player8-5" style="width:225px">
+                    <input type="text" class="score score8-5" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player4-2">
-                    <input type="text" class="score score4-2">
+                    <input type="text" class="player player8-6" style="width:215px">
+                    <input type="text" class="score score8-6" placeholder="-">
                 </div>
             </div>
-            <div class="battle">
+            <div class="battle" style="position: absolute;top:909px;left:510px">
                 <div class="teams">
-                    <input type="text" class="player player4-3">
-                    <input type="text" class="score score4-3">
+                    <input type="text" class="player player8-7" style="width:225px">
+                    <input type="text" class="score score8-7" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player player4-4">
-                    <input type="text" class="score score4-4">
+                    <input type="text" class="player player8-8" style="width:215px">
+                    <input type="text" class="score score8-8" placeholder="-">
                 </div>
             </div>
            
         </div>
-        <div class="_final">
-            <div class="battle">
+        <div class="_semifinal" >
+            <div class="battle" style="position: absolute;top:259px;left:849px">
                 <div class="teams">
-                    <input type="text" class="player playerfinal-1">
-                    <input type="text" class="score scorefinal-1">
+                    <input type="text" class="player player4-1" style="width:225px">
+                    <input type="text" class="score score4-1" placeholder="-">
                 </div>
                 <div class="teams">
-                    <input type="text" class="player playerfinal-2">
-                    <input type="text" class="score scorefinal-2">
+                    <input type="text" class="player player4-2" style="width:215px">
+                    <input type="text" class="score score4-2" placeholder="-">
+                </div>
+            </div>
+            <div class="battle" style="position: absolute;top:779px;left:849px">
+                <div class="teams">
+                    <input type="text" class="player player4-3" style="width:225px">
+                    <input type="text" class="score score4-3" placeholder="-">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player4-4" style="width:215px">
+                    <input type="text" class="score score4-4" placeholder="-">
+                </div>
+            </div>
+           
+        </div>
+        <div class="_final" >
+            <div class="battle" style="position: absolute;top:519px;left:1188px">
+                <div class="teams">
+                    <input type="text" class="player playerfinal-1" style="width:225px">
+                    <input type="text" class="score scorefinal-1" placeholder="-">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player playerfinal-2" style="width:215px">
+                    <input type="text" class="score scorefinal-2" placeholder="-">
                 </div>
             </div>
            
         </div>
     </div>
     <script>
+        $(document).ready(function(e) {
+            $('.player1').val("Ucon");
+            $('.player2').val("EsTehHangat"); 
+            $('.player3').val("Mnimion"); 
+            $('.player4').val("Kris"); 
+            $('.player5').val("Neo"); 
+            $('.player6').val("SukaSuka"); 
+            $('.player7').val("Waziee"); 
+            $('.player8').val("Iscav"); 
+            $('.player9').val("Hayung"); 
+            $('.player10').val("Zzk"); 
+            $('.player11').val("Nameless"); 
+            $('.player12').val("Ely"); 
+            $('.player13').val("Syid"); 
+            $('.player14').val("Dontol");
+            $('.player15').val("Tama");
+            $('.player16').val("Binkkk");    
+        });
         $(function(){
             $('#rounds :input').change(function(e){
                 if($('.score1').val()!="" && $('.score2').val()!=""){
