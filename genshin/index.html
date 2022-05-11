@@ -18,7 +18,7 @@
                 width: 500px;
                 display: block;
                 text-align: center;
-                margin-top: 50;
+                margin-top: 0;
                 
             }
             .score-box{
@@ -57,13 +57,13 @@
                 box-sizing: border-box;
                 font-family: 'GenshinFont';
                 color: white;
-                font-size: 1.3em;
+                font-size: 2em;
                 text-shadow: 2px 2px #272727;
                 /* text-align: center; */
             }
             .playerAparty1, .playerAparty2, .playerBparty1, .playerBparty2{
-                width: 108px;
-                height: 128px;
+                width: 83px;
+                height: 100px;
                 background-size: cover;
                 display: inline-block;
                 /* padding: 1px;
@@ -80,8 +80,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
-<body style="width: 1280;height: 720;position: absolute;">
+<body style="width: 1280;position: absolute;">
     <div class="centered-axis-x">
+        <div class="timer-box">
+            <span class="textstatus">Welcome</span><br/>
+            <div class="timer">
+                <span class="minute">00</span>:
+                <span class="second">00</span>
+            </div>
+        </div>
         <div class="score-box">
             Score
             <div style="float: left;">
@@ -94,13 +101,7 @@
             </div>
             
         </div>
-        <div class="timer-box">
-            <span class="textstatus">Welcome</span><br/>
-            <div class="timer">
-                <span class="minute">00</span>:
-                <span class="second">00</span>
-            </div>
-        </div>
+        
         <script>
             function _timer(callback)
             {
@@ -242,11 +243,11 @@
             <span class="playerAname">Player A</span> V.S <span class="playerBname">Player B</span>
         </div> -->
     </div>
-    <div class="name-box" style="width: 100%;position: absolute;left: 0;top:0;">
+    <div class="name-box" style="width: 100%;position: absolute;left: 0;top:100;">
         <div class="playerAname" style="float:left;">Player A</div>
         <div class="playerBname" style="float:right;">Player B</div>
     </div>
-        <div style="position: absolute;left: 0;top:50; ">
+        <div style="position: absolute;left: 0;top:560; ">
             <div style="display:block">
                 <img src="img/card/unknown.png" alt="" class="playerAparty1">
                 <img src="img/card/unknown.png" alt="" class="playerAparty1">
@@ -260,7 +261,7 @@
                 <img src="img/card/unknown.png" alt="" class="playerAparty2">
             </div>
         </div>
-        <div style="position: absolute;right: 0;top:50;">
+        <div style="position: absolute;right: 0;top:560;">
             <div style="display:block">
                 <img src="img/card/unknown.png" alt="" class="playerBparty1">
                 <img src="img/card/unknown.png" alt="" class="playerBparty1">
@@ -275,7 +276,7 @@
             </div>
         </div>
 
-        <div style="position: absolute;left: 0;bottom:150;width: 100%;background-color: white;">
+        <div style="position: absolute;left: 0;top:820;width: 100%;background-color: white;">
             <table class="table table-responsive w-100 d-block d-md-table table-bordered">
                 <tr>
                     <td>
