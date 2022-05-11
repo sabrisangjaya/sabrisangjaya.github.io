@@ -18,6 +18,7 @@
                 width: 500px;
                 display: block;
                 text-align: center;
+                margin-top: 50;
                 
             }
             .score-box{
@@ -58,7 +59,7 @@
                 color: white;
                 font-size: 1.3em;
                 text-shadow: 2px 2px #272727;
-                text-align: center;
+                /* text-align: center; */
             }
             .playerAparty1, .playerAparty2, .playerBparty1, .playerBparty2{
                 width: 108px;
@@ -237,11 +238,15 @@
                 timer.mode(0);
             });
         </script>
-        <div class="name-box">
+        <!-- <div class="name-box">
             <span class="playerAname">Player A</span> V.S <span class="playerBname">Player B</span>
-        </div>
+        </div> -->
     </div>
-        <div style="position: absolute;left: 0;top:0;">
+    <div class="name-box" style="width: 100%;position: absolute;left: 0;top:0;">
+        <div class="playerAname" style="float:left;">Player A</div>
+        <div class="playerBname" style="float:right;">Player B</div>
+    </div>
+        <div style="position: absolute;left: 0;top:50; ">
             <div style="display:block">
                 <img src="img/card/unknown.png" alt="" class="playerAparty1">
                 <img src="img/card/unknown.png" alt="" class="playerAparty1">
@@ -255,7 +260,7 @@
                 <img src="img/card/unknown.png" alt="" class="playerAparty2">
             </div>
         </div>
-        <div style="position: absolute;right: 0;top:0;">
+        <div style="position: absolute;right: 0;top:50;">
             <div style="display:block">
                 <img src="img/card/unknown.png" alt="" class="playerBparty1">
                 <img src="img/card/unknown.png" alt="" class="playerBparty1">
