@@ -1,0 +1,45 @@
+datatourney={
+    "peserta":[
+        {"nama":"Ucon"},
+        {"nama":"EsTehHangat"},
+        {"nama":"Mnimion"},
+        {"nama":"Kris"},
+        {"nama":"Neo"},
+        {"nama":"SukaSuka"},
+        {"nama":"Waziee"},
+        {"nama":"Iscav"},
+        {"nama":"Hayung"},
+        {"nama":"Zzk"},
+        {"nama":"Nameless"},
+        {"nama":"Ely"},
+        {"nama":"Syid"},
+        {"nama":"Dontol"},
+        {"nama":"Tama"},
+        {"nama":"Binkkk" }
+        ],
+    "match":{
+        "fight16":{
+            "battle1":{"winner":"","score":["",""]},
+            "battle2":{"winner":"","score":["",""]},
+            "battle3":{"winner":"","score":["",""]},
+            "battle4":{"winner":"","score":["",""]},
+            "battle5":{"winner":"","score":["",""]},
+            "battle6":{"winner":"","score":["",""]},
+            "battle7":{"winner":"","score":["",""]},
+            "battle8":{"winner":"","score":["",""]}
+        },
+        "fight8":{
+            "battle1":{"winner":"","score":["",""]},
+            "battle2":{"winner":"","score":["",""]},
+            "battle3":{"winner":"","score":["",""]},
+            "battle4":{"winner":"","score":["",""]}
+        },
+        "semifinal":{
+            "battle1":{"winner":"","score":["",""]},
+            "battle2":{"winner":"","score":["",""]}
+        },
+        "final":{
+            "battle1":{"winner":"","score":["",""]}
+        },
+    }
+}

@@ -223,163 +223,136 @@
            
         </div>
     </div>
+    <script type="text/javascript" src="data-tourney.json"></script>
     <script>
-        $(document).ready(function(e) {
-            $('.player1').val("Ucon");
-            $('.player2').val("EsTehHangat"); 
-            $('.player3').val("Mnimion"); 
-            $('.player4').val("Kris"); 
-            $('.player5').val("Neo"); 
-            $('.player6').val("SukaSuka"); 
-            $('.player7').val("Waziee"); 
-            $('.player8').val("Iscav"); 
-            $('.player9').val("Hayung"); 
-            $('.player10').val("Zzk"); 
-            $('.player11').val("Nameless"); 
-            $('.player12').val("Ely"); 
-            $('.player13').val("Syid"); 
-            $('.player14').val("Dontol");
-            $('.player15').val("Tama");
-            $('.player16').val("Binkkk");    
-        });
-        $(function(){
-            $('#rounds :input').change(function(e){
-                if($('.score1').val()!="" && $('.score2').val()!=""){
-                    if($('.score1').val()>$('.score2').val()){
-                        // $('.score1').css("backgroundColor", "#ff9900");
-                        // $('.player1').css("backgroundColor", "#ff9900");
-                        // $('.score2').css("backgroundColor", "#5d5d5d");
-                        // $('.player2').css("backgroundColor", "#5d5d5d");
-                        $('.player8-1').val($('.player1').val());
+        
+        $(document).ready(function(e) {    
+            $('.player1').val(datatourney["peserta"][0]["nama"]);
+            $('.player2').val(datatourney["peserta"][1]["nama"]); 
+            $('.player3').val(datatourney["peserta"][2]["nama"]); 
+            $('.player4').val(datatourney["peserta"][3]["nama"]); 
+            $('.player5').val(datatourney["peserta"][4]["nama"]); 
+            $('.player6').val(datatourney["peserta"][5]["nama"]);  
+            $('.player7').val(datatourney["peserta"][6]["nama"]); 
+            $('.player8').val(datatourney["peserta"][7]["nama"]); 
+            $('.player9').val(datatourney["peserta"][8]["nama"]); 
+            $('.player10').val(datatourney["peserta"][9]["nama"]); 
+            $('.player11').val(datatourney["peserta"][10]["nama"]); 
+            $('.player12').val(datatourney["peserta"][11]["nama"]);  
+            $('.player13').val(datatourney["peserta"][12]["nama"]); 
+            $('.player14').val(datatourney["peserta"][13]["nama"]); 
+            $('.player15').val(datatourney["peserta"][14]["nama"]); 
+            $('.player16').val(datatourney["peserta"][15]["nama"]);
+            
+            $('.score1').val(datatourney["match"]["fight16"]["battle1"]["score"][0]);
+            $('.score2').val(datatourney["match"]["fight16"]["battle1"]["score"][1]);
+            $('.score3').val(datatourney["match"]["fight16"]["battle2"]["score"][0]);
+            $('.score4').val(datatourney["match"]["fight16"]["battle2"]["score"][1]);
+            $('.score5').val(datatourney["match"]["fight16"]["battle3"]["score"][0]);
+            $('.score6').val(datatourney["match"]["fight16"]["battle3"]["score"][1]);
+            $('.score7').val(datatourney["match"]["fight16"]["battle4"]["score"][0]);
+            $('.score8').val(datatourney["match"]["fight16"]["battle4"]["score"][1]);
+            $('.score9').val(datatourney["match"]["fight16"]["battle5"]["score"][0]);
+            $('.score10').val(datatourney["match"]["fight16"]["battle5"]["score"][1]);
+            $('.score11').val(datatourney["match"]["fight16"]["battle6"]["score"][0]);
+            $('.score12').val(datatourney["match"]["fight16"]["battle6"]["score"][1]);
+            $('.score13').val(datatourney["match"]["fight16"]["battle7"]["score"][0]);
+            $('.score14').val(datatourney["match"]["fight16"]["battle7"]["score"][1]);
+            $('.score15').val(datatourney["match"]["fight16"]["battle8"]["score"][0]);
+            $('.score16').val(datatourney["match"]["fight16"]["battle8"]["score"][1]);
 
+
+            $('.score8-1').val(datatourney["match"]["fight8"]["battle1"]["score"][0]);
+            $('.score8-2').val(datatourney["match"]["fight8"]["battle1"]["score"][1]);
+            $('.score8-3').val(datatourney["match"]["fight8"]["battle2"]["score"][0]);
+            $('.score8-4').val(datatourney["match"]["fight8"]["battle2"]["score"][1]);
+            $('.score8-5').val(datatourney["match"]["fight8"]["battle3"]["score"][0]);
+            $('.score8-6').val(datatourney["match"]["fight8"]["battle3"]["score"][1]);
+            $('.score8-7').val(datatourney["match"]["fight8"]["battle4"]["score"][0]);
+            $('.score8-8').val(datatourney["match"]["fight8"]["battle4"]["score"][1]);
+
+            $('.score4-1').val(datatourney["match"]["semifinal"]["battle1"]["score"][0]);
+            $('.score4-2').val(datatourney["match"]["semifinal"]["battle1"]["score"][1]);
+            $('.score4-3').val(datatourney["match"]["semifinal"]["battle2"]["score"][0]);
+            $('.score4-4').val(datatourney["match"]["semifinal"]["battle2"]["score"][1]);
+
+            $('.scorefinal-1').val(datatourney["match"]["final"]["battle1"]["score"][0]);
+            $('.scorefinal-2').val(datatourney["match"]["final"]["battle1"]["score"][1]);
+
+
+
+        });
+        function updatevaluescore(){
+            if($('.score1').val()!="" && $('.score2').val()!=""){
+                    if($('.score1').val()>$('.score2').val()){
+                        $('.player8-1').val($('.player1').val());
                     }
                     else{
-                        // $('.score1').css("backgroundColor", "#5d5d5d");
-                        // $('.player1').css("backgroundColor", "#5d5d5d");
-                        // $('.score2').css("backgroundColor", "#ff9900");
-                        // $('.player2').css("backgroundColor", "#ff9900");
                         $('.player8-1').val($('.player2').val());
                     }
                 }
                 if($('.score3').val()!="" && $('.score4').val()!=""){
                     if($('.score3').val()>$('.score4').val()){
-                        // $('.score3').css("backgroundColor", "#ff9900");
-                        // $('.player3').css("backgroundColor", "#ff9900");
-                        // $('.score4').css("backgroundColor", "5d5d5d");
-                        // $('.player4').css("backgroundColor", "5d5d5d");
                         $('.player8-2').val($('.player3').val());
 
                     }
                     else{
-                        // $('.score3').css("backgroundColor", "5d5d5d");
-                        // $('.player3').css("backgroundColor", "5d5d5d");
-                        // $('.score4').css("backgroundColor", "#ff9900");
-                        // $('.player4').css("backgroundColor", "#ff9900");
                         $('.player8-2').val($('.player4').val());
                     }
                 }
                 if($('.score5').val()!="" && $('.score6').val()!=""){
                     if($('.score5').val()>$('.score6').val()){
-                        // $('.score5').css("backgroundColor", "#ff9900");
-                        // $('.player5').css("backgroundColor", "#ff9900");
-                        // $('.score6').css("backgroundColor", "5d5d5d");
-                        // $('.player6').css("backgroundColor", "5d5d5d");
                         $('.player8-3').val($('.player5').val());
-
                     }
                     else{
-                        // $('.score5').css("backgroundColor", "5d5d5d");
-                        // $('.player5').css("backgroundColor", "5d5d5d");
-                        // $('.score6').css("backgroundColor", "#ff9900");
-                        // $('.player6').css("backgroundColor", "#ff9900");
                         $('.player8-3').val($('.player6').val());
                     }
                 }
                 if($('.score7').val()!="" && $('.score8').val()!=""){
                     if($('.score7').val()>$('.score8').val()){
-                        // $('.score7').css("backgroundColor", "#ff9900");
-                        // $('.player7').css("backgroundColor", "#ff9900");
-                        // $('.score8').css("backgroundColor", "5d5d5d");
-                        // $('.player8').css("backgroundColor", "5d5d5d");
                         $('.player8-4').val($('.player7').val());
 
                     }
                     else{
-                        // $('.score7').css("backgroundColor", "5d5d5d");
-                        // $('.player7').css("backgroundColor", "5d5d5d");
-                        // $('.score8').css("backgroundColor", "#ff9900");
-                        // $('.player8').css("backgroundColor", "#ff9900");
                         $('.player8-4').val($('.player8').val());
                     }
                 }
                 if($('.score9').val()!="" && $('.score10').val()!=""){
                     if($('.score9').val()>$('.score10').val()){
-                        // $('.score9').css("backgroundColor", "#ff9900");
-                        // $('.player9').css("backgroundColor", "#ff9900");
-                        // $('.score10').css("backgroundColor", "5d5d5d");
-                        // $('.player10').css("backgroundColor", "5d5d5d");
                         $('.player8-5').val($('.player9').val());
 
                     }
                     else{
-                        // $('.score9').css("backgroundColor", "5d5d5d");
-                        // $('.player9').css("backgroundColor", "5d5d5d");
-                        // $('.score10').css("backgroundColor", "#ff9900");
-                        // $('.player10').css("backgroundColor", "#ff9900");
                         $('.player8-5').val($('.player10').val());
                     }
                 }
 
                 if($('.score11').val()!="" && $('.score12').val()!=""){
                     if($('.score11').val()>$('.score12').val()){
-                        // $('.score11').css("backgroundColor", "#ff9900");
-                        // $('.player11').css("backgroundColor", "#ff9900");
-                        // $('.score12').css("backgroundColor", "5d5d5d");
-                        // $('.player12').css("backgroundColor", "5d5d5d");
                         $('.player8-6').val($('.player11').val());
 
                     }
                     else{
-                        // $('.score11').css("backgroundColor", "5d5d5d");
-                        // $('.player11').css("backgroundColor", "5d5d5d");
-                        // $('.score12').css("backgroundColor", "#ff9900");
-                        // $('.player12').css("backgroundColor", "#ff9900");
                         $('.player8-6').val($('.player12').val());
                     }
                 }
 
                 if($('.score13').val()!="" && $('.score14').val()!=""){
                     if($('.score13').val()>$('.score14').val()){
-                        // $('.score13').css("backgroundColor", "#ff9900");
-                        // $('.player13').css("backgroundColor", "#ff9900");
-                        // $('.score14').css("backgroundColor", "5d5d5d");
-                        // $('.player14').css("backgroundColor", "5d5d5d");
                         $('.player8-7').val($('.player13').val());
 
                     }
                     else{
-                        // $('.score13').css("backgroundColor", "5d5d5d");
-                        // $('.player13').css("backgroundColor", "5d5d5d");
-                        // $('.score14').css("backgroundColor", "#ff9900");
-                        // $('.player14').css("backgroundColor", "#ff9900");
                         $('.player8-7').val($('.player14').val());
                     }
                 }
 
                 if($('.score15').val()!="" && $('.score16').val()!=""){
                     if($('.score15').val()>$('.score16').val()){
-                        // $('.score15').css("backgroundColor", "#ff9900");
-                        // $('.player15').css("backgroundColor", "#ff9900");
-                        // $('.score16').css("backgroundColor", "5d5d5d");
-                        // $('.player16').css("backgroundColor", "5d5d5d");
                         $('.player8-8').val($('.player15').val());
 
                     }
                     else{
-                        // $('.score15').css("backgroundColor", "5d5d5d");
-                        // $('.player15').css("backgroundColor", "5d5d5d");
-                        // $('.score16').css("backgroundColor", "#ff9900");
-                        // $('.player16').css("backgroundColor", "#ff9900");
                         $('.player8-8').val($('.player16').val());
                     }
                 }
@@ -387,127 +360,73 @@
 
                 if($('.score8-1').val()!="" && $('.score8-2').val()!=""){
                     if($('.score8-1').val()>$('.score8-2').val()){
-                        // $('.score8-1').css("backgroundColor", "#ff9900");
-                        // $('.player8-1').css("backgroundColor", "#ff9900");
-                        // $('.score8-2').css("backgroundColor", "#5d5d5d");
-                        // $('.player8-2').css("backgroundColor", "#5d5d5d");
                         $('.player4-1').val($('.player8-1').val());
 
                     }
                     else{
-                        // $('.score8-1').css("backgroundColor", "#5d5d5d");
-                        // $('.player8-1').css("backgroundColor", "#5d5d5d");
-                        // $('.score8-2').css("backgroundColor", "#ff9900");
-                        // $('.player8-2').css("backgroundColor", "#ff9900");
                         $('.player4-1').val($('.player8-2').val());
                     }
                 }
 
                 if($('.score8-3').val()!="" && $('.score8-4').val()!=""){
                     if($('.score8-3').val()>$('.score8-4').val()){
-                        // $('.score8-3').css("backgroundColor", "#ff9900");
-                        // $('.player8-3').css("backgroundColor", "#ff9900");
-                        // $('.score8-4').css("backgroundColor", "5d5d5d");
-                        // $('.player8-4').css("backgroundColor", "5d5d5d");
                         $('.player4-2').val($('.player8-3').val());
 
                     }
                     else{
-                        // $('.score8-3').css("backgroundColor", "5d5d5d");
-                        // $('.player8-3').css("backgroundColor", "5d5d5d");
-                        // $('.score8-4').css("backgroundColor", "#ff9900");
-                        // $('.player8-4').css("backgroundColor", "#ff9900");
                         $('.player4-2').val($('.player8-4').val());
                     }
                 }
                 if($('.score8-5').val()!="" && $('.score8-6').val()!=""){
                     if($('.score8-5').val()>$('.score8-6').val()){
-                        // $('.score8-5').css("backgroundColor", "#ff9900");
-                        // $('.player8-5').css("backgroundColor", "#ff9900");
-                        // $('.score8-6').css("backgroundColor", "5d5d5d");
-                        // $('.player8-6').css("backgroundColor", "5d5d5d");
                         $('.player4-3').val($('.player8-5').val());
 
                     }
                     else{
-                        // $('.score8-5').css("backgroundColor", "5d5d5d");
-                        // $('.player8-5').css("backgroundColor", "5d5d5d");
-                        // $('.score8-6').css("backgroundColor", "#ff9900");
-                        // $('.player8-6').css("backgroundColor", "#ff9900");
                         $('.player4-3').val($('.player8-6').val());
                     }
                 }
                 if($('.score8-7').val()!="" && $('.score8-8').val()!=""){
                     if($('.score8-7').val()>$('.score8-8').val()){
-                        // $('.score8-7').css("backgroundColor", "#ff9900");
-                        // $('.player8-7').css("backgroundColor", "#ff9900");
-                        // $('.score8-8').css("backgroundColor", "5d5d5d");
-                        // $('.player8-8').css("backgroundColor", "5d5d5d");
                         $('.player4-4').val($('.player8-7').val());
 
                     }
                     else{
-                        // $('.score8-7').css("backgroundColor", "5d5d5d");
-                        // $('.player8-7').css("backgroundColor", "5d5d5d");
-                        // $('.score8-8').css("backgroundColor", "#ff9900");
-                        // $('.player8-8').css("backgroundColor", "#ff9900");
                         $('.player4-4').val($('.player8-8').val());
                     }
                 }
 
                 if($('.score4-1').val()!="" && $('.score4-2').val()!=""){
                     if($('.score4-1').val()>$('.score4-2').val()){
-                        // $('.score4-1').css("backgroundColor", "#ff9900");
-                        // $('.player4-1').css("backgroundColor", "#ff9900");
-                        // $('.score4-2').css("backgroundColor", "#5d5d5d");
-                        // $('.player4-2').css("backgroundColor", "#5d5d5d");
                         $('.playerfinal-1').val($('.player4-1').val());
-
                     }
                     else{
-                        // $('.score4-1').css("backgroundColor", "#5d5d5d");
-                        // $('.player4-1').css("backgroundColor", "#5d5d5d");
-                        // $('.score4-2').css("backgroundColor", "#ff9900");
-                        // $('.player4-2').css("backgroundColor", "#ff9900");
                         $('.playerfinal-1').val($('.player4-2').val());
                     }
                 }
 
                 if($('.score4-3').val()!="" && $('.score4-4').val()!=""){
                     if($('.score4-3').val()>$('.score4-4').val()){
-                        // $('.score4-3').css("backgroundColor", "#ff9900");
-                        // $('.player4-3').css("backgroundColor", "#ff9900");
-                        // $('.score4-4').css("backgroundColor", "5d5d5d");
-                        // $('.player4-4').css("backgroundColor", "5d5d5d");
                         $('.playerfinal-2').val($('.player4-3').val());
 
                     }
                     else{
-                        // $('.score4-3').css("backgroundColor", "5d5d5d");
-                        // $('.player4-3').css("backgroundColor", "5d5d5d");
-                        // $('.score4-4').css("backgroundColor", "#ff9900");
-                        // $('.player4-4').css("backgroundColor", "#ff9900");
                         $('.playerfinal-2').val($('.player4-4').val());
                     }
                 }
 
                 if($('.scorefinal-1').val()!="" && $('.scorefinal-2').val()!=""){
                     if($('.scorefinal-1').val()>$('.scorefinal-2').val()){
-                        // $('.scorefinal-1').css("backgroundColor", "#ff9900");
-                        // $('.playerfinal-1').css("backgroundColor", "#ff9900");
-                        // $('.scorefinal-2').css("backgroundColor", "#5d5d5d");
-                        // $('.playerfinal-2').css("backgroundColor", "#5d5d5d");
 
                     }
                     else{
-                        // $('.scorefinal-1').css("backgroundColor", "#5d5d5d");
-                        // $('.playerfinal-1').css("backgroundColor", "#5d5d5d");
-                        // $('.scorefinal-2').css("backgroundColor", "#ff9900");
-                        // $('.playerfinal-2').css("backgroundColor", "#ff9900");    
+ 
                     }
                 }
-                
-                
+        }
+        $(function(){
+            $('#rounds :input').change(function(e){
+                updatevaluescore(); 
             });
         });
     </script>
