@@ -1,22 +1,24 @@
 datatourney={
     "peserta":[
-        {"nama":"Ucon"},
-        {"nama":"EsTehHangat"},
-        {"nama":"Mnimion"},
-        {"nama":"Kris"},
-        {"nama":"Neo"},
-        {"nama":"SukaSuka"},
-        {"nama":"Waziee"},
-        {"nama":"Iscav"},
-        {"nama":"Hayung"},
-        {"nama":"Zzk"},
-        {"nama":"Nameless"},
-        {"nama":"Ely"},
-        {"nama":"Syid"},
-        {"nama":"Dontol"},
-        {"nama":"Tama"},
-        {"nama":"Binkkk" }
+        {"nama":"PDS"},
+        {"nama":"Rinzz"},
+        {"nama":"Xhota"},
+        {"nama":"Dillion"},
+        {"nama":"M. Charis"},
+        {"nama":"Pepo"},
+        {"nama":"Fort"},
+        {"nama":"JesterLynn"},
+        {"nama":"Milalith"},
+        {"nama":"Senchou"},
+        {"nama":"JeVall"},
+        {"nama":"Qael"},
+        {"nama":"AWR"},
+        {"nama":"Navl"},
+        {"nama":"Kuroha"},
+        {"nama":"Seelie Liar" }
         ],
+
+
     "match":{
         "fight16":{
             "battle1":{"winner":"","score":["",""]},
