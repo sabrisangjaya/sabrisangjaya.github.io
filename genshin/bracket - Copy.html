@@ -1,0 +1,534 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <style>
+        body{
+            
+        }
+        @font-face {
+            font-family: 'GenshinFont';
+            src: url('css/font/zh-cn.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+            }
+        #rounds{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 1280px;
+            height: 720px;
+        }
+        
+        ._16besar{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        ._16besar .battle{
+            height: 12.5%;
+            width: 100%;
+        }
+        ._8besar{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        ._8besar .battle{
+            height: 25%;
+            width: 100%;
+        }
+        ._semifinal{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ._semifinal .battle{
+            height: 50%;
+            width: 100%;
+        }
+        ._final{
+            width: 100%;
+        }
+        .teams{
+            width:200px;
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .teams input[type=text]{
+            background: none;
+            font-family: 'GenshinFont';
+            height: 25px;
+        }
+        .score{
+            text-align: center;
+            background: none;
+            font-family: 'GenshinFont';
+            height: 25px;
+        }
+        .teams:nth-child(even) {
+            margin-bottom: 20px;
+        }
+        .player{
+            width: 80%;
+            box-sizing: border-box;
+        }
+        .score{
+            width: 18%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="rounds">
+        <div class="_16besar">
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player1">
+                    <input type="text" class="score score1">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player2">
+                    <input type="text" class="score score2">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player3">
+                    <input type="text" class="score score3">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player4">
+                    <input type="text" class="score score4">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player5">
+                    <input type="text" class="score score5">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player6">
+                    <input type="text" class="score score6">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player7">
+                    <input type="text" class="score score7">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player8">
+                    <input type="text" class="score score8">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player9">
+                    <input type="text" class="score score9">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player10">
+                    <input type="text" class="score score10">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player11">
+                    <input type="text" class="score score11">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player12">
+                    <input type="text" class="score score12">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player13">
+                    <input type="text" class="score score13">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player14">
+                    <input type="text" class="score score14">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player15">
+                    <input type="text" class="score score15">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player16">
+                    <input type="text" class="score score16">
+                </div>
+            </div>
+            
+           
+        </div>
+        <div class="_8besar">
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player8-1">
+                    <input type="text" class="score score8-1">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player8-2">
+                    <input type="text" class="score score8-2">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player8-3">
+                    <input type="text" class="score score8-3">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player8-4">
+                    <input type="text" class="score score8-4">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player8-5">
+                    <input type="text" class="score score8-5">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player8-6">
+                    <input type="text" class="score score8-6">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player8-7">
+                    <input type="text" class="score score8-7">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player8-8">
+                    <input type="text" class="score score8-8">
+                </div>
+            </div>
+           
+        </div>
+        <div class="_semifinal">
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player4-1">
+                    <input type="text" class="score score4-1">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player4-2">
+                    <input type="text" class="score score4-2">
+                </div>
+            </div>
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player player4-3">
+                    <input type="text" class="score score4-3">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player player4-4">
+                    <input type="text" class="score score4-4">
+                </div>
+            </div>
+           
+        </div>
+        <div class="_final">
+            <div class="battle">
+                <div class="teams">
+                    <input type="text" class="player playerfinal-1">
+                    <input type="text" class="score scorefinal-1">
+                </div>
+                <div class="teams">
+                    <input type="text" class="player playerfinal-2">
+                    <input type="text" class="score scorefinal-2">
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('#rounds :input').change(function(e){
+                if($('.score1').val()!="" && $('.score2').val()!=""){
+                    if($('.score1').val()>$('.score2').val()){
+                        // $('.score1').css("backgroundColor", "#ff9900");
+                        // $('.player1').css("backgroundColor", "#ff9900");
+                        // $('.score2').css("backgroundColor", "#5d5d5d");
+                        // $('.player2').css("backgroundColor", "#5d5d5d");
+                        $('.player8-1').val($('.player1').val());
+
+                    }
+                    else{
+                        // $('.score1').css("backgroundColor", "#5d5d5d");
+                        // $('.player1').css("backgroundColor", "#5d5d5d");
+                        // $('.score2').css("backgroundColor", "#ff9900");
+                        // $('.player2').css("backgroundColor", "#ff9900");
+                        $('.player8-1').val($('.player2').val());
+                    }
+                }
+                if($('.score3').val()!="" && $('.score4').val()!=""){
+                    if($('.score3').val()>$('.score4').val()){
+                        // $('.score3').css("backgroundColor", "#ff9900");
+                        // $('.player3').css("backgroundColor", "#ff9900");
+                        // $('.score4').css("backgroundColor", "5d5d5d");
+                        // $('.player4').css("backgroundColor", "5d5d5d");
+                        $('.player8-2').val($('.player3').val());
+
+                    }
+                    else{
+                        // $('.score3').css("backgroundColor", "5d5d5d");
+                        // $('.player3').css("backgroundColor", "5d5d5d");
+                        // $('.score4').css("backgroundColor", "#ff9900");
+                        // $('.player4').css("backgroundColor", "#ff9900");
+                        $('.player8-2').val($('.player4').val());
+                    }
+                }
+                if($('.score5').val()!="" && $('.score6').val()!=""){
+                    if($('.score5').val()>$('.score6').val()){
+                        // $('.score5').css("backgroundColor", "#ff9900");
+                        // $('.player5').css("backgroundColor", "#ff9900");
+                        // $('.score6').css("backgroundColor", "5d5d5d");
+                        // $('.player6').css("backgroundColor", "5d5d5d");
+                        $('.player8-3').val($('.player5').val());
+
+                    }
+                    else{
+                        // $('.score5').css("backgroundColor", "5d5d5d");
+                        // $('.player5').css("backgroundColor", "5d5d5d");
+                        // $('.score6').css("backgroundColor", "#ff9900");
+                        // $('.player6').css("backgroundColor", "#ff9900");
+                        $('.player8-3').val($('.player6').val());
+                    }
+                }
+                if($('.score7').val()!="" && $('.score8').val()!=""){
+                    if($('.score7').val()>$('.score8').val()){
+                        // $('.score7').css("backgroundColor", "#ff9900");
+                        // $('.player7').css("backgroundColor", "#ff9900");
+                        // $('.score8').css("backgroundColor", "5d5d5d");
+                        // $('.player8').css("backgroundColor", "5d5d5d");
+                        $('.player8-4').val($('.player7').val());
+
+                    }
+                    else{
+                        // $('.score7').css("backgroundColor", "5d5d5d");
+                        // $('.player7').css("backgroundColor", "5d5d5d");
+                        // $('.score8').css("backgroundColor", "#ff9900");
+                        // $('.player8').css("backgroundColor", "#ff9900");
+                        $('.player8-4').val($('.player8').val());
+                    }
+                }
+                if($('.score9').val()!="" && $('.score10').val()!=""){
+                    if($('.score9').val()>$('.score10').val()){
+                        // $('.score9').css("backgroundColor", "#ff9900");
+                        // $('.player9').css("backgroundColor", "#ff9900");
+                        // $('.score10').css("backgroundColor", "5d5d5d");
+                        // $('.player10').css("backgroundColor", "5d5d5d");
+                        $('.player8-5').val($('.player9').val());
+
+                    }
+                    else{
+                        // $('.score9').css("backgroundColor", "5d5d5d");
+                        // $('.player9').css("backgroundColor", "5d5d5d");
+                        // $('.score10').css("backgroundColor", "#ff9900");
+                        // $('.player10').css("backgroundColor", "#ff9900");
+                        $('.player8-5').val($('.player10').val());
+                    }
+                }
+
+                if($('.score11').val()!="" && $('.score12').val()!=""){
+                    if($('.score11').val()>$('.score12').val()){
+                        // $('.score11').css("backgroundColor", "#ff9900");
+                        // $('.player11').css("backgroundColor", "#ff9900");
+                        // $('.score12').css("backgroundColor", "5d5d5d");
+                        // $('.player12').css("backgroundColor", "5d5d5d");
+                        $('.player8-6').val($('.player11').val());
+
+                    }
+                    else{
+                        // $('.score11').css("backgroundColor", "5d5d5d");
+                        // $('.player11').css("backgroundColor", "5d5d5d");
+                        // $('.score12').css("backgroundColor", "#ff9900");
+                        // $('.player12').css("backgroundColor", "#ff9900");
+                        $('.player8-6').val($('.player12').val());
+                    }
+                }
+
+                if($('.score13').val()!="" && $('.score14').val()!=""){
+                    if($('.score13').val()>$('.score14').val()){
+                        // $('.score13').css("backgroundColor", "#ff9900");
+                        // $('.player13').css("backgroundColor", "#ff9900");
+                        // $('.score14').css("backgroundColor", "5d5d5d");
+                        // $('.player14').css("backgroundColor", "5d5d5d");
+                        $('.player8-7').val($('.player13').val());
+
+                    }
+                    else{
+                        // $('.score13').css("backgroundColor", "5d5d5d");
+                        // $('.player13').css("backgroundColor", "5d5d5d");
+                        // $('.score14').css("backgroundColor", "#ff9900");
+                        // $('.player14').css("backgroundColor", "#ff9900");
+                        $('.player8-7').val($('.player14').val());
+                    }
+                }
+
+                if($('.score15').val()!="" && $('.score16').val()!=""){
+                    if($('.score15').val()>$('.score16').val()){
+                        // $('.score15').css("backgroundColor", "#ff9900");
+                        // $('.player15').css("backgroundColor", "#ff9900");
+                        // $('.score16').css("backgroundColor", "5d5d5d");
+                        // $('.player16').css("backgroundColor", "5d5d5d");
+                        $('.player8-8').val($('.player15').val());
+
+                    }
+                    else{
+                        // $('.score15').css("backgroundColor", "5d5d5d");
+                        // $('.player15').css("backgroundColor", "5d5d5d");
+                        // $('.score16').css("backgroundColor", "#ff9900");
+                        // $('.player16').css("backgroundColor", "#ff9900");
+                        $('.player8-8').val($('.player16').val());
+                    }
+                }
+
+
+                if($('.score8-1').val()!="" && $('.score8-2').val()!=""){
+                    if($('.score8-1').val()>$('.score8-2').val()){
+                        // $('.score8-1').css("backgroundColor", "#ff9900");
+                        // $('.player8-1').css("backgroundColor", "#ff9900");
+                        // $('.score8-2').css("backgroundColor", "#5d5d5d");
+                        // $('.player8-2').css("backgroundColor", "#5d5d5d");
+                        $('.player4-1').val($('.player8-1').val());
+
+                    }
+                    else{
+                        // $('.score8-1').css("backgroundColor", "#5d5d5d");
+                        // $('.player8-1').css("backgroundColor", "#5d5d5d");
+                        // $('.score8-2').css("backgroundColor", "#ff9900");
+                        // $('.player8-2').css("backgroundColor", "#ff9900");
+                        $('.player4-1').val($('.player8-2').val());
+                    }
+                }
+
+                if($('.score8-3').val()!="" && $('.score8-4').val()!=""){
+                    if($('.score8-3').val()>$('.score8-4').val()){
+                        // $('.score8-3').css("backgroundColor", "#ff9900");
+                        // $('.player8-3').css("backgroundColor", "#ff9900");
+                        // $('.score8-4').css("backgroundColor", "5d5d5d");
+                        // $('.player8-4').css("backgroundColor", "5d5d5d");
+                        $('.player4-2').val($('.player8-3').val());
+
+                    }
+                    else{
+                        // $('.score8-3').css("backgroundColor", "5d5d5d");
+                        // $('.player8-3').css("backgroundColor", "5d5d5d");
+                        // $('.score8-4').css("backgroundColor", "#ff9900");
+                        // $('.player8-4').css("backgroundColor", "#ff9900");
+                        $('.player4-2').val($('.player8-4').val());
+                    }
+                }
+                if($('.score8-5').val()!="" && $('.score8-6').val()!=""){
+                    if($('.score8-5').val()>$('.score8-6').val()){
+                        // $('.score8-5').css("backgroundColor", "#ff9900");
+                        // $('.player8-5').css("backgroundColor", "#ff9900");
+                        // $('.score8-6').css("backgroundColor", "5d5d5d");
+                        // $('.player8-6').css("backgroundColor", "5d5d5d");
+                        $('.player4-3').val($('.player8-5').val());
+
+                    }
+                    else{
+                        // $('.score8-5').css("backgroundColor", "5d5d5d");
+                        // $('.player8-5').css("backgroundColor", "5d5d5d");
+                        // $('.score8-6').css("backgroundColor", "#ff9900");
+                        // $('.player8-6').css("backgroundColor", "#ff9900");
+                        $('.player4-3').val($('.player8-6').val());
+                    }
+                }
+                if($('.score8-7').val()!="" && $('.score8-8').val()!=""){
+                    if($('.score8-7').val()>$('.score8-8').val()){
+                        // $('.score8-7').css("backgroundColor", "#ff9900");
+                        // $('.player8-7').css("backgroundColor", "#ff9900");
+                        // $('.score8-8').css("backgroundColor", "5d5d5d");
+                        // $('.player8-8').css("backgroundColor", "5d5d5d");
+                        $('.player4-4').val($('.player8-7').val());
+
+                    }
+                    else{
+                        // $('.score8-7').css("backgroundColor", "5d5d5d");
+                        // $('.player8-7').css("backgroundColor", "5d5d5d");
+                        // $('.score8-8').css("backgroundColor", "#ff9900");
+                        // $('.player8-8').css("backgroundColor", "#ff9900");
+                        $('.player4-4').val($('.player8-8').val());
+                    }
+                }
+
+                if($('.score4-1').val()!="" && $('.score4-2').val()!=""){
+                    if($('.score4-1').val()>$('.score4-2').val()){
+                        // $('.score4-1').css("backgroundColor", "#ff9900");
+                        // $('.player4-1').css("backgroundColor", "#ff9900");
+                        // $('.score4-2').css("backgroundColor", "#5d5d5d");
+                        // $('.player4-2').css("backgroundColor", "#5d5d5d");
+                        $('.playerfinal-1').val($('.player4-1').val());
+
+                    }
+                    else{
+                        // $('.score4-1').css("backgroundColor", "#5d5d5d");
+                        // $('.player4-1').css("backgroundColor", "#5d5d5d");
+                        // $('.score4-2').css("backgroundColor", "#ff9900");
+                        // $('.player4-2').css("backgroundColor", "#ff9900");
+                        $('.playerfinal-1').val($('.player4-2').val());
+                    }
+                }
+
+                if($('.score4-3').val()!="" && $('.score4-4').val()!=""){
+                    if($('.score4-3').val()>$('.score4-4').val()){
+                        // $('.score4-3').css("backgroundColor", "#ff9900");
+                        // $('.player4-3').css("backgroundColor", "#ff9900");
+                        // $('.score4-4').css("backgroundColor", "5d5d5d");
+                        // $('.player4-4').css("backgroundColor", "5d5d5d");
+                        $('.playerfinal-2').val($('.player4-3').val());
+
+                    }
+                    else{
+                        // $('.score4-3').css("backgroundColor", "5d5d5d");
+                        // $('.player4-3').css("backgroundColor", "5d5d5d");
+                        // $('.score4-4').css("backgroundColor", "#ff9900");
+                        // $('.player4-4').css("backgroundColor", "#ff9900");
+                        $('.playerfinal-2').val($('.player4-4').val());
+                    }
+                }
+
+                if($('.scorefinal-1').val()!="" && $('.scorefinal-2').val()!=""){
+                    if($('.scorefinal-1').val()>$('.scorefinal-2').val()){
+                        // $('.scorefinal-1').css("backgroundColor", "#ff9900");
+                        // $('.playerfinal-1').css("backgroundColor", "#ff9900");
+                        // $('.scorefinal-2').css("backgroundColor", "#5d5d5d");
+                        // $('.playerfinal-2').css("backgroundColor", "#5d5d5d");
+
+                    }
+                    else{
+                        // $('.scorefinal-1').css("backgroundColor", "#5d5d5d");
+                        // $('.playerfinal-1').css("backgroundColor", "#5d5d5d");
+                        // $('.scorefinal-2').css("backgroundColor", "#ff9900");
+                        // $('.playerfinal-2').css("backgroundColor", "#ff9900");    
+                    }
+                }
+                
+                
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
