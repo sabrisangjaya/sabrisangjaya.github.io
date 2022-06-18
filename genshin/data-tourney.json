@@ -21,14 +21,14 @@ datatourney={
 
     "match":{
         "fight16":{
-            "battle1":{"winner":"PDS","score":["",""]},
-            "battle2":{"winner":"","score":["",""]},
-            "battle3":{"winner":"","score":["",""]},
-            "battle4":{"winner":"","score":["",""]},
-            "battle5":{"winner":"","score":["",""]},
-            "battle6":{"winner":"","score":["",""]},
-            "battle7":{"winner":"","score":["",""]},
-            "battle8":{"winner":"","score":["",""]}
+            "battle1":{"winner":"PDS","score":["2","0"]},
+            "battle2":{"winner":"JeVall","score":["2","0"]},
+            "battle3":{"winner":"Milalith","score":["2","0"]},
+            "battle4":{"winner":"JesterLynn","score":["1","2"]},
+            "battle5":{"winner":"Pepo","score":["0","2"]},
+            "battle6":{"winner":"Kuroha","score":["2","1"]},
+            "battle7":{"winner":"Dillion","score":["0","2"]},
+            "battle8":{"winner":"AWR","score":["2","1"]}
         },
         "fight8":{
             "battle1":{"winner":"","score":["",""]},
