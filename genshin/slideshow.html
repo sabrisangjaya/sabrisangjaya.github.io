@@ -14,6 +14,15 @@
             pointer-events: none;
             border: none;
         } 
+        #frame {
+            -ms-zoom: 0.65;
+            -moz-transform: scale(0.65);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.65);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.65);
+            -webkit-transform-origin: 0 0;
+        }
     </style>
     <!-- Font Awesome -->
 <link
@@ -41,8 +50,7 @@ rel="stylesheet"/>
 <div
   id="carouselVideoExample"
   class="carousel slide carousel-fade"
-  data-mdb-ride="carousel"
->
+  data-mdb-ride="carousel" >
   <!-- Indicators -->
   <div class="carousel-indicators">
     <button
@@ -70,7 +78,7 @@ rel="stylesheet"/>
   <!-- Inner -->
   <div class="carousel-inner">
     <!-- Single item -->
-    <div class="carousel-item active">
+    <div class="carousel-item active" data-mdb-interval="5000">
       <video class="img-fluid" autoplay loop muted>
         <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
       </video>
@@ -83,7 +91,7 @@ rel="stylesheet"/>
     </div>
 
     <!-- Single item -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-mdb-interval="5000">
       <video class="img-fluid" autoplay loop muted>
         <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
       </video>
@@ -96,7 +104,7 @@ rel="stylesheet"/>
     </div>
 
     <!-- Single item -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-mdb-interval="20000">
         <iframe id="frame" src="bracketx.html"></iframe>
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
