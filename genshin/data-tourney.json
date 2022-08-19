@@ -19,7 +19,7 @@ datatourney={
         ],
     "match":{
         "fight16":{
-            "battle1":{"winner":"","score":["1","0"]},
+            "battle1":{"winner":"","score":["",""]},
             "battle2":{"winner":"","score":["",""]},
             "battle3":{"winner":"","score":["",""]},
             "battle4":{"winner":"","score":["",""]},
