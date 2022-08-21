@@ -35,11 +35,11 @@ datatourney={
             "battle4":{"winner":"","score":["1","2"]}
         },
         "semifinal":{
-            "battle1":{"winner":"","score":["",""]},
-            "battle2":{"winner":"","score":["",""]}
+            "battle1":{"winner":"","score":["1","2"]},
+            "battle2":{"winner":"","score":["2","0"]}
         },
         "final":{
-            "battle1":{"winner":"","score":["",""]}
+            "battle1":{"winner":"","score":["2","1"]}
         },
     }
 }
