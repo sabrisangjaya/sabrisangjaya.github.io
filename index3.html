@@ -709,7 +709,7 @@ Object.defineProperty(window, '${entrName || 'webpackJsonp'}', {
         const href = location.href.replace(location.search, '').replace(location.hash, '');
         if (href.endsWith('.html') && href.includes('event/')) {
             url.value = href
-                .replace(location.origin, 'https://act.hoyoverse.com/')
+                .replace(location.origin, 'https://cors-anywhere.herokuapp.com/https://act.hoyoverse.com/')
                 .replace('/webstatic-extractor/', '/');
             clk();
         }
