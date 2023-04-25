@@ -47,8 +47,12 @@
 	        link.href = canvas.toDataURL("image/png")
 	        link.download = fileName;
 	        console.log(link.href);
-	        // window.location.href=link.href;
-	        link.click();
+	        canvas.toBlob(blob => {
+			    const objectURL = URL.createObjectURL(blob);
+			    window.open(objectURL);
+			}, 'image/png');
+		// window.location.href=link.href;
+	        // link.click();
 
 		};
 		img.setAttribute('crossorigin', 'anonymous');
