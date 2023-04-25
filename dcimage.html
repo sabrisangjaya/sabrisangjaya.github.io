@@ -44,7 +44,7 @@
 
 		    let fileName = `image.gif`
 	        const link = document.createElement('a')
-	        link.href = canvas.toDataURL("image/png")
+	        link.href = canvas.toDataURL("image/gif")
 	        link.download = fileName;
 	        console.log(link.href);
 	        canvas.toBlob(blob => {
